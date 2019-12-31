@@ -1,0 +1,7 @@
+{
+	"version": "1.0",
+	"server_scripts": [
+		"sr_importer.lua",
+		"sr_runcode.lua"
+	]
+}
