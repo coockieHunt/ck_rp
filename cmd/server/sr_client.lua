@@ -5,6 +5,7 @@ function cmd_commands(playerid)
 	AddPlayerChat(playerid, ("		- id : %s"):format(data.id))
 	AddPlayerChat(playerid, ("		- admin : %s"):format(data.admin))
 	AddPlayerChat(playerid, ("		- steam_id : %s"):format(data.steamId))
+	AddPlayerChat(playerid, ("		- health : %s"):format(data.health))
 	AddPlayerChat(playerid, ("		- cash : %s"):format(data.cash))
 end
 AddCommand("getstat", cmd_commands)

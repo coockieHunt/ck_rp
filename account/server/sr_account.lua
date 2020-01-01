@@ -5,6 +5,14 @@ playerData = {}
 playerData.ClassPlayer = import("account/class/player.lua")
 db = import("database/server/sr_connect.lua")
 
+-- request
+local Request = {
+    IfplayerAccountExist = "SELECT id FROM accounts WHERE steam_id = '?' LIMIT 1;",
+    CreatePlayerAccount = "INSERT INTO accounts (id, admin, steam_id, health,name, cash) VALUES (NULL, '?', '?', '?', '?', '?');",
+    GetPlayerAccount = "SELECT * FROM accounts WHERE steam_id = '?';",
+    SaveAccount = "UPDATE accounts SET cash= ? WHERE steam_id = ? LIMIT 1;"
+}
+
 ---- package
 function cmd_commands(playerid)
     SaveAccountPlayer(playerid)
@@ -33,7 +41,7 @@ function OnPlayerSteamAuth(player)
         KickPlayer(player, "🚨 You are not connected steam 🚨")
     end
 
-	local query = mariadb_prepare(db, "SELECT id FROM accounts WHERE steam_id = '?' LIMIT 1;",
+	local query = mariadb_prepare(db, Request.IfplayerAccountExist,
         steam_id)
 
     mariadb_async_query(db, query, OnAccountConnect, player)
@@ -57,9 +65,10 @@ function CreatePlayerAccount(player)
     local new_player_cash = 0
 
     print("[SERVER] create new account steam_id : " ..steam_id)
-    local query = mariadb_prepare(db, "INSERT INTO accounts (id, admin, steam_id, name, cash) VALUES (NULL, '?', '?', '?', '?');",
-        steam_id,
+    local query = mariadb_prepare(db, Request.CreatePlayerAccount,
         0,
+        steam_id,
+        100,
         player_name,
         new_player_cash
     )
@@ -71,7 +80,7 @@ function CreatePlayerAccount(player)
     SetPlayerName(player, player_name)
 
 
-    createPlayerAcoount(id, 0, steam_id, player_name, new_player_cash)
+    createPlayerAcoount(id, 0, steam_id, 100, player_name, new_player_cash)
 
 end
 
@@ -82,7 +91,7 @@ function LoadPlayerAccount(player)
     print("> Load player account ("..steam_id..")")
 
 
-	local query = mariadb_prepare(db, "SELECT * FROM accounts WHERE steam_id = '?';",
+	local query = mariadb_prepare(db, Request.GetPlayerAccount,
         steam_id)
 
 	mariadb_async_query(db, query, OnAccountLoaded, player)
@@ -102,20 +111,22 @@ function OnAccountLoaded(player)
         end
 
         SetPlayerName(player, player_name)
+        SetPlayerHealth(player, tonumber(result['health']))
 
-        createPlayerAcoount(result['id'], result['admin'], result['steam_id'], player_name, result['cash'])
+        createPlayerAcoount(result['id'], result['admin'], result['steam_id'], result['health'], player_name, result['cash'])
 
 	end
 end
 
 ---- Manage account list
 --add
-function createPlayerAcoount(id, admin, steamId, name, cash)
+function createPlayerAcoount(id, admin, steamId, health, name, cash)
     local p = playerData.ClassPlayer.new(
         {
             ["id"] = id,
             ["admin"] = admin,
             ["steamId"] = steamId,
+            ["health"] = health,
             ["name"] = name,
             ["cash"] =  cash
         })
@@ -148,7 +159,7 @@ function SaveAccountPlayer(player)
         end
     end
 
-    local query = mariadb_prepare(db, "UPDATE accounts SET cash= ? WHERE steam_id = ? LIMIT 1;",
+    local query = mariadb_prepare(db, Request.SaveAccount,
         Data.cash,
 		Data.steamId
 	)
