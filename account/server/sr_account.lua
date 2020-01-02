@@ -8,7 +8,7 @@ db = import("database/server/sr_connect.lua")
 -- request
 local Request = {
     IfplayerAccountExist = "SELECT id FROM accounts WHERE steam_id = '?' LIMIT 1;",
-    CreatePlayerAccount = "INSERT INTO accounts (id, admin, steam_id, health,name, cash) VALUES (NULL, '?', '?', '?', '?', '?');",
+    CreatePlayerAccount = "INSERT INTO accounts (id, admin, steam_id, health, armor, name, cash) VALUES (NULL, '?', '?', '?', '?', '?', '?');",
     GetPlayerAccount = "SELECT * FROM accounts WHERE steam_id = '?';",
     SaveAccount = "UPDATE accounts SET cash= ? WHERE steam_id = ? LIMIT 1;"
 }
@@ -57,6 +57,14 @@ function OnAccountConnect(player)
     end
 end
 
+function OnPlayerDamage(player)
+    local p = getplayer(player)
+
+    p.health = GetPlayerHealth(player)
+    p.armor = GetPlayerArmor(player)
+end
+AddEvent("OnPlayerDamage", OnPlayerDamage)
+
 -- new account
 function CreatePlayerAccount(player)
     local steam_id = tostring(GetPlayerSteamId(player))
@@ -69,6 +77,7 @@ function CreatePlayerAccount(player)
         0,
         steam_id,
         100,
+        100,
         player_name,
         new_player_cash
     )
@@ -80,7 +89,7 @@ function CreatePlayerAccount(player)
     SetPlayerName(player, player_name)
 
 
-    createPlayerAcoount(id, 0, steam_id, 100, player_name, new_player_cash)
+    createPlayerAcoount(id, 0, steam_id, 100, 100, player_name, new_player_cash)
 
 end
 
@@ -111,22 +120,24 @@ function OnAccountLoaded(player)
         end
 
         SetPlayerName(player, player_name)
+        SetPlayerArmor(player, tonumber(result['armor']))
         SetPlayerHealth(player, tonumber(result['health']))
 
-        createPlayerAcoount(result['id'], result['admin'], result['steam_id'], result['health'], player_name, result['cash'])
+        createPlayerAcoount(result['id'], result['admin'], result['steam_id'], result['health'], result['armor'], player_name, result['cash'])
 
 	end
 end
 
 ---- Manage account list
 --add
-function createPlayerAcoount(id, admin, steamId, health, name, cash)
+function createPlayerAcoount(id, admin, steamId, health, armor, name, cash)
     local p = playerData.ClassPlayer.new(
         {
             ["id"] = id,
             ["admin"] = admin,
             ["steamId"] = steamId,
             ["health"] = health,
+            ["armor"] = armor,
             ["name"] = name,
             ["cash"] =  cash
         })
