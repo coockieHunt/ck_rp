@@ -58,7 +58,7 @@ AddCommand("weapon", cmd_weapon_spawn)
 function kill(player)
 	if(AdminLevel(player, 1)) then return AddPlayerChat(player, "not admin")end
 
-	AdminLog(GetPlayerName(player) .. " comit sucide : " .. model)
+	AdminLog(GetPlayerName(player) .. " comit sucide")
 	print("> [ADMIN] " .. GetPlayerName(player).." commit sucide ")
 
 	SetPlayerHealth(player, 0)
