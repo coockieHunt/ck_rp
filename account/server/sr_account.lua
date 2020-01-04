@@ -10,7 +10,7 @@ local Request = {
     IfplayerAccountExist = "SELECT id FROM accounts WHERE steam_id = '?' LIMIT 1;",
     CreatePlayerAccount = "INSERT INTO accounts (id, admin, steam_id, health, armor, name, cash) VALUES (NULL, '?', '?', '?', '?', '?', '?');",
     GetPlayerAccount = "SELECT * FROM accounts WHERE steam_id = '?';",
-    SaveAccount = "UPDATE accounts SET cash= ? WHERE steam_id = ? LIMIT 1;"
+    SaveAccount = "UPDATE accounts SET cash= ?, health= ?, armor=?  WHERE steam_id = ? LIMIT 1;"
 }
 
 ---- package
@@ -71,13 +71,16 @@ function CreatePlayerAccount(player)
     local player_name = GetPlayerName(player)
 
     local new_player_cash = 0
+    local new_player_health = 100
+    local new_player_armor = 0
+    local new_player_admin = 0
 
     print("[SERVER] create new account steam_id : " ..steam_id)
     local query = mariadb_prepare(db, Request.CreatePlayerAccount,
-        0,
+        new_player_admin,
         steam_id,
-        100,
-        100,
+        new_player_health,
+        new_player_armor,
         player_name,
         new_player_cash
     )
@@ -87,7 +90,8 @@ function CreatePlayerAccount(player)
 
 
     SetPlayerName(player, player_name)
-
+    SetPlayerHealth(player, new_player_health)
+    SetPlayerArmor(player, new_player_armor)
 
     createPlayerAcoount(id, 0, steam_id, 100, 100, player_name, new_player_cash)
 
@@ -122,6 +126,8 @@ function OnAccountLoaded(player)
         SetPlayerName(player, player_name)
         SetPlayerArmor(player, tonumber(result['armor']))
         SetPlayerHealth(player, tonumber(result['health']))
+
+        
 
         createPlayerAcoount(result['id'], result['admin'], result['steam_id'], result['health'], result['armor'], player_name, result['cash'])
 
@@ -172,6 +178,8 @@ function SaveAccountPlayer(player)
 
     local query = mariadb_prepare(db, Request.SaveAccount,
         Data.cash,
+        Data.health,
+        Data.armor,
 		Data.steamId
 	)
         
