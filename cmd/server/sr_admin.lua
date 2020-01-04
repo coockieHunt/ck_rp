@@ -45,12 +45,11 @@ function cmd_weapon_spawn(player, weapon, slot, ammo)
 	end
 
 	if(AdminLevel(player, 1)) then return AddPlayerChat(player, "not admin")end
+    print_cmd("weapon", weapon, player)
+	AdminLog(GetPlayerName(player) .. " spawn weapon id : " .. weapon.. " | slot : " ..slot.. " | ammo : " ..ammo)
 
-	AdminLog(GetPlayerName(player) .. " spawn weapon : " .. weapon)
 
 	SetPlayerWeapon(player, weapon, ammo, true, slot, true)
-
-    print_cmd("weapon", weapon, player)
 end
 AddCommand("weapon", cmd_weapon_spawn)
 
