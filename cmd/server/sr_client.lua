@@ -8,6 +8,7 @@ function cmd_commands(playerid)
 	AddPlayerChat(playerid, ("		- health : %s"):format(data.health))
 	AddPlayerChat(playerid, ("		- armor : %s"):format(data.armor))
 	AddPlayerChat(playerid, ("		- cash : %s"):format(data.cash))
+	AddPlayerChat(playerid, ("		- cash_account : %s"):format(data.cash_account))
 end
 AddCommand("getstat", cmd_commands)
 AddCommand("gst", cmd_commands)

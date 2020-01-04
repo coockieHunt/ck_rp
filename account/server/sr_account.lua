@@ -8,9 +8,9 @@ db = import("database/server/sr_connect.lua")
 -- request
 local Request = {
     IfplayerAccountExist = "SELECT id FROM accounts WHERE steam_id = '?' LIMIT 1;",
-    CreatePlayerAccount = "INSERT INTO accounts (id, admin, steam_id, health, armor, name, cash) VALUES (NULL, '?', '?', '?', '?', '?', '?');",
+    CreatePlayerAccount = "INSERT INTO accounts (id, admin, steam_id, health, armor, name, cash, cash_account) VALUES (NULL, '?', '?', '?', '?', '?', '?', '?');",
     GetPlayerAccount = "SELECT * FROM accounts WHERE steam_id = '?';",
-    SaveAccount = "UPDATE accounts SET cash= ?, health= ?, armor=?  WHERE steam_id = ? LIMIT 1;"
+    SaveAccount = "UPDATE accounts SET cash= ?, cash_account=?, health= ?, armor=?  WHERE steam_id = ? LIMIT 1;"
 }
 
 ---- package
@@ -70,10 +70,11 @@ function CreatePlayerAccount(player)
     local steam_id = tostring(GetPlayerSteamId(player))
     local player_name = GetPlayerName(player)
 
-    local new_player_cash = 0
+    local new_player_admin = 0
     local new_player_health = 100
     local new_player_armor = 0
-    local new_player_admin = 0
+    local new_player_cash = 0
+    local new_player_cash_account = 0
 
     print("[SERVER] create new account steam_id : " ..steam_id)
     local query = mariadb_prepare(db, Request.CreatePlayerAccount,
@@ -82,7 +83,8 @@ function CreatePlayerAccount(player)
         new_player_health,
         new_player_armor,
         player_name,
-        new_player_cash
+        new_player_cash,
+        new_player_cash_account
     )
 
     mariadb_query(db, query)
@@ -93,7 +95,7 @@ function CreatePlayerAccount(player)
     SetPlayerHealth(player, new_player_health)
     SetPlayerArmor(player, new_player_armor)
 
-    createPlayerAcoount(id, 0, steam_id, 100, 100, player_name, new_player_cash)
+    createPlayerAcoount(id, 0, steam_id, new_player_health, new_player_armor, player_name, new_player_cash, new_player_cash_account)
 
 end
 
@@ -129,14 +131,14 @@ function OnAccountLoaded(player)
 
         
 
-        createPlayerAcoount(result['id'], result['admin'], result['steam_id'], result['health'], result['armor'], player_name, result['cash'])
+        createPlayerAcoount(result['id'], result['admin'], result['steam_id'], result['health'], result['armor'], player_name, result['cash'], result['cash_account'])
 
 	end
 end
 
 ---- Manage account list
 --add
-function createPlayerAcoount(id, admin, steamId, health, armor, name, cash)
+function createPlayerAcoount(id, admin, steamId, health, armor, name, cash, cash_account)
     local p = playerData.ClassPlayer.new(
         {
             ["id"] = id,
@@ -145,7 +147,8 @@ function createPlayerAcoount(id, admin, steamId, health, armor, name, cash)
             ["health"] = health,
             ["armor"] = armor,
             ["name"] = name,
-            ["cash"] =  cash
+            ["cash"] =  cash,
+            ["cash_account"] =  cash_account
         })
 
     table.insert(playerData, p)       
@@ -178,6 +181,7 @@ function SaveAccountPlayer(player)
 
     local query = mariadb_prepare(db, Request.SaveAccount,
         Data.cash,
+        Data.cash_account,
         Data.health,
         Data.armor,
 		Data.steamId
