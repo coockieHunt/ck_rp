@@ -2,20 +2,12 @@
 <html>
     <head>
         <style>
-            *{
-                margin:0;
-                padding:0;
-            }
-    
-
-            @font-face {
-                font-family: "roboto";
-                src: url("Roboto-Regular.ttf");
-            }
-
-
-            body {
-                font-family: "roboto", serif;
+            *{margin:0;padding:0;}
+            @font-face {font-family: "roboto";src: url("Roboto-Regular.ttf");}
+            body { 
+                font-family: "roboto", serif; 
+                color: white;
+                /* background-color:green; */
             } 
 
             .left_bar{
@@ -24,24 +16,13 @@
                 width: 300px;
             }
             
-            .element{
-               padding-top: 10px;
-            }
-
-            .icon{
-                float: left;
-            }
-
-            .healt_pg{
-                background-color:red;
-            }
-
-            .sheld_pg{
-                background-color:blue;
-            }
+            .element{padding-top: 10px;}
+            .icon{float: left; width: 20px; height: 20px;}
+            .healt_pg{background-color:red;}
+            .sheld_pg{background-color:blue}
 
             .progress{
-                width:100%; 
+                width: 100%; 
                 float: right;
             }
 
@@ -66,6 +47,31 @@
 
             }
             .round-xlarge{border-radius:16px!important}
+
+            #spacer{
+                background-color:rgba(0, 0, 0, 0.8);
+                border-radius: 15px;
+                display: block;
+                height: 15px;
+                margin: 0 auto;
+                margin: 10px auto 0 auto;
+                width: 95%;
+            }
+
+            .cash_data{
+                display: block;
+                font: 1.1em "roboto", sans-serif;
+                width: 80%;
+
+            }
+
+            .money{
+                font: 1.1em "roboto", sans-serif;
+                text-align: right;
+                float:left;
+
+            }
+
         </style>
     </head>
     <body>
@@ -73,15 +79,25 @@
             function SetHealth(new_health)
             {
                 let healt = document.querySelector(".left_bar > #healt > .progress > .progress-container > .progressbar-element");
-                console.log(new_health + "%")
                 healt.style.width = new_health + "%";
             }
 
-            function SetArmor(new_health)
+            function SetArmor(new_armor)
             {
-                let healt = document.querySelector(".left_bar > #armor > .progress > .progress-container > .progressbar-element");
-                console.log(new_health + "%")
-                healt.style.width = new_health + "%";
+                let armor = document.querySelector(".left_bar > #armor > .progress > .progress-container > .progressbar-element");
+                armor.style.width = new_armor + "%";
+            }
+
+            function SetCash(new_cash)
+            {
+                let cash = document.querySelector(".left_bar > #cash > .cash_data" );
+                cash.innerHTML = new_cash
+            }
+
+            function SetAccountCash(net_account_cash)
+            {
+                let cash_account = document.querySelector(".left_bar > #cash_account > .cash_data" );
+                cash_account.innerHTML = net_account_cash
             }
         </script>
         <div class="left_bar">
@@ -102,7 +118,18 @@
                     </div>
                 </div>
             </div>
+            <div id="spacer">&nbsp;</div>
+            
+            <div id="cash" class="element" style="display: flex;">
+                <img src="dollar.png" class="icon" style="margin-right: 15px;">
+                <span class="cash_data">5</span>
+                <span class="money">$</span>
+            </div>
+            <div id="cash_account" class="element" style="display: flex;">
+                <img src="c_a.png" class="icon" style="margin-right: 15px;">
+                <span class="cash_data">5000</span>
+                <span class="money">$</span>
+            </div>
         </div>
-
     </body>
 </html>
