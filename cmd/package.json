@@ -2,7 +2,6 @@
 	"version": "1.0",
 	"client_scripts": [
 		"client/cl_client.lua",
-		"client/cl_noclip.lua",
 		"client/cl_weapons.lua"
 	]
 }
