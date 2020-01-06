@@ -1,4 +1,6 @@
 local survival_ui = 0
+local player_cash = 0
+local player_cash_account = 0
 
 AddEvent("OnPlayerSpawn", function(playerid)
     ShowHealthHUD(false)
@@ -11,20 +13,28 @@ AddEvent("OnPlayerSpawn", function(playerid)
 end)
 
 function OnWebLoadComplete(webid)
+    local playerId = GetPlayerId()
+    
 	if (survival_ui == webid) then
-        Delay(500, function(webid)
-            local health = math.floor(GetPlayerHealth())
-            local armor = math.floor(GetPlayerArmor())
-            ExecuteWebJS(survival_ui, "SetHealth('"..health.."');")
-            ExecuteWebJS(survival_ui, "SetArmor('"..armor.."');")
-		end, survival_ui)
+        Delay(500, function(webid, playerid)
+            CallRemoteEvent('GetPlayerData', playerId)
+		end, survival_ui, playerId)
 	end
 end
 AddEvent("OnWebLoadComplete", OnWebLoadComplete)
 
-AddRemoteEvent("updateHud_survival", function()
-    local health = math.floor(GetPlayerHealth())
-    local armor = math.floor(GetPlayerArmor())
+-- function
+
+function setPlayerData(cash, a_cash, health, armor)
+    ExecuteWebJS(survival_ui, "SetCash('"..cash.."');")            
+    ExecuteWebJS(survival_ui, "SetAccountCash('"..a_cash.."');")
+ end
+ AddRemoteEvent("setPlayerData", setPlayerData)
+
+ function setDammage(health, armor)
     ExecuteWebJS(survival_ui, "SetHealth('"..health.."');")
-    ExecuteWebJS(survival_ui, "SetArmor('"..armor.."');")
-end)
+    ExecuteWebJS(survival_ui, "SetArmor('"..armor.."');")    
+end
+AddRemoteEvent("setDammage", setDammage)
+
+
