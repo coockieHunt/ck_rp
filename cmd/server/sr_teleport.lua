@@ -26,34 +26,28 @@ TeleportList = switch {
   default = true,
 }
 
-function Teleport(player, dest)
-    local to = TeleportList:case(dest)
+function TeleportTo(player, dest)
+  local to = TeleportList:case(dest)
+  if(to == true) then return AddPlayerChat(player, dest..' invalide position') end
+	AddAdminLog(player, "teleport to x =" .. to[1] ..", y= ".. to[2] ..", z= " .. to[3] ..", h= " .. to[4])
 
-    if(to == true) then return AddPlayerChat(player, dest..' invalide position') end
-    TeleportTo(player, to[1], to[2], to[3], to[4])
-end
-AddCommand("tp", Teleport)
-
-function TeleportTo(player, x, y, z, h)
-	h = h or -1.0
-
-	AddAdminLog(player, "teleport to x =" .. x ..", y= ".. y ..", z= " .. z ..", h= " .. h)
-	
+  to[4] = to[4] or -1.0
 	if (GetPlayerVehicleSeat(player) == 1) then
-		local vehicle = GetPlayerVehicle(player)
-		SetVehicleLocation(vehicle, x, y, z)
-		if (h ~= -1.0) then
-			SetVehicleHeading(vehicle, h)
-		end
+    local vehicle = GetPlayerVehicle(player)
+    SetVehicleLocation(vehicle, to[1], to[2], to[3])
+    if (to[4] ~= -1.0) then
+      SetVehicleHeading(vehicle, to[4])
+    end
 
 		SetVehicleLinearVelocity(vehicle, 0.0, 0.0, 0.0, true)
 		SetVehicleAngularVelocity(vehicle, 0.0, 0.0, 0.0, true)
 		local rx, ry, rz = GetVehicleRotation(vehicle)
 		SetVehicleRotation(vehicle, 0.0, ry, 0.0)
 	else
-		SetPlayerLocation(player, x, y, z)
-		if (h ~= -1.0) then
-			SetPlayerHeading(player, h)
+		SetPlayerLocation(player, to[1], to[2], to[3])
+		if (to[4] ~= -1.0) then
+			SetPlayerHeading(player, to[4])
 		end
 	end
 end
+AddCommand("tp", TeleportTo)
