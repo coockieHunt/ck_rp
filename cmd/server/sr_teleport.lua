@@ -15,10 +15,8 @@ see https://bluemountains.io/Onset_OpenSourceSoftware_License.txt
 function TeleportTo(player, x, y, z, h)
 	h = h or -1.0
 
-    AdminLog(GetPlayerName(player) .. ' teleport to x =' .. x ..", y= ".. y ..", z= " .. z ..", h= " .. h)
-	print("> [ADMIN] "..GetPlayerName(player) .. ' teleport to x =' .. x ..", y= ".. y ..", z= " .. z ..", h= " .. h)
-
-
+	AddAdminLog(player, "teleport to x =" .. x ..", y= ".. y ..", z= " .. z ..", h= " .. h)
+	
 	if (GetPlayerVehicleSeat(player) == 1) then
 		local vehicle = GetPlayerVehicle(player)
 		SetVehicleLocation(vehicle, x, y, z)
@@ -26,11 +24,9 @@ function TeleportTo(player, x, y, z, h)
 			SetVehicleHeading(vehicle, h)
 		end
 
-		-- Reset velocity
 		SetVehicleLinearVelocity(vehicle, 0.0, 0.0, 0.0, true)
 		SetVehicleAngularVelocity(vehicle, 0.0, 0.0, 0.0, true)
 		local rx, ry, rz = GetVehicleRotation(vehicle)
-		-- Reset pitch and roll, leave yaw alone
 		SetVehicleRotation(vehicle, 0.0, ry, 0.0)
 	else
 		SetPlayerLocation(player, x, y, z)
@@ -38,16 +34,6 @@ function TeleportTo(player, x, y, z, h)
 			SetPlayerHeading(player, h)
 		end
 	end
-
-	--ResetPlayerCamera(player)
-end
-
-
-function AdminLog(print)
-	local time = os.time(os.date("!*t"))
-	file = io.open("admin_log.txt", "a")
-	file:write("[admin] ("..time..") : "..print, "\n")
-	file:close()
 end
 
 function cmd_beach(player)

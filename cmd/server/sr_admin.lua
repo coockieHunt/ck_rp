@@ -8,8 +8,7 @@ function cmd_set_clothing_preset(player, clothing_preset)
 	if (clothing_preset_id < 1 or clothing_preset_id > 29) then
 		return AddPlayerChat(player, "clothing preset "..clothing_preset.." does not exist.")
 	end
-	print_cmd("clothing", clothing_preset, player)
-	AdminLog(GetPlayerName(player) .. " spawn clithing preset id : " .. model)
+	AddAdminLog(player, "spawn clothing preset id : " .. clothing_preset)
 	CallRemoteEvent(player, "spawn_clothing", clothing_preset_id)
 end
 AddCommand("clothing", cmd_set_clothing_preset)
@@ -30,11 +29,9 @@ function cmd_car_spawn(player, model)
 	local vehicle = CreateVehicle(model, x, y, z, h)
 	if (vehicle == false) then return AddPlayerChat(player, "Failed to spawn your vehicle") end
 
-	AdminLog(GetPlayerName(player) .. " spawn car id : " .. model)
+	AddAdminLog(player, "spawn car id : " .. model)
 	AttachVehicleNitro(vehicle, true) 
 	SetPlayerInVehicle(player, vehicle)
-
-	print_cmd("car", vehicle, player)
 end
 AddCommand("car", cmd_car_spawn)
 
@@ -45,9 +42,7 @@ function cmd_weapon_spawn(player, weapon, slot, ammo)
 	end
 
 	if(AdminLevel(player, 1)) then return AddPlayerChat(player, "not admin")end
-    print_cmd("weapon", weapon, player)
-	AdminLog(GetPlayerName(player) .. " spawn weapon id : " .. weapon.. " | slot : " ..slot.. " | ammo : " ..ammo)
-
+	AddAdminLog(player, "spawn weapon id : " .. weapon .. " slot: " ..slot.. " ammo: " .. ammo)
 
 	SetPlayerWeapon(player, weapon, ammo, true, slot, true)
 end
@@ -57,8 +52,7 @@ AddCommand("weapon", cmd_weapon_spawn)
 function kill(player)
 	if(AdminLevel(player, 1)) then return AddPlayerChat(player, "not admin")end
 
-	AdminLog(GetPlayerName(player) .. " comit sucide")
-	print("> [ADMIN] " .. GetPlayerName(player).." commit sucide ")
+	AddAdminLog(player, " commit sucide")
 
 	SetPlayerHealth(player, 0)
  end
@@ -75,15 +69,3 @@ function AdminLevel(playerid, level)
 
 	return false
 end
-
-function AdminLog(print)
-	local time = os.time(os.date("!*t"))
-	file = io.open("admin_log.txt", "a")
-	file:write("[admin] ("..time..") : "..print, "\n")
-	file:close()
-end
-
-function print_cmd(spawn, id, player)
-	print("> [ADMIN] cmd spawn "..spawn..", id : "..id..", player : "..GetPlayerName(player).." ")
-end
-

@@ -10,6 +10,8 @@ function import(filename)
 	end
 end
 
+import("utils/log.lua")
+import("utils/system.lua")
 local account = import("account/server/sr_account.lua")
 import("hub/server/sr_hub.lua")
 import("cmd/server/sr_admin.lua")
