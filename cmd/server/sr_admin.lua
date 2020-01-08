@@ -58,6 +58,26 @@ function kill(player)
  end
  AddCommand("kill", kill)
 
+ --heal
+function heal(player)
+	if(AdminLevel(player, 1)) then return AddPlayerChat(player, "not admin")end
+
+	AddAdminLog(player, " heal")
+
+	SetPlayerHealth(player, 100)
+ end
+ AddCommand("heal", heal)
+
+ --anim
+function anim(player, animId)
+	if(AdminLevel(player, 1)) then return AddPlayerChat(player, "not admin")end
+
+	AddAdminLog(player, " player anim : " .. animId)
+
+	SetPlayerAnimation(player, animId)
+ end
+ AddCommand("anim", anim)
+
 
 --utils
 function AdminLevel(playerid, level)
