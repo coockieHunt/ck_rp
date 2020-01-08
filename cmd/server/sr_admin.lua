@@ -65,6 +65,8 @@ function heal(player)
 	AddAdminLog(player, " heal")
 
 	SetPlayerHealth(player, 100)
+
+	GetPlayerData(player)
  end
  AddCommand("heal", heal)
 
