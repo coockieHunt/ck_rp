@@ -34,7 +34,7 @@ function TeleportTo(player, dest)
   to[4] = to[4] or -1.0
 	if (GetPlayerVehicleSeat(player) == 1) then
     local vehicle = GetPlayerVehicle(player)
-    SetVehicleLocation(vehicle, to[1], to[2], to[3])
+    SetVehicleLocation(vehicle, to[1], to[2], to[3] + 30)
     if (to[4] ~= -1.0) then
       SetVehicleHeading(vehicle, to[4])
     end
@@ -44,7 +44,7 @@ function TeleportTo(player, dest)
 		local rx, ry, rz = GetVehicleRotation(vehicle)
 		SetVehicleRotation(vehicle, 0.0, ry, 0.0)
 	else
-		SetPlayerLocation(player, to[1], to[2], to[3])
+		SetPlayerLocation(player, to[1], to[2], to[3] + 30)
 		if (to[4] ~= -1.0) then
 			SetPlayerHeading(player, to[4])
 		end
