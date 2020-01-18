@@ -23,12 +23,11 @@ TeleportList = switch {
   ["pd"] = {171553.000000, 195234.000000, 572.0, 90.0},
   ["hosp1"] = {215242.000000, 158470.000000, 2962.000000, 90.0},
   ["hosp2"] = {212372.000000, 153763.000000, 2793.000000, 90.0},
-  default = true,
 }
 
 function TeleportTo(player, dest)
   local to = TeleportList:case(dest)
-  if(to == true) then return AddPlayerChat(player, dest..' invalide position') end
+  if(isnil(to)) then return AddPlayerChat(player, dest..' invalide position') end
 	AddAdminLog(player, "teleport to x =" .. to[1] ..", y= ".. to[2] ..", z= " .. to[3] ..", h= " .. to[4])
 
   to[4] = to[4] or -1.0
