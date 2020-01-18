@@ -5,27 +5,10 @@ playerData = {}
 playerData.ClassPlayer = import("account/class/player.lua")
 db = import("database/server/sr_connect.lua")
 
--- request
-local Request = {
-    IfplayerAccountExist = "SELECT id FROM accounts WHERE steam_id = '?' LIMIT 1;",
-    CreatePlayerAccount = "INSERT INTO accounts (id, admin, steam_id, health, armor, name, cash, cash_account) VALUES (NULL, '?', '?', '?', '?', '?', '?', '?');",
-    GetPlayerAccount = "SELECT * FROM accounts WHERE steam_id = '?';",
-    SaveAccount = "UPDATE accounts SET cash= ?, cash_account=?, health= ?, armor=?  WHERE steam_id = ? LIMIT 1;"
-}
-
----- package
-function cmd_commands(playerid)
-    SaveAccountPlayer(playerid)
-    AddPlayerChat(playerid, "[server] your data has been save")
-	return
-end
-AddCommand("save", cmd_commands)
-
-
 function OnPackageStop()
     -- Save all player data automatically 
     CreateTimer(function()
-        for key, valeu in pairs(playerData) do
+        for key, value in pairs(playerData) do
             print(key, value)
         end
         print("All accounts have been saved !")
@@ -40,8 +23,8 @@ function OnPlayerSteamAuth(player)
     if(steam_id == 0)then
         KickPlayer(player, "🚨 You are not connected steam 🚨")
     end
-
-	local query = mariadb_prepare(db, Request.IfplayerAccountExist,
+    print(Request_account:case("IfplayerAccountExist"))
+	local query = mariadb_prepare(db, Request_account:case("IfplayerAccountExist"),
         steam_id)
 
     mariadb_async_query(db, query, OnAccountConnect, player)
@@ -71,20 +54,16 @@ function CreatePlayerAccount(player)
     local player_name = GetPlayerName(player)
 
     local new_player_admin = 0
-    local new_player_health = 100
-    local new_player_armor = 0
-    local new_player_cash = 0
-    local new_player_cash_account = 0
 
     print("[SERVER] create new account steam_id : " ..steam_id)
-    local query = mariadb_prepare(db, Request.CreatePlayerAccount,
+    local query = mariadb_prepare(db,  Request_account:case("CreatePlayerAccount"),
         new_player_admin,
         steam_id,
-        new_player_health,
-        new_player_armor,
+        Config_new_account:case("health"),
+        Config_new_account:case("armor"),
         player_name,
-        new_player_cash,
-        new_player_cash_account
+        Config_new_account:case("cash"),
+        Config_new_account:case("cash_account")
     )
 
     mariadb_query(db, query)
@@ -105,8 +84,7 @@ function LoadPlayerAccount(player)
 
     print("> Load player account ("..steam_id..")")
 
-
-	local query = mariadb_prepare(db, Request.GetPlayerAccount,
+	local query = mariadb_prepare(db,  Request_account:case("GetPlayerAccount"),
         steam_id)
 
 	mariadb_async_query(db, query, OnAccountLoaded, player)
@@ -162,40 +140,10 @@ AddEvent("OnPlayerQuit", OnPlayerQuit)
 
 function DestroyPlayerData(player)
     local steam_id = tostring(GetPlayerSteamId(player))
-    for key, valeu in pairs(playerData) do
-        if(valeu.steamId == steam_id) then
+    for key, value in pairs(playerData) do
+        if(value.steamId == steam_id) then
             table.remove(playerData, key)
         end
     end
 end
 
---sav
-function SaveAccountPlayer(player)
-    local steam_id = tostring(GetPlayerSteamId(player))
-    local Data = {}
-    for key, valeu in pairs(playerData) do
-        if(valeu.steamId == steam_id) then
-            Data = valeu
-        end
-    end
-
-    local query = mariadb_prepare(db, Request.SaveAccount,
-        Data.cash,
-        Data.cash_account,
-        Data.health,
-        Data.armor,
-		Data.steamId
-	)
-        
-	mariadb_query(db, query)
-end
-
---utils
-function getplayer(player)
-    local steam_id = tostring(GetPlayerSteamId(player))
-    for key, valeu in pairs(playerData) do
-        if(valeu.steamId == steam_id) then
-            return valeu
-        end
-    end
-end

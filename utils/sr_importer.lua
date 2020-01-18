@@ -12,7 +12,9 @@ end
 
 import("utils/log.lua")
 import("utils/system.lua")
+import("account/config_account.lua")
 import("account/server/sr_account.lua")
+import("account/server/sr_account_manager.lua")
 import("hub/server/sr_hub.lua")
 import("cmd/server/sr_admin.lua")
 import("cmd/server/sr_client.lua")
