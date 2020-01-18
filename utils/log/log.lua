@@ -22,6 +22,12 @@ function AddLoginLog(player)
 	file:close()
 end
 
+function LogPlayerChat(player, color, type, message)
+    local hex = config_log_color:case(color)
+    if(isnil(hex)) then hex = color end
+    AddPlayerChat(player, ('<span color="#%s">[%s] </>%s'):format(hex, type, message))
+end
+
 --function 
 function FormatLog(player, msg)
     local time = GetSystemTime()

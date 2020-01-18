@@ -10,8 +10,9 @@ function import(filename)
 	end
 end
 
-import("utils/log.lua")
 import("utils/system.lua")
+import("utils/log/log.lua")
+import("utils/log/log_config.lua")
 import("account/config_account.lua")
 import("account/server/sr_account.lua")
 import("account/server/sr_account_manager.lua")
