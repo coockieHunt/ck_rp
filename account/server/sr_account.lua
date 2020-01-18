@@ -5,17 +5,6 @@ playerData = {}
 playerData.ClassPlayer = import("account/class/player.lua")
 db = import("database/server/sr_connect.lua")
 
-function OnPackageStop()
-    -- Save all player data automatically 
-    CreateTimer(function()
-        for key, value in pairs(playerData) do
-            print(key, value)
-        end
-        print("All accounts have been saved !")
-    end, 1000)
-end
-AddEvent("OnPackageStop", OnPackageStop)
-
 ---- check player account
 function OnPlayerSteamAuth(player)
     local steam_id = tostring(GetPlayerSteamId(player))
@@ -23,7 +12,6 @@ function OnPlayerSteamAuth(player)
     if(steam_id == 0)then
         KickPlayer(player, "🚨 You are not connected steam 🚨")
     end
-    print(Request_account:case("IfplayerAccountExist"))
 	local query = mariadb_prepare(db, Request_account:case("IfplayerAccountExist"),
         steam_id)
 
