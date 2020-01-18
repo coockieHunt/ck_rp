@@ -81,6 +81,26 @@ function anim(player, animId)
  AddCommand("anim", anim)
 
 
+ function cmd_fireworks(player, type)
+	if (type == nil) then
+		return LogPlayerChat(player, "warning", "Usage", "/fireworks <type 1-13>")
+	end
+	
+	type = tonumber(type)
+
+	if (type < 0 or type > 13) then
+		return LogPlayerChat(player, "warning", "Parameter", "type 1-13")
+	end
+
+	if(AdminLevel(player, 1)) then return AddPlayerChat(player, "not admin")end
+
+	CallRemoteEvent(player, "ClientCreateFireworks", type)
+	LogPlayerChat(player, "ok", "server", "Fireworks created!")
+
+end
+AddCommand("fireworks", cmd_fireworks)
+
+
 --utils
 function AdminLevel(playerid, level)
 	local data = getplayer(playerid)
