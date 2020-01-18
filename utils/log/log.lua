@@ -5,6 +5,7 @@ function AddAdminLog(player, msg)
     local text = FormatLog(player, msg)
     
     print(". " .. text)
+    LogPlayerChat(player, "ok", "admin", msg)
 
     file = io.open(admin_log_file, "a")
 	file:write(text, "\n")

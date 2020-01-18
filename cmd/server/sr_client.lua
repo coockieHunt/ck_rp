@@ -15,7 +15,7 @@ AddCommand("gst", cmd_commands)
 
 function cmd_saveAccount(playerid)
 	SaveAccountPlayer(playerid)
-    AddPlayerChat(playerid, "[server] your data has been save")
+    LogPlayerChat(playerid, "ok", "server", "your data has been save")
 end
 AddCommand("save", cmd_saveAccount)
 

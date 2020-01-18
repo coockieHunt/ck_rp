@@ -27,8 +27,9 @@ TeleportList = switch {
 
 function TeleportTo(player, dest)
   local to = TeleportList:case(dest)
-  if(isnil(to)) then return AddPlayerChat(player, dest..' invalide position') end
-	AddAdminLog(player, "teleport to x =" .. to[1] ..", y= ".. to[2] ..", z= " .. to[3] ..", h= " .. to[4])
+  if(isnil(to)) then return LogPlayerChat(player, "error", "error", "invalid tp") end
+  local msg = "teleport to x =" .. to[1] ..", y= ".. to[2] ..", z= " .. to[3] ..", h= " .. to[4]
+	AddAdminLog(player, msg)
 
   to[4] = to[4] or -1.0
 	if (GetPlayerVehicleSeat(player) == 1) then
