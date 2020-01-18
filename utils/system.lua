@@ -5,7 +5,7 @@ function GetSystemTime()
 end
 
 function switch(t)
-    t.case = function (self,x)
+t.case = function (self,x)
       local f=self[x] or self.default
       if f then
         if type(f)=="function" then
@@ -16,4 +16,8 @@ function switch(t)
       end
     end
     return t
-  end
+end
+
+function isnil(s)
+  return s == nil or s == ''
+end
