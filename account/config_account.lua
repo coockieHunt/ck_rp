@@ -12,3 +12,7 @@ Config_new_account = switch {
   ["armor"] = 50,
 }
 
+Config_other_account = switch {
+  ["save_time"] = 300000, -- milisecond (1 min = 60000 milisecond) default - 300000
+}
+
