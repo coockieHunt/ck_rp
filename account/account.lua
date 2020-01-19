@@ -3,7 +3,7 @@ playerData = {}
 
 -- import package
 playerData.ClassPlayer = import("account/class/player.lua")
-db = import("database/server/sr_connect.lua")
+db = import("database/connect.lua")
 
 ---- check player account
 function OnPlayerSteamAuth(player)

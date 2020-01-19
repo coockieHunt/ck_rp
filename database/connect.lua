@@ -5,7 +5,7 @@
 --]]
 
 
-config = import("database/server/sr_config.lua")
+config = import("database/config.lua")
 db = false
 
 -- Package events
