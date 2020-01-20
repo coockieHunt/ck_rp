@@ -21,3 +21,34 @@ end
 function isnil(s)
   return s == nil or s == ''
 end
+
+-- folder
+function FolderExist(file)
+  local ok, err, code = os.rename(file, file)
+  if not ok then
+     if code == 13 then
+        return true
+     end
+  end
+  return ok, err
+end
+
+function GetFilesFolder(directory)
+  local i, t, popen = 0, {}, io.popen
+  for filename in popen('dir "'..directory..'" /b'):lines() do
+      i = i + 1
+      t[i] = filename
+  end
+  return t
+end
+
+-- table
+function has_value (tab, val)
+  for index, value in ipairs(tab) do
+      if value == val then
+          return true
+      end
+  end
+
+  return false
+end
