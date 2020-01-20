@@ -1,13 +1,10 @@
-local admin_log_file = "admin_log.txt"
-local login_log_file = "login_log.txt"
-
 function AddAdminLog(player, msg)
     local text = FormatLog(player, msg)
     
     print(". " .. text)
     LogPlayerChat(player, "ok", "admin", msg)
 
-    file = io.open(admin_log_file, "a")
+    file = io.open(config_log_file:case("admin"), "a")
 	file:write(text, "\n")
 	file:close()
 end
@@ -18,7 +15,7 @@ function AddLoginLog(player)
 
     print(". " .. text)
 
-    file = io.open(admin_log_file, "a")
+    file = io.open(config_log_file:case("login"), "a")
 	file:write(text, "\n")
 	file:close()
 end
