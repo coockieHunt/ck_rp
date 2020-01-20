@@ -1,11 +1,6 @@
 {
 	"author": "coockie_hunt",
 	"version": "1.0",
-	"server_scripts": [
-		"server/sr_config.lua",
-		"server/sr_init.lua",
-		"server/sr_worlddoors.lua"
-	],
 	"client_scripts": [
 		"client/cl_config.lua",
 		"client/cl_init.lua"
