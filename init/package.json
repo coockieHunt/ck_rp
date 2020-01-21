@@ -2,7 +2,6 @@
 	"author": "coockie_hunt",
 	"version": "1.0",
 	"client_scripts": [
-		"client/cl_config.lua",
 		"client/cl_init.lua"
 	],
     "files": []
