@@ -3,4 +3,14 @@ config_pacakge = switch {
     ["server_folder"] = "server",
     ["display_console"] = true,
     ["log_file"] = "log_pacakge.txt",
+}
+
+import_package = switch {
+  ["package"] = {
+    "log",
+    "init",
+    "account",
+    "hub",
+    "cmd"
   }
+}

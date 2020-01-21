@@ -54,10 +54,12 @@ function packagesImport(packageName)
 	end
 end
 
-packagesImport("log")
-packagesImport("init")
-packagesImport("account")
-packagesImport("hub")
-packagesImport("cmd")
+function OnPackageStart()
+	local table = import_package:case("package")
+	for index, value in ipairs(table) do
+		packagesImport(value)
+	end
+end
+AddEvent("OnPackageStart", OnPackageStart)
 
 
