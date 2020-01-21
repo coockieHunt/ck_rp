@@ -2,6 +2,7 @@
 function OnPlayerJoin(player)
 	local sp = Config_init:case("location")
 	SetPlayerSpawnLocation(player, sp.x,sp.z,sp.y,sp.h)
+	AddLoginLog(player)
 end
 AddEvent("OnPlayerJoin", OnPlayerJoin)
 

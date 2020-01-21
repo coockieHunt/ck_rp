@@ -1,5 +1,5 @@
 function AddAdminLog(player, msg)
-    local text = FormatLog(player, msg)
+    local text = FormatLogAdmin(player, msg)
     
     print(". " .. text)
     LogPlayerChat(player, "ok", "admin", msg)
@@ -11,7 +11,7 @@ end
 
 function AddLoginLog(player)
 	local time = GetSystemTime()
-    local text = "[login] ("..time..") - connected"..player
+    local text = "[login] ("..time..") - connected "..GetPlayerName(player)
 
     print(". " .. text)
 
@@ -27,7 +27,7 @@ function LogPlayerChat(player, color, type, message)
 end
 
 --function 
-function FormatLog(player, msg)
+function FormatLogAdmin(player, msg)
     local time = GetSystemTime()
     local steam_id = GetPlayerSteamId(player)
     local name = GetPlayerName(player)
