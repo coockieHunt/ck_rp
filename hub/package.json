@@ -2,10 +2,10 @@
 	"author": "coockie_hunt",
 	"version": "1.0",
 	"client_scripts": [
-		"client/cl_hub.lua"
+		"client/cl_hub_survival.lua"
 	],
 	"files": [
-		"files/ui.html", 
+		"files/ui_survival.html", 
 		"files/apple.png",
 		"files/sheld.png",
 		"files/c_a.png",
