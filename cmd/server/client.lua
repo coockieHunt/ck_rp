@@ -19,3 +19,9 @@ function cmd_saveAccount(playerid)
 end
 AddCommand("save", cmd_saveAccount)
 
+
+function OnPlayerChatCommand(player, cmd, exists)	
+	LogCommandeChat(player, cmd, exists)
+end
+AddEvent("OnPlayerChatCommand", OnPlayerChatCommand)
+

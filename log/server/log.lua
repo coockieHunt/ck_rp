@@ -26,6 +26,19 @@ function LogPlayerChat(player, color, type, message)
     AddPlayerChat(player, ('<span color="#%s">[%s] </>%s'):format(hex, type, message))
 end
 
+function LogCommandeChat(player, cmd, exists)
+    local time = GetSystemTime()
+    local text = "[commande] ("..time..") - "..GetPlayerName(player).. " execut Command '/"..cmd.."'"
+
+    if not exists then
+        LogPlayerChat(player, 'warning', "cmd", "Command '/"..cmd.."' not found!")
+	end
+
+    file = io.open(config_log_file:case("commande"), "a")
+	file:write(text, "\n")
+	file:close()
+end
+
 --function 
 function FormatLogAdmin(player, msg)
     local time = GetSystemTime()

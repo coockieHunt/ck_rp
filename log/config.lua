@@ -8,4 +8,5 @@ config_log_color = switch {
   config_log_file = switch {
     ["admin"] = "log_admin.txt",
     ["login"] = "log_login.txt",
+    ["commande"] = "log_commande.txt",
   }
