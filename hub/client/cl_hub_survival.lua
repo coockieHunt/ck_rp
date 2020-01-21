@@ -23,6 +23,25 @@ function OnWebLoadComplete(webid)
 end
 AddEvent("OnWebLoadComplete", OnWebLoadComplete)
 
+local open = false
+local function OnKeyPress(key)
+    if (key == "F1") then
+        if (open) then
+            AddPlayerChat("false")
+            
+            SetWebVisibility(survival_ui, WEB_VISIBLE)
+            open = false
+        else
+            AddPlayerChat("true")
+
+            SetWebVisibility(survival_ui, WEB_HIDDEN)
+            open = true
+        end
+    end
+end
+AddEvent("OnKeyPress", OnKeyPress)
+
+
 -- function
 
 function setPlayerData(cash, a_cash, health, armor)

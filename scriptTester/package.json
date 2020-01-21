@@ -1,0 +1,15 @@
+{
+	"author": "Pindrought",
+	"version": "1.0",
+	"server_scripts": [
+        "server/main.lua"
+	],
+	"client_scripts": [
+		"client/main.lua"
+	],
+	"files": [
+        "client/web/scriptTester.html",
+        "client/web/scriptTester.js",
+        "client/web/scriptTester.css"
+	]
+}

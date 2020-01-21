@@ -1,0 +1,19 @@
+/* Font imports: */
+@font-face 
+{
+    font-family: "Roboto";
+    font-weight: 300;
+    src: url("fonts/Roboto-Light.ttf") format("ttf");
+}
+
+@font-face 
+{
+    font-family: "Roboto";
+    font-weight: 400;
+    src: url("fonts/Roboto-Regular.ttf") format("ttf");
+}
+
+.inner-border::-webkit-scrollbar 
+{
+    display: none;
+}
