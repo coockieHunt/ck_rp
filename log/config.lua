@@ -6,6 +6,7 @@ config_log_color = switch {
   }
 
   config_log_file = switch {
+    ["folder"] = "logs",
     ["admin"] = "log_admin.txt",
     ["login"] = "log_login.txt",
     ["commande"] = "log_commande.txt",
