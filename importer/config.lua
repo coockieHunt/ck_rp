@@ -11,6 +11,7 @@ import_package = switch {
     "init",
     "account",
     "hub",
+    "admin",
     "cmd"
   }
 }
