@@ -66,7 +66,11 @@ function heal(player)
 
 	SetPlayerHealth(player, 100)
 
-	GetPlayerData(player)
+	local p = getplayer(player)
+
+	p.health = 100
+
+	RefrechSurvivalUi(player)
  end
  AddCommand("heal", heal)
 

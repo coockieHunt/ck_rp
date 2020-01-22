@@ -41,7 +41,6 @@ function ToggleSurvivalUi()
         toggle = true
         SetWebVisibility(survival_ui, WEB_VISIBLE)
     end
-
 end
 
 
