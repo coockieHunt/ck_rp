@@ -91,6 +91,7 @@ function OnAccountLoaded(player)
             player_name = result['name']
         end
 
+
         SetPlayerName(player, player_name)
         SetPlayerArmor(player, tonumber(result['armor']))
         SetPlayerHealth(player, tonumber(result['health']))
@@ -98,7 +99,7 @@ function OnAccountLoaded(player)
         
 
         createPlayerAcoount(result['id'], result['admin'], result['steam_id'], result['health'], result['armor'], player_name, result['cash'], result['cash_account'])
-
+        AddPlayerChatAll( ('<span color="#%s">%s </>%s'):format("0438CE", GetPlayerName(player), " a rejoint le serveur"))
 	end
 end
 
