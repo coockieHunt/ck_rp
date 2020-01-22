@@ -2,14 +2,17 @@ local survival_ui = 0
 local player_cash = 0
 local player_cash_account = 0
 
+local toggle = false
+
 AddEvent("OnPlayerSpawn", function(playerid)
     ShowHealthHUD(false)
     ShowWeaponHUD(false)
+    -- setup ui
     survival_ui = CreateWebUI(0,0,0,0,1,16)
     SetWebAlignment(survival_ui, 0,0)
     SetWebAnchors(survival_ui, 0,0,1,1)
     SetWebURL(survival_ui,  'http://asset/' .. GetPackageName() .. '/files/ui_survival.html')
-    SetWebVisibility(survival_ui, WEB_VISIBLE)
+    ToggleSurvivalUi()
 end)
 
 function OnWebLoadComplete(webid)
@@ -23,23 +26,23 @@ function OnWebLoadComplete(webid)
 end
 AddEvent("OnWebLoadComplete", OnWebLoadComplete)
 
-local open = false
 local function OnKeyPress(key)
     if (key == "F1") then
-        if (open) then
-            AddPlayerChat("false")
-            
-            SetWebVisibility(survival_ui, WEB_VISIBLE)
-            open = false
-        else
-            AddPlayerChat("true")
-
-            SetWebVisibility(survival_ui, WEB_HIDDEN)
-            open = true
-        end
+        ToggleSurvivalUi()
     end
 end
 AddEvent("OnKeyPress", OnKeyPress)
+
+function ToggleSurvivalUi()
+    if(toggle) then
+        toggle = false
+        SetWebVisibility(survival_ui, WEB_HIDDEN)
+    else
+        toggle = true
+        SetWebVisibility(survival_ui, WEB_VISIBLE)
+    end
+
+end
 
 
 -- function
