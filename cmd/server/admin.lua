@@ -96,10 +96,23 @@ function anim(player, animId)
 
 	CallRemoteEvent(player, "ClientCreateFireworks", type)
 	LogPlayerChat(player, "ok", "server", "Fireworks created!")
-
+	AddAdminLog(player, " player fireworks : " .. type)
 end
 AddCommand("fireworks", cmd_fireworks)
 
+function cmd_spec(player, disable)
+	if(AdminLevel(player, 1)) then return AddPlayerChat(player, "not admin")end
+	local _disable = false
+	if disable ~= nil then
+		_disable = true
+	end
+	_disable = not _disable
+	
+	SetPlayerSpectate(player, _disable)
+	AddAdminLog(player, " player spectate")
+
+end
+AddCommand("spectate", cmd_spec)
 
 --utils
 function AdminLevel(playerid, level)
