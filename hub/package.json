@@ -5,11 +5,15 @@
 		"client/cl_hub_survival.lua"
 	],
 	"files": [
+		"files/ui_loading_fullscreen.html",
 		"files/ui_survival.html", 
-		"files/apple.png",
-		"files/sheld.png",
-		"files/c_a.png",
-		"files/dollar.png",
-		"files/Roboto-Regular.ttf"
+		"files/src/img/apple.png",
+		"files/src/img/sheld.png",
+		"files/src/img/c_a.png",
+		"files/src/img/dollar.png",
+		"files/src/font/Roboto-Regular.ttf",
+		"files/style/css/main.css",
+		"files/style/css/survival.css",
+		"files/script/survival.js"
 	]
 }

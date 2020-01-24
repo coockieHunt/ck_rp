@@ -1,0 +1,61 @@
+.element{padding-top: 10px;}
+.icon{float: left; width: 20px; height: 20px;}
+.round-xlarge{border-radius:16px!important}
+
+.left_bar{
+    float: right; 
+    height: 500px; 
+    width: 300px;
+}
+
+.progress{
+    width: 100%; 
+    float: right;
+}
+
+.progress-container{
+    width:90%;
+    height:15px;
+    background-color:rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(0, 0, 0, 0.7);
+    position:relative;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%); 
+
+}
+
+.progressbar-element{
+    height:100%;
+    width:100%;
+    position:absolute;
+    line-height:inherit
+
+}
+
+#spacer{
+    background-color:rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    display: block;
+    height: 15px;
+    margin: 0 auto;
+    margin: 10px auto 0 auto;
+    width: 95%;
+}
+
+.cash_data{
+    display: block;
+    font: 1.1em "roboto", sans-serif;
+    width: 80%;
+}
+
+.money{
+    font: 1.1em "roboto", sans-serif;
+    text-align: right;
+    float:left;
+}
+
+.healt_pg{background-color:red;}
+.sheld_pg{background-color:blue}

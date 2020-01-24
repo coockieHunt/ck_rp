@@ -7,12 +7,18 @@ local toggle = false
 AddEvent("OnPlayerSpawn", function(playerid)
     ShowHealthHUD(false)
     ShowWeaponHUD(false)
-    -- setup ui
+    -- setup survival ui
     survival_ui = CreateWebUI(0,0,0,0,1,16)
     SetWebAlignment(survival_ui, 0,0)
     SetWebAnchors(survival_ui, 0,0,1,1)
     SetWebURL(survival_ui,  'http://asset/' .. GetPackageName() .. '/files/ui_survival.html')
     ToggleSurvivalUi()
+    -- setup fs ui
+    fs_ui = CreateWebUI(0,0,0,0,1,16)
+    SetWebAlignment(fs_ui, 0,0)
+    SetWebAnchors(fs_ui, 0,0,1,1)
+    SetWebURL(fs_ui,  'http://asset/' .. GetPackageName() .. '/files/ui_loading_fullscreen.html')
+    SetWebVisibility(fs_ui, WEB_VISIBLE)
 end)
 
 function OnWebLoadComplete(webid)
@@ -21,6 +27,7 @@ function OnWebLoadComplete(webid)
 	if (survival_ui == webid) then
         Delay(500, function(webid, playerid)
             CallRemoteEvent('GetPlayerData', playerId)
+            SetWebVisibility(fs_ui, WEB_HIDDEN)
 		end, survival_ui, playerId)
 	end
 end
