@@ -23,3 +23,22 @@ body { font-family: "roboto", serif; color: white;}
     top: 0;
     z-index: -999; 
   }
+
+.hide{
+  opacity: 0%!important;
+}
+
+@-webkit-keyframes blinker { 
+    from { opacity: 1.0; }
+    to { opacity: 0.0; }
+  }
+  @keyframes blinker { 
+    from { opacity: 1.0; }
+    to { opacity: 0.0; }
+  }
+  .blink {
+    -webkit-animation-name: blinker; 
+    -webkit-animation-iteration-count: infinite; 
+    -webkit-animation-timing-function: cubic-bezier(1.5,0,0,2);
+    -webkit-animation-duration: 1.5s;
+  }

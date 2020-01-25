@@ -49,7 +49,7 @@ function setPlayerData(cash, a_cash, health, armor)
  end
  AddRemoteEvent("setPlayerData", setPlayerData)
 
- function setDammage(health, armor)
+function setDammage(health, armor)
     ExecuteWebJS(survival_ui, "SetHealth('"..health.."');")
     ExecuteWebJS(survival_ui, "SetArmor('"..armor.."');")    
 end

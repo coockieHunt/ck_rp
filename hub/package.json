@@ -2,7 +2,8 @@
 	"author": "coockie_hunt",
 	"version": "1.0",
 	"client_scripts": [
-		"client/cl_hub_survival.lua"
+		"client/cl_hub_survival.lua",
+		"client/cl_hub_warning_survival.lua"
 	],
 	"files": [
 		"files/ui_loading_fullscreen.html",
@@ -15,6 +16,9 @@
 		"files/style/css/main.css",
 		"files/style/css/survival.css",
 		"files/style/css/loader_fullScreen.css",
-		"files/script/survival.js"
+		"files/script/survival.js",
+		"files/style/css/warning_survival.css",
+		"files/script/warning_survival.js",
+		"files/ui_warning_survival.html"
 	]
 }
