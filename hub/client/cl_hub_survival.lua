@@ -1,24 +1,17 @@
-local survival_ui = 0
-local player_cash = 0
-local player_cash_account = 0
-
-local toggle = false
-
 AddEvent("OnPlayerSpawn", function(playerid)
-    ShowHealthHUD(false)
-    ShowWeaponHUD(false)
     -- setup survival ui
     survival_ui = CreateWebUI(0,0,0,0,1,16)
     SetWebAlignment(survival_ui, 0,0)
     SetWebAnchors(survival_ui, 0,0,1,1)
     SetWebURL(survival_ui,  'http://asset/' .. GetPackageName() .. '/files/ui_survival.html')
-    ToggleSurvivalUi()
+    SetWebVisibility(survival_ui, WEB_HIDDEN)
     -- setup fs ui
     fs_ui = CreateWebUI(0,0,0,0,1,16)
     SetWebAlignment(fs_ui, 0,0)
     SetWebAnchors(fs_ui, 0,0,1,1)
     SetWebURL(fs_ui,  'http://asset/' .. GetPackageName() .. '/files/ui_loading_fullscreen.html')
     SetWebVisibility(fs_ui, WEB_VISIBLE)
+    SetIgnoreMoveInput(true)
 end)
 
 function OnWebLoadComplete(webid)
@@ -28,28 +21,25 @@ function OnWebLoadComplete(webid)
         Delay(500, function(webid, playerid)
             CallRemoteEvent('GetPlayerData', playerId)
             SetWebVisibility(fs_ui, WEB_HIDDEN)
+            SetIgnoreMoveInput(false)
 		end, survival_ui, playerId)
 	end
 end
 AddEvent("OnWebLoadComplete", OnWebLoadComplete)
 
 local function OnKeyPress(key)
-    if (key == "F1") then
-        ToggleSurvivalUi()
+    if (key == "Tab") then
+        SetWebVisibility(survival_ui, WEB_VISIBLE)
     end
 end
 AddEvent("OnKeyPress", OnKeyPress)
 
-function ToggleSurvivalUi()
-    if(toggle) then
-        toggle = false
+local function OnKeyRelease(key)
+    if (key == "Tab") then
         SetWebVisibility(survival_ui, WEB_HIDDEN)
-    else
-        toggle = true
-        SetWebVisibility(survival_ui, WEB_VISIBLE)
     end
 end
-
+AddEvent("OnKeyRelease", OnKeyRelease)
 
 -- function
 
