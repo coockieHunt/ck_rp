@@ -26,6 +26,12 @@ function LogPlayerChat(player, color, type, message)
     AddPlayerChat(player, ('<span color="#%s">[%s] </>%s'):format(hex, type, message))
 end
 
+function LogPlayerChatAll(player, color, type, message)
+    local hex = config_log_color:case(color)
+    if(isnil(hex)) then hex = color end
+    AddPlayerChat(player, ('<span color="#%s">[%s] </>%s'):format(hex, type, message))
+end
+
 function LogCommandeChat(player, cmd, exists)
     local time = GetSystemTime()
     local text = "[commande] ("..time..") - "..GetPlayerName(player).. " execut Command '/"..cmd.."'"
