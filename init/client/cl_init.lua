@@ -17,4 +17,8 @@ AddEvent("OnKeyPress", OnKeyPress)
 
 AddEvent("OnPlayerSpawn", function()
 	SetPostEffect("DepthOfField", "Distance", 0)
+	ShowHealthHUD(false)
+    ShowWeaponHUD(false)
 end)
+
+
