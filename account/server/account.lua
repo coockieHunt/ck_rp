@@ -31,8 +31,8 @@ end
 function OnPlayerDamage(player)
     local p = getplayer(player)
 
-    p.health = GetPlayerHealth(player)
-    p.armor = GetPlayerArmor(player)
+    p:setHealth(GetPlayerHealth(player))
+    p:setArmor(GetPlayerArmor(player))
 end
 AddEvent("OnPlayerDamage", OnPlayerDamage)
 

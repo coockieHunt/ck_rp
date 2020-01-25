@@ -76,6 +76,6 @@ function admin_heal(player)
 	AddAdminLog(player, " heal")
 	SetPlayerHealth(player, 100)
 	local p = getplayer(player)
-	p.health = 100
+	p:setHealth(100)
 	RefrechSurvivalUi(player)
  end

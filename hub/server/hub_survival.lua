@@ -11,12 +11,6 @@ AddRemoteEvent("GetPlayerData", GetPlayerData)
 
 function RefrechSurvivalUi(playerid)
    local p = getplayer(playerid)
-   local health = math.floor(GetPlayerHealth(playerid))
-   local armor = math.floor(GetPlayerArmor(playerid))
-   CallRemoteEvent(playerid, "setPlayerData",p.cash , p.cash_account, health, armor)
-   CallRemoteEvent(playerid, 'setDammage', health,  armor)
-
-   local health = math.floor(GetPlayerHealth(playerid))
-   local armor = math.floor(GetPlayerArmor(playerid))
-   CallRemoteEvent(playerid, "setDammage",health,  armor)
+   CallRemoteEvent(playerid, "setPlayerData",p:getCash() , p:getCashAccount(), p:getHealth(), p:getArmor())
+   CallRemoteEvent(playerid, 'setDammage', p:getHealth(),  p:getArmor())
 end
