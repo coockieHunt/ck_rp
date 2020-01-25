@@ -14,6 +14,7 @@
 		"files/src/font/Roboto-Regular.ttf",
 		"files/style/css/main.css",
 		"files/style/css/survival.css",
+		"files/style/css/loader_fullScreen.css",
 		"files/script/survival.js"
 	]
 }
