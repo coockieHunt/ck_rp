@@ -78,4 +78,15 @@ function admin_heal(player)
 	local p = getplayer(player)
 	p:setHealth(100)
 	RefrechSurvivalUi(player)
+	RefrechWarningSurvivalUi(player)
+ end
+
+
+ function admin_armor(player)
+	AddAdminLog(player, " armor")
+	SetPlayerArmor(player, 100)
+	local p = getplayer(player)
+	p:setArmor(100)
+	RefrechSurvivalUi(player)
+	RefrechWarningSurvivalUi(player)
  end

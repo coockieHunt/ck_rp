@@ -38,6 +38,15 @@ AddCommand("kill", cmd_admin_kill)
  end
  AddCommand("heal", cmd_admin_heal)
 
+
+ --armor
+ function cmd_admin_armor(player)
+    if(AdminLevel(player, 1)) then
+        admin_armor(player)
+	end
+ end
+ AddCommand("armor", cmd_admin_armor)
+
  function cmd_admin_anim(player, animId)
     if(AdminLevel(player, 1)) then
         admin_anim(player, animId)
