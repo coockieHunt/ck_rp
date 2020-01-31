@@ -90,3 +90,12 @@ function admin_heal(player)
 	RefrechSurvivalUi(player)
 	RefrechWarningSurvivalUi(player)
  end
+
+function admin_pos(player)
+	AddAdminLog(player, " save pos")
+	local x, y, z = GetPlayerLocation(player)
+	local text = x..", "..y..", "..z
+	file = io.open("pos.txt", "a")
+	file:write(text, "\n")
+	file:close()
+end

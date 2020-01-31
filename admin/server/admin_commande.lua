@@ -68,6 +68,12 @@ AddCommand("kill", cmd_admin_kill)
  end
  AddCommand("spec", cmd_admin_spec)
 
+function cmd_admin_pos(player)
+    if(AdminLevel(player, 1)) then
+        admin_pos(player)
+	end
+ end
+ AddCommand("pos", cmd_admin_pos)
 --utils
 function AdminLevel(playerid, level)
 	local data = getplayer(playerid)
