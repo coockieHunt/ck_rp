@@ -8,9 +8,9 @@
 	"files": [
 		"files/ui_loading_fullscreen.html",
 		"files/ui_survival.html", 
-		"files/src/img/apple.png",
-		"files/src/img/sheld.png",
-		"files/src/img/c_a.png",
+		"files/src/img/heart.png",
+		"files/src/img/armor.png",
+		"files/src/img/bank.png",
 		"files/src/img/dollar.png",
 		"files/src/font/Roboto-Regular.ttf",
 		"files/style/css/main.css",
@@ -19,6 +19,7 @@
 		"files/script/survival.js",
 		"files/style/css/warning_survival.css",
 		"files/script/warning_survival.js",
+		"files/script/jquery.js",
 		"files/ui_warning_survival.html"
 	]
 }

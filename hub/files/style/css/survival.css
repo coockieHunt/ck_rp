@@ -1,61 +1,69 @@
-.element{padding-top: 10px;}
-.icon{float: left; width: 20px; height: 20px;}
-.round-xlarge{border-radius:16px!important}
+.healt_pg{background-color:red;}
+.sheld_pg{background-color:blue}
 
 .left_bar{
     float: right; 
-    height: 500px; 
+    height: 100%; 
     width: 300px;
+    background-color: #3A3A3A;
 }
 
-.progress{
-    width: 100%; 
-    float: right;
+#data > .section-title{
+    border-bottom: 1px gray solid;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    background-color: #2E2E2E;
 }
 
-.progress-container{
-    width:90%;
-    height:15px;
-    background-color:rgba(0, 0, 0, 0.7);
-    border: 2px solid rgba(0, 0, 0, 0.7);
-    position:relative;
-    -webkit-background-clip: padding-box;
-    -moz-background-clip: padding;
-    background-clip: padding-box;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%); 
+#surv_icon{
+    width: 20%;
+    margin: 0;
+    height: 20%;
 
+    float: left;
 }
 
-.progressbar-element{
-    height:100%;
-    width:100%;
-    position:absolute;
-    line-height:inherit
+#surv_icon > .container{
+    height: 100%;
 
+    width: 20px;
+    margin: auto;
 }
 
-#spacer{
-    background-color:rgba(0, 0, 0, 0.8);
-    border-radius: 15px;
-    display: block;
-    height: 15px;
-    margin: 0 auto;
-    margin: 10px auto 0 auto;
-    width: 95%;
+#surv_icon > .container > img{
+    height: 20px;
+    width: 20px;
 }
 
-.cash_data{
-    display: block;
-    font: 1.1em "roboto", sans-serif;
+#surv_info{
+    float: left;
     width: 80%;
+    height: 20%;
 }
 
-.money{
-    font: 1.1em "roboto", sans-serif;
-    text-align: right;
-    float:left;
+#surv_info > .container{
+    width: 80%;
+    height: 100%;
+
+    margin: auto;
 }
 
-.healt_pg{background-color:red;}
-.sheld_pg{background-color:blue}
+#surv_info > .container > .element{
+    height: 20px;
+}
+
+#surv_info > .container > .element:first-child{
+    padding-top: 10px;
+
+}
+
+#surv_info > .container > .element:nth-child(n+2){
+    margin-top: 14px;
+}
+
+.icon{
+    width: 20px; 
+    height: 20px;
+    margin-top: 10px;
+}

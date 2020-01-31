@@ -21,23 +21,21 @@ AddEvent("OnWebLoadComplete", OnWebLoadComplete)
 
 function setDammageWarning(health, armor)
     if(tonumber(math.floor(health)) < 50) then
-        ExecuteWebJS(survival_warn_ui, "HealthWarn(true);")
-        if(tonumber(math.floor(armor)) < 50) then
-            ExecuteWebJS(survival_warn_ui, "ArmorWarn(false);")
-            ExecuteWebJS(survival_warn_ui, "ArmorWarn(true);")
-        end    
+        ExecuteWebJS(survival_warn_ui, "flash('health', true)")
     else
-        ExecuteWebJS(survival_warn_ui, "HealthWarn(false);")
+        ExecuteWebJS(survival_warn_ui, "flash('health', false)")
     end
 
     if(tonumber(math.floor(armor))  < 50) then
-        ExecuteWebJS(survival_warn_ui, "ArmorWarn(true);")
-        if(tonumber(math.floor(health)) < 50) then
-            ExecuteWebJS(survival_warn_ui, "HealthWarn(false);")
-            ExecuteWebJS(survival_warn_ui, "HealthWarn(true);")
-        end    
+        ExecuteWebJS(survival_warn_ui, "flash('armor', true)")
     else
-        ExecuteWebJS(survival_warn_ui, "ArmorWarn(false);")    
+        ExecuteWebJS(survival_warn_ui, "flash('armor', false)")
     end
+
+    if((tonumber(math.floor(armor))  < 50) and (tonumber(math.floor(health)) < 50)) then
+        ExecuteWebJS(survival_warn_ui, "flash('health', true)")
+        ExecuteWebJS(survival_warn_ui, "flash('armor', true)")
+    end
+
 end
 AddRemoteEvent("setDammageWarning", setDammageWarning)
