@@ -19,6 +19,21 @@ end
 AddEvent("OnWebLoadComplete", OnWebLoadComplete)
 
 
+local function OnKeyPress(key)
+    if (key == "Tab") then
+        SetWebVisibility(survival_warn_ui,WEB_HIDDEN )
+    end
+end
+AddEvent("OnKeyPress", OnKeyPress)
+
+local function OnKeyRelease(key)
+    if (key == "Tab") then
+        SetWebVisibility(survival_warn_ui, WEB_VISIBLE)
+    end
+end
+AddEvent("OnKeyRelease", OnKeyRelease)
+
+
 function setDammageWarning(health, armor)
     if(tonumber(math.floor(health)) < 50) then
         ExecuteWebJS(survival_warn_ui, "flash('health', true)")
