@@ -3,6 +3,7 @@ function cmd_commands(playerid)
 
    	AddPlayerChat(playerid, ("%s's statistics:"):format(data.name))
 	AddPlayerChat(playerid, ("		- id : %s"):format(data.id))
+	AddPlayerChat(playerid, ("		- client_id : %s"):format(data.id_client))
 	AddPlayerChat(playerid, ("		- admin : %s"):format(data.admin))
 	AddPlayerChat(playerid, ("		- steam_id : %s"):format(data.steamId))
 	AddPlayerChat(playerid, ("		- health : %s"):format(data:getHealth()))

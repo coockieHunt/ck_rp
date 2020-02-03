@@ -41,8 +41,6 @@ function CreatePlayerAccount(player)
     local steam_id = tostring(GetPlayerSteamId(player))
     local player_name = GetPlayerName(player)
 
-    local new_player_admin = 0
-
     print("[SERVER] create new account steam_id : " ..steam_id)
     local query = mariadb_prepare(db,  Request_account:case("CreatePlayerAccount"),
         new_player_admin,
@@ -62,15 +60,19 @@ function CreatePlayerAccount(player)
     SetPlayerHealth(player, new_player_health)
     SetPlayerArmor(player, new_player_armor)
 
-    createPlayerAcoount(id, 0, steam_id, new_player_health, new_player_armor, player_name, new_player_cash, new_player_cash_account)
+    local client_id = GetPlayerBySteamId(steam_id)
+
+    createPlayerAcoount(client_id, id, 0, steam_id, new_player_health, new_player_armor, player_name, new_player_cash, new_player_cash_account)
 
 end
 
 -- load account
+
 function LoadPlayerAccount(player)
+    
     local steam_id = tostring(GetPlayerSteamId(player))
 
-    print("> Load player account ("..steam_id..")")
+    print("> Load player account ("..steam_id..") ")
 
 	local query = mariadb_prepare(db,  Request_account:case("GetPlayerAccount"),
         steam_id)
@@ -96,19 +98,21 @@ function OnAccountLoaded(player)
         SetPlayerArmor(player, tonumber(result['armor']))
         SetPlayerHealth(player, tonumber(result['health']))
 
-        
+        local client_id = GetPlayerBySteamId(steam_id)
 
-        createPlayerAcoount(result['id'], result['admin'], result['steam_id'], result['health'], result['armor'], player_name, result['cash'], result['cash_account'])
+        createPlayerAcoount(client_id, result['id'], result['admin'], result['steam_id'], result['health'], result['armor'], player_name, result['cash'], result['cash_account'])
         AddPlayerChatAll( ('<span color="#%s">%s </>%s'):format("0438CE", GetPlayerName(player), " a rejoint le serveur"))
 	end
 end
 
 ---- Manage account list
 --add
-function createPlayerAcoount(id, admin, steamId, health, armor, name, cash, cash_account)
+function createPlayerAcoount(client_id, id, admin, steamId, health, armor, name, cash, cash_account)
+    
     local p = playerData.ClassPlayer.new(
         {
             ["id"] = id,
+            ["id_client"] = client_id,
             ["admin"] = admin,
             ["steamId"] = steamId,
             ["health"] = health,
