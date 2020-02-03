@@ -89,8 +89,8 @@ function OnAccountLoaded(player)
         local result = mariadb_get_assoc(1)
         
 
-        if(result['name'] ~= player_name) then
-            player_name = result['name']
+        if(result['player_name'] ~= player_name) then
+            player_name = result['player_name']
         end
 
 
@@ -100,7 +100,7 @@ function OnAccountLoaded(player)
 
         local client_id = GetPlayerBySteamId(steam_id)
 
-        createPlayerAcoount(client_id, result['id'], result['admin'], result['steam_id'], result['health'], result['armor'], player_name, result['cash'], result['cash_account'])
+        createPlayerAcoount(client_id, result['id'], result['admin_level'], result['steam_id'], result['health'], result['armor'], player_name, result['cash'], result['cash_account'])
         AddPlayerChatAll( ('<span color="#%s">%s </>%s'):format("0438CE", GetPlayerName(player), " a rejoint le serveur"))
 	end
 end
