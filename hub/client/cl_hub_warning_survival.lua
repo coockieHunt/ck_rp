@@ -1,3 +1,15 @@
+local survival_warn_ui
+
+function OpenUISurvival_warn()
+    if survival_warn_ui ~= nil then
+        SetWebVisibility(survival_warn_ui, WEB_VISIBLE)
+    end
+end
+
+function CloseUISurvival_warn()
+    SetWebVisibility(survival_warn_ui, WEB_HIDDEN)
+end
+
 AddEvent("OnPlayerSpawn", function(playerid)
     -- setup survival ui
     survival_warn_ui = CreateWebUI(0,0,0,0,1,16)
@@ -6,6 +18,9 @@ AddEvent("OnPlayerSpawn", function(playerid)
     SetWebURL(survival_warn_ui,  'http://asset/' .. GetPackageName() .. '/files/ui_warning_survival.html')
     SetWebVisibility(survival_warn_ui, WEB_VISIBLE)
 end)
+
+
+-- manage ui
 
 function OnWebLoadComplete(webid)
     local playerId = GetPlayerId()
@@ -17,21 +32,6 @@ function OnWebLoadComplete(webid)
 	end
 end
 AddEvent("OnWebLoadComplete", OnWebLoadComplete)
-
-
-local function OnKeyPress(key)
-    if (key == "Tab") then
-        SetWebVisibility(survival_warn_ui,WEB_HIDDEN )
-    end
-end
-AddEvent("OnKeyPress", OnKeyPress)
-
-local function OnKeyRelease(key)
-    if (key == "Tab") then
-        SetWebVisibility(survival_warn_ui, WEB_VISIBLE)
-    end
-end
-AddEvent("OnKeyRelease", OnKeyRelease)
 
 
 function setDammageWarning(health, armor)
