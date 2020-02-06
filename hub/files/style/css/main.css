@@ -35,10 +35,7 @@ html, body {
   opacity: 0%!important;
 }
 
-
-
-
-  .progress{
+.progress{
     width: 100%; 
     float: right;
 }
