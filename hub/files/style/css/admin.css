@@ -75,3 +75,10 @@
     height: 100%;
     padding: 5px;
 }
+
+.center-div
+{
+  position: absolute;
+  top: 20%;
+  left: 20%;
+}
