@@ -41,7 +41,7 @@ AddEvent("OnKeyPress", function(key)
 end)
 
 function CallExecute(rslt)
-    AddPlayerChat(rslt) 
+    CallRemoteEvent("Exucute", rslt)
 end
 AddEvent("CallExecute", CallExecute)
 

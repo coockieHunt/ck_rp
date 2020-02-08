@@ -26,6 +26,7 @@ function import(filename)
 end
 
 import("utils/system.lua")
+import("utils/json.lua")
 import("importer/config.lua")
 
 function importFile(filename)

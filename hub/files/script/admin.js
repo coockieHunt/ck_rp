@@ -2,7 +2,7 @@ function GetForm(){
     let cur = $('.active').attr('id');;
     let cur_class = "#" + cur + " > .section_content > form" ;
     let form = $(cur_class).serializeArray();
-    const rslt = [{"type" : cur}].concat(form) 
+    const rslt = [{"func" : cur}].concat(form) 
     return rslt
 }
 
@@ -44,7 +44,16 @@ $( function() {
 
     //execute btn
     $("#submit").click(function() {
-        let ParsetJs = JSON.stringify(GetForm());
+        var obj = {};
+        obj['func'] = GetForm()[0]["func"]
+
+        $.each( GetForm(), function( key, value ) {
+            if (value['name']) {
+                obj[value['name']] = value['value']
+            }
+        });
+
+        let ParsetJs = JSON.stringify(obj);
         CallEvent("CallExecute", ParsetJs);
     });
 
