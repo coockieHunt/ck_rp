@@ -1,39 +1,50 @@
-function GetCurrentActive() {
-    return $('.active').attr('id');
+function GetForm(){
+    let cur = $('.active').attr('id');;
+    let cur_class = "#" + cur + " > form" ;
+    let form = $(cur_class).serializeArray();
+    const rslt = [{"type" : cur}].concat(form) 
+    return rslt
 }
 
-function GetForm(){
-    let cur = GetCurrentActive();
-    let cur_class = "#" + cur + " > form" ;
-    let type = {"type" : cur}
-    let form = $(cur_class).serializeArray();
-    const rslt = [type].concat(form) 
-    return rslt
+function VisibleSection(id){
+    $('#content > #action > #' + id).attr("hidden",false);
+}
 
+function ShowFirstSection(){
+    let first = $("li").first()
+    first.addClass("active");
+    let key = first.attr('id');
+    VisibleSection(key)
 }
 
 $( function() {
+    //hide all section
     $('section').attr("hidden",true);
 
+    //visible first section
+    ShowFirstSection()
+
+    //draggable windows
     $("#window").draggable({
         containment: "parent", 
         handle: "#top_bar"
     });
 
+    //nav managment
     $("li").click(function() {
+        // style active
         $("li").removeClass("active");
         $(this).addClass("active");
-     });
 
-     $("#submit").click(function() {
-        var myJsonString = JSON.stringify(GetForm());
-        console.log(myJsonString)
-        CallEvent("testcall", myJsonString);
-     });
-
-    $("li").click(function() {
+        // show action = section
         $('section').attr("hidden",true);
         let key = $( this ).attr('id');
-        $('#content > #action > #' + key).attr("hidden",false);
+        VisibleSection(key)
+     });
+
+    //execute btn
+    $("#submit").click(function() {
+        let ParsetJs = JSON.stringify(GetForm());
+        CallEvent("CallExecute", ParsetJs);
     });
 } );
