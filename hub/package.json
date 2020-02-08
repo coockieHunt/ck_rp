@@ -22,7 +22,9 @@
 		"files/style/css/survival.css",
 		"files/style/css/loader_fullScreen.css",
 		"files/style/css/warning_survival.css",
-
+		"files/style/css/form.css",
+	
+		"files/script/eu.js",
 		"files/script/warning_survival.js",
 		"files/script/jquery.js",
 		"files/script/jquery-ui.js",
