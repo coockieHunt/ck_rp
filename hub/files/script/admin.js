@@ -1,6 +1,6 @@
 function GetForm(){
     let cur = $('.active').attr('id');;
-    let cur_class = "#" + cur + " > form" ;
+    let cur_class = "#" + cur + " > .section_content > form" ;
     let form = $(cur_class).serializeArray();
     const rslt = [{"type" : cur}].concat(form) 
     return rslt
