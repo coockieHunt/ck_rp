@@ -80,23 +80,21 @@
 }
 
 #content > #left_nav > li:hover{
-    background-color: #424242;
+    background-color: #941214;
     cursor: pointer;
 }
 
 #content > #left_nav > .active{
-    background-color: #424242;
+    background-color: #941214;
 }
 
 #content > #action{
     flex-grow: 4;
     flex-basis: 30%;
-    box-sizing: content-box;
-    padding: 10px;
 }
 
 #content > #action > #submit{
-    background-color: #424242;
+    background-color: #941214;
     height: 50px;
     width: 150px;
     display: table; 
@@ -105,12 +103,29 @@
     right: 20px;
 }
 
+#content > #action > #submit:hover{
+    background-color: #801012;
+}
+
 #content > #action > #submit > p{
     display: block;
     text-align:center; 
     vertical-align: middle;
     display: table-cell;  
     cursor: pointer;
+}
+
+.section-tobar{
+    background-color: #941214;
+    height: 25px;
+    padding: 5px;
+    text-align: center;
+    box-shadow: 0px -1px 0px white inset;
+}
+
+.section_content{
+    box-sizing: content-box;
+    padding: 10px;
 }
 
 

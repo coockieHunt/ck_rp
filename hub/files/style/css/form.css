@@ -4,4 +4,20 @@ input{
     width: auto;
     height: 25px;
     padding-left: 5px;
+    color: white;
+    margin: 5px 5px 0 0;
+}
+
+input:focus{
+    outline: none;
+    border: 1px #941214 solid;
+}
+
+label{
+    margin-top: 5px;
+    font-size: 0.8em;
+}
+
+input, label {
+    display:block;
 }
