@@ -6,7 +6,7 @@ function GetForm(){
     return rslt
 }
 
-function VisibleSection(id){
+function ShowCurrentSection(id){
     $('#content > #action > #' + id).attr("hidden",false);
 }
 
@@ -14,7 +14,7 @@ function ShowFirstSection(){
     let first = $("li").first()
     first.addClass("active");
     let key = first.attr('id');
-    VisibleSection(key)
+    ShowCurrentSection(key)
 }
 
 $( function() {
@@ -26,6 +26,7 @@ $( function() {
 
     //draggable windows
     $("#window").draggable({
+        opacity: 0.25,
         containment: "parent", 
         handle: "#top_bar"
     });
@@ -39,7 +40,7 @@ $( function() {
         // show action = section
         $('section').attr("hidden",true);
         let key = $( this ).attr('id');
-        VisibleSection(key)
+        ShowCurrentSection(key)
      });
 
     //execute btn
