@@ -39,3 +39,27 @@ AddEvent("OnKeyPress", function(key)
         end
     end
 end)
+
+function urldecode(s)
+    s = s:gsub('+', ' ')
+         :gsub('%%(%x%x)', function(h)
+                             return string.char(tonumber(h, 16))
+                           end)
+    return s
+  end
+  
+  function parseurl(s)
+    s = s:match('%s+(.+)')
+    local ans = {}
+    for k,v in s:gmatch('([^&=?]-)=([^&=?]+)' ) do
+      ans[ k ] = urldecode(v)
+    end
+    return ans
+  end
+
+function testcall(rslt)
+    AddPlayerChat(rslt) 
+end
+AddEvent("testcall", testcall)
+
+

@@ -1,10 +1,14 @@
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style/css/form.css">
         <link rel="stylesheet" type="text/css" href="style/css/main.css">
         <link rel="stylesheet" type="text/css" href="style/css/admin.css">
         <link rel="stylesheet" type="text/css" href="style/css/jquery-ui.css">
-
-
+        <script type="text/javascript" src="script/jquery.js"></script>
+        <script type="text/javascript" src="script/eu.js"></script>
+        <script type="text/javascript" src="script/jquery-ui.js"></script>
+        <script type="text/javascript" src="script/stringify.js"></script>
+        <script type="text/javascript" src="script/admin.js"></script>
     </head>
     <body>
         <div id="window" class="center-div">
@@ -18,19 +22,33 @@
             </div>
             <div id="content">
                 <nav id="left_nav">
-                    <li>un</li>
-                    <li>un</li>
-                    <li>un</li>
-                    <li>un</li>
-                    <li>un</li>
+                    <li id="fireworks">fireworks</li>
+                    <li id="car">car</li>
                 </nav>
                 <div id="action">
-                    <h1>action</h1>
+                    <section id="fireworks">
+                        <form action="">
+                            <div class="input-group">
+                                <h1>fireworks</h1>
+                                <input type="text" name="id" placeholder="fireworks id">
+                                <input type="text" name="type" placeholder="fireworks type">
+                            </div>
+                        </form>
+                    </section>
+                    <section id="car">
+                        <form action="">
+                            <div class="input-group">
+                                <h1>spawn car</h1>
+                                <input type="text" name="id" placeholder="car id">
+                            </div>
+                        </form>
+                    </section>
+                    <div id="submit">
+                        <p>submit</p>
+                    </div>
                 </div>
             </div>
         </div>
     </body>
-    <script type="text/javascript" src="script/jquery.js"></script>
-    <script type="text/javascript" src="script/jquery-ui.js"></script>
-    <script type="text/javascript" src="script/admin.js"></script>
+
 </html>
