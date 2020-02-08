@@ -59,3 +59,22 @@ html, body {
     line-height:inherit
 
 }
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border: 1px solid #4e4e4e;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #941214; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:#941214; 
+}
