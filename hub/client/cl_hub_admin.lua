@@ -8,6 +8,7 @@ function OpenUIAdmin()
         ShowMouseCursor(true)
         SetInputMode(INPUT_GAMEANDUI)
         SetWebVisibility(admin_ui, WEB_VISIBLE)
+        CloseUISurvival_warn()
     end
 end
 
@@ -17,6 +18,7 @@ function CloseUIAdmin()
     ShowMouseCursor(false)
     SetInputMode(INPUT_GAME)
     SetWebVisibility(admin_ui, WEB_HIDDEN)
+    OpenUISurvival_warn()
 end
 
 function OnPackageStart()
@@ -31,10 +33,8 @@ AddEvent("OnPackageStart", OnPackageStart)
 AddEvent("OnKeyPress", function(key)
     if key == admin_key then
         if GetWebVisibility(admin_ui) == WEB_HIDDEN then
-            CloseUISurvival_warn()
             OpenUIAdmin()
         else
-            OpenUISurvival_warn()
             CloseUIAdmin()
         end
     end
@@ -45,4 +45,8 @@ function CallExecute(rslt)
 end
 AddEvent("CallExecute", CallExecute)
 
+function CallClose()
+    CloseUIAdmin()
+end
+AddEvent("CallClose", CallClose)
 

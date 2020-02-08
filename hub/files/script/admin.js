@@ -47,4 +47,9 @@ $( function() {
         let ParsetJs = JSON.stringify(GetForm());
         CallEvent("CallExecute", ParsetJs);
     });
+
+    //close btn
+    $("#close").click(function() {
+        CallEvent("CallClose");
+    });
 } );
