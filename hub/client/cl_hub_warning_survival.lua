@@ -15,8 +15,8 @@ AddEvent("OnPlayerSpawn", function(playerid)
     survival_warn_ui = CreateWebUI(0,0,0,0,1,16)
     SetWebAlignment(survival_warn_ui, 0,0)
     SetWebAnchors(survival_warn_ui, 0,0,1,1)
-    SetWebURL(survival_warn_ui,  'http://asset/' .. GetPackageName() .. '/files/ui_warning_survival.html')
-    SetWebVisibility(survival_warn_ui, WEB_VISIBLE)
+    SetWebURL(survival_warn_ui,  'http://asset/' .. GetPackageName() .. '/hub/files/ui_warning_survival.html')
+    SetWebVisibility(survival_warn_ui, WEB_HIDDEN)
 end)
 
 

@@ -1,0 +1,54 @@
+{
+	"author": "coockie_hunt",
+	"version": "1.0",
+	"server_scripts": [
+		"utils/json.lua",
+		"utils/system.lua",
+
+        "importer/config.lua",
+        "importer/server/importer.lua"
+
+	],
+	
+	"client_scripts": [
+		"admin/client/cl_hub_admin.lua",
+
+		"cmd/client/cl_client.lua",
+		"cmd/client/cl_weapons.lua",
+		
+		"hub/client/cl_hub_survival.lua",
+		"hub/client/cl_hub_warning_survival.lua",
+		
+		"init/client/cl_init.lua"
+	],
+	
+	"files": [
+		"files_client/web/src/img/heart.png",
+		"files_client/web/src/img/armor.png",
+		"files_client/web/src/img/bank.png",
+		"files_client/web/src/img/dollar.png",
+		"files_client/web/src/img/close.png",
+
+		"files_client/web/src/font/Roboto-Regular.ttf",
+
+		"files_client/web/style/css/jquery-ui.css",
+		"files_client/web/style/css/admin.css",
+		"files_client/web/style/css/main.css",
+		"files_client/web/style/css/survival.css",
+		"files_client/web/style/css/loader_fullScreen.css",
+		"files_client/web/style/css/warning_survival.css",
+		"files_client/web/style/css/form.css",
+	
+		"files_client/web/script/eu.js",
+		"files_client/web/script/warning_survival.js",
+		"files_client/web/script/jquery.js",
+		"files_client/web/script/jquery-ui.js",
+		"files_client/web/script/survival.js",
+		"files_client/web/script/admin.js",
+
+		"hub/files/ui_loading_fullscreen.html",
+		"hub/files/ui_survival.html", 
+		"hub/files/ui_warning_survival.html",
+		"admin/files/ui_admin.html"
+	]
+}

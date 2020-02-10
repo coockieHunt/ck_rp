@@ -19,7 +19,7 @@ end
 
 function import(filename)
 	if(importedFile[filename] == nil) then
-		local f = assert(loadfile("packages/"..filename))
+		local f = assert(loadfile("packages/ck_rp/"..filename))
 		importedFile[filename] = true
 		return f()
 	end
@@ -37,9 +37,9 @@ end
 function packagesImport(packageName)
 	if(importedPacakge[packageName] == nil) then
 		local package = false
-		if(FolderExist("packages/"..packageName)) then
+		if(FolderExist("packages/ck_rp/"..packageName)) then
 			if(config_pacakge:case("display_console")) then AddPackageLog(packageName, "package") end
-			package = "packages/"..packageName
+			package = "packages/ck_rp/"..packageName
 			local filesPacakge = GetFilesFolder(package)
 			if(has_value(filesPacakge, 'config.lua')) then
 				import(packageName.."/"..config_pacakge:case("config_file"))

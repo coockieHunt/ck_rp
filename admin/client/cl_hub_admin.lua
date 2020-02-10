@@ -23,7 +23,7 @@ end
 
 function OnPackageStart()
     admin_ui = CreateWebUI(0, 0, 0, 0, 1, 60)
-    LoadWebFile(admin_ui,'http://asset/' .. GetPackageName() .. '/files/ui_admin.html')
+    LoadWebFile(admin_ui,'http://asset/' .. GetPackageName() .. '/admin/files/ui_admin.html')
     SetWebAlignment(admin_ui, 0.0, 0.0)
     SetWebAnchors(admin_ui, 0.0, 0.0, 1.0, 1.0)
     SetWebVisibility(admin_ui, WEB_HIDDEN)
