@@ -22,10 +22,7 @@ dictateurfou - https://github.com/dictateurfou/importer
     		"ini-plugin"
     	],
         "packages": [
-    		"importer",
-            "init",
-            "hub",
-            "cmd"
+    		"ck_rp",
         ],
 
 
