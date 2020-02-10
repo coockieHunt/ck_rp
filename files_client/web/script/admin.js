@@ -17,13 +17,22 @@ function ShowFirstSection(){
     ShowCurrentSection(key)
 }
 
+function BuildvehicleSelect(text, value){
+    if ( $( ".VList" ).length ) {
+        let count = $(".VList option[value='" + value + "']").length
+        if(count == 0){
+            $('.VList').append(new Option(text, value))
+        }
+    }
+}
+
 $( function() {
     //hide all section
     $('section').attr("hidden",true);
 
     //visible first section
     ShowFirstSection()
-
+  
     //draggable windows
     $("#window").draggable({
         opacity: 0.25,

@@ -8,6 +8,7 @@ config_pacakge = switch {
 import_package = switch {
   ["package"] = {
     "log",
+    "data",
     "init",
     "account",
     "hub",

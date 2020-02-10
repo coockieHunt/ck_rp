@@ -11,7 +11,6 @@ AddRemoteEvent("Exucute", function(playerid, json)
             local b = false
             if(data['autopilote'] == 'on') then am = true end
             if(data['boost'] == 'on') then b = true end
-            AddPlayerChat(playerid, data['color'])
             
             admin_car_spawn(playerid, data['id'], am, b, data['color'])
         end

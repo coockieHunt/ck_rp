@@ -5,7 +5,6 @@ input{
     height: 25px;
     padding-left: 5px;
     color: white;
-    margin: 5px 5px 0 0;
 }
 
 input:focus{
@@ -14,18 +13,19 @@ input:focus{
 }
 
 label{
-    margin-top: 10px;
     font-size: 0.8em;
+    margin: 5px 10px 5px 0;
+
 }
 
-.label-l{
-    margin-top: 10px;
-    float: left;
-    margin-right: 10px;
-}
 
 input, label {
     display:block;
+}
+
+input[type=text] {
+    margin-bottom: 5px;
+
 }
 
 input[type=checkbox] {
@@ -34,11 +34,21 @@ input[type=checkbox] {
     -ms-appearance: none;
 }
 
+
 input[type=checkbox] {
-    margin-top: 10px;
-    -border-radius: 4px;
-    height: 15px;
-    width: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    height: 25px;
+    width: 50px;
+
+}
+
+input[type=checkbox] {
+    height: 10px;
+    width: 10px;
     background: #941214;
     border: 1px solid white;
 }
@@ -47,3 +57,58 @@ input[type=checkbox] {
 input[type="checkbox"]:checked {
     background: green;
 }
+
+select {
+    background: #363636;
+    border: 1px solid white;
+    color: white;
+    outline:0;
+    margin-bottom: 5px;
+
+}
+
+/* Style the form - display items horizontally */
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+  }
+  
+  /* Add some margins for each label */
+  .form-inline label {
+    margin: 5px 10px 5px 0;
+  }
+  
+  /* Style the input fields */
+  .form-inline input {
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+  
+  /* Style the submit button */
+  .form-inline button {
+    padding: 10px 20px;
+    background-color: dodgerblue;
+    border: 1px solid #ddd;
+    color: white;
+  }
+  
+  .form-inline button:hover {
+    background-color: royalblue;
+  }
+  
+  /* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
+  @media (max-width: 800px) {
+    .form-inline input {
+      margin: 10px 0;
+    }
+  
+    .form-inline {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+

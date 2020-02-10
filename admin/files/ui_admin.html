@@ -59,13 +59,23 @@
                                 <form action="">
                                     <div class="input-group">
                                         <label for="id">id :</label>
-                                        <input type="text" name="id" placeholder="1-10">
+                                        <select name="id" class="VList" size="1">
+                                            <option value="">test</option>
+                                            <option value="">test</option>
+                                            <option value="">test</option>
+                                            <option value="">test</option>
+                                            <option value="">test</option>
+                                        </select>
 
-                                        <label for="autopilote" class="label-l" >Ride in pilot : </label>
-                                        <input type="checkbox" name="autopilote" checked>
-
-                                        <label for="boost" class="label-l" >equipped with nitro : </label>
-                                        <input type="checkbox" name="boost" checked>
+                                        <div class="form-inline">
+                                            <label for="autopilote" class="label-l" >Ride in pilot : </label>
+                                            <input type="checkbox" name="autopilote" checked>
+                                        </div>
+                                        
+                                        <div class="form-inline">
+                                            <label for="boost" class="label-l" >equipped with nitro : </label>
+                                            <input type="checkbox" name="boost" checked>
+                                        </div>
 
                                         <label for="color" >color : </label>
                                         <input class="jscolor" name="color" value="000000">

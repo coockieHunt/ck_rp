@@ -9,6 +9,7 @@ function OpenUIAdmin()
         SetInputMode(INPUT_GAMEANDUI)
         SetWebVisibility(admin_ui, WEB_VISIBLE)
         CloseUISurvival_warn()
+        CallCarList()
     end
 end
 
@@ -50,4 +51,16 @@ function CallClose()
     CloseUIAdmin()
 end
 AddEvent("CallClose", CallClose)
+
+
+function CallCarList()
+    for i, v in ipairs(VEHICLE_DATA) do
+        local name = v['name']
+        local alias = VEHICLE_DATA[i]['alias'][1]
+        local id = i
+        ExecuteWebJS(admin_ui, "BuildvehicleSelect('"..name.."', "..id..");")
+    end
+end
+
+
 
