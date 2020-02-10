@@ -42,6 +42,7 @@ end)
 
 function CallExecute(rslt)
     CallRemoteEvent("Exucute", rslt)
+    CloseUIAdmin()
 end
 AddEvent("CallExecute", CallExecute)
 
