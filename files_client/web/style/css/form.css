@@ -14,10 +14,36 @@ input:focus{
 }
 
 label{
-    margin-top: 5px;
+    margin-top: 10px;
     font-size: 0.8em;
+}
+
+.label-l{
+    margin-top: 10px;
+    float: left;
+    margin-right: 10px;
 }
 
 input, label {
     display:block;
+}
+
+input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+}
+
+input[type=checkbox] {
+    margin-top: 10px;
+    -border-radius: 4px;
+    height: 15px;
+    width: 15px;
+    background: #941214;
+    border: 1px solid white;
+}
+
+
+input[type="checkbox"]:checked {
+    background: green;
 }
