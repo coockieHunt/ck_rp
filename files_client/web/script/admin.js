@@ -1,6 +1,6 @@
 function GetForm(){
     let cur = $('.active').attr('id');;
-    let cur_class = "#" + cur + " > .section_content > form" ;
+    let cur_class = "#" + cur + " > .section_content > .left > form" ;
     let form = $(cur_class).serializeArray();
     const rslt = [{"func" : cur}].concat(form) 
     return rslt
@@ -56,12 +56,20 @@ $( function() {
         var obj = {};
         obj['func'] = GetForm()[0]["func"]
 
-        $.each( GetForm(), function( key, value ) {
-            if (value['name']) {
-                obj[value['name']] = value['value']
+        $.each( GetForm(), function( key, val ) {
+            let name = val['name'];
+            let value = val['value'];
+            
+            if (name) {
+                if(value == ""){
+                    obj[name] = null
+                }else{
+                    obj[name] = value
+                }
             }
         });
 
+        console.log(obj)
         let ParsetJs = JSON.stringify(obj);
         CallEvent("CallExecute", ParsetJs);
     });
