@@ -10,21 +10,34 @@ function admin_clothing_preset(player, clothing_preset)
 	CallRemoteEvent(player, "spawn_clothing", clothing_preset_id)
 end
 
-function admin_car_spawn(player, model)
+function admin_car_spawn(player, model, mount, boost , color)
+	local vehicle
+
     if (model == nil) then return AddPlayerChat(player, "Usage: /car <model>")end
 
 	model = tonumber(model)
 	if (model < 1 or model > 25) then return AddPlayerChat(player, "Vehicle model "..model.." does not exist.") end
 
+
 	local x, y, z = GetPlayerLocation(player)
 	local h = GetPlayerHeading(player)
 
-	local vehicle = CreateVehicle(model, x, y, z, h)
 	if (vehicle == false) then return AddPlayerChat(player, "Failed to spawn your vehicle") end
+	if(mount)then
+		vehicle = CreateVehicle(model, x, y, z, h)
+		SetPlayerInVehicle(player, vehicle)
+	else
+		vehicle = CreateVehicle(model, x , y - 300, z, h - 90.0)
+		print("Player location: "..x..", "..y..", "..z)
+	end
 
+	if(boost) then AttachVehicleNitro(vehicle, true) end
+
+	SetVehicleColor(vehicle, "0x"..color)
+	SetVehicleLicensePlate(vehicle, "ADMIN-SPAWN")
+	
 	AddAdminLog(player, "spawn car id : " .. model)
-	AttachVehicleNitro(vehicle, true) 
-    SetPlayerInVehicle(player, vehicle)
+
 end
 
 function admin_weapon_spawn(player, weapon, slot, ammo)
