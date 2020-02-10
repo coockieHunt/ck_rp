@@ -17,15 +17,7 @@ function ShowFirstSection(){
     ShowCurrentSection(key)
 }
 
-function addSection(name, desc, form){
-    //add nav btn
-    let dis_li = name.charAt(0).toUpperCase() + name.substr(1).toLowerCase()
-    let lb_li = "<li id='"+ name +"'>"+ dis_li +"</li>";
-    $('#content > #left_nav').append(lb_li);
-}
-
 $( function() {
-    addSection("name", "desc", "form")
     //hide all section
     $('section').attr("hidden",true);
 
