@@ -52,3 +52,9 @@ function has_value (tab, val)
 
   return false
 end
+
+function tablelength(T)
+  local count = 0
+  for _ in ipairs(T) do count = count + 1 end
+  return count
+end
