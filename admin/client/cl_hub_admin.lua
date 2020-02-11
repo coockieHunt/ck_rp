@@ -10,7 +10,7 @@ function OpenUIAdmin()
         SetWebVisibility(admin_ui, WEB_VISIBLE)
         CloseUISurvival_warn()
         GetCarList()
-        SetPlayerList()
+        GetPlayerList()
     end
 end
 
@@ -63,11 +63,11 @@ function GetCarList()
     end
 end
 
-function SetPlayerList()
-    CallRemoteEvent("GetPlayerList")
+function GetPlayerList()
+    CallRemoteEvent("GetAllPlayer")
 end
 
-function GetPlayerListe(players)
+function SetPlayerList(players)
     for k, v in ipairs(players) do
         local id = k
         local name = v[1]
@@ -76,6 +76,6 @@ function GetPlayerListe(players)
 	end
 
 end
-AddRemoteEvent("GetPlayerListe", GetPlayerListe)
+AddRemoteEvent("SetPlayerList", SetPlayerList)
 
 
