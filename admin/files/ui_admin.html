@@ -25,31 +25,10 @@
             </div>
             <div id="content">
                 <nav id="left_nav">
-                    <li id="fireworks">fireworks</li>
                     <li id="car">car</li>
                 </nav>
                 <div id="action">
-                    <section id="fireworks">
-                        <div class="section-tobar">
-                            <h1>fireworks</h1>
-                        </div>
-                        <div class="section_content">
-                            <div class="left">
-                                <form action="">
-                                    <div class="input-group">
-                                        <label for="id">id :</label>
-                                        <input type="text" name="id" placeholder="1-10">
-                                        <label for="id">type :</label>
-                                        <input type="text" name="type" placeholder="80-96">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="right">
-                                <h1>test</h1>
-                                <p>ceci et foerworks</p>
-                            </div>
-                        </div>
-                    </section>
+            
                     <section id="car">
                         <div class="section-tobar">
                             <h1>car</h1>
@@ -58,15 +37,17 @@
                             <div class="left">
                                 <form action="">
                                     <div class="input-group">
-                                        <label for="id">id :</label>
-                                        <select name="id" class="VList" size="1">
-                                            <option value="">test</option>
-                                            <option value="">test</option>
-                                            <option value="">test</option>
-                                            <option value="">test</option>
-                                            <option value="">test</option>
-                                        </select>
-
+                                        <h3>spawn</h3>
+                                        <div class="form-inline">
+                                            <label for="id">id :</label>
+                                            <select name="id" class="VList" size="1">
+                                            </select>
+    
+                                            <label for="color" >color : </label>
+                                            <input class="jscolor" name="color" value="000000">
+                                        </div>
+                                        
+                                        <h3>Option</h3>
                                         <div class="form-inline">
                                             <label for="autopilote" class="label-l" >Ride in pilot : </label>
                                             <input type="checkbox" name="autopilote" checked>
@@ -76,15 +57,27 @@
                                             <label for="boost" class="label-l" >equipped with nitro : </label>
                                             <input type="checkbox" name="boost" checked>
                                         </div>
-
-                                        <label for="color" >color : </label>
-                                        <input class="jscolor" name="color" value="000000">
                                     </div>
                                 </form>
                             </div>
                             <div class="right">
-                                <h1>test</h1>
-                                <p>ceci et car</p>
+                                <h1>Spawning car</h1>
+                                <p>
+                                    allows to display a car, which will not be permanent.
+
+                                    <br><br>  
+
+                                    <span>option :</span>
+                                    <ul>
+                                        <li> - Ride in pilot : <br> automatically teleport as a pilot</li>
+                                        <li> - equipped with nitro : <br> Equipped with the default TAB nitro vehicle</li>
+                                    </ul>
+
+                                    <br><br>  
+
+                                    <span>warning :</span>
+                                       <p> the car created does not belong to the RP will therefore not be registered, in addition it has a special license plate to properly identify it</p>
+                                </p>
                             </div>
                     </section>
                     <div id="submit">

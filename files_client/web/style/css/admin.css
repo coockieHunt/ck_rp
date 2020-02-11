@@ -58,6 +58,14 @@
     border-radius: 0px 0px 0px 5px;
 }
 
+h3{
+    text-decoration: underline;
+}
+
+h3::after{
+    content: " :";
+}
+
 #content > #left_nav{
     border-right: 1px solid #4e4e4e;
     background-color: #363636;

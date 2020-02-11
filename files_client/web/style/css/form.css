@@ -63,9 +63,9 @@ select {
     border: 1px solid white;
     color: white;
     outline:0;
-    margin-bottom: 5px;
-
+    height: 25px;
 }
+
 
 /* Style the form - display items horizontally */
 .form-inline {
@@ -76,7 +76,7 @@ select {
   
   /* Add some margins for each label */
   .form-inline label {
-    margin: 5px 10px 5px 0;
+    margin: 5px 10px 5px 5px;
   }
   
   /* Style the input fields */
