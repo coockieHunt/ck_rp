@@ -26,9 +26,13 @@
             <div id="content">
                 <nav id="left_nav">
                     <li id="car">car</li>
+                    <li id="health">health</li>
+                    <li id="armor">armor</li>
                 </nav>
                 <div id="action">
-            
+                    <!-- 
+                        CAR
+                     -->
                     <section id="car">
                         <div class="section-tobar">
                             <h1>car</h1>
@@ -80,6 +84,81 @@
                                 </p>
                             </div>
                     </section>
+
+                    <!-- 
+                        health
+                     -->
+                     <section id="health">
+                        <div class="section-tobar">
+                            <h1>health</h1>
+                        </div>
+                        <div class="section_content">
+                            <div class="left">
+                                <form action="">
+                                    <div class="input-group">
+                                        <h3>Option</h3>
+                                        <div class="form-inline">
+                                            <label for="id">player :</label>
+                                            <select name="id" class="VList" size="1">
+                                            </select>
+                                        </div>
+
+                                        <label for="health">health :</label>
+                                        <input class="ha" type="text" name="health" required minlength="1" maxlength="3" value=100 placeholder="1-100">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="right">
+                                <h1>Healt player</h1>
+                                <p>
+                                    allows to connected player.
+
+                                    <br><br>  
+
+                                    <span>option :</span>
+                                    <ul>
+                                        <li> - Target : <br> player to set health</li>
+                                    </ul>
+                                </p>
+                            </div>
+                    </section>
+                    <!-- 
+                        ARMOR
+                     -->
+                    <section id="Armor">
+                        <div class="section-tobar">
+                            <h1>armor</h1>
+                        </div>
+                        <div class="section_content">
+                            <div class="left">
+                                <form action="">
+                                    <div class="input-group">
+                                        <h3>Option</h3>
+                                        <div class="form-inline">
+                                            <label for="id">player :</label>
+                                            <select name="id" class="VList" size="1">
+                                            </select>
+                                        </div>
+
+                                        <label for="armor">armor :</label>
+                                        <input class="ha" type="text" name="armor" required minlength="1" maxlength="3" value=100 placeholder="1-100">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="right">
+                                <h1>Healt player</h1>
+                                <p>
+                                    allows to connected player.
+
+                                    <br><br>  
+
+                                    <span>option :</span>
+                                    <ul>
+                                        <li> - Target : <br> player to set armor</li>
+                                    </ul>
+                                </p>
+                            </div>
+                    </section>
                     <div id="submit">
                         <p>submit</p>
                     </div>
@@ -87,5 +166,7 @@
             </div>
         </div>
     </body>
+    <script type="text/javascript" src="../../files_client/web/script/form.js"></script>
+
 
 </html>

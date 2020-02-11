@@ -51,6 +51,7 @@
 		"files_client/web/script/survival.js",
 		"files_client/web/script/admin.js",
 		"files_client/web/script/jscolor.js",
+		"files_client/web/script/form.js",
 
 		"hub/files/ui_loading_fullscreen.html",
 		"hub/files/ui_survival.html", 

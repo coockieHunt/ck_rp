@@ -74,6 +74,12 @@ function cmd_admin_pos(player)
 	end
  end
  AddCommand("pos", cmd_admin_pos)
+
+
+ function test(player)
+
+end
+AddCommand("f", test)
 --utils
 function AdminLevel(playerid, level)
 	local data = getplayer(playerid)

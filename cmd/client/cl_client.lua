@@ -7,3 +7,4 @@ function ClientCreateFireworks(type)
 	CreateFireworks(type, x, y, z + 150, 90, 0, 0)
 end
 AddRemoteEvent("ClientCreateFireworks", ClientCreateFireworks)
+
