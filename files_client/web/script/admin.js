@@ -17,11 +17,20 @@ function ShowFirstSection(){
     ShowCurrentSection(key)
 }
 
-function BuildvehicleSelect(text, value){
+function BuildVehicleSelect(text, value){
     if ( $( ".VList" ).length ) {
         let count = $(".VList option[value='" + value + "']").length
         if(count == 0){
             $('.VList').append(new Option(text, value))
+        }
+    }
+}
+
+function BuildPlayerListSelect(text, value){
+    if ( $( ".PList" ).length ) {
+        let count = $(".PList option[value='" + value + "']").length
+        if(count == 0){
+            $('.PList').append(new Option(text, value))
         }
     }
 }

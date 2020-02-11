@@ -9,7 +9,8 @@ function OpenUIAdmin()
         SetInputMode(INPUT_GAMEANDUI)
         SetWebVisibility(admin_ui, WEB_VISIBLE)
         CloseUISurvival_warn()
-        CallCarList()
+        GetCarList()
+        SetPlayerList()
     end
 end
 
@@ -53,14 +54,28 @@ end
 AddEvent("CallClose", CallClose)
 
 
-function CallCarList()
+function GetCarList()
     for i, v in ipairs(VEHICLE_DATA) do
         local name = v['name']
         local alias = VEHICLE_DATA[i]['alias'][1]
         local id = i
-        ExecuteWebJS(admin_ui, "BuildvehicleSelect('"..name.."', "..id..");")
+        ExecuteWebJS(admin_ui, "BuildVehicleSelect('"..name.."', "..id..");")
     end
 end
 
+function SetPlayerList()
+    CallRemoteEvent("GetPlayerList")
+end
+
+function GetPlayerListe(players)
+    for k, v in ipairs(players) do
+        local id = k
+        local name = v[1]
+        
+        ExecuteWebJS(admin_ui, "BuildPlayerListSelect('"..name.."', "..id..");")
+	end
+
+end
+AddRemoteEvent("GetPlayerListe", GetPlayerListe)
 
 

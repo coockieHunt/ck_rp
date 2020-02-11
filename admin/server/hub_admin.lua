@@ -16,3 +16,15 @@ AddRemoteEvent("Exucute", function(playerid, json)
         end
     end
 end)
+
+AddRemoteEvent("GetPlayerList", function(player)
+	local PlayerTable = { }
+	
+	for _, v in ipairs(GetAllPlayers()) do
+        PlayerTable[v] = {
+            GetPlayerName(v),
+        }
+	end
+	
+	CallRemoteEvent(player, "GetPlayerListe", PlayerTable)
+end)
