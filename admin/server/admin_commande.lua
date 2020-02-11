@@ -31,18 +31,18 @@ end
 AddCommand("kill", cmd_admin_kill)
 
  --heal
- function cmd_admin_heal(player)
+ function cmd_admin_heal(player, num)
     if(AdminLevel(player, 1)) then
-        admin_heal(player)
+        admin_heal(player, num)
 	end
  end
  AddCommand("heal", cmd_admin_heal)
 
 
  --armor
- function cmd_admin_armor(player)
+ function cmd_admin_armor(player, num)
     if(AdminLevel(player, 1)) then
-        admin_armor(player)
+        admin_armor(playe, num)
 	end
  end
  AddCommand("armor", cmd_admin_armor)

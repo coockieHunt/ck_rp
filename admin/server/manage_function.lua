@@ -85,21 +85,21 @@ function admin_spec(player, disable)
 	AddAdminLog(player, " player spectate")
 end
 
-function admin_heal(player)
-	AddAdminLog(player, " heal")
-	SetPlayerHealth(player, 100)
+function admin_heal(player, num)
+	AddAdminLog(player, " heal - " .. num)
+	SetPlayerHealth(player, num)
 	local p = getplayer(player)
-	p:setHealth(100)
+	p:setHealth(num)
 	RefrechSurvivalUi(player)
 	RefrechWarningSurvivalUi(player)
  end
 
 
- function admin_armor(player)
-	AddAdminLog(player, " armor")
-	SetPlayerArmor(player, 100)
+ function admin_armor(player, num)
+	AddAdminLog(player, " armor - " .. num)
+	SetPlayerArmor(player, num)
 	local p = getplayer(player)
-	p:setArmor(100)
+	p:setArmor(num)
 	RefrechSurvivalUi(player)
 	RefrechWarningSurvivalUi(player)
  end
