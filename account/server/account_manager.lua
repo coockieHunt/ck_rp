@@ -12,7 +12,6 @@ end
 function OnPlayerSpawn(playerid)
     CreateTimer(function(playerid)
         SaveAccountPlayer(playerid)
-        LogPlayerChat(playerid, "info", "auto", "auto save account")
 	end, Config_other_account:case("save_time"), playerid)
 end
 AddEvent("OnPlayerSpawn", OnPlayerSpawn)
@@ -34,5 +33,7 @@ function SaveAccountPlayer(player)
 		Data.steamId
 	)
         
-	mariadb_query(db, query)
+    mariadb_query(db, query)
+    
+    ShowIconSaveClient(player)
 end

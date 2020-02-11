@@ -10,14 +10,26 @@
     width: 100%;
 } 
 
-.warning_icon{
+.warning_icon_right{
     width: auto;
     float: right;
 }
 
-.warning_icon > img{
-   float: right;
-   height: 30px;
+.warning_icon_left{
+    width: auto;
+    float: left;
+}
+
+.warning_icon_left > img{
+    float: right;
+    height: 30px;
+    width: 30px;
+    margin-left: 15px;
+}
+
+.warning_icon_right > img{
+    float: right;
+    height: 30px;
     width: 30px;
     margin-right: 15px;
 }

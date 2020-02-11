@@ -1,5 +1,25 @@
 let b = {"armor" : false, "health" : false}
 
+$(function() {
+    $("#save").fadeOut( "slow");
+});
+
+function ShowSave(){
+    let e = "#save"
+
+    $(e).fadeIn( "slow", function() {
+        $(e).addClass("blink")
+
+        setTimeout(function(){
+            if($(e).hasClass("blink"))
+            {
+                $(e).removeClass("blink");
+            }
+            $(e).fadeOut(500)
+          }, 5000);
+    });
+}
+
 function blink(element, bool){
     let e = "#" + element
 
@@ -37,7 +57,6 @@ function flash(element, bool){
             }
             blink("armor", bool)
             break;
-    
         default:
             return false
             break;

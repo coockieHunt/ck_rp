@@ -8,3 +8,7 @@ function RefrechWarningSurvivalUi(playerid)
     CallRemoteEvent(playerid, 'setDammageWarning', p:getHealth(),  p:getArmor())
  end
  AddRemoteEvent("RefrechWarningSurvivalUi", RefrechWarningSurvivalUi)
+
+ function ShowIconSaveClient(playerid)
+    CallRemoteEvent(playerid, 'ShowIconSave')
+ end

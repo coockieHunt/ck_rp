@@ -16,7 +16,7 @@ AddEvent("OnPlayerSpawn", function(playerid)
     SetWebAlignment(survival_warn_ui, 0,0)
     SetWebAnchors(survival_warn_ui, 0,0,1,1)
     SetWebURL(survival_warn_ui,  'http://asset/' .. GetPackageName() .. '/hub/files/ui_warning_survival.html')
-    SetWebVisibility(survival_warn_ui, WEB_HIDDEN)
+    SetWebVisibility(survival_warn_ui, WEB_VISIBLE)
 end)
 
 
@@ -32,6 +32,12 @@ function OnWebLoadComplete(webid)
 	end
 end
 AddEvent("OnWebLoadComplete", OnWebLoadComplete)
+
+
+function ShowIconSave()
+    ExecuteWebJS(survival_warn_ui, "ShowSave()")
+end
+AddRemoteEvent("ShowIconSave", ShowIconSave)
 
 
 function setDammageWarning(health, armor)
