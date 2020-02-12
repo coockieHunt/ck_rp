@@ -1,5 +1,5 @@
 input{
-    background-color: #363636;
+    background-color: var(--second-black);
     border: 1px white solid;
     width: auto;
     height: 25px;
@@ -11,7 +11,7 @@ input{
 
 input:focus{
     outline: none;
-    border: 1px #941214 solid;
+    border: 1px var(--main-red) solid;
 }
 
 label{
@@ -34,34 +34,19 @@ input[type=checkbox] {
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
-}
 
-
-input[type=checkbox] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    margin-bottom: 5px;
-    padding-left: 5px;
-    height: 25px;
-    width: 50px;
-
-}
-
-input[type=checkbox] {
     height: 10px;
     width: 10px;
-    background: #941214;
+    background: var(--main-red);
     border: 1px solid white;
 }
-
 
 input[type="checkbox"]:checked {
     background: green;
 }
 
 select {
-    background: #363636;
+    background: var(--second-black);
     border: 1px solid white;
     color: white;
     outline:0;
@@ -86,7 +71,6 @@ select {
     vertical-align: middle;
     margin: 5px 10px 5px 0;
     padding: 10px;
-    background-color: #fff;
     border: 1px solid #ddd;
   }
   

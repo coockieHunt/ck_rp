@@ -1,5 +1,13 @@
+:root {
+    --main-black: #000000;
+    --second-black: #212121;
+
+    --main-red : #870000;
+    --second-red : #bf360c;
+}
+
 #window{
-    background-color: #2c2c2c;
+    background-color: var(--main-black);
     height: 60%;
     width: 65%;
     border-radius: 5px;
@@ -68,7 +76,7 @@ h3::after{
 
 #content > #left_nav{
     border-right: 1px solid #4e4e4e;
-    background-color: #363636;
+    background-color: var(--second-black);
     border-radius: 0px 0px 0px 5px;
     flex-grow: 1;
     flex-shrink: 1;
@@ -101,12 +109,12 @@ h3::after{
 }
 
 #content > #left_nav > li:hover{
-    background-color: #941214;
+    background-color: var(--second-red);
     cursor: pointer;
 }
 
 #content > #left_nav > .active{
-    background-color: #941214;
+    background-color: var(--main-red);
 }
 
 #content > #action{
@@ -115,7 +123,7 @@ h3::after{
 }
 
 #content > #action > #submit{
-    background-color: #941214;
+    background-color: var(--main-red);
     height: 50px;
     width: 150px;
     display: table; 
@@ -125,7 +133,7 @@ h3::after{
 }
 
 #content > #action > #submit:hover{
-    background-color: #801012;
+    background-color: var(--second-red);
 }
 
 #content > #action > #submit > p{
@@ -137,7 +145,7 @@ h3::after{
 }
 
 .section-tobar{
-    background-color: #941214;
+    background-color: var(--main-red);
     height: 6%;
     padding: 5px;
     text-align: center;
