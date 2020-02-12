@@ -115,7 +115,7 @@ CLOTHING_PRESET_DATA = {
     alias = { 'Extrem_worker_ca_black' }
   },
   [21] = {
-    name = 'zonmbie',
+    name = 'zombie',
     alias = { 'Zombie' }
   },
   [22] = {
