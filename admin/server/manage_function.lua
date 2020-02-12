@@ -1,4 +1,4 @@
-function admin_clothing_preset(player, clothing_preset)
+function admin_clothing_preset(player, playerId, clothing_preset)
 	if(clothing_preset == nil) then return	AddPlayerChat(player, 'Usage: /clothing <presetId>') end
     
     clothing_preset_id = tonumber(clothing_preset)
@@ -7,7 +7,7 @@ function admin_clothing_preset(player, clothing_preset)
     end
     
     AddAdminLog(player, "spawn clothing preset id : " .. clothing_preset)
-	CallRemoteEvent(player, "spawn_clothing", clothing_preset_id)
+	CallRemoteEvent(player, "spawn_clothing", playerId, clothing_preset_id)
 end
 
 function admin_car_spawn(player, model, mount, boost , color)

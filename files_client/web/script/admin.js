@@ -35,6 +35,15 @@ function BuildPlayerListSelect(text, value){
     }
 }
 
+function BuildClothingPresetSelect(text, value){
+    if ( $( ".CPList" ).length ) {
+        let count = $(".CPList option[value='" + value + "']").length
+        if(count == 0){
+            $('.CPList').append(new Option(text, value))
+        }
+    }
+}
+
 $( function() {
     //hide all section
     $('section').attr("hidden",true);

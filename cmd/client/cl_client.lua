@@ -1,6 +1,6 @@
 -- spawn clothing
-AddRemoteEvent("spawn_clothing", function(clothing_preset)
-	SetPlayerClothingPreset(GetPlayerId(), clothing_preset)end)
+AddRemoteEvent("spawn_clothing", function(PlayerId, clothing_preset)
+	SetPlayerClothingPreset(PlayerId, clothing_preset)end)
 
 function ClientCreateFireworks(type)
 	local x, y, z = GetPlayerLocation()

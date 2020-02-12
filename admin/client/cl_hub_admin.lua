@@ -11,6 +11,7 @@ function OpenUIAdmin()
         CloseUISurvival_warn()
         GetCarList()
         GetPlayerList()
+        GetClothingPresetList()
     end
 end
 
@@ -60,6 +61,16 @@ function GetCarList()
         local alias = VEHICLE_DATA[i]['alias'][1]
         local id = i
         ExecuteWebJS(admin_ui, "BuildVehicleSelect('"..name.."', "..id..");")
+    end
+end
+
+
+function GetClothingPresetList()
+    for i, v in ipairs(CLOTHING_PRESET_DATA) do
+        local name = v['name']
+        local alias = CLOTHING_PRESET_DATA[i]['alias'][1]
+        local id = i
+        ExecuteWebJS(admin_ui, "BuildClothingPresetSelect('"..name.."', "..id..");")
     end
 end
 

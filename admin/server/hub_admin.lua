@@ -35,6 +35,17 @@ AddRemoteEvent("Exucute", function(playerid, json)
             admin_armor(playerid, a)
         end
     end
+
+    if(func == 'clothing') then
+        if(isnil(data['id'])) then
+            AddPlayerChat(playerid, "none id")
+        else
+            local p = data['id']
+            local cp = data['clothingPreset']
+            
+            admin_clothing_preset(playerid, p,  cp)
+        end
+    end
 end)
 
 AddRemoteEvent("GetAllPlayer", function(player)
