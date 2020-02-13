@@ -69,14 +69,16 @@ $( function() {
 
     //nav managment
     $("li").click(function() {
-        // style active
-        $("li").removeClass("active");
-        $(this).addClass("active");
+        if($(this).data('state') == null){
+            // style active
+            $("li").removeClass("active");
+            $(this).addClass("active");
 
-        // show action = section
-        $('section').attr("hidden",true);
-        let key = $( this ).attr('id');
-        ShowCurrentSection(key)
+            // show action = section
+            $('section').attr("hidden",true);
+            let key = $( this ).attr('id');
+            ShowCurrentSection(key)
+        }
      });
 
     //execute btn
