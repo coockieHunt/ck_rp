@@ -26,7 +26,7 @@ end
 AddEvent("OnPackageStart", OnPackageStart)
 
 function OnPackageStop()
-    print(":: Stopping the server")
+    print(":: Disconncted MariaDB server ...")
     mariadb_close(db)
 end
 AddEvent("OnPackageStop", OnPackageStop)
