@@ -8,8 +8,8 @@
 
 #window{
     background-color: var(--main-black);
-    height: 60%;
-    width: 65%;
+    height: 70%;
+    width: 75%;
     border-radius: 5px;
     user-select: none;
     box-shadow: 1px 1px 12px #555;
@@ -179,6 +179,6 @@ h3::after{
 .center-screen
 {
   position: absolute;
-  top: 20%;
-  left: 20%;
+  top: 15%;
+  left: 15%;
 }

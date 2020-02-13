@@ -8,6 +8,7 @@
         <script type="text/javascript" src="../../files_client/web/script/eu.js"></script>
         <script type="text/javascript" src="../../files_client/web/script/jquery-ui.js"></script>
         <script type="text/javascript" src="../../files_client/web/script/stringify.js"></script>
+        <script type="text/javascript" src="../../files_client/web/script/utils.js"></script>
         <script type="text/javascript" src="../../files_client/web/script/admin.js"></script>
         <script type="text/javascript" src="../../files_client/web/script/jscolor.js"></script>
     </head>
@@ -203,23 +204,37 @@
                      -->
                      <section id="weapons">
                         <div class="section-tobar">
-                            <h1>WEAPONS</h1>
+                            <h1>weapons</h1>
                         </div>
                         <div class="section_content">
                             <div class="left">
                                 <form action="">
                                     <div class="input-group">
                                         <h3>Option</h3>
-                                        <label for="id">target :</label>
-                                        <select name="id" class="PList" size="1">
-                                        </select>
+                                        <div class="form-inline">
+                                            <label for="id">target :</label>
+                                            <select name="id" class="PList" size="1">
+                                            </select>
+                                        </div>
 
-                                        <select name="id" class="PList" size="1">
-                                        </select>
+                                        <div class="form-inline">
+                                            <label for="slot">slot :</label>
+                                            <select name="slot" size="1">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                            </select>
+                                        </div>
 
-                                        <label for="clothingPreset">clothing preset :</label>
-                                        <select name="clothingPreset" class="CPList" size="1">
-                                        </select>
+                                        <div class="form-inline">
+                                            <label for="weapon">Weapon :</label>
+                                            <select name="weapon" class="WList" size="1">
+                                            </select>
+                                            <label for="ammo">ammo :</label>
+                                            <input type="text" name="ammo" value="150" class="wp">
+                                        </div>
+
+
                                     </div>
                                 </form>
                             </div>
@@ -246,6 +261,4 @@
         </div>
     </body>
     <script type="text/javascript" src="../../files_client/web/script/form.js"></script>
-
-
 </html>

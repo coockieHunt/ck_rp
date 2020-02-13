@@ -46,6 +46,19 @@ AddRemoteEvent("Exucute", function(playerid, json)
             admin_clothing_preset(playerid, p,  cp)
         end
     end
+
+    if(func == 'weapons') then
+        if(isnil(data['id'])) then
+            AddPlayerChat(playerid, "none id")
+        else
+            local p = data['id']
+            local w = data['weapon']
+            local s = data['slot']
+            local a = data['ammo']
+            
+            admin_weapon_spawn(p, w, s, a)
+        end
+    end
 end)
 
 AddRemoteEvent("GetAllPlayer", function(player)
