@@ -44,6 +44,15 @@ function BuildClothingPresetSelect(text, value){
     }
 }
 
+function BuildWeaponsSelect(text, value){
+    if ( $( ".WList" ).length ) {
+        let count = $(".WList option[value='" + value + "']").length
+        if(count == 0){
+            $('.WList').append(new Option(text, value))
+        }
+    }
+}
+
 $( function() {
     //hide all section
     $('section').attr("hidden",true);

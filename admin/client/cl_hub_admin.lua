@@ -1,6 +1,7 @@
 local admin_ui
 local admin_key = "F5"
 
+-- manage ui
 function OpenUIAdmin()
     if admin_ui ~= nil then
         SetIgnoreLookInput(true)
@@ -9,9 +10,8 @@ function OpenUIAdmin()
         SetInputMode(INPUT_GAMEANDUI)
         SetWebVisibility(admin_ui, WEB_VISIBLE)
         CloseUISurvival_warn()
-        GetCarList()
-        GetPlayerList()
-        GetClothingPresetList()
+        
+        BuildSelect()
     end
 end
 
@@ -24,6 +24,7 @@ function CloseUIAdmin()
     OpenUISurvival_warn()
 end
 
+-- package manager
 function OnPackageStart()
     admin_ui = CreateWebUI(0, 0, 0, 0, 1, 60)
     LoadWebFile(admin_ui,'http://asset/' .. GetPackageName() .. '/admin/files/ui_admin.html')
@@ -33,6 +34,7 @@ function OnPackageStart()
 end
 AddEvent("OnPackageStart", OnPackageStart)
 
+-- key
 AddEvent("OnKeyPress", function(key)
     if key == admin_key then
         if GetWebVisibility(admin_ui) == WEB_HIDDEN then
@@ -43,6 +45,7 @@ AddEvent("OnKeyPress", function(key)
     end
 end)
 
+-- call ui
 function CallExecute(rslt)
     CallRemoteEvent("Exucute", rslt)
     CloseUIAdmin()
@@ -54,6 +57,14 @@ function CallClose()
 end
 AddEvent("CallClose", CallClose)
 
+
+-- Get List build select form
+function BuildSelect()
+    GetCarList()
+    GetPlayerList()
+    GetClothingPresetList()
+    GetWeaponsList()
+end
 
 function GetCarList()
     for i, v in ipairs(VEHICLE_DATA) do
@@ -74,6 +85,15 @@ function GetClothingPresetList()
     end
 end
 
+function GetWeaponsList()
+    for i, v in ipairs(WEAPON_DATA) do
+        local name = v['name']
+        local alias = WEAPON_DATA[i]['alias'][1]
+        local id = i
+        ExecuteWebJS(admin_ui, "BuildWeaponsSelect('"..name.."', "..id..");")
+    end
+end
+
 function GetPlayerList()
     CallRemoteEvent("GetAllPlayer")
 end
@@ -82,7 +102,6 @@ function SetPlayerList(players)
     for k, v in ipairs(players) do
         local id = k
         local name = v[1]
-        
         ExecuteWebJS(admin_ui, "BuildPlayerListSelect('"..name.."', "..id..");")
 	end
 
