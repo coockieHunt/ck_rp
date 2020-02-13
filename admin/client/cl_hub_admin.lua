@@ -94,6 +94,15 @@ function GetWeaponsList()
     end
 end
 
+function GetPresetPos()
+    for i, v in ipairs(WEAPON_DATA) do
+        local name = v['name']
+        local alias = WEAPON_DATA[i]['alias'][1]
+        local id = i
+        ExecuteWebJS(admin_ui, "BuildWeaponsSelect('"..name.."', "..id..");")
+    end
+end
+
 function GetPlayerList()
     CallRemoteEvent("GetAllPlayer")
 end
