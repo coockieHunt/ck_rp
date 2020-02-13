@@ -104,7 +104,7 @@ function admin_heal(player, num)
 	RefrechWarningSurvivalUi(player)
  end
 
- function admin_tp_to(player, x, y, z)
+ function admin_tp_to_pos(player, x, y, z)
  	 local msg = "teleport to x =" .. x ..", y= ".. y ..", z= " .. z
 	  AddAdminLog(player, msg)
 	  if (GetPlayerVehicleSeat(player) == 1) then
@@ -134,4 +134,11 @@ function admin_pos(player)
 	file = io.open("pos.txt", "a")
 	file:write(text, "\n")
 	file:close()
+end
+
+
+function admin_tp_to(main, to)
+	AddAdminLog(main, GetPlayerName(main).." tp to " .. GetPlayerName(to))
+	local x, y, z = GetPlayerLocation(to)
+	admin_tp_to_pos(main, x, y, z)
 end

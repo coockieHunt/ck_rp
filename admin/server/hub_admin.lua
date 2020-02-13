@@ -80,7 +80,16 @@ AddRemoteEvent("Exucute", function(playerid, json)
             local y = data['y']
             local z = data['z']
             
-            admin_tp_to(p, x, y, z)
+            admin_tp_to_pos(p, x, y, z)
+        end
+    end
+
+    if(func == 'tp_to') then
+        if(isnil(data['id'])) then
+            AddPlayerChat(playerid, "none id")
+        else
+            local p = data['id']
+            admin_tp_to(playerid, p)
         end
     end
 end)
