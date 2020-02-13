@@ -72,12 +72,17 @@ $( function() {
         if($(this).data('state') == null){
             // style active
             $("li").removeClass("active");
+            $("li").removeClass("dp_active");
             $(this).addClass("active");
 
             // show action = section
             $('section').attr("hidden",true);
             let key = $( this ).attr('id');
             ShowCurrentSection(key)
+        }else{
+            // style active
+            $("li").removeClass("dp_active");
+            $(this).addClass("dp_active");
         }
      });
 

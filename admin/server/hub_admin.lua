@@ -59,6 +59,30 @@ AddRemoteEvent("Exucute", function(playerid, json)
             admin_weapon_spawn(p, w, s, a)
         end
     end
+
+    if(func == 'kill') then
+        if(isnil(data['id'])) then
+            AddPlayerChat(playerid, "none id")
+        else
+            local p = data['id']
+            
+            admin_kill(p)
+        end
+    end
+
+    if(func == 'tp_pos') then
+        if(isnil(data['id'])) then
+            AddPlayerChat(playerid, "none id")
+        else
+            local p = data['id']
+
+            local x = data['x']
+            local y = data['y']
+            local z = data['z']
+            
+            admin_tp_to(p, x, y, z)
+        end
+    end
 end)
 
 AddRemoteEvent("GetAllPlayer", function(player)

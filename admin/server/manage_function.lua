@@ -104,6 +104,29 @@ function admin_heal(player, num)
 	RefrechWarningSurvivalUi(player)
  end
 
+ function admin_tp_to(player, x, y, z)
+ 	 local msg = "teleport to x =" .. x ..", y= ".. y ..", z= " .. z
+	  AddAdminLog(player, msg)
+	  if (GetPlayerVehicleSeat(player) == 1) then
+		local vehicle = GetPlayerVehicle(player)
+		SetVehicleLocation(vehicle, x, y, z + 30)
+		if (to[4] ~= -1.0) then
+		  SetVehicleHeading(vehicle, 0)
+		end
+	
+			SetVehicleLinearVelocity(vehicle, 0.0, 0.0, 0.0, true)
+			SetVehicleAngularVelocity(vehicle, 0.0, 0.0, 0.0, true)
+			local rx, ry, rz = GetVehicleRotation(vehicle)
+			SetVehicleRotation(vehicle, 0.0, ry, 0.0)
+		else
+			SetPlayerLocation(player, x, y, z + 30)
+			if (0 ~= -1.0) then
+				SetPlayerHeading(player, 0)
+			end
+		end
+
+ end
+
 function admin_pos(player)
 	AddAdminLog(player, " save pos")
 	local x, y, z = GetPlayerLocation(player)

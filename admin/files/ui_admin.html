@@ -26,15 +26,19 @@
             <div id="content">
                 <nav id="left_nav">
                     <li id="car">car</li>
-                    <li id="health">health</li>
-                    <li id="armor">armor</li>
+
                     <li id="clothing">clothing</li>
                     <li id="weapons">weapons</li>
-                    <li id="fun" class="dp" data-state="up">fun</li>
-                    <ul id="fun_dp">
-                        <li>test</li>
-                        <li>test</li>
-                        <li>test</li>
+                    <li id="survival" class="dp" data-state="up">survival</li>
+                    <ul id="survival_dp">
+                        <li id="health">health</li>
+                        <li id="armor">armor</li>
+                        <li id="kill">kill</li>
+                    </ul>
+                    <li id="tp" class="dp" data-state="up">teleport</li>
+                    <ul id="tp_dp">
+                        <li id="tp_preset">tp preset</li>
+                        <li id="tp_pos">tp pos</li>
                     </ul>
                 </nav>
                 <div id="action">
@@ -204,6 +208,38 @@
                                 </p>
                             </div>
                     </section>
+                     <!-- 
+                        kill
+                     -->
+                     <section id="kill">
+                        <div class="section-tobar">
+                            <h1>kill</h1>
+                        </div>
+                        <div class="section_content">
+                            <div class="left">
+                                <form action="">
+                                    <div class="input-group">
+                                        <h3>Option</h3>
+                                        <label for="id">target :</label>
+                                        <select name="id" class="PList" size="1">
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="right">
+                                <h1>kill player</h1>
+                                <p>
+                                    allows to kill.
+
+                                    <br><br>  
+
+                                    <span>option :</span>
+                                    <ul>
+                                        <li> - Target : <br> player to kill</li>
+                                    </ul>
+                                </p>
+                            </div>
+                    </section>
                     <!-- 
                         WEAPONS
                      -->
@@ -244,16 +280,63 @@
                                 </form>
                             </div>
                             <div class="right">
-                                <h1>clothing preset player</h1>
+                                <h1>weapons player</h1>
                                 <p>
-                                    allows to change clothing pre"set player.
+                                    allows to give weapon a player.
 
                                     <br><br>  
 
                                     <span>option :</span>
                                     <ul>
-                                        <li> - Target : <br> player to change clothing</li>
-                                        <li> - clothing preset : <br> preset id</li>
+                                        <li> - Target : <br> player to spawn weapon/li>
+                                        <li> - slot : <br> slot weapon give</li>
+                                        <li> - weapon : <br> weapons id</li>
+                                        <li> - ammo : <br> ammo number</li>
+                                    </ul>
+                                </p>
+                            </div>
+                    </section>
+
+                    <!-- 
+                        Teleport POS
+                     -->
+                     <section id="tp_pos">
+                        <div class="section-tobar">
+                            <h1>teleport position</h1>
+                        </div>
+                        <div class="section_content">
+                            <div class="left">
+                                <form action="">
+                                    <div class="input-group">
+                                        <h3>Option</h3>
+                                        <div class="form-inline">
+                                            <label for="id">target :</label>
+                                            <select name="id" class="PList" size="1">
+                                            </select>
+                                        </div>
+
+                                        <label for="x">x :</label>
+                                        <input type="text" name="x" value="-182821.953125">
+                                        <label for="y">y :</label>
+                                        <input type="text" name="y" value="-41680.37109375">
+                                        <label for="z">z :</label>
+                                        <input type="z" name="z" value="1148.1517333984">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="right">
+                                <h1>Teleport player to</h1>
+                                <p>
+                                    allows teleport player specific position.
+
+                                    <br><br>  
+
+                                    <span>option :</span>
+                                    <ul>
+                                        <li> - Target : <br> player to change position</li>
+                                        <li> - x : <br> x axis</li>
+                                        <li> - y : <br> y axis</li>
+                                        <li> - z : <br> z axis</li>
                                     </ul>
                                 </p>
                             </div>

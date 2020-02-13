@@ -107,10 +107,21 @@ h3::after{
 
 #content > #left_nav > ul > li{
     border-bottom: 1px solid white;
-    padding-left: 10px;
-    height: 24px;
+    padding-left: 15px;
+    padding-top: 5px;
     background-color: var(--main-black);
     list-style: none;
+    cursor: pointer;
+
+}
+
+#content > #left_nav > ul > li:focus {
+    outline: solid transparent;
+}
+
+#content > #left_nav > ul > li:hover{
+    background-color: var(--second-red);
+    cursor: pointer;
 }
 
 #content > #left_nav > li:after {
@@ -133,8 +144,12 @@ h3::after{
     cursor: pointer;
 }
 
-#content > #left_nav > .active{
-    background-color: var(--main-red);
+.active{
+    background-color: var(--main-red) !important ;
+}
+
+.dp_active{
+    background-color: var(--main-black) !important ;
 }
 
 #content > #action{
