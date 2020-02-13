@@ -2,12 +2,9 @@
 	"author": "coockie_hunt",
 	"version": "1.0",
 	"server_scripts": [
-		"utils/json.lua",
 		"utils/system.lua",
 
-        "importer/config.lua",
         "importer/server/importer.lua"
-
 	],
 	
 	"client_scripts": [

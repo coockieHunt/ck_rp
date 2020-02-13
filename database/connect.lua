@@ -5,7 +5,6 @@
 --]]
 
 
-config = importFile("database/config.lua")
 db = false
 
 -- Package events

@@ -2,6 +2,16 @@
 local importedFile = {}
 local importedPacakge= {}
 
+function import(filename)
+	if(importedFile[filename] == nil) then
+		local f = assert(loadfile("packages/ck_rp/"..filename))
+		importedFile[filename] = true
+		return f()
+	end
+end
+
+import("config.lua")
+
 
 function AddPackageLog(package, type)
 	local text = ""
@@ -17,17 +27,10 @@ function AddPackageLog(package, type)
 	file:close()
 end
 
-function import(filename)
-	if(importedFile[filename] == nil) then
-		local f = assert(loadfile("packages/ck_rp/"..filename))
-		importedFile[filename] = true
-		return f()
-	end
-end
+
 
 import("utils/system.lua")
 import("utils/json.lua")
-import("importer/config.lua")
 
 function importFile(filename)
 	import(filename)
@@ -41,9 +44,6 @@ function packagesImport(packageName)
 			if(config_pacakge:case("display_console")) then AddPackageLog(packageName, "package") end
 			package = "packages/ck_rp/"..packageName
 			local filesPacakge = GetFilesFolder(package)
-			if(has_value(filesPacakge, 'config.lua')) then
-				import(packageName.."/"..config_pacakge:case("config_file"))
-			end
 			if(has_value(filesPacakge, config_pacakge:case("server_folder"))) then
 				filesPacakgeServer = GetFilesFolder(package.."/"..config_pacakge:case("server_folder"))
 				for index, value in ipairs(filesPacakgeServer) do
