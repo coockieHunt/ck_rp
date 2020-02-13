@@ -5,9 +5,8 @@ $( function() {
         let dp_list = $(this).attr('id')
         $("#"+dp_list+"_dp").slideUp(200)
         $("#"+dp_list+"_dp").data('state', "up")
-      });
+    });
       
-
     $( ".dp" ).click(function() {
         let dp_list = $(this).attr('id')
         let state = $(this).data('state')
@@ -29,6 +28,4 @@ $( function() {
             $(".error_ha").remove()
         }
     });
-
-
 } );
