@@ -13,7 +13,7 @@ function OnPackageStart()
     print("::Onset developement server running")
     print("> Attempting to connect to MariaDB server ...")
 
-    db = mariadb_connect(mariadb.host, mariadb.user, mariadb.password, mariadb.database)
+    db = mariadb_connect(_Mariadb.host, _Mariadb.user, _Mariadb.password, _Mariadb.database)
     if(db ~= false) then
         print("> Successfully connected to MariaDB")
         mariadb_set_charset(db, "utf8mb4")

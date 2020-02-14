@@ -12,7 +12,7 @@ end
 function OnPlayerSpawn(playerid)
     CreateTimer(function(playerid)
         SaveAccountPlayer(playerid)
-	end, Config_other_account:case("save_time"), playerid)
+	end, _Save_profile.save_account_time, playerid)
 end
 AddEvent("OnPlayerSpawn", OnPlayerSpawn)
 
@@ -25,7 +25,7 @@ function SaveAccountPlayer(player)
         end
     end
 
-    local query = mariadb_prepare(db, Request_account:case("SaveAccount"),
+    local query = mariadb_prepare(db, _RequestSql.SaveAccount,
         Data.cash,
         Data.cash_account,
         Data.health,

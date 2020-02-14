@@ -12,7 +12,7 @@ function OnPlayerSteamAuth(player)
     if(steam_id == 0)then
         KickPlayer(player, "🚨 You are not connected steam 🚨")
     end
-	local query = mariadb_prepare(db, Request_account:case("IfplayerAccountExist"),
+	local query = mariadb_prepare(db, _RequestSql.IfplayerAccountExist,
         steam_id)
 
     mariadb_async_query(db, query, OnAccountConnect, player)
@@ -42,14 +42,14 @@ function CreatePlayerAccount(player)
     local player_name = GetPlayerName(player)
 
     print("[SERVER] create new account steam_id : " ..steam_id)
-    local query = mariadb_prepare(db,  Request_account:case("CreatePlayerAccount"),
-        new_player_admin,
+
+    local query = mariadb_prepare(db,  _RequestSql.CreatePlayerAccount,
         steam_id,
-        Config_new_account:case("health"),
-        Config_new_account:case("armor"),
+        _New_account.health,
+        _New_account.armor,
         player_name,
-        Config_new_account:case("cash"),
-        Config_new_account:case("cash_account")
+        _New_account.cash,
+        _New_account.cash_account
     )
 
     mariadb_query(db, query)
@@ -57,12 +57,12 @@ function CreatePlayerAccount(player)
 
 
     SetPlayerName(player, player_name)
-    SetPlayerHealth(player, new_player_health)
+    SetPlayerHealth(player, _New_account.health)
     SetPlayerArmor(player, new_player_armor)
 
     local client_id = GetPlayerBySteamId(steam_id)
 
-    createPlayerAcoount(client_id, id, 0, steam_id, new_player_health, new_player_armor, player_name, new_player_cash, new_player_cash_account)
+    createPlayerAcoount(client_id, id, 0, steam_id, _New_account.health, _New_account.armor, player_name, _New_account.cash, _New_account.cash_account)
 
 end
 
@@ -74,7 +74,8 @@ function LoadPlayerAccount(player)
 
     print("> Load player account ("..steam_id..") ")
 
-	local query = mariadb_prepare(db,  Request_account:case("GetPlayerAccount"),
+
+	local query = mariadb_prepare(db,  _RequestSql.GetPlayerAccount,
         steam_id)
 
 	mariadb_async_query(db, query, OnAccountLoaded, player)
@@ -139,4 +140,3 @@ function DestroyPlayerData(player)
         end
     end
 end
-

@@ -22,7 +22,7 @@ function AddPackageLog(package, type)
 
 	print("-- " .. text)
 	
-    file = io.open(config_pacakge:case("log_file"), "a")
+    file = io.open(_Pacakge.log_file, "a")
 	file:write("[pacakge] (".. time..") - "..package, "\n")
 	file:close()
 end
@@ -34,20 +34,20 @@ import("utils/json.lua")
 
 function importFile(filename)
 	import(filename)
-	if(config_pacakge:case("display_console")) then AddPackageLog(filename, "file") end
+	if(_Pacakge.display_console) then AddPackageLog(filename, "file") end
 end	
 
 function packagesImport(packageName)
-	if(importedPacakge[packageName] == nil) then
+	if(_Import_packag == nil) then
 		local package = false
 		if(FolderExist("packages/ck_rp/"..packageName)) then
-			if(config_pacakge:case("display_console")) then AddPackageLog(packageName, "package") end
+			if(_Pacakge.display_console) then AddPackageLog(packageName, "package") end
 			package = "packages/ck_rp/"..packageName
 			local filesPacakge = GetFilesFolder(package)
-			if(has_value(filesPacakge, config_pacakge:case("server_folder"))) then
-				filesPacakgeServer = GetFilesFolder(package.."/"..config_pacakge:case("server_folder"))
+			if(has_value(filesPacakge, _Pacakge.server_folder)) then
+				filesPacakgeServer = GetFilesFolder(package.."/".._Pacakge.server_folder)
 				for index, value in ipairs(filesPacakgeServer) do
-					import(packageName.."/"..config_pacakge:case("server_folder").."/"..value)
+					import(packageName.."/".._Pacakge.server_folder.."/"..value)
 				end
 			end
 						
@@ -56,9 +56,8 @@ function packagesImport(packageName)
 end
 
 function OnPackageStart()
-	local table = import_package:case("package")
-	for index, value in ipairs(table) do
-		packagesImport(value)
+	for i, v in ipairs (_Import_package) do
+		packagesImport(v)
 	end
 end
 AddEvent("OnPackageStart", OnPackageStart)

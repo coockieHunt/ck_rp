@@ -4,7 +4,7 @@ function AddAdminLog(player, msg)
     print(". " .. text)
     LogPlayerChat(player, "ok", "admin", msg)
 
-    file = io.open(config_log_file:case("folder").."/"..config_log_file:case("admin"), "a")
+    file = io.open(_Log_file.folder.."/".._Log_file.admin, "a")
 	file:write(text, "\n")
 	file:close()
 end
@@ -15,19 +15,19 @@ function AddLoginLog(player)
 
     print(". " .. text)
 
-    file = io.open(config_log_file:case("folder").."/"..config_log_file:case("login"), "a")
+    file = io.open(_Log_file.folder.."/".._Log_file.login, "a")
 	file:write(text, "\n")
 	file:close()
 end
 
 function LogPlayerChat(player, color, type, message)
-    local hex = config_log_color:case(color)
+    local hex = _Log_color[color]
     if(isnil(hex)) then hex = color end
     AddPlayerChat(player, ('<span color="#%s">[%s] </>%s'):format(hex, type, message))
 end
 
 function LogPlayerChatAll(player, color, type, message)
-    local hex = config_log_color:case(color)
+    local hex = _Log_color[color]
     if(isnil(hex)) then hex = color end
     AddPlayerChat(player, ('<span color="#%s">[%s] </>%s'):format(hex, type, message))
 end
@@ -40,7 +40,7 @@ function LogCommandeChat(player, cmd, exists)
         LogPlayerChat(player, 'warning', "cmd", "Command '/"..cmd.."' not found!")
 	end
 
-    file = io.open(config_log_file:case("folder").."/"..config_log_file:case("commande"), "a")
+    file = io.open(_Log_file.folder.."/".._Log_file.folder, "a")
 	file:write(text, "\n")
 	file:close()
 end
