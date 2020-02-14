@@ -100,7 +100,7 @@ end
 ---- Manage account list
 --add
 function createPlayerAcoount(client_id, id, admin, steamId, health, armor, name, cash, cash_account)
-    
+    if(isnil(admin)) then admin = 0 end
     local p = playerData.ClassPlayer.new(
         {
             ["id"] = id,
