@@ -26,6 +26,6 @@ dictateurfou - https://github.com/dictateurfou/importer
         ],
 
 
-6. edit config.lua *"yourserveronset\packages\database"*
+6. edit config.lua *"yourserveronset\packages\ck_rp\config"*
 7. enjoy
 
