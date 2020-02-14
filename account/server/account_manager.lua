@@ -1,11 +1,12 @@
 ---- get player info
 function getplayer(player)
     local steam_id = tostring(GetPlayerSteamId(player))
-    for key, valeu in pairs(playerData) do
-        if(valeu.steamId == steam_id) then
-            return valeu
+    for key, value in pairs(playerData) do
+        if(value.steamId == steam_id) then
+            return value
         end
     end
+    return KickPlayer(player, "😨 An error occured while loading your account 😨 (EC 003)")
 end
 
 ---- sav

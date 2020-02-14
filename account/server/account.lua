@@ -10,7 +10,7 @@ function OnPlayerSteamAuth(player)
     local steam_id = tostring(GetPlayerSteamId(player))
     
     if(steam_id == 0)then
-        KickPlayer(player, "🚨 You are not connected steam 🚨")
+        KickPlayer(player, "🚨 You are not connected steam 🚨 (EC 001)")
     end
 	local query = mariadb_prepare(db, _RequestSql.IfplayerAccountExist,
         steam_id)
@@ -41,7 +41,7 @@ function CreatePlayerAccount(player)
     local steam_id = tostring(GetPlayerSteamId(player))
     local player_name = GetPlayerName(player)
 
-    print("[SERVER] create new account steam_id : " ..steam_id)
+    print("> create new account ("..steam_id..")")
 
     local query = mariadb_prepare(db,  _RequestSql.CreatePlayerAccount,
         steam_id,
@@ -53,17 +53,8 @@ function CreatePlayerAccount(player)
     )
 
     mariadb_query(db, query)
-    local id = mariadb_get_insert_id()
 
-
-    SetPlayerName(player, player_name)
-    SetPlayerHealth(player, _New_account.health)
-    SetPlayerArmor(player, new_player_armor)
-
-    local client_id = GetPlayerBySteamId(steam_id)
-
-    createPlayerAcoount(client_id, id, 0, steam_id, _New_account.health, _New_account.armor, player_name, _New_account.cash, _New_account.cash_account)
-
+    LoadPlayerAccount(player)
 end
 
 -- load account
@@ -83,7 +74,7 @@ end
 
 function OnAccountLoaded(player)
     if (mariadb_get_row_count() == 0) then
-		KickPlayer(player, "😨 An error occured while loading your account 😨")
+		KickPlayer(player, "😨 An error occured while loading your account 😨 (EC 002)")
     else
         local steam_id = tostring(GetPlayerSteamId(player))
         local player_name = GetPlayerName(player)
