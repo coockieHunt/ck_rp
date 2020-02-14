@@ -51,6 +51,11 @@ select {
     height: 25px;
 }
 
+.dp_icon{
+  float: right;
+  margin-right: 30;
+}
+
 
 /* Style the form - display items horizontally */
 .form-inline {
