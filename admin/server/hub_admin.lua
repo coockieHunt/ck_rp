@@ -21,8 +21,9 @@ AddRemoteEvent("Exucute", function(playerid, json)
             AddPlayerChat(playerid, "none id")
         else
             local h = data['health']
+            local t = data['id']
             
-            admin_heal(playerid, h)
+            admin_heal(playerid, t, h)
         end
     end
 
@@ -31,8 +32,9 @@ AddRemoteEvent("Exucute", function(playerid, json)
             AddPlayerChat(playerid, "none id")
         else
             local a = data['armor']
+            local t = data['id']
             
-            admin_armor(playerid, a)
+            admin_armor(playerid,t ,a)
         end
     end
 
@@ -66,7 +68,7 @@ AddRemoteEvent("Exucute", function(playerid, json)
         else
             local p = data['id']
             
-            admin_kill(p)
+            admin_kill(playerid, p)
         end
     end
 
