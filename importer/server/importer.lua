@@ -12,7 +12,6 @@ end
 
 import("config.lua")
 
-
 function AddPackageLog(package, type)
 	local text = ""
     local time = GetSystemTime()
@@ -26,8 +25,6 @@ function AddPackageLog(package, type)
 	file:write("[pacakge] (".. time..") - "..package, "\n")
 	file:close()
 end
-
-
 
 import("utils/system.lua")
 import("utils/json.lua")
