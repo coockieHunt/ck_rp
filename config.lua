@@ -19,12 +19,12 @@ _New_account = {
   cash_account = 15000,
   health = 100,
   armor = 50
-}
+};
 
 _Init_player = {
   location = {x = -182821.000000, z = -41675.000000, y = 1160.000000, h = -90},
   clothing_preset = 1
-}
+};
 
 -- FETCH
 _Save_profile = {
@@ -45,8 +45,9 @@ _Import_package = {
     "account",
     "hub",
     "admin",
+    "utils",
     "cmd"
-}
+};
 
 -- LOG
 _Log_color = {
@@ -54,11 +55,13 @@ _Log_color = {
   ['warning'] = "E5B100",
   ['info'] = "0438CE",
   ['ok'] = "10CE04"
-}
+};
 
 _Log_file = {
   folder = "logs",
   admin = "log_admin.txt",
   login = "log_login.txt",
   commande = "log_commande.txt"
-}
+};
+
+
