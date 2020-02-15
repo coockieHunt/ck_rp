@@ -11,7 +11,7 @@ function OpenUIAdmin()
         SetWebVisibility(admin_ui, WEB_VISIBLE)
         CloseUISurvival_warn()
         
-        BuildSelect()
+        BuildSelect(admin_ui)
     end
 end
 
@@ -25,14 +25,14 @@ function CloseUIAdmin()
 end
 
 -- package manager
-function OnPackageStart()
+function OnPlayerSpawn()
     admin_ui = CreateWebUI(0, 0, 0, 0, 1, 60)
     LoadWebFile(admin_ui,'http://asset/' .. GetPackageName() .. '/admin/files/ui_admin.html')
     SetWebAlignment(admin_ui, 0.0, 0.0)
     SetWebAnchors(admin_ui, 0.0, 0.0, 1.0, 1.0)
     SetWebVisibility(admin_ui, WEB_HIDDEN)
 end
-AddEvent("OnPackageStart", OnPackageStart)
+AddEvent("OnPlayerSpawn", OnPlayerSpawn)
 
 -- key
 AddEvent("OnKeyPress", function(key)
@@ -46,7 +46,7 @@ AddEvent("OnKeyPress", function(key)
 end)
 
 -- call ui
-function CallExecute(rslt)
+function CallExecute(rslt)    
     CallRemoteEvent("Exucute", rslt)
     CloseUIAdmin()
 end
@@ -58,63 +58,6 @@ end
 AddEvent("CallClose", CallClose)
 
 
--- Get List build select form
-function BuildSelect()
-    GetCarList()
-    GetPlayerList()
-    GetClothingPresetList()
-    GetWeaponsList()
-end
 
-function GetCarList()
-    for i, v in ipairs(VEHICLE_DATA) do
-        local name = v['name']
-        local alias = VEHICLE_DATA[i]['alias'][1]
-        local id = i
-        ExecuteWebJS(admin_ui, "BuildVehicleSelect('"..name.."', "..id..");")
-    end
-end
-
-
-function GetClothingPresetList()
-    for i, v in ipairs(CLOTHING_PRESET_DATA) do
-        local name = v['name']
-        local alias = CLOTHING_PRESET_DATA[i]['alias'][1]
-        local id = i
-        ExecuteWebJS(admin_ui, "BuildClothingPresetSelect('"..name.."', "..id..");")
-    end
-end
-
-function GetWeaponsList()
-    for i, v in ipairs(WEAPON_DATA) do
-        local name = v['name']
-        local alias = WEAPON_DATA[i]['alias'][1]
-        local id = i
-        ExecuteWebJS(admin_ui, "BuildWeaponsSelect('"..name.."', "..id..");")
-    end
-end
-
-function GetPresetPos()
-    for i, v in ipairs(WEAPON_DATA) do
-        local name = v['name']
-        local alias = WEAPON_DATA[i]['alias'][1]
-        local id = i
-        ExecuteWebJS(admin_ui, "BuildWeaponsSelect('"..name.."', "..id..");")
-    end
-end
-
-function GetPlayerList()
-    CallRemoteEvent("GetAllPlayer")
-end
-
-function SetPlayerList(players)
-    for k, v in ipairs(players) do
-        local id = k
-        local name = v[1]
-        ExecuteWebJS(admin_ui, "BuildPlayerListSelect('"..name.."', "..id..");")
-	end
-
-end
-AddRemoteEvent("SetPlayerList", SetPlayerList)
 
 

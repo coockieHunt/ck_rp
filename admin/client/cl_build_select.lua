@@ -1,0 +1,65 @@
+local web_ui
+
+function BuildSelect(ui)
+    web_ui = ui
+    
+    GetCarList()
+    GetPlayerList()
+    GetClothingPresetList()
+    GetWeaponsList()
+    GetTpList()
+end
+
+-- car list
+function GetCarList()
+    for i, v in ipairs(VEHICLE_DATA) do
+        local name = v['name']
+        local alias = VEHICLE_DATA[i]['alias'][1]
+        local id = i
+        ExecuteWebJS(web_ui, "BuildVehicleSelect('"..name.."', "..id..");")
+    end
+end
+
+--clothing preset list
+function GetClothingPresetList()
+    for i, v in ipairs(CLOTHING_PRESET_DATA) do
+        local name = v['name']
+        local alias = CLOTHING_PRESET_DATA[i]['alias'][1]
+        local id = i
+        ExecuteWebJS(web_ui, "BuildClothingPresetSelect('"..name.."', "..id..");")
+    end
+end
+
+--Weapon list
+function GetWeaponsList()
+    for i, v in ipairs(WEAPON_DATA) do
+        local name = v['name']
+        local id = i
+        ExecuteWebJS(web_ui, "BuildWeaponsSelect('"..name.."', "..id..");")
+    end
+end
+
+function GetPlayerList(ui)
+    CallRemoteEvent("GetAllPlayer", ui)
+end
+
+-- Player list
+function SetPlayerList(playersList)
+    for k, v in ipairs(playersList) do
+        local id = k
+        local name = v[1]
+        ExecuteWebJS(web_ui, "BuildPlayerListSelect('"..name.."', "..id..");")
+	end
+
+end
+AddRemoteEvent("SetPlayerList", SetPlayerList)
+
+-- tp list
+function GetTpList(ui)
+    local i = 0
+    for k, v in ipairs(POS_PRESET_DATA) do
+        i = i + 1
+        local name = v['name']
+        ExecuteWebJS(web_ui, "BuildPresetPosSelect('"..name.."', '"..i.."');")
+	end
+end
