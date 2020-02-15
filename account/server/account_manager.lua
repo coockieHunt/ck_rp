@@ -1,6 +1,6 @@
 ---- get player info
 function getplayer(player)
-    local steam_id = tostring(GetPlayerSteamId(player))
+    local steam_id = tostring(GetPlayerSteamId(tonumber(player)))
     for key, value in pairs(playerData) do
         if(value.steamId == steam_id) then
             return value
