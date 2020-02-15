@@ -17,7 +17,6 @@ $( function() {
             $(this).data('state', "down")
             $("#"+dp_list+"_dp").slideDown(200)
             img.attr('src', '../../files_client/web/src/img/arrow_up.png');
-            console.log(img)
         }else{
             $(this).data('state', "up")
             $("#"+dp_list+"_dp").slideUp(200)
