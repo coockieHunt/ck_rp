@@ -37,8 +37,9 @@
                     </ul>
                     <li id="tp" class="dp" data-state="up">teleport</li>
                     <ul id="tp_dp">
-                        <li id="tp_pos">tp pos</li>
-                        <li id="tp_to">tp to</li>
+                        <li id="tp_pos">teleport xyz</li>
+                        <li id="tp_to">teleport to player</li>
+                        <li id="tp_preset">teleport to preset</li>
                     </ul>
                 </nav>
                 <div id="action">
@@ -373,6 +374,47 @@
                                     <span>option :</span>
                                     <ul>
                                         <li> - Target : <br> player we want to teleport us/li>
+                                    </ul>
+                                </p>
+                            </div>
+                    </section>
+                     <!-- 
+                        Teleport prest
+                     -->
+                     <section id="tp_preset">
+                        <div class="section-tobar">
+                            <h1>teleport preset</h1>
+                        </div>
+                        <div class="section_content">
+                            <div class="left">
+                                <form action="">
+                                    <div class="input-group">
+                                        <h3>Option</h3>
+                                        <div class="form-inline">
+                                            <label for="id">target :</label>
+                                            <select name="id" class="PList" size="1">
+                                            </select>
+                                        </div>
+
+                                        <div class="form-inline">
+                                            <label for="preset_id">preset :</label>
+                                            <select name="preset_id" class="PPist" size="1">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="right">
+                                <h1>Teleport to preset</h1>
+                                <p>
+                                    
+                                    teleport to pre-configure position
+
+                                    <br><br>  
+
+                                    <span>option :</span>
+                                    <ul>
+                                        <li> - preset : <br> preset where you want to teleport </li>
                                     </ul>
                                 </p>
                             </div>

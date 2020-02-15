@@ -167,3 +167,19 @@ function admin_tp_to(main, to)
 		admin_tp_to_pos(main, x, y, z)
 	end
 end
+
+function get_admin_tp_preset_pos(player, target, dest)
+	local level = 1
+
+	if(AdminLevel(player, level)) then
+		local pos = tonumber(dest)
+		if(isnil(pos)) then pos = dest end
+
+		CallRemoteEvent(target, "GetPosByName", pos, player, target)
+	end
+end
+
+AddRemoteEvent("admin_tp_preset_pos", function(player, target, x, y, z, h)
+	local msg = "teleport to x =" .. x ..", y= ".. y ..", z= " .. z
+    admin_tp_to_pos(target, x, y, z)
+end)

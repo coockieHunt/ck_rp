@@ -91,9 +91,17 @@ AddCommand("tpPos", cmd_admin_tpPos)
 
 --tp to player
 function cmd_admin_tpTo(main, to)
-    if(isnil(main) or isnil(to)) then return AddPlayerChat(player, "Usage: /tpto <main> -> <to> ") end
+    if(isnil(main) or isnil(to)) then return AddPlayerChat(player, "Usage: /tpto <main> -} <to> ") end
 
     admin_tp_to(main, to)
 end
 AddCommand('tpTo', cmd_admin_tpTo)
+
+--tp to prest pos
+function cmd_admin_tp_preset(player, dest)
+    if(isnil(dest)) then return AddPlayerChat(player, "Usage: /tp <pos preset> ") end
+
+    admin_tp_preset_pos(player, dest)
+end
+AddCommand('tp', cmd_admin_tp_preset)
  

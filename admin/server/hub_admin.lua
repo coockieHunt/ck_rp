@@ -94,6 +94,17 @@ AddRemoteEvent("Exucute", function(playerid, json)
             admin_tp_to(playerid, p)
         end
     end
+
+    if(func == 'tp_preset') then
+        if(isnil(data['id'])) then
+            AddPlayerChat(playerid, "none id")
+        else
+            local t = data['id']
+            local pd = data['preset_id']
+
+            get_admin_tp_preset_pos(playerid, t, pd)
+        end
+    end
 end)
 
 AddRemoteEvent("GetAllPlayer", function(player)
@@ -107,3 +118,4 @@ AddRemoteEvent("GetAllPlayer", function(player)
 	
 	CallRemoteEvent(player, "SetPlayerList", PlayerTable)
 end)
+

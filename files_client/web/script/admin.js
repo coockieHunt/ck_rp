@@ -53,13 +53,21 @@ function BuildWeaponsSelect(text, value){
     }
 }
 
+function BuildPresetPosSelect(text, value){
+    if ( $( ".PPist" ).length ) {
+        let count = $(".PPist option[value='" + value + "']").length
+        if(count == 0){
+            $('.PPist').append(new Option(text, value))
+        }
+    }
+}
+
 $( function() {
     //hide all section
     $('section').attr("hidden",true);
 
     //visible first section
     ShowFirstSection()
-  
     //draggable windows
     $("#window").draggable({
         opacity: 0.25,
@@ -104,7 +112,6 @@ $( function() {
             }
         });
 
-        console.log(obj)
         let ParsetJs = JSON.stringify(obj);
         CallEvent("CallExecute", ParsetJs);
     });
