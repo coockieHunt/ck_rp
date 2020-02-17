@@ -180,6 +180,5 @@ function get_admin_tp_preset_pos(player, target, dest)
 end
 
 AddRemoteEvent("admin_tp_preset_pos", function(player, target, x, y, z, h)
-	local msg = "teleport to x =" .. x ..", y= ".. y ..", z= " .. z
     admin_tp_to_pos(target, x, y, z)
 end)
