@@ -15,8 +15,8 @@
 
 		"cmd/client/cl_client.lua",
 		
-		"hub/client/cl_hub_survival.lua",
-		"hub/client/cl_hub_warning_survival.lua",
+		"survival/client/cl_hub_survival.lua",
+		"survival/client/cl_hub_warning_survival.lua",
 		
 		"init/client/cl_init.lua",
 		"init/client/cl_weapons.lua",
@@ -59,9 +59,9 @@
 		"files_client/web/script/jscolor.js",
 		"files_client/web/script/form.js",
 
-		"hub/files/ui_loading_fullscreen.html",
-		"hub/files/ui_survival.html", 
-		"hub/files/ui_warning_survival.html",
+		"survival/files/ui_loading_fullscreen.html",
+		"survival/files/ui_survival.html", 
+		"survival/files/ui_warning_survival.html",
 		"admin/files/ui_admin.html"
 	]
 }

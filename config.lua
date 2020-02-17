@@ -43,7 +43,7 @@ _Import_package = {
     "data",
     "init",
     "account",
-    "hub",
+    "survival",
     "admin",
     "utils",
     "cmd"
