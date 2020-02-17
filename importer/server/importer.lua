@@ -12,42 +12,47 @@ end
 
 import("config.lua")
 
-function AddPackageLog(package, type)
-	local text = ""
-    local time = GetSystemTime()
+function AddPackageLog(package, type, bool)
+	local text
+	local log_file_text
+	local time = GetSystemTime()
 
-	if(type == "package") then text = "loadead package : "..package end
-	if(type == "file") then text = "loadead script : "..package end
+	if(bool) then
+		if(type == "package") then text = "loadead package : "..package end
+		if(type == "file") then text = "loadead script : "..package end
+		log_file_text = "[pacakge] (".. time..") - "..package
+	else
+		if(type == "package") then text = " /!\\ package not found : "..package end
+		if(type == "file") then text = "/!\\ script not found : "..package end
+		log_file_text = "[pacakge] (".. time..") - /!\\ "..package.." not found"
+		ServerExit("error loading server file")
+	end
 
 	print("-- " .. text)
 	
     file = io.open(_Pacakge.log_file, "a")
-	file:write("[pacakge] (".. time..") - "..package, "\n")
+	file:write(log_file_text, "\n")
 	file:close()
 end
 
 import("utils/system.lua")
 import("utils/json.lua")
 
-function importFile(filename)
-	import(filename)
-	if(_Pacakge.display_console) then AddPackageLog(filename, "file") end
-end	
-
 function packagesImport(packageName)
 	if(_Import_packag == nil) then
 		local package = false
-		if(FolderExist("packages/ck_rp/"..packageName)) then
-			if(_Pacakge.display_console) then AddPackageLog(packageName, "package") end
-			package = "packages/ck_rp/"..packageName
-			local filesPacakge = GetFilesFolder(package)
+		local folder = "packages/ck_rp/"..packageName
+		if(FolderExist(folder)) then
+			if(_Pacakge.display_console) then AddPackageLog(packageName, "package", true) end
+			local filesPacakge = GetFilesFolder(folder)
 			if(has_value(filesPacakge, _Pacakge.server_folder)) then
-				filesPacakgeServer = GetFilesFolder(package.."/".._Pacakge.server_folder)
+				filesPacakgeServer = GetFilesFolder(folder.."/".._Pacakge.server_folder)
 				for index, value in ipairs(filesPacakgeServer) do
 					import(packageName.."/".._Pacakge.server_folder.."/"..value)
 				end
 			end
-						
+		else
+			if(_Pacakge.display_console) then AddPackageLog(packageName, "package", false) end
 		end
 	end
 end
