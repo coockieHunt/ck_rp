@@ -6,6 +6,7 @@ privacy package rp coockie
 
 ### special thank
 dictateurfou - https://github.com/dictateurfou/importer
+vugi99 - https://github.com/vugi99/onset-drift
 
 ### guide
 - game officiel doc : https://dev.playonset.com/wiki/Main_Page

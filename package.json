@@ -21,6 +21,8 @@
 		"init/client/cl_init.lua",
 		"init/client/cl_weapons.lua",
 
+		"car/client/cl_fixCar.lua",
+
 		"data/client/cl_listing.lua",
 		"data/client/cl_vehicles.lua",
 		"data/client/cl_tpPreset.lua",
