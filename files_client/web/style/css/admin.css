@@ -1,15 +1,3 @@
-:root {
-    --main-black: #000000;
-    --second-black: #43515E;
-
-    --gray-light: #54636E;
-    --gray-mid:rgb(57, 69, 80);
-    --gray-dark:#43515E;
-
-    --red-dark : #ab3842;
-    --red-light : #bf360c;
-}
-
 #window{
     background-color: var( --gray-dark);
     height: 70%;

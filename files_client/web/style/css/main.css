@@ -1,26 +1,18 @@
-*{margin:0;padding:0;}
-@font-face {font-family: "roboto";src: url("../../src/font/Roboto-Regular.ttf");}
-body{ font-family: "roboto", serif; color: white; height: 100%;}
-html, body {
-  height: 100%;
-  margin: 0;
-}
-.wrapper {
-  min-height: 100%; 
-}
-.centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
+:root {
+  --main-black: #000000;
+  --second-black: #43515E;
+
+  --gray-light: #54636E;
+  --gray-mid:rgb(57, 69, 80);
+  --gray-dark:#43515E;
+
+  --red-dark : #ab3842;
+  --red-light : #bf360c;
 }
 
-.blur{
-  background-color: black;
-  opacity: 60%;
-  filter: blur(100px);
-}
+*{margin:0;padding:0; font-family: "roboto", serif; color: white;  }
+html, body {height: 100%;}
+@font-face {font-family: "roboto";src: url("../../src/font/Roboto-Regular.ttf");}
 
 .overlay {
     position: fixed;
@@ -29,10 +21,6 @@ html, body {
     left: 0;
     top: 0;
     z-index: -999; 
-}
-
-.hide{
-  opacity: 0%!important;
 }
 
 .progress{
@@ -64,17 +52,14 @@ html, body {
   width: 20px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   border: 1px solid #4e4e4e;
 }
  
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background:var(--red-dark)
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background:var(--red-light)
 }
