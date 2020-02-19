@@ -12,9 +12,8 @@
 
 		"admin/client/cl_hub_admin.lua",
 		"admin/client/cl_build_select.lua",
+		"admin/client/cl_manage_function.lua",
 
-		"cmd/client/cl_client.lua",
-		
 		"survival/client/cl_hub_survival.lua",
 		"survival/client/cl_hub_warning_survival.lua",
 		

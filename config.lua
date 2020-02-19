@@ -46,8 +46,7 @@ _Import_package = {
     "survival",
     "admin",
     "utils",
-    "cop",
-    "cmd"
+    "cop"
 };
 
 -- LOG
