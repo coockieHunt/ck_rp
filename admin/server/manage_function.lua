@@ -161,7 +161,7 @@ end
 function admin_tp_to(main, to)
 	local level = 1
 
-	if(AdminLevel(player, level)) then
+	if(AdminLevel(main, level)) then
 		AddAdminLog(main, GetPlayerName(main).." tp to " .. GetPlayerName(to))
 		local x, y, z = GetPlayerLocation(to)
 		admin_tp_to_pos(main, x, y, z)

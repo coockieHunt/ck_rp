@@ -71,10 +71,10 @@ html, body {
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #941214; 
+  background:var(--red-dark)
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background:#941214; 
+  background:var(--red-light)
 }

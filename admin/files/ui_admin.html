@@ -1,430 +1,314 @@
 <html>
     <head>
+
+        
+        <script type="text/javascript" src="../../files_client/web/script/libs/jquery.js"></script>
+        <script type="text/javascript" src="../../files_client/web/script/libs/jquery-ui.js"></script>
+        <script type="text/javascript" src="../../files_client/web/script/libs/stringify.js"></script>
+        <script type="text/javascript" src="../../files_client/web/script/game/eu.js"></script>
+
+
+
         <link rel="stylesheet" type="text/css" href="../../files_client/web/style/css/form.css">
         <link rel="stylesheet" type="text/css" href="../../files_client/web/style/css/main.css">
         <link rel="stylesheet" type="text/css" href="../../files_client/web/style/css/admin.css">
         <link rel="stylesheet" type="text/css" href="../../files_client/web/style/css/jquery-ui.css">
-        <script type="text/javascript" src="../../files_client/web/script/jquery.js"></script>
-        <script type="text/javascript" src="../../files_client/web/script/eu.js"></script>
-        <script type="text/javascript" src="../../files_client/web/script/jquery-ui.js"></script>
-        <script type="text/javascript" src="../../files_client/web/script/stringify.js"></script>
-        <script type="text/javascript" src="../../files_client/web/script/admin.js"></script>
-        <script type="text/javascript" src="../../files_client/web/script/jscolor.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../files_client/web/style/css/spectrum.css">
+
+        <script>
+        
+            </script>
     </head>
     <body>
         <div id="window" class="center-screen">
             <div id="top_bar">
-                <div class="right">
-                    <div id="close">
-                        <img src="../../files_client/web/src/img/close.png" class="icon">
-                    </div> 
-                </div>
-                <div class="left">
-                    <p>Admin menu | v 1.0</p>
-                </div>
-            </div>
+                <img src="../../files_client/web/src/img/close.png" class="icon">
+            </div> 
             <div id="content">
-                <nav id="left_nav">
-                    <li id="car">car</li>
-
-                    <li id="clothing">clothing</li>
-                    <li id="weapons">weapons</li>
-                    <li id="survival" class="dp" data-state="up">survival</li>
-                    <ul id="survival_dp">
-                        <li id="health">health</li>
-                        <li id="armor">armor</li>
-                        <li id="kill">kill</li>
-                    </ul>
-                    <li id="tp" class="dp" data-state="up">teleport</li>
-                    <ul id="tp_dp">
-                        <li id="tp_pos">teleport xyz</li>
-                        <li id="tp_to">teleport to player</li>
-                        <li id="tp_preset">teleport to preset</li>
-                    </ul>
-                </nav>
-                <div id="action">
-                    <!-- 
-                        CAR
-                     -->
-                    <section id="car">
-                        <div class="section-tobar">
-                            <h1>car</h1>
-                        </div>
-                        <div class="section_content">
-                            <div class="left">
-                                <form action="">
-                                    <div class="input-group">
-                                        <h3>spawn</h3>
-                                        <div class="form-inline">
-                                            <label for="id">id :</label>
-                                            <select name="id" class="VList" size="1">
-                                            </select>
-    
-                                            <label for="color" >color : </label>
-                                            <input class="jscolor" name="color" value="000000">
-                                        </div>
-                                        
-                                        <h3>Option</h3>
-                                        <div class="form-inline">
-                                            <label for="autopilote" class="label-l" >Ride in pilot : </label>
-                                            <input type="checkbox" name="autopilote" checked>
-                                        </div>
-                                        
-                                        <div class="form-inline">
-                                            <label for="boost" class="label-l" >equipped with nitro : </label>
-                                            <input type="checkbox" name="boost" checked>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="right">
-                                <h1>Spawning car</h1>
-                                <p>
-                                    allows to display a car, which will not be permanent.
-
-                                    <br><br>  
-
-                                    <span>option :</span>
-                                    <ul>
-                                        <li> - Ride in pilot : <br> automatically teleport as a pilot</li>
-                                        <li> - equipped with nitro : <br> Equipped with the default TAB nitro vehicle</li>
-                                    </ul>
-
-                                    <br><br>  
-
-                                    <span>warning :</span>
-                                       <p> the car created does not belong to the RP will therefore not be registered, in addition it has a special license plate to properly identify it</p>
-                                </p>
-                            </div>
-                    </section>
-
-                    <!-- 
-                        health
-                     -->
-                     <section id="health">
-                        <div class="section-tobar">
-                            <h1>health</h1>
-                        </div>
-                        <div class="section_content">
-                            <div class="left">
-                                <form action="">
-                                    <div class="input-group">
-                                        <h3>Option</h3>
-                                        <div class="form-inline">
-                                            <label for="id">player :</label>
-                                            <select name="id" class="PList" size="1">
-                                            </select>
-                                        </div>
-
-                                        <label for="health">health :</label>
-                                        <input class="ha" type="text" name="health" required minlength="1" maxlength="3" value=100 placeholder="0-100">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="right">
-                                <h1>Healt player</h1>
-                                <p>
-                                    allows to change player heal.
-
-                                    <br><br>  
-
-                                    <span>option :</span>
-                                    <ul>
-                                        <li> - Target : <br> player to set health</li>
-                                    </ul>
-                                </p>
-                            </div>
-                    </section>
-                    <!-- 
-                        ARMOR
-                     -->
-                    <section id="armor">
-                        <div class="section-tobar">
-                            <h1>armor</h1>
-                        </div>
-                        <div class="section_content">
-                            <div class="left">
-                                <form action="">
-                                    <div class="input-group">
-                                        <h3>Option</h3>
-                                        <div class="form-inline">
-                                            <label for="id">player :</label>
-                                            <select name="id" class="PList" size="1">
-                                            </select>
-                                        </div>
-
-                                        <label for="armor">armor :</label>
-                                        <input class="ha" type="text" name="armor" required minlength="1" maxlength="3" value=100 placeholder="0-100">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="right">
-                                <h1>Armor player</h1>
-                                <p>
-                                    allows to change armor player.
-
-                                    <br><br>  
-
-                                    <span>option :</span>
-                                    <ul>
-                                        <li> - Target : <br> player to set armor</li>
-                                    </ul>
-                                </p>
-                            </div>
-                    </section>
-                     <!-- 
-                        CLOTHING
-                     -->
-                     <section id="clothing">
-                        <div class="section-tobar">
-                            <h1>clothing</h1>
-                        </div>
-                        <div class="section_content">
-                            <div class="left">
-                                <form action="">
-                                    <div class="input-group">
-                                        <h3>Option</h3>
-                                        <label for="id">target :</label>
-                                        <select name="id" class="PList" size="1">
-                                        </select>
-
-                                        <label for="clothingPreset">clothing preset :</label>
-                                        <select name="clothingPreset" class="CPList" size="1">
-                                        </select>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="right">
-                                <h1>clothing preset player</h1>
-                                <p>
-                                    allows to change clothing pre"set player.
-
-                                    <br><br>  
-
-                                    <span>option :</span>
-                                    <ul>
-                                        <li> - Target : <br> player to change clothing</li>
-                                        <li> - clothing preset : <br> preset id</li>
-                                    </ul>
-                                </p>
-                            </div>
-                    </section>
-                     <!-- 
-                        kill
-                     -->
-                     <section id="kill">
-                        <div class="section-tobar">
-                            <h1>kill</h1>
-                        </div>
-                        <div class="section_content">
-                            <div class="left">
-                                <form action="">
-                                    <div class="input-group">
-                                        <h3>Option</h3>
-                                        <label for="id">target :</label>
-                                        <select name="id" class="PList" size="1">
-                                        </select>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="right">
-                                <h1>kill player</h1>
-                                <p>
-                                    allows to kill.
-
-                                    <br><br>  
-
-                                    <span>option :</span>
-                                    <ul>
-                                        <li> - Target : <br> player to kill</li>
-                                    </ul>
-                                </p>
-                            </div>
-                    </section>
-                    <!-- 
-                        WEAPONS
-                     -->
-                     <section id="weapons">
-                        <div class="section-tobar">
-                            <h1>weapons</h1>
-                        </div>
-                        <div class="section_content">
-                            <div class="left">
-                                <form action="">
-                                    <div class="input-group">
-                                        <h3>Option</h3>
-                                        <div class="form-inline">
-                                            <label for="id">target :</label>
-                                            <select name="id" class="PList" size="1">
-                                            </select>
-                                        </div>
-
-                                        <div class="form-inline">
-                                            <label for="slot">slot :</label>
-                                            <select name="slot" size="1">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-inline">
-                                            <label for="weapon">Weapon :</label>
-                                            <select name="weapon" class="WList" size="1">
-                                            </select>
-                                        </div>
-                                        
-                                        <div class="form-inline">
-                                            <label for="ammo">ammo :</label>
-                                            <input type="text" name="ammo" value="150" class="wp">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="right">
-                                <h1>weapons player</h1>
-                                <p>
-                                    allows to give weapon a player.
-
-                                    <br><br>  
-
-                                    <span>option :</span>
-                                    <ul>
-                                        <li> - Target : <br> player to spawn weapon/li>
-                                        <li> - slot : <br> slot weapon give</li>
-                                        <li> - weapon : <br> weapons id</li>
-                                        <li> - ammo : <br> ammo number</li>
-                                    </ul>
-                                </p>
-                            </div>
-                    </section>
-
-                    <!-- 
-                        Teleport POS
-                     -->
-                     <section id="tp_pos">
-                        <div class="section-tobar">
-                            <h1>teleport position</h1>
-                        </div>
-                        <div class="section_content">
-                            <div class="left">
-                                <form action="">
-                                    <div class="input-group">
-                                        <h3>Option</h3>
-                                        <div class="form-inline">
-                                            <label for="id">target :</label>
-                                            <select name="id" class="PList" size="1">
-                                            </select>
-                                        </div>
-
-                                        <label for="x">x :</label>
-                                        <input type="text" name="x" value="-182821.953125">
-                                        <label for="y">y :</label>
-                                        <input type="text" name="y" value="-41680.37109375">
-                                        <label for="z">z :</label>
-                                        <input type="z" name="z" value="1148.1517333984">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="right">
-                                <h1>Teleport player to</h1>
-                                <p>
-                                    allows teleport player specific position.
-
-                                    <br><br>  
-
-                                    <span>option :</span>
-                                    <ul>
-                                        <li> - Target : <br> player to change position</li>
-                                        <li> - x : <br> x axis</li>
-                                        <li> - y : <br> y axis</li>
-                                        <li> - z : <br> z axis</li>
-                                    </ul>
-                                </p>
-                            </div>
-                    </section>
-                     <!-- 
-                        Teleport to
-                     -->
-                     <section id="tp_to">
-                        <div class="section-tobar">
-                            <h1>teleport to player</h1>
-                        </div>
-                        <div class="section_content">
-                            <div class="left">
-                                <form action="">
-                                    <div class="input-group">
-                                        <h3>Option</h3>
-                                        <div class="form-inline">
-                                            <label for="id">target :</label>
-                                            <select name="id" class="PList" size="1">
-                                            </select>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="right">
-                                <h1>Teleport to other player</h1>
-                                <p>
-                                    
-                                    teleport to other player
-
-                                    <br><br>  
-
-                                    <span>option :</span>
-                                    <ul>
-                                        <li> - Target : <br> player we want to teleport us/li>
-                                    </ul>
-                                </p>
-                            </div>
-                    </section>
-                     <!-- 
-                        Teleport prest
-                     -->
-                     <section id="tp_preset">
-                        <div class="section-tobar">
-                            <h1>teleport preset</h1>
-                        </div>
-                        <div class="section_content">
-                            <div class="left">
-                                <form action="">
-                                    <div class="input-group">
-                                        <h3>Option</h3>
-                                        <div class="form-inline">
-                                            <label for="id">target :</label>
-                                            <select name="id" class="PList" size="1">
-                                            </select>
-                                        </div>
-
-                                        <div class="form-inline">
-                                            <label for="preset_id">preset :</label>
-                                            <select name="preset_id" class="PPist" size="1">
-                                            </select>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="right">
-                                <h1>Teleport to preset</h1>
-                                <p>
-                                    
-                                    teleport to pre-configure position
-
-                                    <br><br>  
-
-                                    <span>option :</span>
-                                    <ul>
-                                        <li> - preset : <br> preset where you want to teleport </li>
-                                    </ul>
-                                </p>
-                            </div>
-                    </section>
-                    <div id="submit">
-                        <p>submit</p>
+                <div id="left_nav">
+                    <div id="title">
+                        <h1>Admin</h1>
                     </div>
+                    <nav>
+                        <li id="car_action">Spawn car</li>
+                        <li id="weapon_action">Weapons</li>
+                        <li id="cloathing_action">Cloathing</li>
+                        <li data-dp_id="survial">Survival</li>
+                        <div id="dp_survial">
+                            <li id="health_action">health</li>
+                            <li id="armor_action">armor</li>
+                            <li id="kill_action">kill</li>
+                        </div>
+                        <li data-dp_id="teleport">Teleport</li>
+                        <div id="dp_teleport">
+                            <li id="tp_pos_action">teleport xyz</li>
+                            <li id="tp_to_action">teleport to player</li>
+                            <li id="tp_preset_action">teleport to preset</li>
+                        </div>
+                    </nav>
+
+                    
+                </div>
+                <div class="form_action">
+                    <!-- Car -->
+                    <section id="car_action">
+                        <h1>Spawn car</h1>
+
+                        <div class="content">
+                            <form>
+                                <div class="right_form">
+                                        <label for="boost">Boost :</label>
+                                        <input type="checkbox" name="boost" checked>
+        
+                                        <label for="autopilote">Automatic mount: </label>
+                                        <input type="checkbox" name="autopilote" checked>
+        
+                                        <label for="name">Color: </label>
+                                        <input type='text' class='color-picker' name="color" value='#0f00'/>
+                                
+                                </div>
+
+
+                                <div class="left_form">
+                                    <label for="name">Car Model: </label>
+
+                                    <div>
+                                        <select size="18" class="VList" name="car_id">
+                                        
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <!-- weapon -->
+                    <section id="weapon_action">
+                        <h1>Weapon</h1>
+
+                        <div class="content">
+                            <form>
+                                <div class="right_form">
+                                        <label for="slot">Slot :</label>
+                                        <select size="1" name="slot">
+                                            <option value="1">1</option>
+                                            <option value="2" selected="selected">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+        
+                                        <label for="ammo">Ammo :</label>
+                                        <input type="text" name="ammo" value="150" class="wp">
+                                
+                                </div>
+
+
+                                <div class="left_form">
+                                    <label for="name">Player Given: </label>
+
+                                    <div>
+                                        <select size="8" class="PList" name="target">
+                                        
+                                        </select>
+                                    </div>
+                                    <label for="name">Weapon Given: </label>
+
+                                    <div>
+                                        <select size="8" class="WList" name="weapon">
+                                        
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                     <!-- cloathing -->
+                     <section id="cloathing_action">
+                        <h1>Cloathing</h1>
+
+                        <div class="content">
+                            <form>
+                                <div class="right_form">
+                                    <label for="id">target :</label>
+                                    <select name="target" class="PList" size="18">
+                                    </select>
+                                </div>
+
+
+                                <div class="left_form">
+                                    <label for="clothingPreset">clothing preset :</label>
+                                    <select name="clothingPreset" class="CPList" size="18">
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                     <!-- HEALTH -->
+                    <section id="health_action">
+                        <h1>Health</h1>
+
+                        <div class="content">
+                            <form>
+                                <div class="right_form">
+                                    <label for="health">Health :</label>
+                                    <input class="ha" type="text" name="health" required minlength="1" maxlength="3" value=100 placeholder="0-100">
+                                
+                                </div>
+
+
+                                <div class="left_form">
+                                    <label for="name">Player Health: </label>
+
+                                    <div>
+                                        <select size="18" class="PList" name="target">
+                                        
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <!-- Armor -->
+                    <section id="armor_action">
+                        <h1>Armor</h1>
+
+                        <div class="content">
+                            <form>
+                                <div class="right_form">
+                                    <label for="Armor">Armo :</label>
+                                    <input class="ha" type="text" name="armor" required minlength="1" maxlength="3" value=100 placeholder="0-100">
+                                
+                                </div>
+
+
+                                <div class="left_form">
+                                    <label for="name">Player armor: </label>
+
+                                    <div>
+                                        <select size="18" class="PList" name="target">
+                                        
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <!-- Kill -->
+                    <section id="kill_action">
+                        <h1>Kill</h1>
+
+                        <div class="content">
+                            <form>
+                                <label for="name">Player Kill: </label>
+
+                                <div>
+                                    <select size="18" class="PList" name="target">
+                                    
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <!-- Tp position -->
+                    <section id="tp_pos_action">
+                        <h1>Tp position</h1>
+
+                        <div class="content">
+                            <form>
+                                <div class="right_form">
+                                    <label for="x">x :</label>
+                                    <input type="text" name="x" value="-182821.953125">
+                                    <label for="y">y :</label>
+                                    <input type="text" name="y" value="-41680.37109375">
+                                    <label for="z">z :</label>
+                                    <input type="text" name="z" value="1148.1517333984">
+                                </div>
+
+
+                                <div class="left_form">
+                                    <label for="name">Player teleport: </label>
+
+                                    <div>
+                                        <select size="18" class="PList" name="target">
+                                        
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                    <!-- Tp player to player -->
+                    <section id="tp_to_action">
+                        <h1>Tp player to player</h1>
+
+                        <div class="content">
+                            <form>
+                                <div class="right_form">
+                                    <label for="name">Player: </label>
+
+                                    <div>
+                                        <select size="18" class="PList" name="main">
+                                        
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="left_form">
+                                    <label for="name">To :  </label>
+
+                                    <div>
+                                        <select size="18" class="PList" name="to">
+                                        
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                    <!-- Tp preset -->
+                    <section id="tp_preset_action">
+                        <h1>Tp player to preset position</h1>
+
+                        <div class="content">
+                                <form>
+                                    <div class="right_form">
+                                        <label for="name">Player teleport: </label>
+    
+                                        <div>
+                                            <select size="18" class="PList" name="target">
+                                            
+                                            </select>
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="left_form">
+                                        <label for="name">Preset position: </label>
+    
+                                        <div>
+                                            <select size="18" class="PPist" name="preset_id">
+                                            
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                        </form>
+                    </div>
+                </section>
+                </div>
+                <div id="submit">
+                    <span>submit</span>
                 </div>
             </div>
         </div>
     </body>
-    <script type="text/javascript" src="../../files_client/web/script/form.js"></script>
+
+    <script type="text/javascript" src="../../files_client/web/script/libs/spectrum.js"></script>
+    <script type="text/javascript" src="../../files_client/web/script/admin/admin.js"></script>
+    <script type="text/javascript" src="../../files_client/web/script/form/drop-down.js"></script>
 </html>

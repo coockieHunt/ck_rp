@@ -1,13 +1,5 @@
-function GetForm(){
-    let cur = $('.active').attr('id');;
-    let cur_class = "#" + cur + " > .section_content > .left > form" ;
-    let form = $(cur_class).serializeArray();
-    const rslt = [{"func" : cur}].concat(form) 
-    return rslt
-}
-
 function ShowCurrentSection(id){
-    $('#content > #action > #' + id).attr("hidden",false);
+    $('.form_action > #' + id).attr("hidden",false);
 }
 
 function ShowFirstSection(){
@@ -66,58 +58,71 @@ $( function() {
     //hide all section
     $('section').attr("hidden",true);
 
-    //visible first section
     ShowFirstSection()
-    //draggable windows
+
     $("#window").draggable({
         opacity: 0.25,
         containment: "parent", 
         handle: "#top_bar"
     });
-
-    //nav managment
+    
     $("li").click(function() {
-        if($(this).data('state') == null){
-            // style active
-            $("li").removeClass("active");
-            $("li").removeClass("dp_active");
-            $(this).addClass("active");
-
-            // show action = section
+        if($(this).data("dp_id") == null){
+            let id = $( this ).attr("id")
             $('section').attr("hidden",true);
-            let key = $( this ).attr('id');
-            ShowCurrentSection(key)
-        }else{
-            // style active
-            $("li").removeClass("dp_active");
-            $(this).addClass("dp_active");
+
+            if(id != null){
+                $('.form_action > #' + id).attr("hidden",false);
+            }
         }
      });
-
-    //execute btn
-    $("#submit").click(function() {
-        var obj = {};
-        obj['func'] = GetForm()[0]["func"]
-
-        $.each( GetForm(), function( key, val ) {
-            let name = val['name'];
-            let value = val['value'];
-            
-            if (name) {
-                if(value == ""){
-                    obj[name] = null
-                }else{
-                    obj[name] = value
-                }
-            }
-        });
-
-        let ParsetJs = JSON.stringify(obj);
-        CallEvent("CallExecute", ParsetJs);
-    });
-
-    //close btn
-    $("#close").click(function() {
-        CallEvent("CallClose");
-    });
 } );
+
+function GetForm(){
+    let cur = $('.active').attr('id');;
+    let cur_class = "#" + cur + " > .content  > form" ;
+    console.log(cur_class)
+    let form = $(cur_class).serializeArray();
+    const rslt = [{"func" : cur}].concat(form) 
+
+    return rslt
+}
+
+//execute btn
+$("#submit").click(function() {
+    var obj = {};
+    obj['func'] = GetForm()[0]["func"]
+
+    $.each( GetForm(), function( key, val ) {
+        let name = val['name'];
+        let value = val['value'];
+
+        if(name == "color"){
+            value = value.substring(1);
+        }
+        
+        if (name) {
+            if(value == ""){
+                obj[name] = null
+            }else{
+                obj[name] = value
+            }
+        }
+    });
+
+    let ParsetJs = JSON.stringify(obj);
+    console.log(ParsetJs)
+    CallEvent("CallExecute", ParsetJs);
+});
+
+//close btn
+$("#close").click(function() {
+    CallEvent("CallClose");
+});
+
+$('.color-picker').spectrum({
+    type: "component",
+    color: "#000000",
+    color: tinycolor,
+    showAlpha: false
+});

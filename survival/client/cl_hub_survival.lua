@@ -53,7 +53,7 @@ AddEvent("OnWebLoadComplete", OnWebLoadComplete)
 
 function setPlayerData(cash, a_cash, health, armor)
     ExecuteWebJS(survival_ui, "SetCash('"..cash.."');")            
-    ExecuteWebJS(survival_ui, "SetAccountCash('"..a_cash.."');")
+    ExecuteWebJS(survival_ui, "SetBank('"..a_cash.."');")
  end
  AddRemoteEvent("setPlayerData", setPlayerData)
 

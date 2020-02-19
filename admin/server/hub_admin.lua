@@ -3,8 +3,8 @@ AddRemoteEvent("Exucute", function(playerid, json)
     local func = data['func']
 
 
-    if(func == 'car') then
-        if(isnil(data['id'])) then
+    if(func == 'car_action') then
+        if(isnil(data['car_id'])) then
             AddPlayerChat(playerid, "none id")
         else
             local am = false
@@ -12,48 +12,48 @@ AddRemoteEvent("Exucute", function(playerid, json)
             if(data['autopilote'] == 'on') then am = true end
             if(data['boost'] == 'on') then b = true end
             
-            admin_car_spawn(playerid, data['id'], am, b, data['color'])
+            admin_car_spawn(playerid, data['car_id'], am, b, data['color'])
         end
     end
 
-    if(func == 'health') then
-        if(isnil(data['id'])) then
+    if(func == 'health_action') then
+        if(isnil(data['target'])) then
             AddPlayerChat(playerid, "none id")
         else
             local h = data['health']
-            local t = data['id']
+            local t = data['target']
             
             admin_heal(playerid, t, h)
         end
     end
 
-    if(func == 'armor') then
-        if(isnil(data['id'])) then
+    if(func == 'armor_action') then
+        if(isnil(data['target'])) then
             AddPlayerChat(playerid, "none id")
         else
             local a = data['armor']
-            local t = data['id']
+            local t = data['target']
             
             admin_armor(playerid,t ,a)
         end
     end
 
-    if(func == 'clothing') then
-        if(isnil(data['id'])) then
+    if(func == 'cloathing_action') then
+        if(isnil(data['target'])) then
             AddPlayerChat(playerid, "none id")
         else
-            local p = data['id']
+            local p = data['target']
             local cp = data['clothingPreset']
             
             admin_clothing_preset(playerid, p,  cp)
         end
     end
 
-    if(func == 'weapons') then
-        if(isnil(data['id'])) then
+    if(func == 'weapon_action') then
+        if(isnil(data['target'])) then
             AddPlayerChat(playerid, "none id")
         else
-            local p = data['id']
+            local p = data['target']
             local w = data['weapon']
             local s = data['slot']
             local a = data['ammo']
@@ -62,21 +62,21 @@ AddRemoteEvent("Exucute", function(playerid, json)
         end
     end
 
-    if(func == 'kill') then
-        if(isnil(data['id'])) then
+    if(func == 'kill_action') then
+        if(isnil(data['target'])) then
             AddPlayerChat(playerid, "none id")
         else
-            local p = data['id']
+            local p = data['target']
             
             admin_kill(playerid, p)
         end
     end
 
-    if(func == 'tp_pos') then
-        if(isnil(data['id'])) then
+    if(func == 'tp_pos_action') then
+        if(isnil(data['target'])) then
             AddPlayerChat(playerid, "none id")
         else
-            local p = data['id']
+            local p = data['target']
 
             local x = data['x']
             local y = data['y']
@@ -86,20 +86,24 @@ AddRemoteEvent("Exucute", function(playerid, json)
         end
     end
 
-    if(func == 'tp_to') then
-        if(isnil(data['id'])) then
+    if(func == 'tp_to_action') then
+        if(isnil(data['main'])) then
             AddPlayerChat(playerid, "none id")
         else
-            local p = data['id']
-            admin_tp_to(playerid, p)
+            local m = data['main']
+            local t = data['to']
+
+            print(m, t)
+
+            admin_tp_to(m, t)
         end
     end
 
-    if(func == 'tp_preset') then
-        if(isnil(data['id'])) then
+    if(func == 'tp_preset_action') then
+        if(isnil(data['target'])) then
             AddPlayerChat(playerid, "none id")
         else
-            local t = data['id']
+            local t = data['target']
             local pd = data['preset_id']
 
             get_admin_tp_preset_pos(playerid, t, pd)

@@ -21,7 +21,7 @@ function SetCash(new_cash)
 
 function SetBank(net_account_cash)
 {
-    let cash_account = document.querySelector("#bank > .cash_data" );
+    let cash_account = document.querySelector("#bank > .cash_account_data" );
     cash_account.innerHTML = net_account_cash
     return true
 }
