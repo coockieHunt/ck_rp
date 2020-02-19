@@ -10,23 +10,23 @@
 	"client_scripts": [
 		"utils/json.lua",
 
-		"admin/client/cl_hub_admin.lua",
-		"admin/client/cl_build_select.lua",
-		"admin/client/cl_manage_function.lua",
+		"admin/client/hub/cl_hub_admin.lua",
+		"admin/client/hub/cl_build_select.lua",
+		"admin/client/function/cl_manage_function.lua",
 
-		"survival/client/cl_hub_survival.lua",
-		"survival/client/cl_hub_warning_survival.lua",
+		"survival/client/hub/cl_hub_survival.lua",
+		"survival/client/hub/cl_hub_warning_survival.lua",
 		
 		"init/client/cl_init.lua",
-		"init/client/cl_weapons.lua",
+		"init/client/config/cl_weapons.lua",
 
-		"car/client/cl_fixCar.lua",
+		"car/client/fix/cl_fixDrift.lua",
 
 		"data/client/cl_listing.lua",
-		"data/client/cl_vehicles.lua",
-		"data/client/cl_tpPreset.lua",
-		"data/client/cl_clothingPreset.lua",
-		"data/client/cl_weapons.lua"
+		"data/client/list/cl_vehicles.lua",
+		"data/client/list/cl_tpPreset.lua",
+		"data/client/list/cl_clothingPreset.lua",
+		"data/client/list/cl_weapons.lua"
 	],
 	
 	"files": [

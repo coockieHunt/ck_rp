@@ -42,6 +42,10 @@ function GetFilesFolder(directory)
   return t
 end
 
+function GetFileExtension(url)
+  return url:match("^.+(%..+)$")
+end
+
 -- table
 function has_value (tab, val)
   for index, value in ipairs(tab) do
