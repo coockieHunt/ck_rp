@@ -87,13 +87,11 @@ AddRemoteEvent("Exucute", function(playerid, json)
     end
 
     if(func == 'tp_to_action') then
-        if(isnil(data['main'])) then
+        if(isnil(data['main']) or isnil(data['to'])) then
             AddPlayerChat(playerid, "none id")
         else
             local m = data['main']
             local t = data['to']
-
-            print(m, t)
 
             admin_tp_to(m, t)
         end
