@@ -46,9 +46,20 @@ function packagesImport(packageName)
 			if(_Pacakge.display_console) then AddPackageLog(packageName, "package", true) end
 			local filesPacakge = GetFilesFolder(folder)
 			if(has_value(filesPacakge, _Pacakge.server_folder)) then
+
 				filesPacakgeServer = GetFilesFolder(folder.."/".._Pacakge.server_folder)
+
 				for index, value in ipairs(filesPacakgeServer) do
-					import(packageName.."/".._Pacakge.server_folder.."/"..value)
+
+					if(GetFileExtension(value) == ".lua") then 
+						import(packageName.."/".._Pacakge.server_folder.."/"..value)
+					else
+						local subDir = GetFilesFolder(folder.."/".._Pacakge.server_folder.."/"..value)
+						for index, SubValue in ipairs(subDir) do
+							import(packageName.."/".._Pacakge.server_folder.."/"..value.."/"..SubValue)
+						end
+					end
+
 				end
 			end
 		else
