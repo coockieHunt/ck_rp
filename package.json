@@ -52,13 +52,15 @@
 		"files_client/web/style/css/spectrum.css",
 	
 		"files_client/web/script/game/eu.js",
-		"files_client/web/script/survival/warning_survival.js",
 		"files_client/web/script/libs/jquery.js",
 		"files_client/web/script/libs/jquery-ui.js",
-		"files_client/web/script/survival/survival.js",
-		"files_client/web/script/admin/admin.js",
 		"files_client/web/script/libs/spectrum.js",
 		"files_client/web/script/form/drop-down.js",
+		"files_client/web/script/window/admin.js",
+		"files_client/web/script/window/warning_survival.js",
+		"files_client/web/script/window/survival.js",
+
+
 
 		"survival/files/ui_loading_fullscreen.html",
 		"survival/files/ui_survival.html", 
