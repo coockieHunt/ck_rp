@@ -42,14 +42,14 @@
 
 		"files_client/web/src/font/Roboto-Regular.ttf",
 
-		"files_client/web/style/css/jquery-ui.css",
-		"files_client/web/style/css/admin.css",
-		"files_client/web/style/css/main.css",
-		"files_client/web/style/css/survival.css",
-		"files_client/web/style/css/loader_fullScreen.css",
-		"files_client/web/style/css/warning_survival.css",
-		"files_client/web/style/css/form.css",
-		"files_client/web/style/css/spectrum.css",
+		"files_client/web/css/main.css",
+		"files_client/web/css/libs/jquery-ui.css",
+		"files_client/web/css/libs/spectrum.css",
+		"files_client/web/css/window/admin.css",
+		"files_client/web/css/window/survival.css",
+		"files_client/web/css/window/loader_fullScreen.css",
+		"files_client/web/css/window/warning_survival.css",
+		"files_client/web/css/form/form.css",
 	
 		"files_client/web/script/game/eu.js",
 		"files_client/web/script/libs/jquery.js",
