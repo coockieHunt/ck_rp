@@ -4,10 +4,15 @@
 
   --gray-light: #54636E;
   --gray-mid:rgb(57, 69, 80);
-  --gray-dark:#43515E;
+  --gray-dark:#43515e;
 
   --red-dark : #ab3842;
   --red-light : #bf360c;
+
+  --blue-dark : #283593;
+  --blue-light : #5f5fc4;
+
+  --spacer : rgba(255, 255, 255, 0.116);
 }
 
 *{margin:0;padding:0; font-family: "roboto", serif; color: white;  }
@@ -23,6 +28,7 @@ html, body {height: 100%;}
     z-index: -999; 
 }
 
+/* progress bar */
 .progress{
     width: 100%; 
     float: right;
@@ -62,4 +68,41 @@ html, body {height: 100%;}
 
 ::-webkit-scrollbar-thumb:hover {
   background:var(--red-light)
+}
+
+
+/* Wndows */
+#window{
+  background-color: var( --gray-dark);
+  height: 70%;
+  width: 75%;
+  border-radius: 5px;
+  user-select: none;
+  position: absolute;
+  top: 15%;
+  left: 15%;
+}
+
+#window > #top_bar{
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid var(--spacer);
+}
+
+#window > #top_bar > img{
+  height: 10px;
+  width: 10px;
+  float: right;
+  margin: 10px;
+  cursor: pointer;
+}
+
+
+#window > #content{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
 }

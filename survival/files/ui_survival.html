@@ -8,56 +8,51 @@
     </head>
     
     <body>
-        <div class="blur overlay"></div>
+        <div id="window" class="center-screen">
+            <div id="top_bar">
+                <img src="../../files_client/web/src/img/close.png" class="icon">
+            </div> 
+            <div id="content">
+                <div id="outfit">
+                    <h1>outfit</h1>
+                </div>    
+                <div id="inventory">
+                    <h1>inventory</h1>
+                </div> 
+                <div id="stats">
+                    <h1>Statistics</h1>
 
-        <div class="left_bar wrapper">
-
-            <!-- Health / armor  -->
-            <section id="data">
-                <div class="section-title">
-                    <h1>Player info</h1>
-                </div>
-                <div id="surv_icon">
-                    <div class="container">
+                    <div class="progress-inline" id="health">
                         <img src="../../files_client/web/src/img/heart.png" class="icon">
-                        <img src="../../files_client/web/src/img/armor.png" class="icon">
-                        <img src="../../files_client/web/src/img/dollar.png" class="icon">
-                        <img src="../../files_client/web/src/img/bank.png" class="icon">
-                    </div>
-                </div>
-    
-                <div id="surv_info">
-                    <div class="container">
-                        <div id="healt" class="element">
-                            <div class="progress" >
-                                <div class="progress-container"  >
-                                    <div class="progressbar-element healt_pg "></div>
-                                </div>
+                        <div class="progress" >
+                            <div class="progress-container"  >
+                                <div class="progressbar-element healt_pg "></div>
                             </div>
                         </div>
-            
-                        <div id="armor" class="element">
-                            <div class="progress" >
-                                <div class="progress-container ">
-                                    <div class="progressbar-element sheld_pg"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-            
-                        <div id="cash" class="element">
-                            <span class="cash_data">5</span>
-                            <span class="money">$</span>
-                        </div>
-            
-                        <div id="bank" class="element">
-                            <span class="cash_account_data">5000</span>
-                            <span class="money">$</span>
-                        </div>
                     </div>
-                </div>
-            </section>
 
+                    <div class="progress-inline" id="armor">
+                        <img src="../../files_client/web/src/img/armor.png" class="icon">
+                        <div class="progress" >
+                            <div class="progress-container ">
+                                <div class="progressbar-element sheld_pg"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="cash" class="cash-inline">
+                        <img src="../../files_client/web/src/img/dollar.png" class="icon">
+                        <span id="data">5</span>
+                        <span class="money">$</span>
+                    </div>
+        
+                    <div id="bank" class="cash-inline">
+                        <img src="../../files_client/web/src/img/bank.png" class="icon">
+                        <span id="data">5000</span>
+                        <span class="money">$</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

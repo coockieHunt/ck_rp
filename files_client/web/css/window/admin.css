@@ -1,32 +1,8 @@
-#window{
-    background-color: var( --gray-dark);
-    height: 70%;
-    width: 75%;
-    border-radius: 5px;
-    user-select: none;
-    position: absolute;
-    top: 15%;
-    left: 15%;
-}
-
-#top_bar{
-    position: absolute;
-    top: 0%;
-    right: 0%;
+#window > #top_bar{
     width: 80%;
-    height: auto;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.116);
 }
 
-#top_bar > img{
-    height: 10px;
-    width: 10px;
-    float: right;
-    margin: 10px;
-    cursor: pointer;
-}
-
-#content{
+#window > #content{
     height: 100%;
     display: flex;
     flex-wrap: nowrap;
