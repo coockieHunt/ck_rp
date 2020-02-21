@@ -7,11 +7,10 @@
   display: flex;
   justify-content: center;
   align-items: stretch;
-  padding: 15px;
   box-sizing: border-box;
 }
 
-.healt_pg{background-color: var(--red-light)}
+.healt_pg{background-color: var(--red-dark)}
 .sheld_pg{background-color:var(--blue-dark)}
 
 
@@ -21,7 +20,7 @@
 }
 
 #window > #content > #inventory{
-  width: 44%;
+  width: 45%;
 
   border-left: 1px solid var(--spacer);
   border-right: 1px solid var(--spacer);
@@ -30,56 +29,61 @@
 
 #window > #content > #stats{
   width: 25%;
-  padding-left: 10px;
   box-sizing: border-box;
 
 }
 
-#window > #content > #stats > * > .icon{
+#window > #content > #stats > .content > * > .icon{
   width: 20px;
   height: 20px;
 }
 
-#window > #content > #stats > .progress-inline{
+#window > #content > #stats > .content > .progress-inline{
   display: flex;
   margin-bottom: 10px;
-}
-
-#window > #content > div{
-  padding: 5px;
 }
 
 #window > #content > div > h1{
-  background-color: var(--red-light);
-  padding: 5px;
+  background-color: var(--red-dark);
+  box-sizing: border-box;
   text-align: center;
-  margin-bottom: 15px;
-  border-radius: 5px;
+  border-bottom: 1px solid var(--spacer);
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.5em;
 }
 
-#window > #content > #stats > .progress-inline > .progress{
+#window > #content > div > h1::first-letter{
+  text-transform: uppercase;
+}
+
+#window > #content > div > .content{
+  padding: 15px;
+}
+
+#window > #content > #stats > .content > .progress-inline > .progress{
   flex-grow: 3;
 }
 
-#window > #content > #stats > .progress-inline > img{
+#window > #content > #stats > .content > .progress-inline > img{
   flex-grow: 1;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
-#window > #content > #stats > .cash-inline{
+#window > #content > #stats > .content  > .cash-inline{
   display: flex;
   margin-bottom: 10px;
 }
 
-#window > #content > #stats > .cash-inline > img{
+#window > #content > #stats > .content  > .cash-inline > img{
+  margin-right: 10px;
+}
+
+#window > #content > #stats > .content  > .cash-inline > .data{
   margin-right: 5px;
 }
 
-#window > #content > #stats > .cash-inline > .data{
-  margin-right: 5px;
-}
-
-#window > #content > #stats > .cash-inline > .money{
+#window > #content > #stats > .content  > .cash-inline > .money{
   display: inline-block;
   width: 100%;
   text-align: right;
