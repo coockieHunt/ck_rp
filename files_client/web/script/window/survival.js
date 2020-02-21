@@ -27,10 +27,12 @@ function SetBank(net_account_cash)
 }
 
 function BuildPresonalInventoryListSelect(text, value){
-    if ( $( ".PInvList" ).length ) {
-        let count = $(".PInvList option[value='" + value + "']").length
+    if ( $( "#inventory > .content > .PInvList" ).length ) {
+        let count = $("#inventory > .content > .PInvList option[value='" + value + "']").length
         if(count == 0){
-            $('.PInvList').append(new Option(text, value))
+            $("#inventory > .content > .PInvList").append(new Option(text, value))
         }
     }
 }
+
+

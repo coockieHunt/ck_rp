@@ -4,6 +4,7 @@ local survival_key = "Tab"
 function OpenUISurvival()
     if survival_ui ~= nil then
         SetWebVisibility(survival_ui, WEB_VISIBLE)
+        GetPersoInventoryList()
     end
 end
 
@@ -51,6 +52,27 @@ function OnWebLoadComplete(webid)
 end
 AddEvent("OnWebLoadComplete", OnWebLoadComplete)
 
+-- items list
+function GetPersoInventoryList()
+    CallRemoteEvent("GetPersoInventory")
+end
+
+function SetPersoInventoryList(inventory)
+    for k, v in pairs(inventory) do
+        local id = k
+        local name = v[1]
+
+        AddPlayerChat(id)
+        AddPlayerChat(name)
+        
+        
+        ExecuteWebJS(survival_ui, "BuildPresonalInventoryListSelect('"..name.."', "..id..");")
+	end
+
+end
+AddRemoteEvent("SetPersoInventoryList", SetPersoInventoryList)
+
+-- update ui
 function setPlayerData(cash, a_cash, health, armor)
     ExecuteWebJS(survival_ui, "SetCash('"..cash.."');")            
     ExecuteWebJS(survival_ui, "SetBank('"..a_cash.."');")

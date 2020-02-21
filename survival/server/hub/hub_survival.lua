@@ -14,3 +14,20 @@ function RefrechSurvivalUi(playerid)
    CallRemoteEvent(playerid, "setPlayerData",p:getCash() , p:getCashAccount(), p:getHealth(), p:getArmor())
    CallRemoteEvent(playerid, 'setDammage', p:getHealth(),  p:getArmor())
 end
+
+AddRemoteEvent("GetPersoInventory", function(player)
+   local inventory = {}
+   local data = getplayer(player) 
+
+   for key, value in pairs(data.inventory) do
+      inventory[key] = {
+         value.id,
+      }
+   end
+   
+   for key, value in pairs(inventory) do
+      print(key, value[1])
+	end
+	
+	CallRemoteEvent(player, "SetPersoInventoryList", inventory)
+end)
