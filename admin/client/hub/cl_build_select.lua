@@ -39,11 +39,11 @@ function GetWeaponsList()
     end
 end
 
+-- Player list
 function GetPlayerList(ui)
     CallRemoteEvent("GetAllPlayer", ui)
 end
 
--- Player list
 function SetPlayerList(playersList)
     for k, v in ipairs(playersList) do
         local id = k
