@@ -33,6 +33,6 @@ privacy package rp coockie
 		"ck_rp"
 	],
 ```
-6. edit config.lua *"yourserveronset\packages\ck_rp\config"*
+6. edit sql account *"yourserveronset\packages\ck_rp\config\config_sql.lua"*
 7. enjoy
 
