@@ -12,8 +12,19 @@ function cmd_commands(playerid)
 	AddPlayerChat(playerid, ("		- cash_account : %s"):format(data:getCashAccount()))
 	AddPlayerChat(playerid, ("		- inventory : %s"):format(data.inventory))
 end
-AddCommand("getstat", cmd_commands)
 AddCommand("gst", cmd_commands)
+
+
+function cmd_inv(playerid)
+    local data = getplayer(playerid)
+
+	   AddPlayerChat(playerid, ("%s's inventory:"):format(data.name))
+	   for key, value in pairs(data.inventory) do
+        AddPlayerChat(playerid, "- " .. value.id .. " : " .. value.quantity)
+    end
+	
+end
+AddCommand("inv", cmd_inv)
 
 function cmd_saveAccount(playerid)
 	SaveAccountPlayer(playerid)

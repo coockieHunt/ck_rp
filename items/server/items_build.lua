@@ -1,9 +1,9 @@
-local ItemData = {}
-ItemData.ClassItem = import("items/class/item.lua")
+local ItemsData = {}
+ItemsData.ClassItem = import("items/class/item.lua")
 
 function OnPackageStart(player)
     for id, item in pairs(_Items) do
-        local i = ItemData.ClassItem.new(
+        local i = ItemsData.ClassItem.new(
             {
                 ["id"] = id,
                 ["name"] = item.name,
@@ -13,12 +13,11 @@ function OnPackageStart(player)
                 ["thumbnail"] = item.thumbnail,
             })
 
-        table.insert(ItemData, i)       
-    end
-
-    for key, value in pairs(ItemData) do
-        print(key)   
-        print(value.name)   
+        table.insert(ItemsData, i)       
     end
 end
 AddEvent("OnPackageStart", OnPackageStart)
+
+function GetItemsList()
+    return ItemsData
+end

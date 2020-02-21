@@ -104,4 +104,11 @@ function cmd_admin_tp_preset(player, dest)
     admin_tp_preset_pos(player, dest)
 end
 AddCommand('tp', cmd_admin_tp_preset)
+
+--test
+function addItem(player, target, item_id)
+    AddPlayerItem(player, target, item_id)
+end
+AddCommand('ai', addItem)
+
  
