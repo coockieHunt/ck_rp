@@ -61,10 +61,6 @@ function SetPersoInventoryList(inventory)
     for k, v in pairs(inventory) do
         local id = k
         local name = v[1]
-
-        AddPlayerChat(id)
-        AddPlayerChat(name)
-        
         
         ExecuteWebJS(survival_ui, "BuildPresonalInventoryListSelect('"..name.."', "..id..");")
 	end

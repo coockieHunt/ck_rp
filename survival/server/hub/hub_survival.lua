@@ -25,9 +25,5 @@ AddRemoteEvent("GetPersoInventory", function(player)
       }
    end
    
-   for key, value in pairs(inventory) do
-      print(key, value[1])
-	end
-	
 	CallRemoteEvent(player, "SetPersoInventoryList", inventory)
 end)
