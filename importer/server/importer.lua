@@ -10,7 +10,19 @@ function import(filename)
 	end
 end
 
-import("config.lua")
+import("utils/system.lua")
+import("utils/json.lua")
+
+print("-- LOAD CONFIGURATION FILLE --" )
+for _, ConfigFile in ipairs(GetFilesFolder("packages/ck_rp/config")) do
+	if(string_start_by(ConfigFile, "config_")) then
+		print("-- loadead config file : " .. ConfigFile)
+		import("config/" .. ConfigFile)
+	else
+		print("/!\\ config name not valid [config_<name>]  : " .. ConfigFile)
+	end
+
+end
 
 function AddPackageLog(package, type, bool)
 	local text
@@ -35,9 +47,10 @@ function AddPackageLog(package, type, bool)
 	file:close()
 end
 
-import("utils/system.lua")
-import("utils/json.lua")
 
+
+
+if(_Pacakge.display_console) then print("-- LOAD SERVER PACKAGE --" ) end
 function packagesImport(packageName)
 	if(_Import_packag == nil) then
 		local package = false
@@ -47,15 +60,16 @@ function packagesImport(packageName)
 			local filesPacakge = GetFilesFolder(folder)
 			if(has_value(filesPacakge, _Pacakge.server_folder)) then
 
+
 				filesPacakgeServer = GetFilesFolder(folder.."/".._Pacakge.server_folder)
 
-				for index, value in ipairs(filesPacakgeServer) do
+				for _, value in ipairs(filesPacakgeServer) do
 
 					if(GetFileExtension(value) == ".lua") then 
 						import(packageName.."/".._Pacakge.server_folder.."/"..value)
 					else
 						local subDir = GetFilesFolder(folder.."/".._Pacakge.server_folder.."/"..value)
-						for index, SubValue in ipairs(subDir) do
+						for _, SubValue in ipairs(subDir) do
 							import(packageName.."/".._Pacakge.server_folder.."/"..value.."/"..SubValue)
 						end
 					end

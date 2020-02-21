@@ -79,3 +79,8 @@ function toboolean(str)
     return false
   end
 end
+
+-- string
+function string_start_by(String,Start)
+  return string.sub(String,1,string.len(Start))==Start
+end
