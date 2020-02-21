@@ -14,19 +14,28 @@
 .sheld_pg{background-color:var(--blue-dark)}
 
 
+/* outfit */
 #window > #content > #outfit{
-  width: 30%;
-
+  width: 35%;
 }
 
+#window > #content > #outfit > .content > img{
+  width: 100%;
+  opacity: 0.8;
+  margin-top: 30px;
+  opacity: 0.5;
+}
+
+/* inventory */
 #window > #content > #inventory{
-  width: 45%;
+  width: 40%;
 
   border-left: 1px solid var(--spacer);
   border-right: 1px solid var(--spacer);
 
 }
 
+/* stats */
 #window > #content > #stats{
   width: 25%;
   box-sizing: border-box;

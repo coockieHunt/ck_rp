@@ -25,3 +25,12 @@ function SetBank(net_account_cash)
     cash_account.innerHTML = net_account_cash
     return true
 }
+
+function BuildPresonalInventoryListSelect(text, value){
+    if ( $( ".PInvList" ).length ) {
+        let count = $(".PInvList option[value='" + value + "']").length
+        if(count == 0){
+            $('.PInvList').append(new Option(text, value))
+        }
+    }
+}
