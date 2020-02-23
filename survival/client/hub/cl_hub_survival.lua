@@ -3,31 +3,38 @@ local survival_key = "Tab"
 
 function OpenUISurvival()
     if survival_ui ~= nil then
+        SetIgnoreLookInput(true)
+        SetIgnoreMoveInput(true)
+        ShowMouseCursor(true)
+        SetInputMode(INPUT_GAMEANDUI)
         SetWebVisibility(survival_ui, WEB_VISIBLE)
+        clearInventory()
         GetPersoInventoryList()
+
+        CloseUISurvival_warn()
     end
 end
 
 function CloseUISurival()
+    SetIgnoreLookInput(false)
+    SetIgnoreMoveInput(false)
+    ShowMouseCursor(false)
+    SetInputMode(INPUT_GAME)
     SetWebVisibility(survival_ui, WEB_HIDDEN)
+
+    OpenUISurvival_warn()
 end
 
 
-local function OnKeyPress(key)
-    if (key == "Tab") then
-        CloseUISurvival_warn()
-        OpenUISurvival()
+AddEvent("OnKeyPress", function(key)
+    if key == "Tab" then
+        if GetWebVisibility(survival_ui) == WEB_HIDDEN then
+            OpenUISurvival()
+        else
+            CloseUISurival()
+        end
     end
-end
-AddEvent("OnKeyPress", OnKeyPress)
-
-local function OnKeyRelease(key)
-    if (key == "Tab") then
-        OpenUISurvival_warn()
-        CloseUISurival()
-    end
-end
-AddEvent("OnKeyRelease", OnKeyRelease)
+end)
 
 
 AddEvent("OnPlayerSpawn", function(playerid)
@@ -61,12 +68,19 @@ function SetPersoInventoryList(inventory)
     for k, v in pairs(inventory) do
         local id = k
         local name = v[1]
-        
-        ExecuteWebJS(survival_ui, "BuildPresonalInventoryListSelect('"..name.."', "..id..");")
+        local quantity = v[2]
+        local thumb = v[3]
+        local type = v[4]
+
+        ExecuteWebJS(survival_ui, "BuildPresonalInventoryListSelect("..id..",'"..name.. "' , '".. quantity.."', '"..thumb.."', '"..type.."');")
 	end
 
 end
 AddRemoteEvent("SetPersoInventoryList", SetPersoInventoryList)
+
+function clearInventory()
+    ExecuteWebJS(survival_ui, "clearInventory()")            
+end
 
 -- update ui
 function setPlayerData(cash, a_cash, health, armor)
@@ -82,3 +96,7 @@ end
 AddRemoteEvent("setDammage", setDammage)
 
 
+function CallCloseSurvival()
+    CloseUISurival()
+end
+AddEvent("CallCloseSurvival", CallCloseSurvival)

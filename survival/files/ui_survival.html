@@ -5,15 +5,14 @@
         <link rel="stylesheet" type="text/css" href="../../files_client/web/css/main.css">
         <link rel="stylesheet" type="text/css" href="../../files_client/web/css/window/survival.css">
         <link rel="stylesheet" type="text/css" href="../../files_client/web/css/form/form.css">
-        <script type="text/javascript" src="../../files_client/web/script/libs/jquery.js"></script>
-        <script type="text/javascript" src="../../files_client/web/script/window/survival.js"></script>
+
     </head>
     
     <body>
         <div id="window" class="center-screen">
             <div id="top_bar">
-                <img src="../../files_client/web/src/img/close.png" class="icon">
-            </div> 
+                <img src="../../files_client/web/src/img/close.png" class="survival" id="close">
+            </div>
             <div id="content">
                 <div id="outfit">
                     <h1>outfit</h1>
@@ -24,8 +23,21 @@
                 <div id="inventory">
                     <h1>inventory</h1>
                     <div class="content">
-                        <select size="18" class="PInvList" name="car_id" style="width: 100%;">
-                        </select>
+                        <div class="header">
+                            <span class= "max_weight">max weight : 1/10</span>
+                        </div>
+                        <div id="items">
+                        </div>
+
+                        <div class="action">
+                            <div class="drop">
+                                <span>drop</span>
+                            </div>
+
+                            <div class="give">
+                                <span>give</span>
+                            </div>
+                        </div>
                     </div>
                 </div> 
                 <div id="stats">
@@ -66,4 +78,9 @@
             </div>
         </div>
     </body>
+
+    <script type="text/javascript" src="../../files_client/web/script/libs/jquery.js"></script>
+    <script type="text/javascript" src="../../files_client/web/script/game/eu.js"></script>
+    <script type="text/javascript" src="../../files_client/web/script/window/survival.js"></script>
+
 </html>

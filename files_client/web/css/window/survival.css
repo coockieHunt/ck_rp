@@ -1,3 +1,29 @@
+#window{
+  width: 900px;
+  height: 500px;
+
+  position: absolute; 
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#window > #content > #inventory{
+  width: 45%;
+  height: 100%;
+
+  border-left: 1px solid var(--spacer);
+  border-right: 1px solid var(--spacer);
+}
+
+#window > #content > #outfit{
+  width: 30%
+}
+
+#window > #content > #stats{
+  width: 25%;
+  box-sizing: border-box;
+}
+
 #window > #content{
   position: absolute;
   bottom: 0px;
@@ -13,43 +39,166 @@
 .healt_pg{background-color: var(--red-dark)}
 .sheld_pg{background-color:var(--blue-dark)}
 
-
 /* outfit */
-#window > #content > #outfit{
-  width: 35%;
+
+
+#window > #content > #outfit > .content{
+  height: 90%;
+  width: 100%;
+  display: flex;
+
 }
 
 #window > #content > #outfit > .content > img{
-  width: 100%;
-  opacity: 0.8;
-  margin-top: 30px;
+  width: auto;
+  height: 90%;
+  margin: auto auto;
   opacity: 0.5;
+  vertical-align: middle;
 }
 
 /* inventory */
-#window > #content > #inventory{
-  width: 40%;
 
-  border-left: 1px solid var(--spacer);
-  border-right: 1px solid var(--spacer);
+
+#window > #content > #inventory > .content{
+  box-sizing: border-box;
+  height: 90%;
+}
+
+#window > #content > #inventory > .content > .header{
+  width: 90%;
+  height: 7%;
+  margin: auto;
+  background-color: var(--gray-mid);
+  margin-top: 5px;
+  border-radius: 5px 5px 0 0;
+
+  border-bottom: 1px solid var(--spacer);
+}
+
+#window > #content > #inventory > .content > .header > .max_weight{
+  width: 50%;
+  height: 100%;
+  display: block;
+  float: right;
+  text-align: right;
+  padding: 6px;
+  box-sizing: border-box;
+  font-size: 0.8em;
 
 }
+
+#window > #content > #inventory > .content > #items{
+  background-color: var(--gray-light);
+  display: block;
+  width: 90%;
+  height: 75%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  border-bottom: 1px solid var(--spacer);
+}
+
+#window > #content > #inventory > .content > #items > .object{
+  background-color: var(--gray-mid);
+  border-bottom: 1px solid var(--spacer);
+
+
+  width: 100%;
+  height: 15%;
+
+  display: flex;
+}
+
+#window > #content > #inventory > .content > #items > .object > .thumb{
+
+  width: 20%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-right: 1px solid var(--spacer);
+  background-color: var(--gray-med);
+}
+
+#window > #content > #inventory > .content > #items > .object > .thumb > img{
+  height: 70%;
+}
+
+#window > #content > #inventory > .content > #items > .object > .info{
+  position: relative;
+  width: 100%;
+
+  background: rgb(84,99,110);
+  box-shadow: inset 2px -2px 41px -3px rgba(0,0,0,0.36);
+}
+
+#window > #content > #inventory > .content > #items > .object > .info > span{
+  position: absolute;
+
+  font-size: 0.8em;
+  font-weight: lighter;
+}
+
+#window > #content > #inventory > .content > #items > .object > .info > .type{
+  top: 5px;
+  right: 5px;
+}
+
+#window > #content > #inventory > .content > #items > .object > .info > .name{
+  top: 5px;
+  left: 5px;
+
+  font-size: 0.9em;
+}
+
+#window > #content > #inventory > .content > #items > .object > .info > .quantity{
+  bottom: 5px;
+  left: 5px;
+}
+
+#window > #content > #inventory > .content > .action{
+  width: 90%;
+  height: 15%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  margin-top: 10px;
+
+  display: flex;
+}
+
+#window > #content > #inventory > .content > .action > div{
+  background-color: var(--gray-light);
+  height: 30px;
+  width: 25%;
+  text-align: center;
+  line-height: 30px;
+  margin-right: 5px;
+}
+
+
 
 /* stats */
-#window > #content > #stats{
-  width: 25%;
-  box-sizing: border-box;
 
+
+#window > #content > #stats > .content > div{
+  padding: 5px;
 }
 
+#window > #content > #stats > .content > div:nth-child(2n+1){
+  background-color:  var(--gray-light);
+}
+ 
 #window > #content > #stats > .content > * > .icon{
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
 }
 
 #window > #content > #stats > .content > .progress-inline{
   display: flex;
-  margin-bottom: 10px;
 }
 
 #window > #content > div > h1{
@@ -66,12 +215,8 @@
   text-transform: uppercase;
 }
 
-#window > #content > div > .content{
-  padding: 15px;
-}
-
 #window > #content > #stats > .content > .progress-inline > .progress{
-  flex-grow: 3;
+  margin-right: 5px;
 }
 
 #window > #content > #stats > .content > .progress-inline > img{
@@ -81,7 +226,7 @@
 
 #window > #content > #stats > .content  > .cash-inline{
   display: flex;
-  margin-bottom: 10px;
+  font-size: 0.8em;
 }
 
 #window > #content > #stats > .content  > .cash-inline > img{
