@@ -115,9 +115,8 @@ $("#submit").click(function() {
     CallEvent("CallExecute", ParsetJs);
 });
 
-//close btn
-$("#close").click(function() {
-    CallEvent("CallClose");
+$(".admin").click(function() {
+    CallEvent("CallCloseAdmin");
 });
 
 $('.color-picker').spectrum({
