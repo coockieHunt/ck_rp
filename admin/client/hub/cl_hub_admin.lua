@@ -21,6 +21,7 @@ function CloseUIAdmin()
     ShowMouseCursor(false)
     SetInputMode(INPUT_GAME)
     SetWebVisibility(admin_ui, WEB_HIDDEN)
+
     OpenUISurvival_warn()
 end
 
@@ -52,10 +53,10 @@ function CallExecute(rslt)
 end
 AddEvent("CallExecute", CallExecute)
 
-function CallClose()
+function CallCloseAdmin()
     CloseUIAdmin()
 end
-AddEvent("CallClose", CallClose)
+AddEvent("CallCloseAdmin", CallCloseAdmin)
 
 
 
