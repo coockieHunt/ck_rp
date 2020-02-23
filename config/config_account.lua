@@ -7,7 +7,7 @@ _New_account = {
 };
   
 _Init_player = {
-    location = {x = -182821.000000, z = -41675.000000, y = 1160.000000, h = -90},
+    location = {x = 208488.000000, z = 213661.000000, y = 444.000000, h = 90},
     clothing_preset = 1
 };
 
