@@ -5,7 +5,8 @@ _Items = {
         model= 1296,
         size= 4,
         usable= false,
-        thumbnail= ""
+        thumbnail= "../../files_client/web/src/img/energi_drink.png",
+        type= "drinks"
     },
   
     banana = {
@@ -13,7 +14,8 @@ _Items = {
         model = 1622,
         size= 4,
         usable= false,
-        thumbnail= ""
+        thumbnail= "../../files_client/web/src/img/banana.png",
+        type= "food"
     },
   }
   
