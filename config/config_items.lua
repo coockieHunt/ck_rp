@@ -17,5 +17,14 @@ _Items = {
         thumbnail= "../../files_client/web/src/img/banana.png",
         type= "food"
     },
+
+    apple = {
+        name= "apple",
+        model = 1622,
+        size= 4,
+        usable= false,
+        thumbnail= "../../files_client/web/src/img/apple.png",
+        type= "food"
+    },
   }
   
