@@ -10,12 +10,12 @@
 	"client_scripts": [
 		"utils/json.lua",
 
-		"admin/client/hub/cl_hub_admin.lua",
-		"admin/client/hub/cl_build_select.lua",
+		"dialog/client/admin/cl_hub_admin.lua",
+		"dialog/client/cl_build_select.lua",
 		"admin/client/function/cl_manage_function.lua",
 
-		"survival/client/hub/cl_hub_survival.lua",
-		"survival/client/hub/cl_hub_warning_survival.lua",
+		"dialog/client/survival/cl_hub_survival.lua",
+		"dialog/client/survival_warning/cl_hub_warning_survival.lua",
 		
 		"init/client/cl_init.lua",
 		"init/client/config/cl_weapons.lua",
@@ -63,11 +63,7 @@
 		"files_client/web/script/window/warning_survival.js",
 		"files_client/web/script/window/survival.js",
 
-
-
-		"survival/files/ui_loading_fullscreen.html",
-		"survival/files/ui_survival.html", 
-		"survival/files/ui_warning_survival.html",
-		"admin/files/ui_admin.html"
+		"dialog/files/ui_survival.html", 
+		"dialog/files/ui_admin.html"
 	]
 }

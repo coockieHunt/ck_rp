@@ -42,7 +42,7 @@ AddEvent("OnPlayerSpawn", function(playerid)
     survival_ui = CreateWebUI(0,0,0,0,1,16)
     SetWebAlignment(survival_ui, 0,0)
     SetWebAnchors(survival_ui, 0,0,1,1)
-    SetWebURL(survival_ui,  'http://asset/' .. GetPackageName() .. '/survival/files/ui_survival.html')
+    SetWebURL(survival_ui,  'http://asset/' .. GetPackageName() .. '/dialog/files/ui_survival.html')
     SetWebVisibility(survival_ui, WEB_HIDDEN)
 end)
 

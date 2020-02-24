@@ -8,12 +8,12 @@ _Pacakge = {
 _Import_package = {
     "log",
     "inventory",
+    "dialog",
     "items",
     "car",
     "data",
     "init",
     "account",
-    "survival",
     "admin",
     "utils",
     "cop"
