@@ -51,6 +51,16 @@ function player:setCashAccount(amt)
    return true
 end
 
+-- CASH ACCOUNT
+function player:getInventory()
+   return self.inventory
+end
+
+function player:setInventory(inv)
+   self.inventory = inv
+   return true
+end
+
 local function newPlayer(playerInfo)
    return player:init(playerInfo)
 end
