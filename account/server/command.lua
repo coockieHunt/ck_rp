@@ -16,11 +16,13 @@ AddCommand("gst", cmd_commands)
 
 
 function cmd_inv(playerid)
-    local data = getplayer(playerid)
+	local data = getplayer(playerid)
+	AddPlayerChat(playerid, ("%s's inventory:"):format(data.name))
 
-	   AddPlayerChat(playerid, ("%s's inventory:"):format(data.name))
-	   for key, value in pairs(data.inventory) do
-        AddPlayerChat(playerid, "- " .. value.id .. " : " .. value.quantity)
+	local inventory = GetInventory(playerid)
+
+	for key, value in pairs(inventory) do
+		AddPlayerChat(playerid, "- " .. value.id .. " : " .. value.quantity)
     end
 	
 end

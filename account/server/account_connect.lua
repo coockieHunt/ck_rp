@@ -102,7 +102,6 @@ end
 --add
 function createPlayerAcoount(client_id, id, admin, steamId, health, armor, name, cash, cash_account, inventory)
     if(isnil(admin)) then admin = 0 end
-    local inventory = BuildInventroy(inventory)
     local p = playerData.ClassPlayer.new(
         {
             ["id"] = id,
