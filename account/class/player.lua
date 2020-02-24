@@ -51,7 +51,7 @@ function player:setCashAccount(amt)
    return true
 end
 
--- CASH ACCOUNT
+-- INVENTORY
 function player:getInventory()
    return self.inventory
 end
