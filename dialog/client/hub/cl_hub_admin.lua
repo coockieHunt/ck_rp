@@ -1,5 +1,4 @@
 local admin_ui
-local admin_key = "F5"
 
 -- manage ui
 function OpenUIAdmin()
@@ -37,7 +36,7 @@ AddEvent("OnPlayerSpawn", OnPlayerSpawn)
 
 -- key
 AddEvent("OnKeyPress", function(key)
-    if key == admin_key then
+    if key == GetKeyMapServer("admin") then
         if GetWebVisibility(admin_ui) == WEB_HIDDEN then
             OpenUIAdmin()
         else

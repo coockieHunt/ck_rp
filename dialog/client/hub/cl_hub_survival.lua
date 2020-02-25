@@ -1,5 +1,5 @@
 local survival_ui
-local survival_key = "Tab"
+local survival_key
 
 function OpenUISurvival()
     if survival_ui ~= nil then
@@ -27,7 +27,7 @@ end
 
 
 AddEvent("OnKeyPress", function(key)
-    if key == "Tab" then
+    if key == GetKeyMapServer("survival") then
         if GetWebVisibility(survival_ui) == WEB_HIDDEN then
             OpenUISurvival()
         else

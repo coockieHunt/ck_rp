@@ -10,12 +10,14 @@
 	"client_scripts": [
 		"utils/json.lua",
 
-		"dialog/client/admin/cl_hub_admin.lua",
-		"dialog/client/cl_build_select.lua",
+		"dialog/client/hub/cl_hub_admin.lua",
 		"admin/client/function/cl_manage_function.lua",
 
-		"dialog/client/survival/cl_hub_survival.lua",
-		"dialog/client/survival_warning/cl_hub_warning_survival.lua",
+		"dialog/client/hub/cl_hub_survival.lua",
+		"dialog/client/hub/cl_hub_warning_survival.lua",
+
+		"dialog/client/function/cl_build_select.lua",
+		"dialog/client/function/cl_getKeyMapping.lua",
 		
 		"init/client/cl_init.lua",
 		"init/client/config/cl_weapons.lua",
