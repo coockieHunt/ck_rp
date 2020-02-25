@@ -9,7 +9,7 @@ function GetKeyMap(key_config)
 end
 AddRemoteEvent("GetKeyMap", GetKeyMap)
 
-local function OnPlayerSpawn()
+function OnPlayerSpawn()
     CallRemoteEvent('GetServerKeyMap')
 end
 AddEvent("OnPlayerSpawn", OnPlayerSpawn)
