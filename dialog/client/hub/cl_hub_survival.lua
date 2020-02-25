@@ -3,10 +3,8 @@ local survival_key
 
 function OpenUISurvival()
     if survival_ui ~= nil then
-        SetIgnoreLookInput(true)
-        SetIgnoreMoveInput(true)
-        ShowMouseCursor(true)
-        SetInputMode(INPUT_GAMEANDUI)
+        ShowMouseHub(true)
+        LockPlayerInput(true)
         SetWebVisibility(survival_ui, WEB_VISIBLE)
         clearInventory()
         GetPersoInventoryList()
@@ -16,10 +14,8 @@ function OpenUISurvival()
 end
 
 function CloseUISurival()
-    SetIgnoreLookInput(false)
-    SetIgnoreMoveInput(false)
-    ShowMouseCursor(false)
-    SetInputMode(INPUT_GAME)
+    ShowMouseHub(false)
+    LockPlayerInput(false)
     SetWebVisibility(survival_ui, WEB_HIDDEN)
 
     OpenUISurvival_warn()

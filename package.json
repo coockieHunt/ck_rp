@@ -18,6 +18,7 @@
 
 		"dialog/client/function/cl_build_select.lua",
 		"dialog/client/function/cl_getKeyMapping.lua",
+		"dialog/client/function/cl_input_manager.lua",
 		
 		"init/client/cl_init.lua",
 		"init/client/config/cl_weapons.lua",

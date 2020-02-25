@@ -3,10 +3,8 @@ local admin_ui
 -- manage ui
 function OpenUIAdmin()
     if admin_ui ~= nil then
-        SetIgnoreLookInput(true)
-        SetIgnoreMoveInput(true)
-        ShowMouseCursor(true)
-        SetInputMode(INPUT_GAMEANDUI)
+        ShowMouseHub(true)
+        LockPlayerInput(true)
         SetWebVisibility(admin_ui, WEB_VISIBLE)
         CloseUISurvival_warn()
         
@@ -15,10 +13,8 @@ function OpenUIAdmin()
 end
 
 function CloseUIAdmin()
-    SetIgnoreLookInput(false)
-    SetIgnoreMoveInput(false)
-    ShowMouseCursor(false)
-    SetInputMode(INPUT_GAME)
+    ShowMouseHub(false)
+    LockPlayerInput(false)
     SetWebVisibility(admin_ui, WEB_HIDDEN)
 
     OpenUISurvival_warn()
