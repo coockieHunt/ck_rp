@@ -1,6 +1,6 @@
 local survival_ui
-local survival_key
 
+-- manage ui
 function OpenUISurvival()
     if survival_ui ~= nil then
         ShowMouseHub(true)
@@ -21,7 +21,17 @@ function CloseUISurival()
     OpenUISurvival_warn()
 end
 
+-- package manager
+function OnPlayerSpawn()
+    survival_ui = CreateWebUI(0,0,0,0,1,16)
+    SetWebAlignment(survival_ui, 0,0)
+    SetWebAnchors(survival_ui, 0,0,1,1)
+    SetWebURL(survival_ui,  'http://asset/' .. GetPackageName() .. '/dialog/files/ui_survival.html')
+    SetWebVisibility(survival_ui, WEB_HIDDEN)
+end
+AddEvent("OnPlayerSpawn", OnPlayerSpawn)
 
+-- key mapping
 AddEvent("OnKeyPress", function(key)
     if key == GetKeyMapServer("survival") then
         if GetWebVisibility(survival_ui) == WEB_HIDDEN then
@@ -32,18 +42,7 @@ AddEvent("OnKeyPress", function(key)
     end
 end)
 
-
-AddEvent("OnPlayerSpawn", function(playerid)
-    -- setup survival ui
-    survival_ui = CreateWebUI(0,0,0,0,1,16)
-    SetWebAlignment(survival_ui, 0,0)
-    SetWebAnchors(survival_ui, 0,0,1,1)
-    SetWebURL(survival_ui,  'http://asset/' .. GetPackageName() .. '/dialog/files/ui_survival.html')
-    SetWebVisibility(survival_ui, WEB_HIDDEN)
-end)
-
 -- manage ui
-
 function OnWebLoadComplete(webid)
     local playerId = GetPlayerId()
     
@@ -68,15 +67,13 @@ function SetPersoInventoryList(inventory)
         local thumb = v[3]
         local type = v[4]
 
-        ExecuteWebJS(survival_ui, "BuildPresonalInventoryListSelect("..id..",'"..name.. "' , '".. quantity.."', '"..thumb.."', '"..type.."');")
+        local cmd = string.format("BuildPresonalInventoryListSelect(%q, %q, %q, %q, %q);", id, name, quantity, thumb, type)
+
+        ExecuteWebJS(survival_ui, cmd)
 	end
 
 end
 AddRemoteEvent("SetPersoInventoryList", SetPersoInventoryList)
-
-function clearInventory()
-    ExecuteWebJS(survival_ui, "clearInventory()")            
-end
 
 -- update ui
 function setPlayerData(cash, a_cash, health, armor)
@@ -91,7 +88,11 @@ function setDammage(health, armor)
 end
 AddRemoteEvent("setDammage", setDammage)
 
+function clearInventory()
+    ExecuteWebJS(survival_ui, "clearInventory()")            
+end
 
+-- call ui
 function CallCloseSurvival()
     CloseUISurival()
 end

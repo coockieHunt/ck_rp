@@ -30,7 +30,7 @@ function OnPlayerSpawn()
 end
 AddEvent("OnPlayerSpawn", OnPlayerSpawn)
 
--- key
+-- key mapping
 AddEvent("OnKeyPress", function(key)
     if key == GetKeyMapServer("admin") then
         if GetWebVisibility(admin_ui) == WEB_HIDDEN then
