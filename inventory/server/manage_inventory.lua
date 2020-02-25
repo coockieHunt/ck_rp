@@ -1,6 +1,5 @@
 function AddPlayerItem(player, target, item_id, quantity)
     if(CheckIfValidItem(item_id) or isnil(target) or isnil(quantity)) then
-        local data = getplayer(target) 
         local decode_inventory = GetInventory(target)
 
         local cur_quantity = GetItemsQuantity(decode_inventory, item_id)
@@ -23,9 +22,7 @@ end
 
 function RemovePlayerItem(player, target, item_id, quantity)
     if(CheckIfValidItem(item_id) or isnil(target) or isnil(quantity)) then
-        local data = getplayer(target) 
         local decode_inventory = GetInventory(target)
-
         local cur_quantity = GetItemsQuantity(decode_inventory, item_id)
 
         if(cur_quantity ~= false) then
