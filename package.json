@@ -67,6 +67,7 @@
 		"files_client/web/script/window/survival.js",
 
 		"dialog/files/ui_survival.html", 
-		"dialog/files/ui_admin.html"
+		"dialog/files/ui_admin.html",
+		"dialog/files/ui_warning_survival.html"
 	]
 }
