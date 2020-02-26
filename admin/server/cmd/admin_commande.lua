@@ -106,14 +106,5 @@ end
 AddCommand('tp', cmd_admin_tp_preset)
 
 --test
-function addItem(player, target, item_id, quantity)
-    AddPlayerItem(player, target, item_id, quantity)
-end
-AddCommand('ai', addItem)
 
-
-function removeItem(player, target, item_id, quantity)
-    RemovePlayerItem(player, target, item_id, quantity)
-end
-AddCommand('ri', removeItem)
  
