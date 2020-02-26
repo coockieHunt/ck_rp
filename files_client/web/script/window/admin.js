@@ -54,6 +54,15 @@ function BuildPresetPosSelect(text, value){
     }
 }
 
+function BuildItemSelect(text, value){
+    if ( $( ".ItemListe" ).length ) {
+        let count = $(".ItemListe option[value='" + value + "']").length
+        if(count == 0){
+            $('.ItemListe').append(new Option(text, value))
+        }
+    }
+}
+
 $( function() {
     //hide all section
     $('section').attr("hidden",true);

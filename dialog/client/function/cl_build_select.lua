@@ -8,6 +8,7 @@ function BuildSelect(ui)
     GetClothingPresetList()
     GetWeaponsList()
     GetTpList()
+    GetItemsList()
 end
 
 -- car list
@@ -63,3 +64,19 @@ function GetTpList(ui)
         ExecuteWebJS(web_ui, "BuildPresetPosSelect('"..name.."', '"..i.."');")
 	end
 end
+
+-- Items list
+function GetItemsList(ui)
+    CallRemoteEvent('GetItemsList', ui)
+end
+
+function SetItemsList(ItemsList)
+    for k, v in ipairs(ItemsList) do
+        local id = v[2]
+        local name = v[1]
+        
+        ExecuteWebJS(web_ui, "BuildItemSelect('"..name.."', '"..id.."');")
+    end
+
+end
+AddRemoteEvent("SetItemsList", SetItemsList)
