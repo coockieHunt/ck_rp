@@ -107,7 +107,31 @@ AddRemoteEvent("Exucute", function(playerid, json)
             get_admin_tp_preset_pos(playerid, t, pd)
         end
     end
-end)
+
+    if(func == 'give_item_action') then
+        if(isnil(data['target']) or isnil(data['quantity']) or isnil(data['item_id'])) then
+            AddPlayerChat(playerid, "none id")
+        else
+            local t = data['target']
+            local q = data['quantity']
+            local ii = data['item_id']
+
+            admin_addItem(playerid, t, ii, q)
+        end
+    end
+
+    if(func == 'remove_item_action') then
+        if(isnil(data['target']) or isnil(data['quantity']) or isnil(data['item_id'])) then
+            AddPlayerChat(playerid, "none id")
+        else
+            local t = data['target']
+            local q = data['quantity']
+            local ii = data['item_id']
+
+            admin_removeItem(playerid, t, ii, q)
+        end
+    end
+ end)
 
 AddRemoteEvent("GetAllPlayer", function(player)
 	local PlayerTable = { }
@@ -119,5 +143,22 @@ AddRemoteEvent("GetAllPlayer", function(player)
 	end
 	
 	CallRemoteEvent(player, "SetPlayerList", PlayerTable)
+end)
+
+
+AddRemoteEvent("GetItemsList", function(player)
+	local ListTable = { }
+    local arg = 0
+
+    for id, item in pairs(_Items) do
+        arg = arg + 1
+        
+        ListTable[arg] = {
+            item.name,
+            id,
+        }
+    end
+	
+	CallRemoteEvent(player, "SetItemsList", ListTable)
 end)
 
