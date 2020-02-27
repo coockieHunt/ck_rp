@@ -106,5 +106,8 @@ end
 AddCommand('tp', cmd_admin_tp_preset)
 
 --test
+function test(player, model_id)
 
- 
+    CreateDropItem(player, model_id)
+end
+AddCommand('drop', test)
