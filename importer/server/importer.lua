@@ -12,6 +12,7 @@ end
 
 import("utils/system.lua")
 import("utils/json.lua")
+import("utils/sleep.lua")
 
 print("-- LOAD CONFIGURATION FILLE --" )
 for _, ConfigFile in ipairs(GetFilesFolder("packages/ck_rp/config")) do
