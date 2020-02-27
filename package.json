@@ -29,7 +29,9 @@
 		"data/client/list/cl_vehicles.lua",
 		"data/client/list/cl_tpPreset.lua",
 		"data/client/list/cl_clothingPreset.lua",
-		"data/client/list/cl_weapons.lua"
+		
+		"items/client/cl_animation.lua"
+
 	],
 	
 	"files": [
