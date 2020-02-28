@@ -12,6 +12,7 @@ function OnPackageStart(player)
                 ["usable"] = item.usable,
                 ["thumbnail"] = item.thumbnail,
                 ["type"] = item.type,
+                ["hand_pos"] = item.hand_pos,
             })
 
         table.insert(ItemsData, i)       
