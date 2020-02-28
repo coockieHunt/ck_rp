@@ -28,10 +28,8 @@
 		"data/client/cl_listing.lua",
 		"data/client/list/cl_vehicles.lua",
 		"data/client/list/cl_tpPreset.lua",
-		"data/client/list/cl_clothingPreset.lua",
+		"data/client/list/cl_clothingPreset.lua"
 		
-		"items/client/cl_animation.lua"
-
 	],
 	
 	"files": [

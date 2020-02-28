@@ -5,10 +5,14 @@ function CreateDropItem(player, item_id)
     local ph = GetPlayerHeading(player)
     local Vx, Vy, Vz = GetPlayerForward(player)
 
-    SetPlayerAnimation(player, anim_drop)
-    os.sleep(1.7)
     local obj = CreateObject(item_id, x, y, z)
 
+    SetPlayerAnimation(player, anim_drop)
+    SetObjectAttached(obj, ATTACH_PLAYER, player, 0, 0.0, 0.0, 0.0, 0,0, "hand_l")
+
+    os.sleep(1.6)
+
+    SetObjectDetached(obj)
     SetObjectLocation(obj, x + (Vx * 200), y + (Vy * 200), z - 100)
     SetObjectRotation(obj, 0, ph, 0)
 
