@@ -28,6 +28,7 @@
 		"data/client/cl_listing.lua",
 		"data/client/list/cl_vehicles.lua",
 		"data/client/list/cl_tpPreset.lua",
+		"data/client/list/cl_weapons.lua",
 		"data/client/list/cl_clothingPreset.lua"
 		
 	],
@@ -44,7 +45,7 @@
 		"files_client/web/src/img/silhouette.png",
 		"files_client/web/src/img/banana.png",
 		"files_client/web/src/img/energi_drink.png",
-		"files_client/web/src/img/apple.png",
+		"files_client/web/src/img/chips.png",
 
 		"files_client/web/src/font/Roboto-Regular.ttf",
 
