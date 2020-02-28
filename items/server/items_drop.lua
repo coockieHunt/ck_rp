@@ -5,17 +5,32 @@ function CreateDropItem(player, item_id)
     local ph = GetPlayerHeading(player)
     local Vx, Vy, Vz = GetPlayerForward(player)
 
-    local obj = CreateObject(item_id, x, y, z)
+    local item = GetItems(item_id)
+
+    local obj = CreateObject(item.model, x, y, z)
+    local hand_pos = item.hand_pos
+
+    if(isnil(hand_pos)) then
+        SetObjectAttached(obj, ATTACH_PLAYER, player, 8, -3, -8, 0.0, 0, 0, "hand_l")
+    else
+        SetObjectAttached(obj, ATTACH_PLAYER, player, 
+            hand_pos['x'], 
+            hand_pos['y'], 
+            hand_pos['z'], 
+            hand_pos['rx'],  
+            hand_pos['ry'], 
+            hand_pos['rz'], 
+            "hand_l"
+        )
+    end
 
     SetPlayerAnimation(player, anim_drop)
-    SetObjectAttached(obj, ATTACH_PLAYER, player, 0, 0.0, 0.0, 0.0, 0,0, "hand_l")
 
     os.sleep(1.6)
 
     SetObjectDetached(obj)
-    SetObjectLocation(obj, x + (Vx * 200), y + (Vy * 200), z - 100)
+    SetObjectLocation(obj, x + (Vx * 200), y + (Vy * 100), z - 100)
     SetObjectRotation(obj, 0, ph, 0)
-
 end
 
 function GetPlayerForward(playerid)
