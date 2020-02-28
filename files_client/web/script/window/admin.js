@@ -63,6 +63,15 @@ function BuildItemSelect(text, value){
     }
 }
 
+function BuildIDropItemSelect(text, value){
+    if ( $( ".DropItem" ).length ) {
+        let count = $(".DropItem option[value='" + value + "']").length
+        if(count == 0){
+            $('.DropItem').append(new Option(text, value))
+        }
+    }
+}
+
 $( function() {
     //hide all section
     $('section').attr("hidden",true);

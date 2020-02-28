@@ -162,3 +162,20 @@ AddRemoteEvent("GetItemsList", function(player)
 	CallRemoteEvent(player, "SetItemsList", ListTable)
 end)
 
+AddRemoteEvent("GetDropItemList", function(player)
+	local ListTable = { }
+    local arg = 0
+
+    for id, item in pairs(drop_list) do
+        arg = arg + 1
+        
+        ListTable[arg] = {
+            id,
+            item.player,
+            item.model,
+        }
+    end
+	
+	CallRemoteEvent(player, "SetDropItemList", ListTable)
+end)
+

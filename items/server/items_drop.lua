@@ -1,4 +1,5 @@
 local anim_drop = "PICKUP_LOWER"
+drop_list = {}
 
 function CreateDropItem(player, item_id)
     local x, y, z = GetPlayerLocation(player)
@@ -9,6 +10,14 @@ function CreateDropItem(player, item_id)
 
     local obj = CreateObject(item.model, x, y, z)
     local hand_pos = item.hand_pos
+
+    local new_item = {
+        ["player"] = player, 
+        ["model"] = item.model, 
+        ["pos"] = { x, y, z },
+    }
+
+    table.insert(drop_list, new_item)
 
     if(isnil(hand_pos)) then
         SetObjectAttached(obj, ATTACH_PLAYER, player, 8, -3, -8, 0.0, 0, 0, "hand_l")
@@ -46,3 +55,10 @@ function drop_item(player, item_id)
     RemovePlayerItem(player, player, item_id, 1)
 end
 AddRemoteEvent("drop_item", drop_item)
+
+function cmd_commands()
+    for i,v in ipairs(drop_list) do
+        print(i, v['model'], v['pos'])
+    end
+end
+AddCommand("test", cmd_commands)

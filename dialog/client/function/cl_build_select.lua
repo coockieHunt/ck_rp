@@ -9,6 +9,7 @@ function BuildSelect(ui)
     GetWeaponsList()
     GetTpList()
     GetItemsList()
+    GetDropItemList(ui)
 end
 
 -- car list
@@ -80,3 +81,22 @@ function SetItemsList(ItemsList)
 
 end
 AddRemoteEvent("SetItemsList", SetItemsList)
+
+-- Droped item list
+function GetDropItemList(ui)
+    CallRemoteEvent('GetDropItemList', ui)
+end
+
+function SetDropItemList(ItemsList)
+    for k, v in ipairs(ItemsList) do
+        local id = v[1]
+        local player = v[2]
+        local model = v[3]
+
+        local str = GetPlayerName(player) .. " " .. model
+        
+        ExecuteWebJS(web_ui, "BuildIDropItemSelect('"..str.."', '"..id.."');")
+    end
+
+end
+AddRemoteEvent("SetDropItemList", SetDropItemList)
