@@ -31,7 +31,7 @@ AddRemoteEvent("GetPersoInventory", function(player)
       local thumb = object.thumbnail
       local type = object.type
 
-      inventory[key] = {
+      inventory[id] = {
          name,
          quantity,
          thumb,
