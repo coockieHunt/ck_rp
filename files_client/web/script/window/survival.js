@@ -28,12 +28,14 @@ function SetBank(net_account_cash)
 }
 
 $( function() {
-    BuildPresonalInventoryListSelect(1, "test", 3, "../../files_client/web/src/img/energi_drink.png", "food")
-    BuildPresonalInventoryListSelect(3, "test", 3, "../../files_client/web/src/img/banana.png", "food")
-    BuildPresonalInventoryListSelect(4, "test", 4, "../../files_client/web/src/img/energi_drink.png", "food")
+    BuildPresonalInventoryListSelect("energi_drink", "test", 3, "../../files_client/web/src/img/energi_drink.png", "food")
+    BuildPresonalInventoryListSelect("banana", "test", 3, "../../files_client/web/src/img/banana.png", "food")
+    BuildPresonalInventoryListSelect("apple", "test", 4, "../../files_client/web/src/img/apple.png", "food")
 } );
 
 // inventory
+var selected_item
+
 function clearInventory() {
     $('#items').empty(); 
 }
@@ -54,6 +56,7 @@ function BuildPresonalInventoryListSelect(id, name, quantity, thumb, type){
      
         $('#' + id).append(thumb_div);  
         $('#' + id).append(info_div);
+
     
         if ( $('#' + id).text().length == 0 ) {
             $( '#' + id ).children('.thumb').append(thumb_element);  
@@ -63,9 +66,29 @@ function BuildPresonalInventoryListSelect(id, name, quantity, thumb, type){
         }
           
     }
+
+    $('#' + id).click(function() {
+        $('.object' ).each(function() {
+            $( this ).removeClass( "ItemsActive" );
+        });
+
+        SelectObject(id)
+    });
 }
 
 
+
+function SelectObject(id) {
+    $('#' + id).addClass("ItemsActive")
+
+    selected_item = id
+}
+
+$("#inventory > div > div.action > div.drop").click(function() {
+    CallEvent("CallDropItem", selected_item);
+});
+
+// window
 $(".survival").click(function() {
     CallEvent("CallCloseSurvival");
 });

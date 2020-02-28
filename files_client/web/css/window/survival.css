@@ -122,6 +122,8 @@
 
   border-right: 1px solid var(--spacer);
   background-color: var(--gray-med);
+  box-shadow: inset 2px -2px 41px -3px rgba(0,0,0,0.36);
+
 }
 
 #window > #content > #inventory > .content > #items > .object > .thumb > img{
@@ -170,6 +172,9 @@
   display: flex;
 }
 
+
+
+/* Action Object */
 #window > #content > #inventory > .content > .action > div{
   background-color: var(--gray-light);
   height: 30px;
@@ -177,8 +182,22 @@
   text-align: center;
   line-height: 30px;
   margin-right: 5px;
+
+  cursor: pointer;
 }
 
+#window > #content > #inventory > .content > .action > div:hover{
+  background: rgb(84,99,110);
+  box-shadow: inset 2px -2px 41px -3px rgba(0,0,0,0.36);
+}
+
+#window > #content > #inventory > .content > #items > .ItemsActive > .info{
+  background-color: #394550;
+}
+
+#window > #content > #inventory > .content > #items > .ItemsActive > .thumb{
+  background-color: #394550;
+}
 
 
 /* stats */
@@ -242,5 +261,4 @@
   width: 100%;
   text-align: right;
 }
-
 
