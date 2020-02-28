@@ -40,3 +40,9 @@ function GetPlayerForward(playerid)
 	local y = math.sin(rad)
 	return x, y, 0
 end
+
+function drop_item(player, item_id) 
+    CreateDropItem(player, item_id)
+    RemovePlayerItem(player, player, item_id, 1)
+end
+AddRemoteEvent("drop_item", drop_item)
