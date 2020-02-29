@@ -35,7 +35,7 @@ function CreateDropItem(player, item_id)
 
     SetPlayerAnimation(player, anim_drop)
 
-    os.sleep(1.6)
+    os.sleep(1.7)
 
     SetObjectDetached(obj)
     SetObjectLocation(obj, x + (Vx * 200), y + (Vy * 100), z - 100)
@@ -62,3 +62,10 @@ function cmd_commands()
     end
 end
 AddCommand("test", cmd_commands)
+
+
+function GetDropedItemById(id)
+    if(drop_list[id] ~= nil) then
+        return drop_list[id]
+    end
+end

@@ -1,3 +1,4 @@
+// section
 function ShowCurrentSection(id){
     $('.form_action > #' + id).attr("hidden",false);
 }
@@ -9,6 +10,7 @@ function ShowFirstSection(){
     ShowCurrentSection(key)
 }
 
+// build dynamic element
 function BuildVehicleSelect(text, value){
     if ( $( ".VList" ).length ) {
         let count = $(".VList option[value='" + value + "']").length
@@ -63,27 +65,40 @@ function BuildItemSelect(text, value){
     }
 }
 
-function BuildIDropItemSelect(text, value){
-    if ( $( ".DropItem" ).length ) {
-        let count = $(".DropItem option[value='" + value + "']").length
-        if(count == 0){
-            $('.DropItem').append(new Option(text, value))
-        }
-    }
+function BuildIDropItemSelect(id, player, model, pos){
+    $('.DropItem').append('<tr><td id="id">' + id + '</td><td>' + player + '</td><td>' + model + '</td><td>' + pos + '</td><</tr>');
+    $('.DropItem td').click(function(){
+        $( ".DropItem tr" ).each(function( index ) {
+            $(this).removeClass("active")
+        });
+
+        let parent = $( this ).parent()
+        let id = $(parent).find("#id").html()
+
+        $(parent).addClass("active")
+        $('#droped_id').val(id)
+    });
 }
+
+function ClearDropItemList(){
+    $(".DropItem td").parent().remove();
+}
+
 
 $( function() {
     //hide all section
     $('section').attr("hidden",true);
-
+    
     ShowFirstSection()
 
+    //dragable
     $("#window").draggable({
         opacity: 0.25,
         containment: "parent", 
         handle: "#top_bar"
     });
-    
+
+    //change section
     $("li").click(function() {
         if($(this).data("dp_id") == null){
             let id = $( this ).attr("id")
@@ -96,17 +111,25 @@ $( function() {
      });
 } );
 
+
+
+$('.color-picker').spectrum({
+    type: "component",
+    color: "#000000",
+    color: tinycolor,
+    showAlpha: false
+});
+
+//call event
 function GetForm(){
     let cur = $('.active').attr('id');;
     let cur_class = "#" + cur + " > .content  > form" ;
-    console.log(cur_class)
     let form = $(cur_class).serializeArray();
     const rslt = [{"func" : cur}].concat(form) 
 
     return rslt
 }
 
-//execute btn
 $("#submit").click(function() {
     var obj = {};
     obj['func'] = GetForm()[0]["func"]
@@ -137,9 +160,3 @@ $(".admin").click(function() {
     CallEvent("CallCloseAdmin");
 });
 
-$('.color-picker').spectrum({
-    type: "component",
-    color: "#000000",
-    color: tinycolor,
-    showAlpha: false
-});

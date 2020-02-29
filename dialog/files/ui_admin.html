@@ -378,10 +378,22 @@
 
                     <div class="content">
                         <form>
-                            <label for="target">item list: </label>
+                            <div class="drop_item_container">
+                                    <table class="DropItem" >
+                                        <tr>
+                                          <th>id</th>
+                                          <th>player</th>
+                                          <th>model</th>
+                                          <th>postion</th>
+                                        </tr>
+                                      </table>
+                            </div>
+                           
+                            <input id="droped_id" name="droped_id" type="hidden">
 
-                            <select size="18" class="DropItem" name="drop_item">
-                                    
+                            <select size="1" name="action" style="margin-top: 30px; width: 100%;">
+                                <option value="del">delete</option>
+                                <option value="tp">teleport</option>
                             </select>
                         </form>
                     </div>

@@ -8,6 +8,7 @@ function OpenUIAdmin()
         SetWebVisibility(admin_ui, WEB_VISIBLE)
         CloseUISurvival_warn()
         
+        ClearDropList()
         BuildSelect(admin_ui)
     end
 end
@@ -52,6 +53,10 @@ function CallCloseAdmin()
     CloseUIAdmin()
 end
 AddEvent("CallCloseAdmin", CallCloseAdmin)
+
+function ClearDropList()
+    ExecuteWebJS(admin_ui, "ClearDropItemList()")
+end
 
 
 

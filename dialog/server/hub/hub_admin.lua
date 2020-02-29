@@ -131,6 +131,23 @@ AddRemoteEvent("Exucute", function(playerid, json)
             admin_removeItem(playerid, t, ii, q)
         end
     end
+
+    if(func == 'drop_object_items') then
+        if(isnil(data['droped_id']) or isnil(data['action'])) then
+            AddPlayerChat(playerid, "none id")
+        else
+            local id = data['droped_id']
+            local act = data['action']
+
+            if(act == "tp") then
+                local pos = GetDropedItemPos(id)
+            end
+
+            if(act == "del") then
+
+            end
+        end
+    end
  end)
 
 AddRemoteEvent("GetAllPlayer", function(player)
@@ -168,14 +185,18 @@ AddRemoteEvent("GetDropItemList", function(player)
 
     for id, item in pairs(drop_list) do
         arg = arg + 1
+
+        local pos = item.pos[1].."-"..item.pos[2].."-"..item.pos[3]
         
         ListTable[arg] = {
             id,
             item.player,
             item.model,
+            pos,
         }
     end
 	
-	CallRemoteEvent(player, "SetDropItemList", ListTable)
+    CallRemoteEvent(player, "SetDropItemList", ListTable)
+
 end)
 

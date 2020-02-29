@@ -70,3 +70,41 @@ input[type="checkbox"]:checked {
   display: inline-block;
 
 }
+
+table {
+  width: 90%;
+  margin: auto;
+  background-color: var(--gray-light);
+  border-radius: 5px;
+}
+table th {
+  background-color: var(--gray-mid);
+  padding: 5px;
+}
+td {
+  font-family: sans-serif;
+  border:1px solid var(--spacer);
+  width: 50%;
+  padding: 15px;
+  text-align: center;
+  background-color: var(--gray-light);
+}
+caption {
+  font-family: sans-serif;
+}
+
+tr td {
+  white-space: nowrap;
+}
+
+tr:hover td {
+  cursor: pointer;
+  box-shadow: inset 2px -2px 41px -3px rgba(0,0,0,0.36);
+  background-color: var(--gray-mid);
+}
+
+.active td{
+  cursor: pointer;
+  box-shadow: inset 2px -2px 41px -3px rgba(0,0,0,0.36);
+  background-color: var(--gray-mid);
+}
