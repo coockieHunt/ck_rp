@@ -10,6 +10,17 @@ function GetItems(item_id)
     return false
 end
 
+
+function GetItemNameByModelId(model_id) 
+    for _, item in ipairs(GetItemsList()) do
+        if(item.model == tonumber(model_id)) then
+            return item.name
+        end
+    end
+
+    return false
+end
+
 function CheckIfValidItem(item_id)
     for _, item in ipairs(GetItemsList()) do
         if(item.id == item_id) then
