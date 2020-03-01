@@ -140,11 +140,11 @@ AddRemoteEvent("Exucute", function(playerid, json)
             local act = data['action']
 
             if(act == "tp") then
-                local pos = GetDropedItemPos(id)
+                admin_teleport_droped_Item(playerid, id)
             end
 
             if(act == "del") then
-
+                admin_delete_droped_Item(playerid, id)
             end
         end
     end
@@ -186,13 +186,14 @@ AddRemoteEvent("GetDropItemList", function(player)
     for id, item in pairs(drop_list) do
         arg = arg + 1
 
-        local pos = item.pos[1].."-"..item.pos[2].."-"..item.pos[3]
+        local pos = item.pos[1].." - "..item.pos[2].." - "..item.pos[3]
+        local name = GetItemNameByModelId(item.model)
         
         ListTable[arg] = {
-            id,
-            item.player,
-            item.model,
-            pos,
+            ["id"] = id, 
+            ["player"] = item.player, 
+            ["pos"] = pos,
+            ["model_name"] = name,
         }
     end
 	
