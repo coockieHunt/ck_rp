@@ -1,4 +1,3 @@
-local anim_drop = "PICKUP_LOWER"
 drop_list = {}
 
 function CreateDropItem(player, item_id)
@@ -34,9 +33,9 @@ function CreateDropItem(player, item_id)
         )
     end
 
-    SetPlayerAnimation(player, anim_drop)
+    SetPlayerAnimation(player, _Drop_animation.animation_id)
 
-    os.sleep(1.7)
+    os.sleep(_Drop_animation.detach_time)
 
     SetObjectDetached(obj)
     SetObjectLocation(obj, x + (Vx * 200), y + (Vy * 100), z - 100)
