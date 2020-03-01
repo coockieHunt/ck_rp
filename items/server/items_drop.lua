@@ -15,6 +15,7 @@ function CreateDropItem(player, item_id)
         ["player"] = player, 
         ["model"] = item.model, 
         ["pos"] = { x, y, z },
+        ["object"] = obj,
     }
 
     table.insert(drop_list, new_item)
@@ -56,16 +57,17 @@ function drop_item(player, item_id)
 end
 AddRemoteEvent("drop_item", drop_item)
 
-function cmd_commands()
-    for i,v in ipairs(drop_list) do
-        print(i, v['model'], v['pos'])
-    end
-end
-AddCommand("test", cmd_commands)
-
 
 function GetDropedItemById(id)
     if(drop_list[id] ~= nil) then
         return drop_list[id]
+    end
+end
+
+function RemoveDropedItem(droped_id)
+    local object = GetDropedItemById(tonumber(droped_id))
+    if(object ~= nil) then
+        DestroyObject(object["object"])
+        table.remove(drop_list, tonumber(droped_id)) 
     end
 end
