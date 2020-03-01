@@ -1,4 +1,4 @@
--- NEW ACCOUNT
+-- new account
 _New_account = {
     cash = 500,
     cash_account = 15000,
@@ -11,7 +11,7 @@ _Init_player = {
     clothing_preset = 5
 };
 
--- FETCH
+-- aut fetch time
 _Save_profile = {
     save_account_time = 300000 -- milisecond (1 min = 60000 milisecond) default - 300000
 };

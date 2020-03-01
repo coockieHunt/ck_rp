@@ -7,7 +7,9 @@
     --     usable= false,
     --     thumbnail= "../../files_client/web/src/img/energi_drink.png",
     --     type= "drinks"
-    --     hand_pos = {8, -3, -8, 0.0, 0, 0}
+    --     hand_pos = {x = 8, y = -3, z = -4,  rx = 0.0,  ry = 0, rz = 0}
+    --      or (for default pos)
+    --     hand_pos = nil
     -- },
 _Items = {
     energy_drinks = {

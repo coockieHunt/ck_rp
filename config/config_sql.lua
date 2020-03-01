@@ -1,4 +1,4 @@
--- SQL
+-- SQL credential
 _Mariadb = { 
     host = "127.0.0.1", 
     user = "root", 
@@ -6,6 +6,7 @@ _Mariadb = {
     database = "onset"
   };
   
+-- sql request
 _RequestSql = {
     IfplayerAccountExist = "SELECT id FROM accounts WHERE steam_id = '?' LIMIT 1;",
     CreatePlayerAccount = "INSERT INTO accounts (id, steam_id, health, armor, player_name, cash, cash_account, inventory) VALUES (NULL, '?', '?', '?', '?', '?', '?', '?');",
