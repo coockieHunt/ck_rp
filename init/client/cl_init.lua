@@ -1,5 +1,6 @@
 function spawn_init_clothing(clothing_id)
-	SetPlayerClothingPreset(GetPlayerId(),clothing_id)
+	local player = GetPlayerId()
+	set_clothingPreset(player, clothing_id)
 end
 AddRemoteEvent("spawn_init_clothing", spawn_init_clothing)
 

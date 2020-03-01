@@ -8,6 +8,6 @@ function admin_clothing_preset(player, target, clothing_preset)
 		end
 		
 		AddAdminLog(player, "spawn at "..GetPlayerName(target).." clothing preset id : " .. clothing_preset)
-		CallRemoteEvent(player, "spawn_clothing", target, clothing_preset_id)
+		CallRemoteEvent(player, "set_clothingPreset", target, clothing_preset_id)
 	end
 end
