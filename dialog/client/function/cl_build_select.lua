@@ -89,12 +89,12 @@ end
 
 function SetDropItemList(ItemsList)
     for k, v in ipairs(ItemsList) do
-        local id = v[1]
-        local player = v[2]
-        local model = v[3]
-        local pos = v[4]
+        local id = v["id"]
+        local player = v["player"]
+        local pos = v["pos"]
+        local model_name = v["model_name"]
 
-        local str = string.format("BuildIDropItemSelect('%q', '%q', '%q', '%q')", id, GetPlayerName(player), model, pos)
+        local str = string.format("BuildIDropItemSelect('%q', '%q', '%q', '%q')", id, GetPlayerName(player), model_name, pos)
 
         ExecuteWebJS(web_ui, str)
     end
