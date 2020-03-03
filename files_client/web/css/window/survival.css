@@ -333,4 +333,42 @@ body{
   height: 100%;
   padding: 3px;
   border-right: 1px solid var(--spacer);
+  display: flex;
 }
+
+#side_bottom_window > .content > .action > .quantity{
+  width: 50%;
+  height: 100%;
+  position: relative;
+}
+
+#side_bottom_window > .content > .action > .quantity > .content{
+  position: absolute; /* postulat de départ */
+  top: 40%; left: 50%; /* à 50%/50% du parent référent */
+  transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+}
+
+#side_bottom_window > .content > .action > .quantity > .content > span{
+  font-size: 3em;
+  color: #2b353d75;
+}
+
+#side_bottom_window > .content > .action > .quantity > .content > .up:hover{
+  color: #12161a6c;
+  cursor: pointer;
+}
+
+#side_bottom_window > .content > .action > .quantity > .content > .down:hover{
+  color: #12161a6c;
+  cursor: pointer;
+}
+
+#side_bottom_window > .content > .action > .quantity > .content > .number{
+  cursor: ew-resize;
+}
+
+#side_bottom_window > .content > .action > .player{
+  width: 50%;
+  height: 100%;
+}
+
