@@ -7,9 +7,12 @@ function OnPackageStart(player)
             {
                 ["id"] = id,
                 ["name"] = item.name,
+                ["descrip"] = item.description,
                 ["model"] = item.model,
                 ["size"] = item.size,
                 ["usable"] = item.usable,
+                ["third"] = item.third,
+                ["food"] = item.food,
                 ["thumbnail"] = item.thumbnail,
                 ["type"] = item.type,
                 ["hand_pos"] = item.hand_pos,

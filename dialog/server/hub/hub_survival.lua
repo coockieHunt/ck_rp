@@ -23,21 +23,36 @@ AddRemoteEvent("GetPersoInventory", function(player)
 
    for key, value in pairs(decode_inventory) do
       local id = value.id
-      local quantity = value.quantity
       
       local object = GetItems(id)
-      
-      local name = object.name
-      local thumb = object.thumbnail
-      local type = object.type
 
       inventory[id] = {
-         name,
-         quantity,
-         thumb,
-         type
+         object.name,
+         value.quantity,
+         object.thumbnail,
+         object.type,
+         object.third,
+         object.food,
+         object.descrip,
       }
+
    end
-   
+
 	CallRemoteEvent(player, "SetPersoInventoryList", inventory)
+end)
+
+AddRemoteEvent("GetItemInfo", function(player, item_id)
+   local InfoTable = { }
+
+   local item = GetItems(item_id)
+
+   InfoTable = {
+         ['name'] = item.name,
+         ['third'] = item.third,
+         ['food'] = item.food,
+         ['descrip'] = item.descrip
+   }
+
+   CallRemoteEvent(player, "SetItemInfo", InfoTable)
+
 end)

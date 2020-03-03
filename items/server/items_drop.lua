@@ -10,15 +10,6 @@ function CreateDropItem(player, item_id)
     local obj = CreateObject(item.model, x, y, z)
     local hand_pos = item.hand_pos
 
-    local new_item = {
-        ["player"] = player, 
-        ["model"] = item.model, 
-        ["pos"] = { x, y, z },
-        ["object"] = obj,
-    }
-
-    table.insert(drop_list, new_item)
-
     if(isnil(hand_pos)) then
         SetObjectAttached(obj, ATTACH_PLAYER, player, 8, -3, -8, 0.0, 0, 0, "hand_l")
     else
@@ -32,7 +23,7 @@ function CreateDropItem(player, item_id)
             "hand_l"
         )
     end
-
+    
     SetPlayerAnimation(player, _Drop_animation.animation_id)
 
     os.sleep(_Drop_animation.detach_time)
@@ -40,6 +31,21 @@ function CreateDropItem(player, item_id)
     SetObjectDetached(obj)
     SetObjectLocation(obj, x + (Vx * 200), y + (Vy * 100), z - 100)
     SetObjectRotation(obj, 0, ph, 0)
+    local ItemText = CreateText3D(item.name, 18,  x + (Vx * 200), y + (Vy * 100), z + 20, 0,0,0)
+
+    AddItemList(player, item.model, { x, y, z }, obj, ItemText)
+end
+
+function AddItemList(player, model, pos, object, text)
+    local new_item = {
+        ["player"] = player, 
+        ["model"] = model, 
+        ["pos"] = pos,
+        ["object"] = object,
+        ['3d_text'] = ItemtextText,
+    }
+    
+    table.insert(drop_list, new_item)
 end
 
 function GetPlayerForward(playerid)
@@ -68,5 +74,6 @@ function RemoveDropedItem(droped_id)
     if(object ~= nil) then
         DestroyObject(object["object"])
         table.remove(drop_list, tonumber(droped_id)) 
+        DestroyText3D(object["3d_text"])
     end
 end
