@@ -1,9 +1,7 @@
 $( function() {
-    BuildPresonalInventoryListSelect("energi_drink", "test", 3, "../../files_client/web/src/img/energi_drink.png", "food" , 5 , 4 ,"dqsdd dsq qsdaqzed sqdqsdzzd")
-    BuildPresonalInventoryListSelect("banana", "test", 3, "../../files_client/web/src/img/banana.png", "food" , 5 , 7 ,"dqsdd dsq qsdaqzed sqdqsdzzd")
-    BuildPresonalInventoryListSelect("chips", "test", 4, "../../files_client/web/src/img/chips.png", "food" , 5 , 8,"dqsdd dsq qsdaqzed sqdqsdzzd")
-
-    console.log('tables: ', list_item);
+    AddItem("energi_drink", "test", 3, "../../files_client/web/src/img/energi_drink.png", "food" , 5 , 4 ,"dqsdd dsq qsdaqzed sqdqsdzzd")
+    AddItem("banana", "test", 3, "../../files_client/web/src/img/banana.png", "food" , 5 , 7 ,"dqsdd dsq qsdaqzed sqdqsdzzd")
+    AddItem("chips", "test", 4, "../../files_client/web/src/img/chips.png", "food" , 5 , 8,"dqsdd dsq qsdaqzed sqdqsdzzd")
 } );
 
 // stats
@@ -41,6 +39,7 @@ function SetItemInfo(name, third, food, descrip)
     let food_html = "#side_bottom_window > .content > .info > .ar >.food > p"
     let third_html = "#side_bottom_window > .content > .info > .ar > .third > p"
     let desc_html = "#side_bottom_window > .content > .info > p"
+
     $(name_html).text(name)
     $(food_html).text(food)
     $(third_html).text(third)
@@ -57,7 +56,7 @@ function clearInventory() {
     $('#items').empty(); 
 }
 
-function BuildPresonalInventoryListSelect(id, name, quantity, thumb, type , third, food, descrip){
+function AddItem(id, name, quantity, thumb, type , third, food, descrip){
     let item = {
         "id" : id,
         "name" : name,
@@ -107,12 +106,10 @@ function BuildPresonalInventoryListSelect(id, name, quantity, thumb, type , thir
 }
 
 function SelectObject(id) {
-    let item
-
     $('#' + id).addClass("ItemsActive")
 
+    let item
     selected_item = id
-
 
     $.each( list_item, function( key, value ) {
         if( id == value['id']) {
@@ -123,11 +120,11 @@ function SelectObject(id) {
     SetItemInfo(item['name'], item['third'], item['food'], item['descrip'])
 }
 
-$("#inventory > div > div.action > div.drop").click(function() {
-    CallEvent("CallDropItem", selected_item);
-});
-
 // window
 $(".survival").click(function() {
     CallEvent("CallCloseSurvival");
+});
+
+$("#inventory > div > div.action > div.drop").click(function() {
+    CallEvent("CallDropItem", selected_item);
 });
