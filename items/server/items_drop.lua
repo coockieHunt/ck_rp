@@ -36,13 +36,13 @@ function CreateDropItem(player, item_id, quantity)
     AddItemList(player, item.model, { x, y, z }, obj, ItemText, quantity)
 end
 
-function AddItemList(player, model, pos, object, text, quantity)
+function AddItemList(player, model, pos, object, ItemText, quantity)
     local new_item = {
         ["player"] = player, 
         ["model"] = model, 
         ["pos"] = pos,
         ["object"] = object,
-        ['3d_text'] = ItemtextText,
+        ['3d_text'] = ItemText,
         ['quantity'] = quantity,
     }
 
