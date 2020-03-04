@@ -95,9 +95,6 @@ function SetDropItemList(ItemsList)
         local model_name = v["model_name"]
         local quantity = tostring(v["quantity"])
 
-        AddPlayerChat(quantity)
-        
-
         local str = string.format("BuildIDropItemSelect('%q', '%q', '%q', '%q', '%q')", id, GetPlayerName(player), model_name, pos, quantity)
 
         ExecuteWebJS(web_ui, str)
