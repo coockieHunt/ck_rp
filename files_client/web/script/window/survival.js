@@ -49,13 +49,13 @@ function SetBank(net_account_cash)
     return true
 }
 
-function SetItemInfo(name, third, food, descrip, quantity)
+function SetItemInfo(name, third, food, descrip)
 {
     $(dom_select.info_name).text(name)
     $(dom_select.info_food).text(food)
     $(dom_select.info_third).text(third)
     $(dom_select.info_description).text(descrip)
-    $(dom_select.info_quantity).text(quantity)
+    $(dom_select.info_quantity).text(1)
 }
 
 // inventory
@@ -126,7 +126,7 @@ function SelectItem(id) {
         }
     });
 
-    SetItemInfo(item['name'], item['third'], item['food'], item['descrip'], item['quantity'])
+    SetItemInfo(item['name'], item['third'], item['food'], item['descrip'])
 }
 
 $(dom_select.info_quantity_up).click(function() {
@@ -144,8 +144,6 @@ $(dom_select.info_quantity_up).click(function() {
     let new_val = max_dys + 1;
 
     if(new_val <= max){
-        console.log("ok")
-
         $(dom_select.info_quantity).text(new_val)
     }
 
