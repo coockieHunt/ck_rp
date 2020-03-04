@@ -1,6 +1,6 @@
 drop_list = {}
 
-function CreateDropItem(player, item_id)
+function CreateDropItem(player, item_id, quantity)
     local x, y, z = GetPlayerLocation(player)
     local ph = GetPlayerHeading(player)
     local Vx, Vy, Vz = GetPlayerForward(player)
@@ -31,20 +31,21 @@ function CreateDropItem(player, item_id)
     SetObjectDetached(obj)
     SetObjectLocation(obj, x + (Vx * 200), y + (Vy * 100), z - 100)
     SetObjectRotation(obj, 0, ph, 0)
-    local ItemText = CreateText3D(item.name, 18,  x + (Vx * 200), y + (Vy * 100), z + 20, 0,0,0)
+    local ItemText = CreateText3D(item.name ..' ('..quantity..')', 18,  x + (Vx * 200), y + (Vy * 100), z + 20, 0,0,0)
 
-    AddItemList(player, item.model, { x, y, z }, obj, ItemText)
+    AddItemList(player, item.model, { x, y, z }, obj, ItemText, quantity)
 end
 
-function AddItemList(player, model, pos, object, text)
+function AddItemList(player, model, pos, object, text, quantity)
     local new_item = {
         ["player"] = player, 
         ["model"] = model, 
         ["pos"] = pos,
         ["object"] = object,
         ['3d_text'] = ItemtextText,
+        ['quantity'] = quantity,
     }
-    
+
     table.insert(drop_list, new_item)
 end
 
@@ -56,9 +57,9 @@ function GetPlayerForward(playerid)
 	return x, y, 0
 end
 
-function drop_item(player, item_id) 
-    CreateDropItem(player, item_id)
-    RemovePlayerItem(player, player, item_id, 1)
+function drop_item(player, item_id, quantity) 
+    CreateDropItem(player, item_id, quantity)
+    RemovePlayerItem(player, player, item_id, quantity)
 end
 AddRemoteEvent("drop_item", drop_item)
 

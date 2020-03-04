@@ -194,6 +194,7 @@ AddRemoteEvent("GetDropItemList", function(player)
             ["player"] = item.player, 
             ["pos"] = pos,
             ["model_name"] = name,
+            ["quantity"] = item.quantity,
         }
     end
 	

@@ -4,49 +4,59 @@ $( function() {
     AddItem("chips", "test", 4, "../../files_client/web/src/img/chips.png", "food" , 5 , 8,"dqsdd dsq qsdaqzed sqdqsdzzd")
 } );
 
+
+var dom_select = {
+    "heath" : "#stats > .content > #health > .progress > .progress-container > .progressbar-element",
+    "armor" : "#stats > .content > #armor > .progress > .progress-container > .progressbar-element",
+    "cash" : "#stats > .content > #cash > #data",
+    "bank" : "#stats > .content > #bank > #data",
+    "info_name" : "#side_bottom_window > .content > .info > span",
+    "info_food" : "#side_bottom_window > .content > .info > .ar >.food > p",
+    "info_third" : "#side_bottom_window > .content > .info > .ar > .third > p",
+    "info_description" : "#side_bottom_window > .content > .info > p",
+    "info_quantity" : "#side_bottom_window > .content > .action > .quantity > .content > .number",
+    "info_quantity_up" : "#side_bottom_window > .content > .action > .quantity > .content > .up",
+    "info_quantity_down" : "#side_bottom_window > .content > .action > .quantity > .content > .down",
+}
+
+
 // stats
 function SetHealth(new_health)
 {
-    let healt = document.querySelector("#stats > .content > #health > .progress > .progress-container > .progressbar-element");
+    let healt = document.querySelector(dom_select.heath);
     healt.style.width = new_health + "%";
     return true
 }
 
 function SetArmor(new_armor)
 {
-    let armor = document.querySelector("#stats > .content > #armor > .progress > .progress-container > .progressbar-element");
+    let armor = document.querySelector(dom_select.armor);
     armor.style.width = new_armor + "%";
     return true
 }
 
 function SetCash(new_cash)
 {
-    let cash = document.querySelector("#stats > .content > #cash > #data");
+    let cash = document.querySelector(dom_select.cash);
     cash.innerHTML = new_cash
     return true
 }
 
 function SetBank(net_account_cash)
 {
-    let cash_account = document.querySelector("#stats > .content > #bank > #data");
+    let cash_account = document.querySelector(dom_select.bank);
     cash_account.innerHTML = net_account_cash
     return true
 }
 
-function SetItemInfo(name, third, food, descrip)
+function SetItemInfo(name, third, food, descrip, quantity)
 {
-    let name_html = "#side_bottom_window > .content > .info > span"
-    let food_html = "#side_bottom_window > .content > .info > .ar >.food > p"
-    let third_html = "#side_bottom_window > .content > .info > .ar > .third > p"
-    let desc_html = "#side_bottom_window > .content > .info > p"
-
-    $(name_html).text(name)
-    $(food_html).text(food)
-    $(third_html).text(third)
-    $(desc_html).text(descrip)
+    $(dom_select.info_name).text(name)
+    $(dom_select.info_food).text(food)
+    $(dom_select.info_third).text(third)
+    $(dom_select.info_description).text(descrip)
+    $(dom_select.info_quantity).text(quantity)
 }
-
-
 
 // inventory
 var selected_item
@@ -69,7 +79,6 @@ function AddItem(id, name, quantity, thumb, type , third, food, descrip){
     }
 
     list_item.push(item);
-
 
     let object_div = "<div class='object' id="+ id +"></div>"
     let thumb_div = "<div class='thumb'></div>"
@@ -101,11 +110,11 @@ function AddItem(id, name, quantity, thumb, type , third, food, descrip){
             $( this ).removeClass( "ItemsActive" );
         });
 
-        SelectObject(id)
+        SelectItem(id)
     });
 }
 
-function SelectObject(id) {
+function SelectItem(id) {
     $('#' + id).addClass("ItemsActive")
 
     let item
@@ -117,8 +126,49 @@ function SelectObject(id) {
         }
     });
 
-    SetItemInfo(item['name'], item['third'], item['food'], item['descrip'])
+    SetItemInfo(item['name'], item['third'], item['food'], item['descrip'], item['quantity'])
 }
+
+$(dom_select.info_quantity_up).click(function() {
+    let item
+
+    $.each( list_item, function( key, value ) {
+        if( selected_item == value['id']) {
+            item = value
+        }
+    });
+
+    let max = parseInt(item['quantity'])
+    let max_dys = parseInt($(dom_select.info_quantity).text())
+
+    let new_val = max_dys + 1;
+
+    if(new_val <= max){
+        console.log("ok")
+
+        $(dom_select.info_quantity).text(new_val)
+    }
+
+});
+
+$(dom_select.info_quantity_down).click(function() {
+    let item
+
+    $.each( list_item, function( key, value ) {
+        if( selected_item == value['id']) {
+            item = value
+        }
+    });
+
+    let max = parseInt(item['quantity'])
+    let max_dys = parseInt($(dom_select.info_quantity).text())
+
+    let new_val = max_dys - 1;
+
+    if(new_val <= max && new_val >= 1){
+        $(dom_select.info_quantity).text(new_val)
+    }
+});
 
 // window
 $(".survival").click(function() {
@@ -126,5 +176,6 @@ $(".survival").click(function() {
 });
 
 $("#inventory > div > div.action > div.drop").click(function() {
-    CallEvent("CallDropItem", selected_item);
+    let quantity = $(dom_select.info_quantity).text()
+    CallEvent("CallDropItem", selected_item, quantity);
 });

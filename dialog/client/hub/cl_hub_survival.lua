@@ -102,8 +102,9 @@ function CallCloseSurvival()
 end
 AddEvent("CallCloseSurvival", CallCloseSurvival)
 
-function CallDropItem(id)
+function CallDropItem(id, quantity)
     CloseUISurival()
-    CallRemoteEvent("drop_item", id)
+    
+    CallRemoteEvent("drop_item", id, quantity)
 end
 AddEvent("CallDropItem", CallDropItem)

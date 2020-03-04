@@ -16,7 +16,7 @@
 }
 
 *{margin:0;padding:0; font-family: "roboto", serif; color: white;  }
-html, body {height: 100%;}
+html, body {height: 100%;  user-select: none;}
 @font-face {font-family: "roboto";src: url("../src/font/Roboto-Regular.ttf");}
 
 #close{

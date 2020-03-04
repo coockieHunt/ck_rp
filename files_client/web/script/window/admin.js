@@ -65,8 +65,8 @@ function BuildItemSelect(text, value){
     }
 }
 
-function BuildIDropItemSelect(id, player, model, pos){
-    $('.DropItem').append('<tr><td id="id">' + id + '</td><td>' + player + '</td><td>' + model + '</td><td>' + pos + '</td><</tr>');
+function BuildIDropItemSelect(id, player, model, pos, quantity){
+    $('.DropItem').append('<tr><td id="id">' + id + '</td><td>' + player + '</td><td>' + model + '</td><td>' + quantity + '</td><td>' + pos + '</td></tr>');
     $('.DropItem td').click(function(){
         $( ".DropItem tr" ).each(function( index ) {
             $(this).removeClass("active")
