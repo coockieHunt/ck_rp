@@ -22,11 +22,14 @@
 		
 		"account/client/clothing/cl_set_clothing.lua",
 		"account/client/clothing/cl_stream.lua",
+		"account/client/cl_nearest.lua",
 		
 		"init/client/cl_init.lua",
 		"init/client/config/cl_weapons.lua",
 
 		"car/client/fix/cl_fixDrift.lua",
+		
+		"items/client/cl_gather.lua",
 
 		"data/client/cl_listing.lua",
 		"data/client/list/cl_vehicles.lua",
