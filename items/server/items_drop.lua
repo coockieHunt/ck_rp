@@ -27,23 +27,25 @@ function CreateDropItem(player, item_id, quantity)
     SetPlayerAnimation(player, _Drop_animation.animation_id)
 
     os.sleep(_Drop_animation.detach_time)
+    DestroyObject(obj)
 
-    SetObjectDetached(obj)
-    SetObjectLocation(obj, x + (Vx * 200), y + (Vy * 100), z - 100)
-    SetObjectRotation(obj, 0, ph, 0)
-    local ItemText = CreateText3D(item.name ..' ('..quantity..')', 18,  x + (Vx * 200), y + (Vy * 100), z + 20, 0,0,0)
+    local pickup = CreatePickup(item.model, x + (Vx * 200), y + (Vy * 100), z - 50)
+    SetPickupPropertyValue(pickup, "type", "droped_item")
+    SetPickupPropertyValue(pickup, "id", "droped_item")
+    local ItemText = CreateText3D(item.name ..' - ('..quantity..')', 18,  x + (Vx * 200), y + (Vy * 100), z + 20, 0,0,0)
 
-    AddItemList(player, item.model, { x, y, z }, obj, ItemText, quantity)
+    AddItemList(player, item.model, { x, y, z }, pickup, ItemText, quantity, item_id)
 end
 
-function AddItemList(player, model, pos, object, ItemText, quantity)
+function AddItemList(player, model, pos, pickup, ItemText, quantity, item_id)
     local new_item = {
         ["player"] = player, 
         ["model"] = model, 
         ["pos"] = pos,
-        ["object"] = object,
         ['3d_text'] = ItemText,
         ['quantity'] = quantity,
+        ['pickup'] = pickup,
+        ['item_id'] = item_id,
     }
 
     table.insert(drop_list, new_item)
@@ -72,9 +74,38 @@ end
 
 function RemoveDropedItem(droped_id)
     local object = GetDropedItemById(tonumber(droped_id))
+
     if(object ~= nil) then
-        DestroyObject(object["object"])
+        DestroyPickup(object['pickup'])
         table.remove(drop_list, tonumber(droped_id)) 
         DestroyText3D(object["3d_text"])
     end
 end
+
+function GatherDropedItem(player, droped_id)
+    local object = GetDropedItemById(tonumber(droped_id))
+    
+
+    SetPlayerAnimation(player, _Gather_animation.animation_id)
+
+    os.sleep(_Gather_animation.atach_time)
+
+    AddPlayerItem(player, player, object['item_id'], object['quantity'])
+    RemoveDropedItem(droped_id)
+
+    local x, y, z = GetPlayerLocation(player)
+    local obj = CreateObject(object.model, x, y, z)
+    SetObjectAttached(obj, ATTACH_PLAYER, player, 8, -3, -8, 0.0, 0, 0, "hand_l")
+    os.sleep(_Gather_animation.detach_time)
+    DestroyObject(obj)
+end
+AddRemoteEvent("GatherDropedItem", GatherDropedItem)
+
+
+function OnPlayerPickupHit(player, Pickup)
+    local x, y, z = GetPlayerLocation(player)
+    --CallRemoteEvent(player, "GetPickupActor", x, y, z)
+end
+AddEvent("OnPlayerPickupHit", OnPlayerPickupHit )
+
+
