@@ -94,9 +94,6 @@ function OnAccountLoaded(player)
 
         local client_id = GetPlayerBySteamId(steam_id)
 
-        print(result['weight'])
-
-
         createPlayerAcoount(client_id, result['id'], result['admin_level'], result['steam_id'], result['health'], result['armor'], result['weight'],player_name, result['cash'], result['cash_account'], result['inventory'])
         AddPlayerChatAll( ('<span color="#%s">%s </>%s'):format("0438CE", GetPlayerName(player), " a rejoint le serveur"))
 	end
