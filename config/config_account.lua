@@ -5,13 +5,17 @@ _New_account = {
     health = 100,
     armor = 50
 };
+
+_Inventory_account = {
+    weight_character = 25
+}
   
 _Init_player = {
     location = {x = 208488.000000, z = 213661.000000, y = 444.000000, h = 90},
     clothing_preset = 5
 };
 
--- aut fetch time
+-- auto fetch time
 _Save_profile = {
     save_account_time = 300000 -- milisecond (1 min = 60000 milisecond) default - 300000
 };

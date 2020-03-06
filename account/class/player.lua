@@ -61,6 +61,16 @@ function player:setInventory(inv)
    return true
 end
 
+-- WEIGHT
+function player:getWeight()
+   return self.weight
+end
+
+function player:setWeight(weight)
+   self.weight = weight
+   return true
+end
+
 local function newPlayer(playerInfo)
    return player:init(playerInfo)
 end

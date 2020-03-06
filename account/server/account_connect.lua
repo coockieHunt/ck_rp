@@ -47,6 +47,7 @@ function CreatePlayerAccount(player)
         steam_id,
         _New_account.health,
         _New_account.armor,
+        _Inventory_account.weight_character,
         player_name,
         _New_account.cash,
         _New_account.cash_account,
@@ -93,14 +94,17 @@ function OnAccountLoaded(player)
 
         local client_id = GetPlayerBySteamId(steam_id)
 
-        createPlayerAcoount(client_id, result['id'], result['admin_level'], result['steam_id'], result['health'], result['armor'], player_name, result['cash'], result['cash_account'], result['inventory'])
+        print(result['weight'])
+
+
+        createPlayerAcoount(client_id, result['id'], result['admin_level'], result['steam_id'], result['health'], result['armor'], result['weight'],player_name, result['cash'], result['cash_account'], result['inventory'])
         AddPlayerChatAll( ('<span color="#%s">%s </>%s'):format("0438CE", GetPlayerName(player), " a rejoint le serveur"))
 	end
 end
 
 ---- Manage account list
 --add
-function createPlayerAcoount(client_id, id, admin, steamId, health, armor, name, cash, cash_account, inventory)
+function createPlayerAcoount(client_id, id, admin, steamId, health, armor, weight, name, cash, cash_account, inventory)
     if(isnil(admin)) then admin = 0 end
     local p = playerData.ClassPlayer.new(
         {
@@ -110,6 +114,7 @@ function createPlayerAcoount(client_id, id, admin, steamId, health, armor, name,
             ["steamId"] = steamId,
             ["health"] = health,
             ["armor"] = armor,
+            ["weight"] = weight,
             ["name"] = name,
             ["cash"] =  cash,
             ["cash_account"] =  cash_account,

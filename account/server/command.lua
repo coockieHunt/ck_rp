@@ -11,6 +11,7 @@ function cmd_commands(playerid)
 	AddPlayerChat(playerid, ("		- cash : %s"):format(data:getCash()))
 	AddPlayerChat(playerid, ("		- cash_account : %s"):format(data:getCashAccount()))
 	AddPlayerChat(playerid, ("		- inventory : %s"):format(data.inventory))
+	AddPlayerChat(playerid, ("		- weight : %s"):format(data.weight))
 end
 AddCommand("gst", cmd_commands)
 
