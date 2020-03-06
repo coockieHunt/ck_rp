@@ -26,8 +26,6 @@ function SaveAccountPlayer(player)
         end
     end
 
-    print(Data.inventory)
-
     local query = mariadb_prepare(db, _RequestSql.SaveAccount,
         Data.cash,
         Data.cash_account,
