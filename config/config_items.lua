@@ -50,5 +50,9 @@ _Items = {
         type= "food",
         hand_pos = {x = 8, y = -3, z = -4,  rx = 0.0,  ry = 0, rz = 0}
     }
-  }
+}
+
+_Default_item = {
+    hand_pos = {x = 8, y = -3, z = -8,  rx = 0.0,  ry = 0, rz = 0}
+}
   

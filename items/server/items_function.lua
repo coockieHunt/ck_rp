@@ -10,7 +10,6 @@ function GetItems(item_id)
     return false
 end
 
-
 function GetItemNameByModelId(model_id) 
     for _, item in ipairs(GetItemsList()) do
         if(item.model == tonumber(model_id)) then
@@ -29,4 +28,19 @@ function CheckIfValidItem(item_id)
     end
 
     return false
+end
+
+function GetItemHandPos(item_id)
+    if(CheckIfValidItem(item_id)) then
+        local item = GetItems(item_id)
+
+        local hand_pos = item.hand_pos
+
+        if(isnil(hand_pos)) then
+            return _Default_item.hand_pos
+        else
+            return hand_pos
+        end
+    end
+
 end
