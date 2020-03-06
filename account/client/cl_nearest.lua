@@ -1,5 +1,6 @@
 function GetNearestPickUp(MaxDist)
     local x, y, z = GetPlayerLocation()
+    local pickup
 
     for _,v in pairs(GetStreamedPickups()) do
         local px, py, pz = GetPickupLocation(v)
@@ -8,15 +9,18 @@ function GetNearestPickUp(MaxDist)
         if GetDistance3D < MaxDist then
             local type = GetPickupPropertyValue(v, "type")
 
-            local pickup = {
+            pickup = {
                 ["type"] = type,
                 ["id"] = v
             }
 
-            return pickup
+            break;
         end
 
     end
-    return false
 
+    if( pickup ~= nil) then
+        return pickup
+    end
+    return false
 end
