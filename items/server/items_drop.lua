@@ -87,7 +87,6 @@ function GatherDropedItem(player, droped_id)
         )
 
         Delay(_Gather_animation.detach_time, function()
-            AddPlayerItem(player, player, po_id , po_quantity)
             DestroyObject(attached_object)
         end)
     end)
