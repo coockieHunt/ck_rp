@@ -6,7 +6,7 @@ function admin_car_spawn(player, model, mount, boost , color)
 		local model = tonumber(model)
 		color = "0x"..color
 
-		if (model < 1 or model > 25) then return AddPlayerChat(player, "Vehicle model "..model.." does not exist.") end
+		if (model < 1 or model > 26) then return AddPlayerChat(player, "Vehicle model "..model.." does not exist.") end
 	
 		local x, y, z = GetPlayerLocation(player)
 		local h = GetPlayerHeading(player)

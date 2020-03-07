@@ -7,7 +7,7 @@ local mult = 0.000012 -- drift variable
 
 AddEvent("OnGameTick",function()
     for k, v in pairs(GetAllVehicles()) do
-    if (GetVehicleModelName(v)~="Helicopter_01" and GetVehicleModelName(v)~="Helicopter_02") then
+    if (GetVehicleModelName(v)~="Helicopter_01" and GetVehicleModelName(v)~="Helicopter_02" and GetVehicleModelName(v)~="Helicopter_03") then
     if GetVehicleDriver(v)~=0 then
        if (GetVehiclePropertyValue(v, "wheelturn")==nil) then
         SetVehiclePropertyValue(v, "wheelturn", "no", true)

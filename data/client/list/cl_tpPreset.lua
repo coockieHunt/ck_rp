@@ -21,9 +21,8 @@ POS_PRESET_GUNS = 15
 POS_PRESET_MTN = 16
 POS_PRESET_AIR = 17
 POS_PRESET_DINER = 18
-POS_PRESET_PD = 19
-POS_PRESET_HOSP_1 = 20
-POS_PRESET_HOSP_2 = 21
+POS_PRESET_HOSP_1 = 19
+POS_PRESET_HOSP_2 = 50
 
 POS_PRESET_DATA = {
   [1] = {
@@ -153,20 +152,13 @@ POS_PRESET_DATA = {
     h = -90
   },
   [19] = {
-    name = 'police office dev',
-    x = 171553.000000,
-    y = 195234.000000,
-    z = 572.000000,
-    h = 90
-  },
-  [20] = {
     name = 'hospital 1',
     x = 215242.000000,
     y = 158470.000000,
     z = 2962.000000,
     h = 90
   },
-  [21] = {
+  [20] = {
     name = 'hospital 2',
     x = 212372.000000,
     y = 153763.000000,

@@ -28,6 +28,7 @@ VEHICLE_CARGO_LIGHT_OLIVE = 22
 VEHICLE_CARGO_LIGHT_CAMO = 23
 VEHICLE_SECURICAR_RED = 24
 VEHICLE_DACIA = 25
+VEHICLE_HELI_ARMY = 26
 
 VEHICLE_DATA = {
   [1] = {
@@ -129,5 +130,9 @@ VEHICLE_DATA = {
   [25] = {
     name = 'Dacia',
     alias = { 'Sedan_Classic' }
+  },
+  [26] = {
+    name = 'Maverick ARMY',
+    alias = { 'maverick_army' }
   }
 }
