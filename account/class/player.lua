@@ -62,12 +62,12 @@ function player:setInventory(inv)
 end
 
 -- WEIGHT
-function player:getWeight()
-   return self.weight
+function player:getMaxWeight()
+   return self.MaxWeight
 end
 
-function player:setWeight(weight)
-   self.weight = weight
+function player:setMaxWeight(MaxWeight)
+   self.MaxWeight = MaxWeight
    return true
 end
 

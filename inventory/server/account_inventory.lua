@@ -72,3 +72,9 @@ function GetInventory(target)
 
     return DecodeInventoy(target:getInventory())
 end
+
+function GetInventoryWeight(target)
+    local target = getplayer(target)
+
+    return target:getWeight()
+end

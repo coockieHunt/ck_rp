@@ -101,3 +101,5 @@ function SetDropItemList(ItemsList)
     end
 end
 AddRemoteEvent("SetDropItemList", SetDropItemList)
+
+

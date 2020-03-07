@@ -17,6 +17,7 @@ var dom_select = {
     "info_quantity" : "#side_bottom_window > .content > .action > .quantity > .content > .number",
     "info_quantity_up" : "#side_bottom_window > .content > .action > .quantity > .content > .up",
     "info_quantity_down" : "#side_bottom_window > .content > .action > .quantity > .content > .down",
+    "info_weight_lift" : "#inventory > .content > .header > .max_weight"
 }
 
 
@@ -25,6 +26,12 @@ function SetHealth(new_health)
 {
     let healt = document.querySelector(dom_select.heath);
     healt.style.width = new_health + "%";
+    return true
+}
+
+function SetWeightLift(weight)
+{
+    $(dom_select.info_weight_lift).text('max weight : nill/' + weight);
     return true
 }
 

@@ -8,7 +8,7 @@ function OpenUISurvival()
         SetWebVisibility(survival_ui, WEB_VISIBLE)
         clearInventory()
         GetPersoInventoryList()
-
+        GetMaxWeightLift()
         CloseUISurvival_warn()
     end
 end
@@ -95,6 +95,15 @@ AddRemoteEvent("setDammage", setDammage)
 function clearInventory()
     ExecuteWebJS(survival_ui, "clearInventory()")            
 end
+
+function GetMaxWeightLift()
+    CallRemoteEvent('GetInventoryMaxWeight')     
+end
+
+function SetMaxWeightLift(weight)
+    ExecuteWebJS(survival_ui, "SetWeightLift('"..weight.."');")            
+end
+AddRemoteEvent("SetMaxWeightLift", SetMaxWeightLift)
 
 -- call ui
 function CallCloseSurvival()

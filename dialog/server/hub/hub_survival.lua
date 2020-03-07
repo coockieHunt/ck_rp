@@ -54,5 +54,11 @@ AddRemoteEvent("GetItemInfo", function(player, item_id)
    }
 
    CallRemoteEvent(player, "SetItemInfo", InfoTable)
+end)
 
+AddRemoteEvent("GetInventoryMaxWeight", function(player)
+   local target = getplayer(player)
+   local MaxWeight = target:getMaxWeight()
+
+   CallRemoteEvent(player, "SetMaxWeightLift", MaxWeight)
 end)
