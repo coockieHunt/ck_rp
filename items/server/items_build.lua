@@ -9,7 +9,7 @@ function OnPackageStart(player)
                 ["name"] = item.name,
                 ["descrip"] = item.description,
                 ["model"] = item.model,
-                ["size"] = item.size,
+                ["weight"] = item.weight,
                 ["usable"] = item.usable,
                 ["third"] = item.third,
                 ["food"] = item.food,

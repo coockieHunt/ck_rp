@@ -35,12 +35,12 @@ function item:SetName(id)
 end
 
 -- SIZE
-function item:getSize()
-    return self.size
+function item:getWeight()
+    return self.weight
 end
 
-function item:SetName(num)
-    self.size = num
+function item:SetWeight(num)
+    self.weight = num
 end
 
 -- USABELE
