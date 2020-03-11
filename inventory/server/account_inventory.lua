@@ -53,18 +53,19 @@ function GetItemsQuantity(inventory, item_id)
         local quantity_loop = value.quantity
 
         if(item_id == id_loop) then
-            return quantity_loop
+            return tonumber(quantity_loop)
         end
      end
 
      return false
 end
 
-function SaveInventory(target, new_inventory)
+function SaveInventory(target, new_inventory, weight)
     local new_inventory = EncodeInventory(new_inventory)
     local target = getplayer(target)
 
     target:setInventory(new_inventory)
+    target:setCurWeight(weight)
 end
 
 function GetInventory(target)
@@ -76,9 +77,8 @@ end
 function GetInventoryMaxWeight(target)
     local target = getplayer(target)
 
-    return target:getMaxWeight()
+    return tonumber(target:getMaxWeight())
 end
-
 
 function CalculateInvWeight(target)
     local decode_inventory = GetInventory(target)
@@ -88,12 +88,17 @@ function CalculateInvWeight(target)
     for i, v in pairs(decode_inventory) do
         local cur_id = v['id']
         local cur_quantity = v['quantity']
-        local item_weight = GetItemWeightById(cur_id)
 
-
-        local add = cur_quantity * item_weight
+        local add = GetInventoryItemWeight(cur_id, cur_quantity)
 
         cur_weight = cur_weight + add
     end
+
     return cur_weight
+end
+
+function GetInventoryItemWeight(item_id, quantity)
+    local item_weight = GetItemWeightById(item_id)
+
+    return quantity * item_weight
 end
