@@ -79,7 +79,6 @@ function OnAccountLoaded(player)
     if (mariadb_get_row_count() == 0) then
 		KickPlayer(player, "😨 An error occured while loading your account 😨 (EC 002)")
     else
-        local steam_id = tostring(GetPlayerSteamId(player))
         local player_name = GetPlayerName(player)
         local result = mariadb_get_assoc(1)
         
@@ -88,22 +87,23 @@ function OnAccountLoaded(player)
             player_name = result['player_name']
         end
 
-
         SetPlayerName(player, player_name)
         SetPlayerArmor(player, tonumber(result['armor']))
         SetPlayerHealth(player, tonumber(result['health']))
 
-        local client_id = GetPlayerBySteamId(steam_id)
 
-        createPlayerAcoount(client_id, player_name, result)
+        createPlayerAcoount(player, player_name, result)
         AddPlayerChatAll( ('<span color="#%s">%s </>%s'):format("0438CE", GetPlayerName(player), " a rejoint le serveur"))
 	end
 end
 
 ---- Manage account list
 --add
-function createPlayerAcoount(client_id, name, data)
+function createPlayerAcoount(player, name, data)
     if(isnil(data['admin_level'])) then data['admin_level'] = 0 end
+    local steam_id = tostring(GetPlayerSteamId(player))
+    local client_id = GetPlayerBySteamId(steam_id)
+
     local p = playerData.ClassPlayer.new(
         {
             ["id_client"] = client_id,
