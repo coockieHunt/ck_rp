@@ -40,8 +40,7 @@ function get_admin_tp_preset_pos(player, target, dest)
 	if(AdminLevel(player, level)) then
 		local pos = tonumber(dest)
 		if(isnil(pos)) then pos = dest end
-
-		CallRemoteEvent(target, "GetPosByName", pos, player, target)
+		GetPosByName( pos, player, target)
 	end
 end
 

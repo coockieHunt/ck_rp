@@ -32,10 +32,7 @@
 		"items/client/cl_gather.lua",
 
 		"data/client/cl_listing.lua",
-		"data/client/list/cl_vehicles.lua",
-		"data/client/list/cl_tpPreset.lua",
-		"data/client/list/cl_weapons.lua",
-		"data/client/list/cl_clothingPreset.lua"
+		"data/client/cl_setData.lua"
 	],
 	
 	"files": [

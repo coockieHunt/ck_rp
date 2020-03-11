@@ -14,54 +14,37 @@ end
 
 -- car list
 function GetCarList()
-    for i, v in ipairs(VEHICLE_DATA) do
-        local name = v['name']
-        local alias = VEHICLE_DATA[i]['alias'][1]
-        local id = i
-        ExecuteWebJS(web_ui, "BuildVehicleSelect('"..name.."', "..id..");")
+    for i, v in ipairs(__Car_list) do
+        local name = v[1]
+        local id = v[2]
+        ExecuteWebJS(web_ui, "BuildVehicleSelect('"..name.." ', "..id..");")
     end
 end
 
 --clothing preset list
 function GetClothingPresetList()
-    for i, v in ipairs(CLOTHING_PRESET_DATA) do
-        local name = v['name']
-        local alias = CLOTHING_PRESET_DATA[i]['alias'][1]
-        local id = i
+    for i, v in ipairs(__ClothingPreset_list) do
+        local name = v[1]
+        local id = v[2]
         ExecuteWebJS(web_ui, "BuildClothingPresetSelect('"..name.."', "..id..");")
     end
 end
 
 --Weapon list
 function GetWeaponsList()
-    for i, v in ipairs(WEAPON_DATA) do
-        local name = v['name']
-        local id = i
+    for i, v in ipairs(__Weapons_list) do
+        local name = v[1]
+        local id = v[2]
         ExecuteWebJS(web_ui, "BuildWeaponsSelect('"..name.."', "..id..");")
     end
 end
 
--- Player list
-function GetPlayerList(ui)
-    CallRemoteEvent("GetAllPlayer", ui)
-end
-
-function SetPlayerList(playersList)
-    for k, v in ipairs(playersList) do
-        local id = k
-        local name = v[1]
-        ExecuteWebJS(web_ui, "BuildPlayerListSelect('"..name.."', "..id..");")
-	end
-
-end
-AddRemoteEvent("SetPlayerList", SetPlayerList)
-
 -- tp list
 function GetTpList(ui)
     local i = 0
-    for k, v in ipairs(POS_PRESET_DATA) do
+    for k, v in ipairs(__PosPreset) do
         i = i + 1
-        local name = v['name']
+        local name = v[1]
         ExecuteWebJS(web_ui, "BuildPresetPosSelect('"..name.."', '"..i.."');")
 	end
 end
@@ -102,4 +85,17 @@ function SetDropItemList(ItemsList)
 end
 AddRemoteEvent("SetDropItemList", SetDropItemList)
 
+-- Player list
+function GetPlayerList(ui)
+    CallRemoteEvent("GetAllPlayer", ui)
+end
 
+function SetPlayerList(playersList)
+    for k, v in ipairs(playersList) do
+        local id = k
+        local name = v[1]
+        ExecuteWebJS(web_ui, "BuildPlayerListSelect('"..name.."', "..id..");")
+	end
+
+end
+AddRemoteEvent("SetPlayerList", SetPlayerList)
