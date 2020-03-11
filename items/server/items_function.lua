@@ -20,6 +20,20 @@ function GetItemNameByModelId(model_id)
     return false
 end
 
+function GetItemWeightById(item_id) 
+    if(CheckIfValidItem(item_id)) then
+        for _, item in ipairs(GetItemsList()) do
+            if(item.id == item_id) then
+                return item.weight
+            end
+        end
+
+        return cur_weight
+    end
+
+    return false
+end
+
 function CheckIfValidItem(item_id)
     for _, item in ipairs(GetItemsList()) do
         if(item.id == item_id) then
@@ -42,5 +56,4 @@ function GetItemHandPos(item_id)
             return hand_pos
         end
     end
-
 end

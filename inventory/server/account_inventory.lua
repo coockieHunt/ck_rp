@@ -73,8 +73,27 @@ function GetInventory(target)
     return DecodeInventoy(target:getInventory())
 end
 
-function GetInventoryWeight(target)
+function GetInventoryMaxWeight(target)
     local target = getplayer(target)
 
-    return target:getWeight()
+    return target:getMaxWeight()
+end
+
+
+function CalculateInvWeight(target)
+    local decode_inventory = GetInventory(target)
+
+    local cur_weight = 0
+
+    for i, v in pairs(decode_inventory) do
+        local cur_id = v['id']
+        local cur_quantity = v['quantity']
+        local item_weight = GetItemWeightById(cur_id)
+
+
+        local add = cur_quantity * item_weight
+
+        cur_weight = cur_weight + add
+    end
+    return cur_weight
 end
