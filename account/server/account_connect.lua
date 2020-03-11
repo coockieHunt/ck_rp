@@ -48,6 +48,7 @@ function CreatePlayerAccount(player)
         _New_account.health,
         _New_account.armor,
         _Inventory_account.weight_character,
+        0,
         player_name,
         _New_account.cash,
         _New_account.cash_account,
@@ -94,28 +95,29 @@ function OnAccountLoaded(player)
 
         local client_id = GetPlayerBySteamId(steam_id)
 
-        createPlayerAcoount(client_id, result['id'], result['admin_level'], result['steam_id'], result['health'], result['armor'], result['max_weight'],player_name, result['cash'], result['cash_account'], result['inventory'])
+        createPlayerAcoount(client_id, player_name, result)
         AddPlayerChatAll( ('<span color="#%s">%s </>%s'):format("0438CE", GetPlayerName(player), " a rejoint le serveur"))
 	end
 end
 
 ---- Manage account list
 --add
-function createPlayerAcoount(client_id, id, admin, steamId, health, armor, max_weight, name, cash, cash_account, inventory)
-    if(isnil(admin)) then admin = 0 end
+function createPlayerAcoount(client_id, name, data)
+    if(isnil(data['admin_level'])) then data['admin_level'] = 0 end
     local p = playerData.ClassPlayer.new(
         {
-            ["id"] = id,
             ["id_client"] = client_id,
-            ["admin"] = admin,
-            ["steamId"] = steamId,
-            ["health"] = health,
-            ["armor"] = armor,
-            ["MaxWeight"] = max_weight,
             ["name"] = name,
-            ["cash"] =  cash,
-            ["cash_account"] =  cash_account,
-            ["inventory"] =  inventory,
+            ["id"] = data['id'],
+            ["admin"] = data['admin_level'],
+            ["steamId"] = data['steam_id'],
+            ["health"] = data['health'],
+            ["armor"] = data['armor'],
+            ["MaxWeight"] = data['max_weight'],
+            ["CurWeight"] = data['cur_weight'],
+            ["cash"] =  data['cash'],
+            ["cash_account"] =  data['cash_account'],
+            ["inventory"] =  data['inventory'],
         })
 
     table.insert(playerData, p)       

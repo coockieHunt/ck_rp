@@ -7,7 +7,7 @@ _New_account = {
 };
 
 _Inventory_account = {
-    weight_character = 25
+    weight_character = 30
 }
   
 _Init_player = {

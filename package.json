@@ -31,7 +31,6 @@
 		
 		"items/client/cl_gather.lua",
 
-		"data/client/cl_listing.lua",
 		"data/client/cl_setData.lua"
 	],
 	

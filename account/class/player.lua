@@ -71,6 +71,16 @@ function player:setMaxWeight(MaxWeight)
    return true
 end
 
+-- CURRENT WEIGHT
+function player:getCurWeight()
+   return self.CurWeight
+end
+
+function player:setCurWeight(CurWeight)
+   self.CurWeight = CurWeight
+   return true
+end
+
 local function newPlayer(playerInfo)
    return player:init(playerInfo)
 end
