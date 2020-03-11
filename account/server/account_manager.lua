@@ -32,6 +32,8 @@ function SaveAccountPlayer(player)
         Data.health,
         Data.armor,
         Data.inventory,
+        Data.MaxWeight,
+        Data.CurWeight,
         Data.steamId
 	)
         
