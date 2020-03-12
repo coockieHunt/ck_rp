@@ -94,7 +94,7 @@ function CalculateInvWeight(target)
         cur_weight = cur_weight + add
     end
 
-    return cur_weight
+    return math.floor(cur_weight)
 end
 
 function GetInventoryItemWeight(item_id, quantity)
