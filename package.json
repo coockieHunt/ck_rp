@@ -62,6 +62,7 @@
 		"files_client/web/css/form/form.css",
 	
 		"files_client/web/script/game/eu.js",
+		"files_client/web/script/main.js",
 		"files_client/web/script/libs/jquery.js",
 		"files_client/web/script/libs/jquery-ui.js",
 		"files_client/web/script/libs/spectrum.js",
