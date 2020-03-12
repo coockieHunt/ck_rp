@@ -100,8 +100,8 @@ function GetMaxWeightLift()
     CallRemoteEvent('GetInventoryMaxWeight')     
 end
 
-function SetMaxWeightLift(weight)
-    ExecuteWebJS(survival_ui, "SetWeightLift('"..weight.."');")            
+function SetMaxWeightLift(CurWeight, MaxWeight)
+    ExecuteWebJS(survival_ui, "SetWeightLift('"..CurWeight.."', '"..MaxWeight.."');")            
 end
 AddRemoteEvent("SetMaxWeightLift", SetMaxWeightLift)
 

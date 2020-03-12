@@ -29,9 +29,10 @@ function SetHealth(new_health)
     return true
 }
 
-function SetWeightLift(weight)
+function SetWeightLift(current_weight, max_weight)
 {
-    $(dom_select.info_weight_lift).text('max weight : nill/' + weight);
+    let new_string = format("max weight : {curweight}/{maxweight}",{curweight:current_weight,maxweight: max_weight});
+    $(dom_select.info_weight_lift).text(new_string);
     return true
 }
 

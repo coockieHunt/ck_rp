@@ -58,6 +58,7 @@ end)
 
 AddRemoteEvent("GetInventoryMaxWeight", function(player)
    local MaxWeight = GetInventoryMaxWeight(player)
+   local CurWeight = CalculateInvWeight(player)
 
-   CallRemoteEvent(player, "SetMaxWeightLift", MaxWeight)
+   CallRemoteEvent(player, "SetMaxWeightLift", CurWeight, MaxWeight)
 end)
