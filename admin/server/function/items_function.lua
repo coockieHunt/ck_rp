@@ -4,10 +4,10 @@ function admin_addItem(player, target, item_id, quantity)
 	if(AdminLevel(player, level)) then
 		local add = AddPlayerItem(player, target, item_id, quantity)
 
-		if(add) then
+		if(add == true) then
 			AddAdminLog(player, "add item "..GetPlayerName(target).." id : " .. item_id.. " quantity :" .. quantity)
 		else
-			AddAdminLog(player, "add FAILED inventory to hight item "..GetPlayerName(target).." id : " .. item_id.. " quantity :" .. quantity)
+			AddAdminLog(player, "Add item id: " .. item_id.. " to failed players : "..GetPlayerName(target)..", extra item count: " .. add)
 		end
 	end
 end

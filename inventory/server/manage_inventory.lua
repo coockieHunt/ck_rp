@@ -5,7 +5,8 @@ function AddPlayerItem(player, target, item_id, quantity)
         local new_currentWeight = math.floor(CalculateInvWeight(target) + GetInventoryItemWeight(item_id, quantity))
 
         if(GetInventoryMaxWeight(target) < new_currentWeight) then
-            return false
+            local ToHight = -1 * (GetInventoryMaxWeight(target) - new_currentWeight)
+            return ToHight
         end
 
         local cur_quantity = GetItemsQuantity(decode_inventory, item_id)
