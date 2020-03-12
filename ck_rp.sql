@@ -22,11 +22,14 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `steam_id` varchar(20) DEFAULT NULL,
   `health` smallint(6) DEFAULT 100,
   `armor` smallint(6) DEFAULT 100,
+  `max_weight` int(11) DEFAULT NULL,
+  `cur_weight` int(11) DEFAULT NULL,
   `player_name` varchar(50) DEFAULT NULL,
   `cash` int(11) DEFAULT 0,
   `cash_account` int(11) DEFAULT 0,
+  `inventory` longtext DEFAULT '{}',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 -- Les données exportées n'étaient pas sélectionnées.
 
@@ -38,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `account_administrator` (
   `last_at_admin_state` timestamp NULL DEFAULT NULL,
   `create_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- Les données exportées n'étaient pas sélectionnées.
 
