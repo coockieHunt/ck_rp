@@ -20,6 +20,8 @@ function CreateDropItem(player, item_id, quantity)
     
     SetPlayerAnimation(player, _Drop_animation.animation_id)
 
+    SendAlert(player, "info", "Dropped", "You had left  " .. quantity .. " " .. item.name)
+
     Delay(_Gather_animation.atach_time, function()
         DestroyObject(obj)
 
@@ -34,6 +36,8 @@ function GatherDropedItem(player, droped_id)
     local po_id = GetPickupPropertyValue(droped_id, 'item_id')
     local po_quantity = GetPickupPropertyValue(droped_id, 'quantity')
     local po_model = GetPickupPropertyValue(droped_id, 'model')
+
+    local item = GetItems(po_id)
 
     local attached_object = 0
 
@@ -62,7 +66,12 @@ function GatherDropedItem(player, droped_id)
                 CreateDropItem(player, po_id, th)
                 local new_quantity = math.floor(po_quantity - th)
                 AddPlayerItem(player, player, po_id, new_quantity)
+                SendAlert(player, "warning", "Gather", "you only rammed "..new_quantity.." out of "..th.." ".. item.name)
+                return false
             end
+
+            SendAlert(player, "info", "Gather", "you picked " .. po_quantity .. " " .. item.name)
+            return true
         end)
     end)
 end
