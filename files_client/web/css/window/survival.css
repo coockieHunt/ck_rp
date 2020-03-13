@@ -204,8 +204,6 @@ body{
 
 
 /* stats */
-
-
 #window > #content > #stats > .content > div{
   padding: 5px;
 }
@@ -215,8 +213,9 @@ body{
 }
  
 #window > #content > #stats > .content > * > .icon{
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
 }
 
 #window > #content > #stats > .content > .progress-inline{
@@ -317,7 +316,7 @@ body{
   display: flex;
 }
 
-#side_bottom_window > .content > .info > .ar > div > img{
+#side_bottom_window > .content > .info > .ar > div > .icon{
   height: 15px;
   width: 15px;
 }

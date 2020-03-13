@@ -35,20 +35,13 @@
 	],
 	
 	"files": [
-		"files_client/web/src/img/heart.png",
-		"files_client/web/src/img/armor.png",
-		"files_client/web/src/img/bank.png",
-		"files_client/web/src/img/dollar.png",
 		"files_client/web/src/img/close.png",
-		"files_client/web/src/img/save.png",
 		"files_client/web/src/img/arrow_down.png",
 		"files_client/web/src/img/arrow_up.png",
 		"files_client/web/src/img/silhouette.png",
 		"files_client/web/src/img/banana.png",
 		"files_client/web/src/img/energi_drink.png",
 		"files_client/web/src/img/chips.png",
-		"files_client/web/src/img/food.png",
-		"files_client/web/src/img/third.png",
 
 		"files_client/web/src/font/Roboto-Regular.ttf",
 

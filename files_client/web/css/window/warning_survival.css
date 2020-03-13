@@ -20,14 +20,14 @@
     float: left;
 }
 
-.warning_icon_left > img{
+.warning_icon_left > svg{
     float: right;
     height: 30px;
     width: 30px;
     margin-left: 15px;
 }
 
-.warning_icon_right > img{
+.warning_icon_right > svg{
     float: right;
     height: 30px;
     width: 30px;
