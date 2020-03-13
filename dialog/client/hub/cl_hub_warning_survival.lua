@@ -54,3 +54,8 @@ function setDammageWarning(health, armor)
     end
 end
 AddRemoteEvent("setDammageWarning", setDammageWarning)
+
+function SendAlert(id, type, title, content)
+    ExecuteWebJS(survival_warn_ui, "sendAlert( "..id..", '"..type.."',  '"..title.."', '"..content.."');")
+end
+AddRemoteEvent("SendAlert", SendAlert)
