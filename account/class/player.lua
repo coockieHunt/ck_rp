@@ -81,6 +81,16 @@ function player:setCurWeight(CurWeight)
    return true
 end
 
+-- ALERT COUNT
+function player:getAlertCount()
+   return self.alert_count
+end
+
+function player:setAlertCount(num)
+   self.alert_count = num
+   return true
+end
+
 local function newPlayer(playerInfo)
    return player:init(playerInfo)
 end

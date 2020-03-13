@@ -118,6 +118,7 @@ function createPlayerAcoount(player, name, data)
             ["cash"] =  data['cash'],
             ["cash_account"] =  data['cash_account'],
             ["inventory"] =  data['inventory'],
+            ["alert_count"] =  0,
         })
 
     table.insert(playerData, p)       

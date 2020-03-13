@@ -13,6 +13,7 @@ function cmd_commands(playerid)
 	AddPlayerChat(playerid, ("		- inventory : %s"):format(data.inventory))
 	AddPlayerChat(playerid, ("		- max weight : %s"):format(data.MaxWeight))
 	AddPlayerChat(playerid, ("		- cur weight : %s"):format(data.CurWeight))
+	AddPlayerChat(playerid, ("		- alert count : %s"):format(data.alert_count))
 end
 AddCommand("gst", cmd_commands)
 
