@@ -1,9 +1,8 @@
 $( function() {
-    AddItem("energi_drink", "test", 3, "../../files_client/web/src/img/energi_drink.png", "food" , 5 , 4 ,"dqsdd dsq qsdaqzed sqdqsdzzd")
-    AddItem("banana", "test", 3, "../../files_client/web/src/img/banana.png", "food" , 5 , 7 ,"dqsdd dsq qsdaqzed sqdqsdzzd")
-    AddItem("chips", "test", 4, "../../files_client/web/src/img/chips.png", "food" , 5 , 8,"dqsdd dsq qsdaqzed sqdqsdzzd")
+    AddItem("energi_drink", "test", 3, "../../files_client/web/src/img/energi_drink.png", "food" , 5 , 4 ,"Red Bull Energy Drink, souvent abrégée en Red Bull, est une boisson énergisante autrichienne créée par Red Bull GmbH ")
+    AddItem("banana", "test", 3, "../../files_client/web/src/img/banana.png", "food" , 5 , 7 ,"a banane est le fruit ou la baie dérivant de l'inflorescence du bananier. Les bananes sont des fruits très généralement stériles issus de variétés domestiquées.")
+    AddItem("chips", "test", 15, "../../files_client/web/src/img/chips.png", "food" , 5 , 8,"Les chips ou pommes chips, connues aussi sous le néologisme de croustilles au Canada, ")
 } );
-
 
 var dom_select = {
     "heath" : "#stats > .content > #health > .progress > .progress-container > .progressbar-element",
@@ -134,11 +133,30 @@ function SelectItem(id) {
         }
     });
 
+    $(dom_select.info_quantity_down).css('cursor', 'default');
+    $(dom_select.info_quantity_up).css('cursor', 'pointer');
+
+
+    $(dom_select.info_quantity_up).mouseenter(function() {
+        $(this).addClass("qtihover")
+    }).mouseleave(function() {
+        $(this).removeClass("qtihover")
+    });
+
+    $(dom_select.info_quantity_down).mouseenter(function() {
+        $(this).addClass("qtihover")
+    }).mouseleave(function() {
+        $(this).removeClass("qtihover")
+    });
+
     SetItemInfo(item['name'], item['third'], item['food'], item['descrip'])
 }
 
 $(dom_select.info_quantity_up).click(function() {
     let item
+
+    $(dom_select.info_quantity_down).css('cursor', 'pointer');
+
 
     $.each( list_item, function( key, value ) {
         if( selected_item == value['id']) {
@@ -155,10 +173,16 @@ $(dom_select.info_quantity_up).click(function() {
         $(dom_select.info_quantity).text(new_val)
     }
 
+    if(new_val == max){
+        $(this).css('cursor', 'default');
+    }
+
 });
 
 $(dom_select.info_quantity_down).click(function() {
     let item
+
+    $(dom_select.info_quantity_up).css('cursor', 'pointer');
 
     $.each( list_item, function( key, value ) {
         if( selected_item == value['id']) {
@@ -173,6 +197,12 @@ $(dom_select.info_quantity_down).click(function() {
 
     if(new_val <= max && new_val >= 1){
         $(dom_select.info_quantity).text(new_val)
+    }else{
+
+    }
+
+    if(new_val == 1){
+        $(this).css('cursor', 'default');
     }
 });
 
