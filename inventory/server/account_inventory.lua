@@ -57,7 +57,7 @@ function GetItemsQuantity(inventory, item_id)
         end
      end
 
-     return false
+     return 0
 end
 
 function SaveInventory(target, new_inventory, weight)
