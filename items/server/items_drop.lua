@@ -117,7 +117,8 @@ end
 
 function OnPlayerPickupHit(player, Pickup)
     local x, y, z = GetPlayerLocation(player)
-    --CallRemoteEvent(player, "GetPickupActor", x, y, z)
+    SendAlert(player, "Info", "Interaction", "An interaction is possible by pressing " .. _Key_ui['interact'])
+
 end
 AddEvent("OnPlayerPickupHit", OnPlayerPickupHit )
 
