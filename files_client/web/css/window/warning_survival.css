@@ -1,3 +1,7 @@
+*{
+    color: white;
+}
+
 .icon{
     width: 20px; 
     height: 20px;
@@ -61,6 +65,10 @@
     box-shadow: -5px 0px 15px 10px rgba(0, 0, 0, 0.048);
     border-radius: 5px;
     margin-top: 15px;
+}
+
+strong{
+    color: black;
 }
 
 .alert > .header{
