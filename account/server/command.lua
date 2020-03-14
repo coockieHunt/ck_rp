@@ -14,6 +14,8 @@ function cmd_commands(playerid)
 	AddPlayerChat(playerid, ("		- max weight : %s"):format(data.MaxWeight))
 	AddPlayerChat(playerid, ("		- cur weight : %s"):format(data.CurWeight))
 	AddPlayerChat(playerid, ("		- alert count : %s"):format(data.alert_count))
+	AddPlayerChat(playerid, ("		- food : %s"):format(data.food))
+	AddPlayerChat(playerid, ("		- thirst : %s"):format(data.thirst))
 end
 AddCommand("gst", cmd_commands)
 

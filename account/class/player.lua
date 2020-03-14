@@ -31,6 +31,26 @@ function player:setArmor(amt)
    return true
 end
 
+-- Food
+function player:getFood()
+   return self.food
+end
+
+function player:setFood(amt)
+   self.food = amt
+   return true
+end
+
+-- THIRST
+function player:getThirst()
+   return self.thirst
+end
+
+function player:setThirst(amt)
+   self.thirst = amt
+   return true
+end
+
 -- CASH
 function player:getCash()
    return self.cash
