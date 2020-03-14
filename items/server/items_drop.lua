@@ -36,15 +36,31 @@ function GatherDropedItem(player, droped_id)
     local po_id = GetPickupPropertyValue(droped_id, 'item_id')
     local po_quantity = GetPickupPropertyValue(droped_id, 'quantity')
     local po_model = GetPickupPropertyValue(droped_id, 'model')
+    local po_text = GetPickupPropertyValue(droped_id, '3d_text')
 
-    local item = GetItems(po_id)
+    local Setquantity = po_quantity
 
     local attached_object = 0
 
     SetPlayerAnimation(player, _Gather_animation.animation_id)
 
     Delay(_Gather_animation.atach_time, function()
-        RemoveDropedItem(droped_id)
+        local th = AddPlayerItem(player, player, po_id, po_quantity)
+        if(th ~= true) then
+            local new_quantity = math.floor(po_quantity - th)
+
+            Setquantity = new_quantity
+
+            SetText3DText(po_text, GetItemNameByModelId(po_model) .. ' - (' ..th..')')
+            SetPickupPropertyValue(droped_id, 'quantity', th)
+            AddPlayerItem(player, player, po_id, Setquantity)
+        else
+            RemoveDropedItem(droped_id)
+        end
+
+        SendAlert(player, "info", "Dropped", "You had left  " .. Setquantity .. " " ..GetItemNameByModelId(po_model))
+
+
         local x, y, z = GetPlayerLocation(player)
         attached_object = CreateObject(po_model, x, y, z)
 
@@ -61,16 +77,7 @@ function GatherDropedItem(player, droped_id)
 
         Delay(_Gather_animation.detach_time, function()
             DestroyObject(attached_object)
-            local th = AddPlayerItem(player, player, po_id, po_quantity)
-            if(th ~= true) then
-                CreateDropItem(player, po_id, th)
-                local new_quantity = math.floor(po_quantity - th)
-                AddPlayerItem(player, player, po_id, new_quantity)
-                SendAlert(player, "warning", "Gather", "you only rammed "..new_quantity.." out of "..th.." ".. item.name)
-                return false
-            end
 
-            SendAlert(player, "info", "Gather", "you picked " .. po_quantity .. " " .. item.name)
             return true
         end)
     end)
