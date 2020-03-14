@@ -211,7 +211,7 @@ $(".survival").click(function() {
     CallEvent("CallCloseSurvival");
 });
 
-$("#inventory > div > div.action > div.drop").click(function() {
+$("#side_bottom_window > div > div.action > div > div.drop").click(function() {
     let quantity = $(dom_select.info_quantity).text()
     CallEvent("CallDropItem", selected_item, quantity);
 });
