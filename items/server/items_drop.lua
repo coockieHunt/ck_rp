@@ -20,7 +20,7 @@ function CreateDropItem(player, item_id, quantity)
     
     SetPlayerAnimation(player, _Drop_animation.animation_id)
 
-    SendAlert(player, "info", "Dropped", "You had left  " .. quantity .. " " .. item.name)
+    SendAlert(player, "info", "Dropped", "You had left  <strong>" .. quantity .. " " .. item.name.."</strong>")
 
     Delay(_Gather_animation.atach_time, function()
         DestroyObject(obj)
@@ -58,7 +58,7 @@ function GatherDropedItem(player, droped_id)
             RemoveDropedItem(droped_id)
         end
 
-        SendAlert(player, "info", "Dropped", "You had left  " .. Setquantity .. " " ..GetItemNameByModelId(po_model))
+        SendAlert(player, "info", "Dropped", "You had left  <strong>" .. Setquantity .. " " ..GetItemNameByModelId(po_model).. "</strong>")
 
 
         local x, y, z = GetPlayerLocation(player)
@@ -117,7 +117,7 @@ end
 
 function OnPlayerPickupHit(player, Pickup)
     local x, y, z = GetPlayerLocation(player)
-    SendAlert(player, "Info", "Interaction", "An interaction is possible by pressing " .. _Key_ui['interact'])
+    SendAlert(player, "Info", "Interaction", "An interaction is possible by pressing <strong>" .. _Key_ui['interact'] .."</strong>")
 
 end
 AddEvent("OnPlayerPickupHit", OnPlayerPickupHit )
