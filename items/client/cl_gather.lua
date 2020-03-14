@@ -1,5 +1,5 @@
 AddEvent("OnKeyPress", function(key)
-    if key == "E" then
+    if key == GetKeyMapServer("interact") then
         local pickup = GetNearestPickUp(100)
         if(pickup == false) then return false end
 
