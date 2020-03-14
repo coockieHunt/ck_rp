@@ -1,18 +1,17 @@
 function AddPlayerItem(player, target, item_id, quantity)
     if(CheckIfValidItem(item_id) or isnil(target) or isnil(quantity)) then
         local decode_inventory = GetInventory(target)
-
         local new_currentWeight = math.floor(CalculateInvWeight(target) + GetInventoryItemWeight(item_id, quantity))
 
         if(GetInventoryMaxWeight(target) < new_currentWeight) then
-            local ToHight = -1 * (GetInventoryMaxWeight(target) - new_currentWeight)
-            return ToHight
+            local toHight = -1 * (GetInventoryMaxWeight(target) - new_currentWeight)
+            return toHight
         end
 
         local cur_quantity = GetItemsQuantity(decode_inventory, item_id)
 
         if(cur_quantity ~= false) then
-             quantity = quantity + cur_quantity
+            quantity = quantity + cur_quantity
         end
 
         local new_item = {}
@@ -35,12 +34,10 @@ function RemovePlayerItem(player, target, item_id, quantity)
         local cur_quantity = GetItemsQuantity(decode_inventory, item_id)
         local new_currentWeight = math.floor(CalculateInvWeight(target) - GetInventoryItemWeight(item_id, quantity))
 
-        if(cur_quantity ~= false and new_currentWeight > 0) then
-            if(tonumber(quantity) >= 0) then
-                quantity =  tonumber(cur_quantity) - tonumber(quantity)
-            end
-        else
+        if(cur_quantity == 0 or tonumber(cur_quantity) < tonumber(quantity)) then
             return false
+        else
+            quantity =  tonumber(cur_quantity) - tonumber(quantity)
         end
 
         for i, v in pairs(decode_inventory) do
