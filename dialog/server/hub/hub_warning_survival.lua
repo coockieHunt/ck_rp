@@ -6,6 +6,7 @@ function OnPlayerDamage(playerid)
 function RefrechWarningSurvivalUi(playerid)
     local p = getplayer(playerid)
     CallRemoteEvent(playerid, 'setDammageWarning', p:getHealth(),  p:getArmor())
+    CallRemoteEvent(playerid, 'setSurivalWarning', p:getFood(),  p:getThirst())
  end
  AddRemoteEvent("RefrechWarningSurvivalUi", RefrechWarningSurvivalUi)
 

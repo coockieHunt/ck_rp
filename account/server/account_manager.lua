@@ -13,7 +13,7 @@ end
 function OnPlayerSpawn(playerid)
     CreateTimer(function(playerid)
         SaveAccountPlayer(playerid)
-	end, _Save_profile.save_account_time, playerid)
+	end, _Account_timer.save_account_time, playerid)
 end
 AddEvent("OnPlayerSpawn", OnPlayerSpawn)
 
@@ -31,6 +31,8 @@ function SaveAccountPlayer(player)
         Data.cash_account,
         Data.health,
         Data.armor,
+        Data.food,
+        Data.thirst,
         Data.inventory,
         Data.MaxWeight,
         Data.CurWeight,

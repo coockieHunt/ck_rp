@@ -42,6 +42,8 @@ body{
 
 .healt_pg{background-color: var(--red-dark)}
 .sheld_pg{background-color:var(--blue-dark)}
+.food_pg{background-color:var(--food-color)}
+.thirst_pg{background-color:var(--thirst-color)}
 
 /* outfit */
 

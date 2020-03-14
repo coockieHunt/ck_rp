@@ -13,6 +13,9 @@
   --blue-light : #5f5fc4;
 
   --spacer : rgba(255, 255, 255, 0.116);
+
+  --food-color : #e9ec26;
+  --thirst-color : #5fb0c4;
 }
 
 *{margin:0;padding:0; font-family: "roboto", serif}

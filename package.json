@@ -29,6 +29,8 @@
 
 		"car/client/fix/cl_fixDrift.lua",
 		
+		"survival/client/cl_setupSurvival.lua",
+		
 		"items/client/cl_gather.lua",
 
 		"data/client/cl_setData.lua"

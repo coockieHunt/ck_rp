@@ -7,6 +7,8 @@ $( function() {
 var dom_select = {
     "heath" : "#stats > .content > #health > .progress > .progress-container > .progressbar-element",
     "armor" : "#stats > .content > #armor > .progress > .progress-container > .progressbar-element",
+    "food" : "#stats > .content > #food > .progress > .progress-container > .progressbar-element",
+    "thirst" : "#stats > .content > #thirst > .progress > .progress-container > .progressbar-element",
     "cash" : "#stats > .content > #cash > #data",
     "bank" : "#stats > .content > #bank > #data",
     "info_name" : "#side_bottom_window > .content > .info > span",
@@ -39,6 +41,20 @@ function SetArmor(new_armor)
 {
     let armor = document.querySelector(dom_select.armor);
     armor.style.width = new_armor + "%";
+    return true
+}
+
+function SetFood(new_food)
+{
+    let armor = document.querySelector(dom_select.food);
+    armor.style.width = new_food + "%";
+    return true
+}
+
+function SetThirst(new_thirst)
+{
+    let armor = document.querySelector(dom_select.thirst);
+    armor.style.width = new_thirst + "%";
     return true
 }
 

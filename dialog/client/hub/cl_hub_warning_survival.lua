@@ -55,6 +55,21 @@ function setDammageWarning(health, armor)
 end
 AddRemoteEvent("setDammageWarning", setDammageWarning)
 
+function setSurivalWarning(food, thirst)
+    if(tonumber(math.floor(food)) < 50) then
+        ExecuteWebJS(survival_warn_ui, "blink('food', true, "..food..")")
+    else
+        ExecuteWebJS(survival_warn_ui, "blink('food', false, "..food..")")
+    end
+
+    if(tonumber(math.floor(thirst))  < 50) then
+        ExecuteWebJS(survival_warn_ui, "blink('thirst', true, "..thirst..")")
+    else
+        ExecuteWebJS(survival_warn_ui, "blink('thirst', false, "..thirst..")")
+    end
+end
+AddRemoteEvent("setSurivalWarning", setSurivalWarning)
+
 function SendAlert(id, type, title, content)
     ExecuteWebJS(survival_warn_ui, "sendAlert( "..id..", '"..type.."',  '"..title.."', '"..content.."');")
 end
