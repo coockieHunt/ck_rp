@@ -1,7 +1,7 @@
 function initSurivaval(timer)
-    reateTimer(function()
+    CreateTimer(function()
         CallRemoteEvent("initSurivaval", GetPlayerId())
-    end, timer, playerid)
+    end, timer, GetPlayerId())
 end
 AddRemoteEvent("initSurivaval", initSurivaval)
 

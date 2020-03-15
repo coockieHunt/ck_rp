@@ -1,6 +1,6 @@
 $( function() {
     AddItem("energi_drink", "test", 3, "../../files_client/web/src/img/energi_drink.png", "food" , 5 , 4 ,"Red Bull Energy Drink, souvent abrégée en Red Bull, est une boisson énergisante autrichienne créée par Red Bull GmbH ")
-    AddItem("banana", "test", 3, "../../files_client/web/src/img/banana.png", "food" , 5 , 7 ,"a banane est le fruit ou la baie dérivant de l'inflorescence du bananier. Les bananes sont des fruits très généralement stériles issus de variétés domestiquées.")
+    AddItem("banana", "test", 3, "../../files_client/web/src/img/banana.png", "food" , 6 , 7 ,"a banane est le fruit ou la baie dérivant de l'inflorescence du bananier. Les bananes sont des fruits très généralement stériles issus de variétés domestiquées.")
     AddItem("chips", "test", 15, "../../files_client/web/src/img/chips.png", "food" , 5 , 8,"Les chips ou pommes chips, connues aussi sous le néologisme de croustilles au Canada, ")
 } );
 
@@ -11,10 +11,10 @@ var dom_select = {
     "thirst" : "#stats > .content > #thirst > .progress > .progress-container > .progressbar-element",
     "cash" : "#stats > .content > #cash > #data",
     "bank" : "#stats > .content > #bank > #data",
-    "info_name" : "#side_bottom_window > .content > .info > span",
     "info_food" : "#side_bottom_window > .content > .info > .ar >.food > p",
     "info_third" : "#side_bottom_window > .content > .info > .ar > .third > p",
-    "info_description" : "#side_bottom_window > .content > .info > p",
+    "info_name" : "#side_bottom_window > .content > .info > .desc > span",
+    "info_description" : "#side_bottom_window > .content > .info > .desc > p",
     "info_quantity" : "#side_bottom_window > .content > .action > .quantity > .content > .number",
     "info_quantity_up" : "#side_bottom_window > .content > .action > .quantity > .content > .up",
     "info_quantity_down" : "#side_bottom_window > .content > .action > .quantity > .content > .down",
