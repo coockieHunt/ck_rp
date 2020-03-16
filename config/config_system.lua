@@ -22,7 +22,7 @@ _Import_package = {
     "cop"
 };
 
--- DROP
+-- ANIMATION
 _Drop_animation = {
     animation_id = "PICKUP_LOWER",
     detach_time = 1400
