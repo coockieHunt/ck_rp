@@ -21,7 +21,6 @@ end)
 
 
 -- manage ui
-
 function OnWebLoadComplete(webid)
     local playerId = GetPlayerId()
     
@@ -33,12 +32,10 @@ function OnWebLoadComplete(webid)
 end
 AddEvent("OnWebLoadComplete", OnWebLoadComplete)
 
-
 function ShowIconSave()
     ExecuteWebJS(survival_warn_ui, "ShowSave()")
 end
 AddRemoteEvent("ShowIconSave", ShowIconSave)
-
 
 function setDammageWarning(health, armor)
     if(tonumber(math.floor(health)) < 50) then
