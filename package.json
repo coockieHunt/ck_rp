@@ -20,9 +20,9 @@
 		"dialog/client/function/cl_getKeyMapping.lua",
 		"dialog/client/function/cl_input_manager.lua",
 		
-		"account/client/clothing/cl_set_clothing.lua",
-		"account/client/clothing/cl_stream.lua",
-		"account/client/cl_nearest.lua",
+		"character/client/clothing/cl_set_clothing.lua",
+		"character/client/clothing/cl_stream.lua",
+		"character/client/cl_nearest.lua",
 		
 		"init/client/cl_init.lua",
 		"init/client/config/cl_weapons.lua",

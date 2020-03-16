@@ -7,6 +7,7 @@ _Pacakge = {
 
 _Import_package = {
     "log",
+    "character",
     "data",
     "inventory",
     "dialog",
