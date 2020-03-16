@@ -28,7 +28,7 @@ function CreateDropItem(player, item_id, quantity)
         local pickup = CreatePickup(item.model, x + (Vx * 200), y + (Vy * 100), z - 50)
         local ItemText = CreateText3D(item.name ..' - ('..quantity..')', 18,  x + (Vx * 200), y + (Vy * 100), z + 20, 0,0,0)
         
-        AddItemList(player, pickup, item.model, ItemText, quantity, item_id)
+        AddItemPickUpList(player, pickup, item.model, ItemText, quantity, item_id)
     end)
 end
 
@@ -84,7 +84,7 @@ function GatherDropedItem(player, droped_id)
 end
 AddRemoteEvent("GatherDropedItem", GatherDropedItem)
 
-function AddItemList(player, pickup, model, ItemText, quantity, item_id)
+function AddItemPickUpList(player, pickup, model, ItemText, quantity, item_id)
     SetPickupPropertyValue(pickup, "type", "droped_item")
 
     SetPickupPropertyValue(pickup, "player_drop", player)
@@ -92,14 +92,6 @@ function AddItemList(player, pickup, model, ItemText, quantity, item_id)
     SetPickupPropertyValue(pickup, "3d_text", ItemText)
     SetPickupPropertyValue(pickup, "quantity", quantity)
     SetPickupPropertyValue(pickup, "item_id", item_id)
-end
-
-function GetPlayerForward(playerid)
-	local deg = GetPlayerHeading(playerid)
-	local rad = math.rad(deg)
-	local x = math.cos(rad)
-	local y = math.sin(rad)
-	return x, y, 0
 end
 
 function drop_item(player, item_id, quantity) 
@@ -110,15 +102,13 @@ AddRemoteEvent("drop_item", drop_item)
 
 
 function RemoveDropedItem(droped_id)
-    local po_text = GetPickupPropertyValue(droped_id, '3d_text')
     DestroyPickup(droped_id)
-    DestroyText3D(po_text)
+    DestroyText3D(GetPickupPropertyValue(droped_id, '3d_text'))
 end
 
 function OnPlayerPickupHit(player, Pickup)
     local x, y, z = GetPlayerLocation(player)
     SendAlert(player, "Info", "Interaction", "An interaction is possible by pressing <strong>" .. _Key_ui['interact'] .."</strong>")
-
 end
 AddEvent("OnPlayerPickupHit", OnPlayerPickupHit )
 
