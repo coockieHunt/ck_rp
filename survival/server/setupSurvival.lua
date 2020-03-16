@@ -1,10 +1,5 @@
-function OnPlayerSpawn(playerid)
-    CallRemoteEvent(playerid, "initSurivaval", _Account_timer.decrease_survival_timer)
-    
-end
-AddEvent("OnPlayerSpawn", OnPlayerSpawn)
-
-function initSurivaval(playerid)
+-- Func
+function decreaseSurvival(playerid)
         local p = getplayer(playerid)
 
         local food = p:getFood()
@@ -13,19 +8,7 @@ function initSurivaval(playerid)
         p:setThirst(thirst - _Survival.decrease_thirst)
         p:setFood(food - _Survival.decrease_food)
 
-        RefrechSurvivalData(playerid)
-        CallRemoteEvent(playerid, "setSurivalWarning", food, thirst)
+        SetSUiurvival(playerid)
+        setUiWarnSuvival(playerid)
 end
-AddRemoteEvent("initSurivaval", initSurivaval)
-
-function OnPlayerDamage(playerid)
-    RefrechPlayerData(playerid)
- end
- AddEvent("OnPlayerDamage", OnPlayerDamage)
- 
-function GetPlayerData(playerid)
-    RefrechSurvivalData(playerid)
-    RefrechPlayerData(playerid)
- end
- AddRemoteEvent("GetPlayerData", GetPlayerData)
-
+AddRemoteEvent("decreaseSurvival", decreaseSurvival)
