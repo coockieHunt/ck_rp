@@ -15,8 +15,9 @@ function admin_heal(player, target, num)
 		SetPlayerHealth(target, num)
 		local p = getplayer(target)
 		p:setHealth(num)
-		RefrechPlayerData(target)
-		RefrechWarningSurvivalUi(target)
+
+		SetUiDamage(target)
+		setUiWarnDamage(target)
 	end
  end
 
@@ -29,7 +30,8 @@ function admin_heal(player, target, num)
 		SetPlayerArmor(target, num)
 		local p = getplayer(target)
 		p:setArmor(num)
-		RefrechPlayerData(target)
-		RefrechWarningSurvivalUi(target)
+		
+		SetUiDamage(target)
+		setUiWarnDamage(target)
 	end
  end
