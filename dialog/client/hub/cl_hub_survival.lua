@@ -6,6 +6,7 @@ function OpenUISurvival()
         ShowMouseHub(true)
         LockPlayerInput(true)
         SetWebVisibility(survival_ui, WEB_VISIBLE)
+
         clearInventory()
         GetPersoInventoryList()
         GetMaxWeightLift()
@@ -48,7 +49,7 @@ function OnWebLoadComplete(webid)
     
 	if (survival_ui == webid) then
         Delay(500, function(webid, playerid)
-            CallRemoteEvent('GetPlayerData', playerId)
+            CallRemoteEvent("OnPlayerOpenSurvivalUi")
 		end, survival_ui, playerId)
 	end
 end
@@ -80,11 +81,11 @@ end
 AddRemoteEvent("SetPersoInventoryList", SetPersoInventoryList)
 
 -- update ui
-function setPlayerData(cash, a_cash, health, armor)
+function setPlayerCash(cash, a_cash, health, armor)
     ExecuteWebJS(survival_ui, "SetCash('"..cash.."');")            
     ExecuteWebJS(survival_ui, "SetBank('"..a_cash.."');")
  end
- AddRemoteEvent("setPlayerData", setPlayerData)
+ AddRemoteEvent("setPlayerCash", setPlayerCash)
 
 function setPlayerSurvival(food, thirst)
     ExecuteWebJS(survival_ui, "SetFood('"..food.."');")            
@@ -92,12 +93,11 @@ function setPlayerSurvival(food, thirst)
 end
 AddRemoteEvent("setPlayerSurvival", setPlayerSurvival)
 
-
-function setDammage(health, armor)
+function setPlayerVitalSigns(health, armor)
     ExecuteWebJS(survival_ui, "SetHealth('"..health.."');")
     ExecuteWebJS(survival_ui, "SetArmor('"..armor.."');")    
 end
-AddRemoteEvent("setDammage", setDammage)
+AddRemoteEvent("setPlayerVitalSigns", setPlayerVitalSigns)
 
 function clearInventory()
     ExecuteWebJS(survival_ui, "clearInventory()")            
