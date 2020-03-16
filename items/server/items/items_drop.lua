@@ -102,8 +102,10 @@ AddRemoteEvent("drop_item", drop_item)
 
 
 function RemoveDropedItem(droped_id)
+    local pu_text =GetPickupPropertyValue(droped_id, '3d_text')
+
     DestroyPickup(droped_id)
-    DestroyText3D(GetPickupPropertyValue(droped_id, '3d_text'))
+    DestroyText3D(pu_text)
 end
 
 function OnPlayerPickupHit(player, Pickup)
