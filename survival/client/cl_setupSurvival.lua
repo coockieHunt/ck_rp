@@ -1,8 +1,8 @@
-function initSurivaval(timer)
+function InitSurvivalTimer(timer)
     CreateTimer(function()
-        CallRemoteEvent("initSurivaval", GetPlayerId())
+        CallRemoteEvent("decreaseSurvival", GetPlayerId())
     end, timer, GetPlayerId())
 end
-AddRemoteEvent("initSurivaval", initSurivaval)
+AddRemoteEvent("InitSurvivalTimer", InitSurvivalTimer)
 
 
