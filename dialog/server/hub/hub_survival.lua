@@ -1,13 +1,3 @@
-function RefrechPlayerData(playerid)
-   local p = getplayer(playerid)
-   CallRemoteEvent(playerid, "setPlayerData",p:getCash() , p:getCashAccount(), p:getHealth(), p:getArmor())
-   CallRemoteEvent(playerid, 'setDammage', p:getHealth(),  p:getArmor())
-end
-
-function RefrechSurvivalData(playerid)
-   local p = getplayer(playerid)
-   CallRemoteEvent(playerid, "setPlayerSurvival",p:getFood() , p:getThirst())
-end
 
 AddRemoteEvent("GetPersoInventory", function(player)
    local inventory = {}
