@@ -11,6 +11,8 @@ function OpenUISurvival()
         GetPersoInventoryList()
         GetMaxWeightLift()
         CloseUISurvival_warn()
+        ExecuteWebJS(survival_ui, "HideSidePanel()")
+
     end
 end
 

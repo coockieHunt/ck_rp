@@ -4,6 +4,7 @@ $( function() {
     AddItem("chips", "test", 15, "../../files_client/web/src/img/chips.png", "food" , 5 , 8,"Les chips ou pommes chips, connues aussi sous le néologisme de croustilles au Canada, ")
 } );
 
+
 var dom_select = {
     "heath" : "#stats > .content > #health > .progress > .progress-container > .progressbar-element",
     "armor" : "#stats > .content > #armor > .progress > .progress-container > .progressbar-element",
@@ -11,6 +12,7 @@ var dom_select = {
     "thirst" : "#stats > .content > #thirst > .progress > .progress-container > .progressbar-element",
     "cash" : "#stats > .content > #cash > #data",
     "bank" : "#stats > .content > #bank > #data",
+    "side_bottom" : "#side_bottom_window",
     "info_food" : "#side_bottom_window > .content > .info > .ar >.food > p",
     "info_third" : "#side_bottom_window > .content > .info > .ar > .third > p",
     "info_name" : "#side_bottom_window > .content > .info > .desc > span",
@@ -19,6 +21,10 @@ var dom_select = {
     "info_quantity_up" : "#side_bottom_window > .content > .action > .quantity > .content > .up",
     "info_quantity_down" : "#side_bottom_window > .content > .action > .quantity > .content > .down",
     "info_weight_lift" : "#inventory > .content > .header > .max_weight"
+}
+
+function HideSidePanel(){
+    $(dom_select.side_bottom).hide();
 }
 
 
@@ -139,7 +145,8 @@ function AddItem(id, name, quantity, thumb, type , third, food, descrip){
 
 function SelectItem(id) {
     $('#' + id).addClass("ItemsActive")
-
+console.log(id)
+$(dom_select.side_bottom).fadeIn();
     let item
     selected_item = id
 
@@ -148,6 +155,8 @@ function SelectItem(id) {
             item = value
         }
     });
+
+    $(dom_select.side_bottom).show()
 
     $(dom_select.info_quantity_down).css('cursor', 'default');
     $(dom_select.info_quantity_up).css('cursor', 'pointer');
