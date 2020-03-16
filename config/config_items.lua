@@ -55,4 +55,16 @@ _Items = {
 _Default_item = {
     hand_pos = {x = 8, y = -3, z = -8,  rx = 0.0,  ry = 0, rz = 0}
 }
+
+_Item_type = {
+    food = {
+        color = "#ffdb4d",
+        icon = 'iconDir'
+    },
+
+    drinks = {
+        color = "#66c2ff",
+        icon = 'iconDir'
+    }
+}
   

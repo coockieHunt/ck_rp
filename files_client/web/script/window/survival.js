@@ -1,7 +1,7 @@
 $( function() {
-    AddItem("energi_drink", "test", 3, "../../files_client/web/src/img/energi_drink.png", "food" , 5 , 4 ,"Red Bull Energy Drink, souvent abrégée en Red Bull, est une boisson énergisante autrichienne créée par Red Bull GmbH ")
-    AddItem("banana", "test", 3, "../../files_client/web/src/img/banana.png", "food" , 6 , 7 ,"a banane est le fruit ou la baie dérivant de l'inflorescence du bananier. Les bananes sont des fruits très généralement stériles issus de variétés domestiquées.")
-    AddItem("chips", "test", 15, "../../files_client/web/src/img/chips.png", "food" , 5 , 8,"Les chips ou pommes chips, connues aussi sous le néologisme de croustilles au Canada, ")
+    AddItem("energi_drink", "test", 3, "../../files_client/web/src/img/energi_drink.png", "food" , 5 , 4 ,"Red Bull Energy Drink, souvent abrégée en Red Bull, est une boisson énergisante autrichienne créée par Red Bull GmbH ", "#ffdb4d" )
+    AddItem("banana", "test", 3, "../../files_client/web/src/img/banana.png", "food" , 6 , 7 ,"a banane est le fruit ou la baie dérivant de l'inflorescence du bananier. Les bananes sont des fruits très généralement stériles issus de variétés domestiquées.", "#66c2ff")
+    AddItem("chips", "test", 15, "../../files_client/web/src/img/chips.png", "food" , 5 , 8,"Les chips ou pommes chips, connues aussi sous le néologisme de croustilles au Canada, ", "#66c2ff")
 } );
 
 
@@ -78,9 +78,10 @@ function SetBank(net_account_cash)
     return true
 }
 
-function SetItemInfo(name, third, food, descrip)
+function SetItemInfo(name, third, food, descrip, type_color)
 {
     $(dom_select.info_name).text(name)
+    $(dom_select.info_name).css("color", type_color)
     $(dom_select.info_food).text(food)
     $(dom_select.info_third).text(third)
     $(dom_select.info_description).text(descrip)
@@ -95,7 +96,7 @@ function clearInventory() {
     $('#items').empty(); 
 }
 
-function AddItem(id, name, quantity, thumb, type , third, food, descrip){
+function AddItem(id, name, quantity, thumb, type , third, food, descrip, color_type){
     let item = {
         "id" : id,
         "name" : name,
@@ -105,6 +106,7 @@ function AddItem(id, name, quantity, thumb, type , third, food, descrip){
         "third" : third,
         "food" : food,
         "descrip" : descrip,
+        "color_type" : color_type,
     }
 
     list_item.push(item);
@@ -145,8 +147,7 @@ function AddItem(id, name, quantity, thumb, type , third, food, descrip){
 
 function SelectItem(id) {
     $('#' + id).addClass("ItemsActive")
-console.log(id)
-$(dom_select.side_bottom).fadeIn();
+    $(dom_select.side_bottom).fadeIn();
     let item
     selected_item = id
 
@@ -174,7 +175,7 @@ $(dom_select.side_bottom).fadeIn();
         $(this).removeClass("qtihover")
     });
 
-    SetItemInfo(item['name'], item['third'], item['food'], item['descrip'])
+    SetItemInfo(item['name'], item['third'], item['food'], item['descrip'], item['color_type'])
 }
 
 $(dom_select.info_quantity_up).click(function() {

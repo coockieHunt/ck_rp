@@ -7,8 +7,10 @@ AddRemoteEvent("GetPersoInventory", function(player)
 
    for key, value in pairs(decode_inventory) do
       local id = value.id
+
       
       local object = GetItems(id)
+      local type = GetItemTypeInfo(id)
 
       inventory[id] = {
          object.name,
@@ -18,6 +20,7 @@ AddRemoteEvent("GetPersoInventory", function(player)
          object.third,
          object.food,
          object.descrip,
+         type.color
       }
 
    end
@@ -25,20 +28,6 @@ AddRemoteEvent("GetPersoInventory", function(player)
 	CallRemoteEvent(player, "SetPersoInventoryList", inventory)
 end)
 
-AddRemoteEvent("GetItemInfo", function(player, item_id)
-   local InfoTable = { }
-
-   local item = GetItems(item_id)
-
-   InfoTable = {
-         ['name'] = item.name,
-         ['third'] = item.third,
-         ['food'] = item.food,
-         ['descrip'] = item.descrip
-   }
-
-   CallRemoteEvent(player, "SetItemInfo", InfoTable)
-end)
 
 AddRemoteEvent("GetInventoryMaxWeight", function(player)
    local MaxWeight = GetInventoryMaxWeight(player)
