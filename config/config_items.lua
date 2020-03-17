@@ -59,12 +59,12 @@ _Default_item = {
 _Item_type = {
     food = {
         color = "#ffdb4d",
-        icon = 'iconDir'
+        icon = 'food'
     },
 
     drinks = {
         color = "#66c2ff",
-        icon = 'iconDir'
+        icon = 'thirst'
     }
 }
   

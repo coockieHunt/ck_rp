@@ -151,7 +151,6 @@ body{
 #window > #content > #inventory > .content > #items > .object > .info{
   position: relative;
   width: 100%;
-
   background: rgb(84,99,110);
   box-shadow: inset 2px -2px 41px -3px rgba(0,0,0,0.36);
 }
@@ -163,9 +162,11 @@ body{
   font-weight: lighter;
 }
 
-#window > #content > #inventory > .content > #items > .object > .info > .type{
-  top: 5px;
-  right: 5px;
+#window > #content > #inventory > .content > #items > .object > .info > .type > svg{
+  width: 12px;
+  height: 12px;
+  float: right;
+  padding: 7px;
 }
 
 #window > #content > #inventory > .content > #items > .object > .info > .name{

@@ -1,7 +1,7 @@
 $( function() {
-    AddItem("energi_drink", "test", 3, "../../files_client/web/src/img/energi_drink.png", "food" , 5 , 4 ,"Red Bull Energy Drink, souvent abrégée en Red Bull, est une boisson énergisante autrichienne créée par Red Bull GmbH ", "#ffdb4d" )
-    AddItem("banana", "test", 3, "../../files_client/web/src/img/banana.png", "food" , 6 , 7 ,"a banane est le fruit ou la baie dérivant de l'inflorescence du bananier. Les bananes sont des fruits très généralement stériles issus de variétés domestiquées.", "#66c2ff")
-    AddItem("chips", "test", 15, "../../files_client/web/src/img/chips.png", "food" , 5 , 8,"Les chips ou pommes chips, connues aussi sous le néologisme de croustilles au Canada, ", "#66c2ff")
+    AddItem("energi_drink", "test", 3, "../../files_client/web/src/img/energi_drink.png", "food" , 5 , 4 ,"Red Bull Energy Drink, souvent abrégée en Red Bull, est une boisson énergisante autrichienne créée par Red Bull GmbH ", "#ffdb4d", "thirst" )
+    AddItem("banana", "test", 3, "../../files_client/web/src/img/banana.png", "food" , 6 , 7 ,"a banane est le fruit ou la baie dérivant de l'inflorescence du bananier. Les bananes sont des fruits très généralement stériles issus de variétés domestiquées.", "#66c2ff", 'food')
+    AddItem("chips", "test", 15, "../../files_client/web/src/img/chips.png", "food" , 5 , 8,"Les chips ou pommes chips, connues aussi sous le néologisme de croustilles au Canada, ", "#66c2ff", "food")
 });
 
 
@@ -96,7 +96,7 @@ function clearInventory() {
     $('#items').empty(); 
 }
 
-function AddItem(id, name, quantity, thumb, type , third, food, descrip, color_type){
+function AddItem(id, name, quantity, thumb, type , third, food, descrip, color_type, icon_type){
     let item = {
         "id" : id,
         "name" : name,
@@ -107,16 +107,19 @@ function AddItem(id, name, quantity, thumb, type , third, food, descrip, color_t
         "food" : food,
         "descrip" : descrip,
         "color_type" : color_type,
+        "icon_type" : icon_type,
     }
 
     list_item.push(item);
+
+    console.log(BuildSvg(icon_type, "icon"))
 
     let object_div = "<div class='object' id="+ id +"></div>"
     let thumb_div = "<div class='thumb'></div>"
     let info_div = "<div class='info'></div>"
 
     let thumb_element = " <img src='" + thumb + "'>"
-    let type_element = "<span class='type'>" + type + "</span>"
+    let type_element = "<div class='type' style=color:"+ color_type +">" + BuildSvg(icon_type, "icon") + "</div>"
     let name_element = "<span class='name'>" + name + "</span>"
     let quantity_element = "<span class='quantity'>x " + quantity + "</span>"
 
