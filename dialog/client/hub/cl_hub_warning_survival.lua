@@ -39,9 +39,9 @@ AddRemoteEvent("ShowIconSave", ShowIconSave)
 
 function setDammageWarning(health, armor)
     if(tonumber(math.floor(health)) < 50) then
-        ExecuteWebJS(survival_warn_ui, "blink('health', true, "..health..")")
+        ExecuteWebJS(survival_warn_ui, "blink('heart', true, "..health..")")
     else
-        ExecuteWebJS(survival_warn_ui, "blink('health', false, "..health..")")
+        ExecuteWebJS(survival_warn_ui, "blink('heart', false, "..health..")")
     end
 
     if(tonumber(math.floor(armor))  < 50) then
