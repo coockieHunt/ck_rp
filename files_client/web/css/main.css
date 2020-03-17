@@ -22,10 +22,6 @@
 html, body {height: 100%;  user-select: none;}
 @font-face {font-family: "roboto";src: url("../src/font/Roboto-Regular.ttf");}
 
-.hidden_svg{
-  position: absolute;
-}
-
 #close{
   cursor: pointer !important;
   z-index: 10000;
