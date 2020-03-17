@@ -44,6 +44,7 @@
 		"files_client/web/src/img/banana.png",
 		"files_client/web/src/img/energi_drink.png",
 		"files_client/web/src/img/chips.png",
+		"files_client/web/src/img/sprite.svg",
 
 		"files_client/web/src/font/Roboto-Regular.ttf",
 
@@ -68,6 +69,7 @@
 
 		"dialog/files/ui_survival.html", 
 		"dialog/files/ui_admin.html",
-		"dialog/files/ui_warning_survival.html"
+		"dialog/files/ui_warning_survival.html",
+		"dialog/files/ui_warning_survival_issue.html"
 	]
 }
