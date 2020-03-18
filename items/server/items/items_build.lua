@@ -11,7 +11,7 @@ function OnPackageStart(player)
                 ["model"] = item.model,
                 ["weight"] = item.weight,
                 ["usable"] = item.usable,
-                ["third"] = item.third,
+                ["thirst"] = item.thirst,
                 ["food"] = item.food,
                 ["thumbnail"] = item.thumbnail,
                 ["type"] = item.type,
