@@ -112,14 +112,13 @@ function AddItem(id, name, quantity, thumb, type , third, food, descrip, color_t
 
     list_item.push(item);
 
-    console.log(BuildSvg(icon_type, "icon"))
 
     let object_div = "<div class='object' id="+ id +"></div>"
     let thumb_div = "<div class='thumb'></div>"
     let info_div = "<div class='info'></div>"
 
     let thumb_element = " <img src='" + thumb + "'>"
-    let type_element = "<div class='type' style=color:"+ color_type +">" + BuildSvg(icon_type, "icon") + "</div>"
+    let type_element = "<div class='type'>" + BuildSvg(icon_type, "icon") + "</div>"
     let name_element = "<span class='name'>" + name + "</span>"
     let quantity_element = "<span class='quantity'>x " + quantity + "</span>"
 
