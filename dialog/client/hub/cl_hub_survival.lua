@@ -12,7 +12,7 @@ function OpenUISurvival()
         GetMaxWeightLift()
         CloseUISurvival_warn()
         ExecuteWebJS(survival_ui, "HideSidePanel()")
-
+        CallRemoteEvent("OnPlayerOpenSurvivalUi")
     end
 end
 
@@ -131,3 +131,10 @@ function CallDropItem(id, quantity)
     CallRemoteEvent("drop_item", id, quantity)
 end
 AddEvent("CallDropItem", CallDropItem)
+
+function CallUseItem(id)
+    CloseUISurival()
+
+    CallRemoteEvent("UseItem", id)
+end
+AddEvent("CallUseItem", CallUseItem)
