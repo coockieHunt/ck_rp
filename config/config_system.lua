@@ -26,12 +26,17 @@ _Import_package = {
 _Drop_animation = {
     animation_id = "PICKUP_LOWER",
     detach_time = 1400
-};
+}
 
 _Gather_animation = {
     animation_id = "PICKUP_LOWER",
     atach_time = 1400,
     detach_time = 1400
+}
+
+_Eat_animation = {
+    animation_id = "DRINKING",
+    atach_time = 1250
 }
 
 -- LOG

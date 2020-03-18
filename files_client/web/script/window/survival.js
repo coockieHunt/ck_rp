@@ -14,7 +14,7 @@ var dom_select = {
     "bank" : "#stats > .content > #bank > #data",
     "side_bottom" : "#side_bottom_window",
     "info_food" : "#side_bottom_window > .content > .info > .ar >.food > p",
-    "info_third" : "#side_bottom_window > .content > .info > .ar > .third > p",
+    "info_thirst" : "#side_bottom_window > .content > .info > .ar > .thirst > p",
     "info_name" : "#side_bottom_window > .content > .info > .desc > span",
     "info_description" : "#side_bottom_window > .content > .info > .desc > p",
     "info_quantity" : "#side_bottom_window > .content > .action > .quantity > .content > .number",
@@ -78,12 +78,12 @@ function SetBank(net_account_cash)
     return true
 }
 
-function SetItemInfo(name, third, food, descrip, type_color)
+function SetItemInfo(name, thirst, food, descrip, type_color)
 {
     $(dom_select.info_name).text(name)
     $(dom_select.info_name).css("color", type_color)
     $(dom_select.info_food).text(food)
-    $(dom_select.info_third).text(third)
+    $(dom_select.info_thirst).text(thirst)
     $(dom_select.info_description).text(descrip)
     $(dom_select.info_quantity).text(1)
 }
@@ -96,14 +96,14 @@ function clearInventory() {
     $('#items').empty(); 
 }
 
-function AddItem(id, name, quantity, thumb, type , third, food, descrip, color_type, icon_type){
+function AddItem(id, name, quantity, thumb, type , thirst, food, descrip, color_type, icon_type){
     let item = {
         "id" : id,
         "name" : name,
         "quantity" : quantity,
         "thumb" : thumb,
         "type" : type,
-        "third" : third,
+        "thirst" : thirst,
         "food" : food,
         "descrip" : descrip,
         "color_type" : color_type,
@@ -177,7 +177,7 @@ function SelectItem(id) {
         $(this).removeClass("qtihover")
     });
 
-    SetItemInfo(item['name'], item['third'], item['food'], item['descrip'], item['color_type'])
+    SetItemInfo(item['name'], item['thirst'], item['food'], item['descrip'], item['color_type'])
 }
 
 $(dom_select.info_quantity_up).click(function() {
@@ -240,6 +240,16 @@ $(".survival").click(function() {
 });
 
 $("#side_bottom_window > div > div.action > div > div.drop").click(function() {
+    if(selected_item != undefined){
+        let quantity = $(dom_select.info_quantity).text()
+        CallEvent("CallDropItem", selected_item, quantity);
+    }
+});
+
+
+$("#side_bottom_window > div > div.info > div.desc > .use").click(function() {
     let quantity = $(dom_select.info_quantity).text()
-    CallEvent("CallDropItem", selected_item, quantity);
+    if(selected_item != undefined){
+        CallEvent("CallUseItem", selected_item);
+    }
 });

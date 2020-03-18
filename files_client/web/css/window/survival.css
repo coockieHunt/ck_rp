@@ -285,18 +285,21 @@ body{
 #side_bottom_window > .content > .info{
   width: 70%;
   height: 100%;
-  padding: 10px;
+  padding: 5px;
   box-sizing: border-box;
   display: flex;
 }
 
 #side_bottom_window > .content > .info > .ar{
+  padding: 5px;
+  box-sizing: border-box;
   width: 15%;
 }
 
 #side_bottom_window > .content > .info > .ar > div > .icon{
   width: 15px;
   height: 15px;
+
   float: left;
 }
 
@@ -307,6 +310,37 @@ body{
 
 #side_bottom_window > .content > .info > .desc > span{ 
   font-weight: bold;
+  margin-bottom: 5px;
+
+}
+
+#side_bottom_window > .content > .info > .desc > p{ 
+  height: 55%;
+  overflow: auto;
+  border-top: 1px solid rgba(0, 0, 0, 0.109);
+  padding: 5px;
+  font-size: 0.8em;
+}
+
+#side_bottom_window > div > div.info > div.desc > .use{
+  color: #2b353d75;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#side_bottom_window > div > div.info > div.desc > .use:hover{
+  color: #2b353dab;
+}
+
+::-webkit-scrollbar-thumb {
+  background:var(--gray-light)
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background:var(--gray-mid)
 }
 
 #side_bottom_window > .content > .action{
