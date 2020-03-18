@@ -69,7 +69,6 @@
 
 		"dialog/files/ui_survival.html", 
 		"dialog/files/ui_admin.html",
-		"dialog/files/ui_warning_survival.html",
-		"dialog/files/ui_warning_survival_issue.html"
+		"dialog/files/ui_warning_survival.html"
 	]
 }
