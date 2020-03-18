@@ -64,13 +64,9 @@ html, body {height: 100%;  user-select: none;}
 }
 
 ::-webkit-scrollbar {
-  width: 20px;
+  width: 10px;
 }
 
-::-webkit-scrollbar-track {
-  border: 1px solid #4e4e4e;
-}
- 
 ::-webkit-scrollbar-thumb {
   background:var(--red-dark)
 }
