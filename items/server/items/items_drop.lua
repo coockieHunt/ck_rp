@@ -7,7 +7,8 @@ function CreateDropItem(player, item_id, quantity)
 
     local obj = CreateObject(item.model, x, y, z)
     
-    local hand_pos = GetItemHandPos(item_id)
+    local hand_pos = GetItemHandPos('drop', item_id)
+
     SetObjectAttached(obj, ATTACH_PLAYER, player, 
         hand_pos['x'], 
         hand_pos['y'], 
@@ -64,7 +65,7 @@ function GatherDropedItem(player, droped_id)
         local x, y, z = GetPlayerLocation(player)
         attached_object = CreateObject(po_model, x, y, z)
 
-        local hand_pos = GetItemHandPos(po_id)
+        local hand_pos = GetItemHandPos('drop' , po_id)
         SetObjectAttached(attached_object, ATTACH_PLAYER, player, 
             hand_pos['x'], 
             hand_pos['y'], 

@@ -44,16 +44,19 @@ function CheckIfValidItem(item_id)
     return false
 end
 
-function GetItemHandPos(item_id)
+function GetItemHandPos(type, item_id)
     if(CheckIfValidItem(item_id)) then
         local item = GetItems(item_id)
+        local default = _Default_item.hand_pos[type]
+        local custom = item.hand_pos[type]
 
-        local hand_pos = item.hand_pos
-
-        if(isnil(hand_pos)) then
-            return _Default_item.hand_pos
+        if(isnil(custom)) then
+            return default
         else
-            return hand_pos
+            if(isnil(default)) then
+                return false
+            end
+            return custom
         end
     end
 end
