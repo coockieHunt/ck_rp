@@ -27,7 +27,7 @@ function UseItem(player, item_id)
 
                 Delay(_Eat_animation.atach_time, function()
                     DestroyObject(obj)
-                    consumeItem(player, food, thirst)
+                    consumeItem(player,item.name, food, thirst)
                 end)
             end
         end
@@ -35,6 +35,37 @@ function UseItem(player, item_id)
 end
 AddRemoteEvent("UseItem", UseItem)
 
-function consumeItem(player, food, thirst)
-    AddFood(player, food)
+function consumeItem(player, item_name, food, thirst)
+    local negativ = false
+    local food_alert
+    local thirst_alert
+
+    if(food ~= 0) then
+        if(food < 0) then 
+            negativ = true
+            food_alert = string.format('food :<span style="color:red">%q</span><br>', food)
+        else
+            negativ = false
+            food_alert = string.format('food :<span style="color:green">+ %q</span><br>', food)
+        end
+        ManageFood(player, negativ, food)
+    end
+
+    if(thirst ~= 0) then
+        if(thirst < 0) then 
+            negativ = true 
+            thirst_alert = string.format('thirst : <span style="color:red">%q</span>', thirst)
+        else
+            negativ = false
+            thirst_alert = string.format('thirst : <span style="color:green">+ %q</span>', thirst)
+        end
+        ManageThirst(player, negativ, thirst)
+    end
+
+    if(thirst == 0) then thirst_alert = string.format('thirst : <span style="color:black">0</span>', thirst) end
+    if(food == 0) then food_alert = string.format('food :<span style="color:black">0</span><br>', food) end
+
+    local formatAlert = ('you have consumed <strong>%s</strong>:<br> %s %s'):format(item_name, food_alert, thirst_alert)
+
+    SendAlert(player, "info", "Consume", formatAlert)
 end
