@@ -60,6 +60,20 @@ function GetItemsQuantity(inventory, item_id)
      return 0
 end
 
+function IfAccountOwnItem(player, item_id)
+    local p = getplayer(player)
+    local inventory = DecodeInventoy(p:getInventory())
+    for key, value in pairs(inventory) do
+        local id_loop = value.id
+
+        if(item_id == id_loop) then
+            return true
+        end
+     end
+
+     return false
+end
+
 function SaveInventory(target, new_inventory, weight)
     local new_inventory = EncodeInventory(new_inventory)
     local target = getplayer(target)
