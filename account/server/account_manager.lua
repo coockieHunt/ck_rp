@@ -9,6 +9,16 @@ function getplayer(player)
     return KickPlayer(player, "😨 An error occured while loading your account 😨 (EC 003)")
 end
 
+function IfCachedPlayer(player)
+    local steam_id = tostring(GetPlayerSteamId(tonumber(player)))
+    for key, value in pairs(playerData) do
+        if(value.steamId == steam_id) then
+            return true
+        end
+    end
+    return false
+end
+
 ---- sav
 function OnPlayerSpawn(playerid)
     CreateTimer(function(playerid)

@@ -68,13 +68,16 @@ function LoadPlayerAccount(player)
     
     local steam_id = tostring(GetPlayerSteamId(player))
 
-    print("> Load player account ("..steam_id..") ")
+    if(IfCachedPlayer(player)) then
+        print("> Load player account by CACHE ("..steam_id..") ")
+    else
+        print("> Load player account by SQL ("..steam_id..") ")
 
+        local query = mariadb_prepare(db,  _RequestSql.GetPlayerAccount, steam_id)
 
-	local query = mariadb_prepare(db,  _RequestSql.GetPlayerAccount,
-        steam_id)
+        mariadb_async_query(db, query, OnAccountLoaded, player)
+    end
 
-	mariadb_async_query(db, query, OnAccountLoaded, player)
 end
 
 function OnAccountLoaded(player)
@@ -94,14 +97,14 @@ function OnAccountLoaded(player)
         SetPlayerHealth(player, tonumber(result['health']))
 
 
-        createPlayerAcoount(player, player_name, result)
+        createPlayerAccount(player, player_name, result)
         AddPlayerChatAll( ('<span color="#%s">%s </>%s'):format("0438CE", GetPlayerName(player), " a rejoint le serveur"))
 	end
 end
 
 ---- Manage account list
 --add
-function createPlayerAcoount(player, name, data)
+function createPlayerAccount(player, name, data)
     if(isnil(data['admin_level'])) then data['admin_level'] = 0 end
     local steam_id = tostring(GetPlayerSteamId(player))
     local client_id = GetPlayerBySteamId(steam_id)
@@ -130,7 +133,7 @@ end
 
 --remove
 function OnPlayerQuit(player)
-    DestroyPlayerData(player)
+    -- DestroyPlayerData(player)
 end
 AddEvent("OnPlayerQuit", OnPlayerQuit)
 
