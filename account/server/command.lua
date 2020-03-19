@@ -16,6 +16,7 @@ function cmd_commands(playerid)
 	AddPlayerChat(playerid, ("		- alert count : %s"):format(data.alert_count))
 	AddPlayerChat(playerid, ("		- food : %s"):format(data.food))
 	AddPlayerChat(playerid, ("		- thirst : %s"):format(data.thirst))
+	AddPlayerChat(playerid, ("		- active : %s"):format(data.active))
 end
 AddCommand("gst", cmd_commands)
 

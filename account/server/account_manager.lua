@@ -19,13 +19,21 @@ function IfCachedPlayer(player)
     return false
 end
 
----- sav
-function OnPlayerSpawn(playerid)
-    CreateTimer(function(playerid)
-        SaveAccountPlayer(playerid)
-	end, _Account_timer.save_account_time, playerid)
+function OnPackageStart()
+    CreateTimer(function()
+        local countSaved = 0
+
+        for key, value in pairs(playerData) do
+            if(value.active) then
+                countSaved = countSaved + 1
+                SaveAccountPlayer(value.id_client)
+            end
+        end
+
+        print("> Automatic backup account: "..countSaved.." backup")
+    end, _Account_timer.save_account_time)
 end
-AddEvent("OnPlayerSpawn", OnPlayerSpawn)
+AddEvent("OnPackageStart", OnPackageStart)
 
 function SaveAccountPlayer(player)
 	local steam_id = tostring(GetPlayerSteamId(player))

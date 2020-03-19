@@ -111,6 +111,16 @@ function player:setAlertCount(num)
    return true
 end
 
+-- ACTIVE
+function player:getActive()
+   return self.active
+end
+
+function player:setActive(bool)
+   self.active = bool
+   return true
+end
+
 local function newPlayer(playerInfo)
    return player:init(playerInfo)
 end

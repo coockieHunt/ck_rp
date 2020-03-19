@@ -70,6 +70,7 @@ function LoadPlayerAccount(player)
 
     if(IfCachedPlayer(player)) then
         print("> Load player account by CACHE ("..steam_id..") ")
+        setPlayerActive(player, true)
     else
         print("> Load player account by SQL ("..steam_id..") ")
 
@@ -126,6 +127,7 @@ function createPlayerAccount(player, name, data)
             ["cash_account"] =  data['cash_account'],
             ["inventory"] =  data['inventory'],
             ["alert_count"] =  0,
+            ["active"] =  true,
         })
 
     table.insert(playerData, p)       
@@ -133,9 +135,23 @@ end
 
 --remove
 function OnPlayerQuit(player)
-    -- DestroyPlayerData(player)
+    setPlayerActive(player, false)
+    SaveAccountPlayer(player)
 end
 AddEvent("OnPlayerQuit", OnPlayerQuit)
+
+function setPlayerActive(player, bool)
+    local p = getplayer(player)
+
+    p:setActive(bool)
+end
+
+function IfPlayerActive(player, bool)
+    local p = getplayer(player)
+
+    return p:getActive()
+end
+
 
 function DestroyPlayerData(player)
     local steam_id = tostring(GetPlayerSteamId(player))
