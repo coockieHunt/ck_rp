@@ -1,5 +1,5 @@
 function UseItem(player, item_id)
-    if(CheckIfValidItem(item_id)) then
+    if(CheckIfValidItem(item_id) and IfAccountOwnItem(player, item_id)) then
         local item = GetItems(item_id)
 
         if(item ~= false) then
