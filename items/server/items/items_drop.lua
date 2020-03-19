@@ -1,36 +1,41 @@
 function CreateDropItem(player, item_id, quantity)
-    local x, y, z = GetPlayerLocation(player)
-    local ph = GetPlayerHeading(player)
-    local Vx, Vy, Vz = GetPlayerForward(player)
-
-    local item = GetItems(item_id)
-
-    local obj = CreateObject(item.model, x, y, z)
+    if(IfAccountOwnItem(player, item_id)) then
+        local x, y, z = GetPlayerLocation(player)
+        local ph = GetPlayerHeading(player)
+        local Vx, Vy, Vz = GetPlayerForward(player)
     
-    local hand_pos = GetItemHandPos('drop', item_id)
-
-    SetObjectAttached(obj, ATTACH_PLAYER, player, 
-        hand_pos['x'], 
-        hand_pos['y'], 
-        hand_pos['z'], 
-        hand_pos['rx'],  
-        hand_pos['ry'], 
-        hand_pos['rz'], 
-        "hand_l"
-    )
+        local item = GetItems(item_id)
     
-    SetPlayerAnimation(player, _Drop_animation.animation_id)
-
-    SendAlert(player, "info", "Dropped", "You had left  <strong>" .. quantity .. " " .. item.name.."</strong>")
-
-    Delay(_Gather_animation.atach_time, function()
-        DestroyObject(obj)
-
-        local pickup = CreatePickup(item.model, x + (Vx * 200), y + (Vy * 100), z - 50)
-        local ItemText = CreateText3D(item.name ..' - ('..quantity..')', 18,  x + (Vx * 200), y + (Vy * 100), z + 20, 0,0,0)
+        local obj = CreateObject(item.model, x, y, z)
         
-        AddItemPickUpList(player, pickup, item.model, ItemText, quantity, item_id)
-    end)
+        local hand_pos = GetItemHandPos('drop', item_id)
+    
+        print()
+    
+        SetObjectAttached(obj, ATTACH_PLAYER, player, 
+            hand_pos['x'], 
+            hand_pos['y'], 
+            hand_pos['z'], 
+            hand_pos['rx'],  
+            hand_pos['ry'], 
+            hand_pos['rz'], 
+            "hand_l"
+        )
+        
+        SetPlayerAnimation(player, _Drop_animation.animation_id)
+    
+        SendAlert(player, "info", "Dropped", "You had left  <strong>" .. quantity .. " " .. item.name.."</strong>")
+    
+        Delay(_Gather_animation.atach_time, function()
+            DestroyObject(obj)
+    
+            local pickup = CreatePickup(item.model, x + (Vx * 200), y + (Vy * 100), z - 50)
+            local ItemText = CreateText3D(item.name ..' - ('..quantity..')', 18,  x + (Vx * 200), y + (Vy * 100), z + 20, 0,0,0)
+            
+            AddItemPickUpList(player, pickup, item.model, ItemText, quantity, item_id)
+        end)
+    end
+   
 end
 
 function GatherDropedItem(player, droped_id)
