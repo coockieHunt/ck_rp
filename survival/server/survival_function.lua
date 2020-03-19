@@ -26,7 +26,6 @@ function ManageThirst(playerId, negativ, amt)
     local newThirst
 
     if negativ then
-        print('rf')
         newThirst = thirst - string.match (amt, "%d+")
     else
         newThirst = thirst + string.match (amt, "%d+")
