@@ -45,7 +45,11 @@
                         </div>
                         <li data-dp_id="interract">interaction </li>
                         <div id="dp_interract">
-                            <li id="drop_object_items">droped item</li>
+                            <li id="drop_object_items_action">droped item</li>
+                        </div>
+                        <li data-dp_id="other">other</li>
+                        <div id="dp_other">
+                            <li id="player_cache_action">player cache</li>
                         </div>
                     </nav>
 
@@ -373,32 +377,54 @@
                     </section>
                     
                     <!-- Drop list -->
-                    <section id="drop_object_items">
-                    <h1>Droped item list</h1>
+                    <section id="drop_object_items_action">
+                        <h1>Droped item list</h1>
 
-                    <div class="content">
-                        <form>
-                            <div class="drop_item_container">
-                                    <table class="DropItem" >
-                                        <tr>
-                                          <th>id</th>
-                                          <th>player</th>
-                                          <th>model</th>
-                                          <th>quantity</th>
-                                          <th>postion</th>
-                                        </tr>
-                                      </table>
-                            </div>
-                           
-                            <input id="droped_id" name="droped_id" type="hidden">
+                        <div class="content">
+                            <form>
+                                <div class="drop_item_container">
+                                        <table class="DropItem" >
+                                            <tr>
+                                                <th>id</th>
+                                                <th>player</th>
+                                                <th>model</th>
+                                                <th>quantity</th>
+                                                <th>postion</th>
+                                            </tr>
+                                            </table>
+                                </div>
+                                
+                                <input id="droped_id" name="droped_id" type="hidden">
 
-                            <select size="1" name="action" style="margin-top: 30px; width: 100%;">
-                                <option value="del">delete</option>
-                                <option value="tp">teleport</option>
-                            </select>
-                        </form>
-                    </div>
-                </section>
+                                <select size="1" name="action" style="margin-top: 30px; width: 100%;">
+                                    <option value="del">delete</option>
+                                    <option value="tp">teleport</option>
+                                </select>
+                            </form>
+                        </div>
+                    </section>
+
+                    <!-- Player Cache -->
+                    <section id="player_cache_action">
+                        <h1>Droped item list</h1>
+
+                        <div class="content">
+                            <form>
+
+                                <label for="target">player cache: </label>
+
+                                <div>
+                                    <select size="15" class="PCList" name="target">
+                                    
+                                    </select>
+                                </div>
+                                
+                                <select size="1" name="action" style="margin-top: 30px; width: 100%;">
+                                    <option value="del">delete</option>
+                                </select>
+                            </form>
+                        </div>
+                    </section>
 
                 <div id="submit">
                     <span>submit</span>

@@ -10,6 +10,7 @@ function BuildSelect(ui)
     GetTpList()
     GetItemsList()
     GetDropItemList()
+    GetPlayerCacheList()
 end
 
 -- car list
@@ -99,3 +100,25 @@ function SetPlayerList(playersList)
 
 end
 AddRemoteEvent("SetPlayerList", SetPlayerList)
+
+
+-- Player cache list
+function GetPlayerCacheList(ui)
+    CallRemoteEvent("GetPlayerCacheList")
+end
+
+function SetPlayerCacheList(playersList)
+    for k, v in ipairs(playersList) do
+        local id = k
+        local name = v[1]
+        local acitve = v[2]
+
+
+        local op
+
+        if(acitve) then op = "connected" else op = "disconected" end
+        ExecuteWebJS(web_ui, "BuildPlayerCacheListSelect('"..name.." - ("..op..")', "..id..");")
+	end
+
+end
+AddRemoteEvent("SetPlayerCacheList", SetPlayerCacheList)

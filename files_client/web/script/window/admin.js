@@ -29,6 +29,15 @@ function BuildPlayerListSelect(text, value){
     }
 }
 
+function BuildPlayerCacheListSelect(text, value){
+    if ( $( ".PCList" ).length ) {
+        let count = $(".PCList option[value='" + value + "']").length
+        if(count == 0){
+            $('.PCList').append(new Option(text, value))
+        }
+    }
+}
+
 function BuildClothingPresetSelect(text, value){
     if ( $( ".CPList" ).length ) {
         let count = $(".CPList option[value='" + value + "']").length

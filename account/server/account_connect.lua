@@ -142,21 +142,21 @@ AddEvent("OnPlayerQuit", OnPlayerQuit)
 
 function setPlayerActive(player, bool)
     local p = getplayer(player)
-
-    p:setActive(bool)
+    if(p ~= true) then
+        p:setActive(bool)
+    end
 end
 
-function IfPlayerActive(player, bool)
+function IfPlayerActive(player)
     local p = getplayer(player)
 
     return p:getActive()
 end
 
 
-function DestroyPlayerData(player)
-    local steam_id = tostring(GetPlayerSteamId(player))
+function DestroyPlayerData(steam_id)
     for key, value in pairs(playerData) do
-        if(value.steamId == steam_id) then
+        if(value.steamId == tostring(steam_id)) then
             table.remove(playerData, key)
         end
     end

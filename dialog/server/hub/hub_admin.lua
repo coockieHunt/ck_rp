@@ -132,7 +132,7 @@ AddRemoteEvent("Exucute", function(playerid, json)
         end
     end
 
-    if(func == 'drop_object_items') then
+    if(func == 'drop_object_items_action') then
         if(isnil(data['droped_id']) or isnil(data['action'])) then
             AddPlayerChat(playerid, "none id")
         else
@@ -148,6 +148,18 @@ AddRemoteEvent("Exucute", function(playerid, json)
             end
         end
     end
+
+    if(func == 'player_cache_action') then
+        if(isnil(data['target']) or isnil(data['action'])) then
+            AddPlayerChat(playerid, "none id")
+        else
+            local id = data['target']
+            local act = data['action']
+            if(act == "del") then
+                admin_remove_cache_player(playerid, id)
+            end
+        end
+    end
  end)
 
 AddRemoteEvent("GetAllPlayer", function(player)
@@ -160,6 +172,19 @@ AddRemoteEvent("GetAllPlayer", function(player)
 	end
 	
 	CallRemoteEvent(player, "SetPlayerList", PlayerTable)
+end)
+
+AddRemoteEvent("GetPlayerCacheList", function(player)
+	local PlayerTable = { }
+    
+    for _, v in ipairs(playerData) do
+        PlayerTable[v.id_client] = {
+            v.name,
+            v.active
+        }
+	end
+	
+	CallRemoteEvent(player, "SetPlayerCacheList", PlayerTable)
 end)
 
 
