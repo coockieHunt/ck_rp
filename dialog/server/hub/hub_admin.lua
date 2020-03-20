@@ -38,6 +38,28 @@ AddRemoteEvent("Exucute", function(playerid, json)
         end
     end
 
+    if(func == 'food_action') then
+        if(isnil(data['target']) or isnil(data['food'])) then
+            AddPlayerChat(playerid, "none id")
+        else
+
+            local f = data['food']
+            local t = data['target']
+            
+            admin_food(playerid, t, f)
+        end
+    end
+
+    if(func == 'thirst_action') then
+        if(isnil(data['target']) or isnil(data['thirst'])) then
+            AddPlayerChat(playerid, "none id")
+        else
+            local th = data['thirst']
+            local t = data['target']
+            admin_thirst(playerid, t, th)
+        end
+    end
+
     if(func == 'cloathing_action') then
         if(isnil(data['target'])) then
             AddPlayerChat(playerid, "none id")

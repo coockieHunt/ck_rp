@@ -35,3 +35,30 @@ function admin_heal(player, target, num)
 		setUiWarnDamage(target)
 	end
  end
+
+ function admin_thirst(player, target, num)
+	local level = 1
+
+	if(AdminLevel(player, level)) then
+		AddAdminLog(player, GetPlayerName(player).." set thirst ".. GetPlayerName(target) .." | " .. num)
+
+		local p = getplayer(target)
+		p:setThirst(num)
+		
+		SetSUiurvival(target)
+		setUiWarnSuvival(target)
+	end
+ end
+
+ function admin_food(player, target, num)
+	local level = 1
+
+	if(AdminLevel(player, level)) then
+		AddAdminLog(player, GetPlayerName(player).." set food ".. GetPlayerName(target) .." | " .. num)
+		local p = getplayer(target)
+		p:setFood(num)
+		
+		SetSUiurvival(target)
+		setUiWarnSuvival(target)
+	end
+ end
