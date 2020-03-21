@@ -10,8 +10,6 @@ function CreateDropItem(player, item_id, quantity)
         
         local hand_pos = GetItemHandPos('drop', item_id)
     
-        print()
-    
         SetObjectAttached(obj, ATTACH_PLAYER, player, 
             hand_pos['x'], 
             hand_pos['y'], 
