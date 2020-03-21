@@ -63,13 +63,13 @@ _Items = {
     first_aid_kit = {
         name= "first aid kit",
         description = "Le Trousse de secours d’Urgence est une trousse de secours très complète, contenant tout le matériel important de premiers secour.",
-        model = 1678,
+        model = 795,
         weight= 1,
         usable= false,
         thirst = 0,
         food = 0,
         thumbnail= "../../files_client/web/src/img/first_aid_kit.png",
-        type= "food",
+        type= "medic",
         hand_pos = {
             drop = {x = 8, y = -3, z = -4,  rx = 0.0,  ry = 0, rz = 0},
             use = nil
@@ -85,6 +85,11 @@ _Default_item = {
 }
 
 _Item_type = {
+    default = {
+        color = "#000000",
+        icon = 'info'
+    },
+
     food = {
         color = "#ffdb4d",
         icon = 'food'
@@ -93,6 +98,11 @@ _Item_type = {
     drinks = {
         color = "#66c2ff",
         icon = 'thirst'
+    },
+
+    medic = {
+        color = "#d85a5a",
+        icon = 'heart'
     }
 }
   
