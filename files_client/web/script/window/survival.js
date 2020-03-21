@@ -23,9 +23,6 @@ var dom_select = {
     "info_weight_lift" : "#inventory > .content > .header > .max_weight"
 }
 
-function HideSidePanel(){
-    $(dom_select.side_bottom).hide();
-}
 
 
 // stats
@@ -78,19 +75,13 @@ function SetBank(net_account_cash)
     return true
 }
 
-function SetItemInfo(name, thirst, food, descrip, type_color)
-{
-    $(dom_select.info_name).text(name)
-    $(dom_select.info_name).css("color", type_color)
-    $(dom_select.info_food).text(food)
-    $(dom_select.info_thirst).text(thirst)
-    $(dom_select.info_description).text(descrip)
-    $(dom_select.info_quantity).text(1)
-}
-
 // inventory
 var selected_item
 var list_item = [];
+
+function HideSidePanel(){
+    $(dom_select.side_bottom).hide();
+}
 
 function clearInventory() {
     $('#items').empty(); 
@@ -234,6 +225,16 @@ $(dom_select.info_quantity_down).click(function() {
     }
 });
 
+function SetItemInfo(name, thirst, food, descrip, type_color)
+{
+    $(dom_select.info_name).text(name)
+    $(dom_select.info_name).css("color", type_color)
+    $(dom_select.info_food).text(food)
+    $(dom_select.info_thirst).text(thirst)
+    $(dom_select.info_description).text(descrip)
+    $(dom_select.info_quantity).text(1)
+}
+
 // window
 $(".survival").click(function() {
     CallEvent("CallCloseSurvival");
@@ -245,7 +246,6 @@ $("#side_bottom_window > div > div.action > div > div.drop").click(function() {
         CallEvent("CallDropItem", selected_item, quantity);
     }
 });
-
 
 $("#side_bottom_window > div > div.info > div.desc > .use").click(function() {
     let quantity = $(dom_select.info_quantity).text()
