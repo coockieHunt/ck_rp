@@ -1,7 +1,8 @@
 $( function() {
-    AddItem("energi_drink", "test", 3, "../../files_client/web/src/img/energi_drink.png", "food" , 5 , 4 ,"Red Bull Energy Drink, souvent abrégée en Red Bull, est une boisson énergisante autrichienne créée par Red Bull GmbH ", "#ffdb4d", "thirst" )
-    AddItem("banana", "test", 3, "../../files_client/web/src/img/banana.png", "food" , 6 , 7 ,"a banane est le fruit ou la baie dérivant de l'inflorescence du bananier. Les bananes sont des fruits très généralement stériles issus de variétés domestiquées.", "#66c2ff", 'food')
-    AddItem("chips", "test", 15, "../../files_client/web/src/img/chips.png", "food" , 5 , 8,"Les chips ou pommes chips, connues aussi sous le néologisme de croustilles au Canada, ", "#66c2ff", "food")
+    AddItem("energi_drink", "test", 3, "../../files_client/web/src/img/energi_drink.png", "food" , 5 , 4 , 0,"Red Bull Energy Drink, souvent abrégée en Red Bull, est une boisson énergisante autrichienne créée par Red Bull GmbH ", "#ffdb4d", "thirst" )
+    AddItem("banana", "test", 3, "../../files_client/web/src/img/banana.png", "food" , 6 , 7 , 0, "a banane est le fruit ou la baie dérivant de l'inflorescence du bananier. Les bananes sont des fruits très généralement stériles issus de variétés domestiquées.", "#66c2ff", 'food')
+    AddItem("chips", "test", 15, "../../files_client/web/src/img/chips.png", "food" , 5 , -8, 0, "Les chips ou pommes chips, connues aussi sous le néologisme de croustilles au Canada, ", "#66c2ff", "food")
+    AddItem("firsy_aid_kit", "test", 15, "../../files_client/web/src/img/first_aid_kit.png", "medic" , 0 , 0, 5, "Les chips ou pommes chips, connues aussi sous le néologisme de croustilles au Canada, ", "#66c2ff", "food")
 });
 
 
@@ -13,8 +14,9 @@ var dom_select = {
     "cash" : "#stats > .content > #cash > #data",
     "bank" : "#stats > .content > #bank > #data",
     "side_bottom" : "#side_bottom_window",
-    "info_food" : "#side_bottom_window > .content > .info > .ar >.food > p",
-    "info_thirst" : "#side_bottom_window > .content > .info > .ar > .thirst > p",
+    "info_food" : "#side_bottom_window > .content > .info > .ar > .food",
+    "info_thirst" : "#side_bottom_window > .content > .info > .ar > .thirst",
+    "info_health" : "#side_bottom_window > .content > .info > .ar > .health",
     "info_name" : "#side_bottom_window > .content > .info > .desc > span",
     "info_description" : "#side_bottom_window > .content > .info > .desc > p",
     "info_quantity" : "#side_bottom_window > .content > .action > .quantity > .content > .number",
@@ -87,7 +89,7 @@ function clearInventory() {
     $('#items').empty(); 
 }
 
-function AddItem(id, name, quantity, thumb, type , thirst, food, descrip, color_type, icon_type){
+function AddItem(id, name, quantity, thumb, type , thirst, food, health, descrip, color_type, icon_type){
     let item = {
         "id" : id,
         "name" : name,
@@ -96,6 +98,7 @@ function AddItem(id, name, quantity, thumb, type , thirst, food, descrip, color_
         "type" : type,
         "thirst" : thirst,
         "food" : food,
+        "health" : health,
         "descrip" : descrip,
         "color_type" : color_type,
         "icon_type" : icon_type,
@@ -168,7 +171,7 @@ function SelectItem(id) {
         $(this).removeClass("qtihover")
     });
 
-    SetItemInfo(item['name'], item['thirst'], item['food'], item['descrip'], item['color_type'])
+    SetItemInfo(item['name'], item['thirst'], item['food'], item['health'], item['descrip'], item['color_type'])
 }
 
 $(dom_select.info_quantity_up).click(function() {
@@ -225,12 +228,33 @@ $(dom_select.info_quantity_down).click(function() {
     }
 });
 
-function SetItemInfo(name, thirst, food, descrip, type_color)
+function SetItemInfo(name, thirst, food, healt, descrip, type_color)
 {
     $(dom_select.info_name).text(name)
     $(dom_select.info_name).css("color", type_color)
-    $(dom_select.info_food).text(food)
-    $(dom_select.info_thirst).text(thirst)
+    console.log(healt)
+
+    $(dom_select.info_thirst).show()
+    $(dom_select.info_food).show()
+    $(dom_select.info_health).show()
+
+    if(food == 0) {
+        $(dom_select.info_food).hide()
+    }else{
+        $(dom_select.info_food + " > p").text(food)
+    }
+
+    if(thirst == 0) {
+        $(dom_select.info_thirst).hide()
+    }else{
+        $(dom_select.info_thirst + " > p").text(thirst)
+    }
+
+    if(healt == 0) {
+        $(dom_select.info_health).hide()
+    }else{
+        $(dom_select.info_health + " > p").text(healt)
+    }
     $(dom_select.info_description).text(descrip)
     $(dom_select.info_quantity).text(1)
 }

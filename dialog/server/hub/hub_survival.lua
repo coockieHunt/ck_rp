@@ -19,6 +19,7 @@ AddRemoteEvent("GetPersoInventory", function(player)
          object.type,
          object.thirst,
          object.food,
+         object.health,
          object.descrip,
          type.color,
          type.icon,

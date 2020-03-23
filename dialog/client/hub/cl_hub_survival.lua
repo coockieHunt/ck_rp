@@ -71,14 +71,15 @@ function SetPersoInventoryList(inventory)
         local type = v[4]
         local third = v[5]
         local food = v[6]
-        local descrip = v[7]
-        local type_color = v[8]
-        local type_icon = v[9]
+        local health = v[7]
+        local descrip = v[8]
+        local type_color = v[9]
+        local type_icon = v[10]
 
 
         local cmd = string.format(
-            "AddItem(%q, %q, %q, %q, %q, %q, %q, %q, %q, %q);",
-            k, name, quantity, thumb, type , third, food, descrip, type_color, type_icon
+            "AddItem(%q, %q, %q, %q, %q, %q, %q, %q, %q, %q, %q);",
+            k, name, quantity, thumb, type , third, food, health, descrip, type_color, type_icon
         )
 
         ExecuteWebJS(survival_ui, cmd)
