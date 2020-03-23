@@ -5,7 +5,7 @@ function GetItemTypeInfo(item_id)
                 local type = _Item_type[item.type]
 
                 if(isnil(type)) then
-                    type = _Item_type["default"]
+                    type = _Default_item.type
                 end
                 
                 return type

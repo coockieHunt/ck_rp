@@ -73,3 +73,16 @@ _RequestSql = {
     GetPlayerAccount = "SELECT accounts.id, accounts.* , account_administrator.admin_level FROM account_administrator RIGHT JOIN accounts ON account_administrator.account_id = accounts.id WHERE steam_id = '?';",
     SaveAccount = "UPDATE accounts SET cash= ?, cash_account=?, health= ?, armor=?, food='?', thirst='?', max_weight='?', cur_weight='?', inventory='?' WHERE steam_id = ? LIMIT 1;"
 };
+
+-- default config
+_Default_item = {
+    hand_pos = {
+        drop = {x = 8, y = -3, z = -8,  rx = 0.0,  ry = 0, rz = 0},
+        use = {x = 0, y = 0, z = 0,  rx = 0.0,  ry = 0, rz = 0}
+    },
+
+    type = {
+        color = "#000000",
+        icon = 'info'
+    }
+}

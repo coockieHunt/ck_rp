@@ -68,19 +68,7 @@ _Items = {
     }
 }
 
-_Default_item = {
-    hand_pos = {
-        drop = {x = 8, y = -3, z = -8,  rx = 0.0,  ry = 0, rz = 0},
-        use = {x = 0, y = 0, z = 0,  rx = 0.0,  ry = 0, rz = 0}
-    }
-}
-
 _Item_type = {
-    default = {
-        color = "#000000",
-        icon = 'info'
-    },
-
     food = {
         color = "#ffdb4d",
         icon = 'food'
