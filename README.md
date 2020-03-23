@@ -20,6 +20,8 @@ privacy package rp coockie
 - EC001 : server failed to retrieve the user's steam ID.
 - EC002 : server failed to retrieve user data on Connection.
 - EC003 : server failed to create user profile.
+- EC004 : server failed to configure value items nill.
+- EC005 : server failed to configure value items not like.
 
 ***installation guide***
 1. Create an onset server (doc: https://dev.playonset.com/wiki/DedicatedServer)
