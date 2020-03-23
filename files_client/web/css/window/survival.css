@@ -299,6 +299,7 @@ body{
 #side_bottom_window > .content > .info > .ar > div > .icon{
   width: 15px;
   height: 15px;
+  margin-right: 5px;
 
   float: left;
 }
