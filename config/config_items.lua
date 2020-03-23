@@ -1,16 +1,3 @@
--- ITEM
--- exemple :
-    -- item_name = {
-    --     name= "dysplay name",
-    --     model= 1000,
-    --     size= 4,
-    --     usable= false,
-    --     thumbnail= "../../files_client/web/src/img/energi_drink.png",
-    --     type= "drinks"
-    --     hand_pos = {x = 8, y = -3, z = -4,  rx = 0.0,  ry = 0, rz = 0}
-    --      or (for default pos)
-    --     hand_pos = nil
-    -- },
 _Items = {
     energy_drinks = {
         name= "energy drinks",
@@ -18,6 +5,7 @@ _Items = {
         model= 1296,
         weight= 1,
         usable= false,
+        health = 0,
         thirst = 5,
         food = 0,
         thumbnail= "../../files_client/web/src/img/energi_drink.png",
@@ -33,9 +21,10 @@ _Items = {
         description = "Une banane est un fruit comestible - botaniquement une baie",
         model = 1621,
         weight= 1,
-        usable= false,
+        health = 0,
         thirst = 0,
         food = 20,
+        usable= false,
         thumbnail= "../../files_client/web/src/img/banana.png",
         type= "food",
         hand_pos = {
@@ -49,9 +38,10 @@ _Items = {
         description = "Les chips ou pommes chips, connues aussi sous le néologisme de croustilles au Canada",
         model = 678,
         weight= 1,
-        usable= false,
+        health = 0,
         thirst = -5,
         food = 6,
+        usable= false,
         thumbnail= "../../files_client/web/src/img/chips.png",
         type= "food",
         hand_pos = {
@@ -65,9 +55,10 @@ _Items = {
         description = "Le Trousse de secours d’Urgence est une trousse de secours très complète, contenant tout le matériel important de premiers secour.",
         model = 795,
         weight= 1,
-        usable= false,
+        health = 5,
         thirst = 0,
         food = 0,
+        usable= false,
         thumbnail= "../../files_client/web/src/img/first_aid_kit.png",
         type= "medic",
         hand_pos = {
@@ -80,7 +71,7 @@ _Items = {
 _Default_item = {
     hand_pos = {
         drop = {x = 8, y = -3, z = -8,  rx = 0.0,  ry = 0, rz = 0},
-        use = {x = 8, y = 0, z = -8,  rx = 0.0,  ry = 0, rz = 0}
+        use = {x = 0, y = 0, z = 0,  rx = 0.0,  ry = 0, rz = 0}
     }
 }
 

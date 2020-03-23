@@ -37,3 +37,23 @@ function ManageThirst(playerId, negativ, amt)
 
     player:setThirst(newThirst)
 end
+
+function ManageHealth(playerId, negativ, amt)
+    local player = getplayer(playerId)
+
+    local health = tonumber(player:getHealth())
+
+    local newHealth
+
+    if negativ then
+        newHealth = health - string.match (amt, "%d+")
+    else
+        newHealth = health + string.match (amt, "%d+")
+    end
+
+    if newHealth > 100 then
+        newHealth = 100
+    end
+
+    player:setHealth(newHealth)
+end

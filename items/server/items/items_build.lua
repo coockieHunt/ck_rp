@@ -13,6 +13,7 @@ function OnPackageStart(player)
                 ["usable"] = item.usable,
                 ["thirst"] = item.thirst,
                 ["food"] = item.food,
+                ["health"] = item.health,
                 ["thumbnail"] = item.thumbnail,
                 ["type"] = item.type,
                 ["hand_pos"] = item.hand_pos,

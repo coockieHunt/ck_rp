@@ -3,31 +3,58 @@ function UseItem(player, item_id)
         local item = GetItems(item_id)
 
         if(item ~= false) then
+            local type = item.type
+
             local food = item.food
             local thirst = item.thirst
+            local health = item.health
 
-            if(food > 0 or thirst > 0) then
-                local x, y, z = GetPlayerLocation(player)
+            local time
 
-                local obj = CreateObject(item.model, x, y, z)
-                local hand_pos = GetItemHandPos('use', item_id)
+            if(food > 0 or thirst > 0 or health > 0) then
 
-                SetObjectAttached(obj, ATTACH_PLAYER, player, 
-                    hand_pos['x'], 
-                    hand_pos['y'], 
-                    hand_pos['z'], 
-                    hand_pos['rx'],  
-                    hand_pos['ry'], 
-                    hand_pos['rz'], 
-                    "hand_r"
-                )
+                CallRemoteEvent(player, "FreezePlayer", true)
 
-                SetPlayerAnimation(player, _Eat_animation.animation_id)
-                RemovePlayerItem(player, player, item_id, 1)
+                if type == 'food' or type == 'drinks' then
+                    local x, y, z = GetPlayerLocation(player)
+    
+                    local obj = CreateObject(item.model, x, y, z)
+                    local hand_pos = GetItemHandPos('use', item_id)
+    
+                    SetObjectAttached(obj, ATTACH_PLAYER, player, 
+                        hand_pos['x'], 
+                        hand_pos['y'], 
+                        hand_pos['z'], 
+                        hand_pos['rx'],  
+                        hand_pos['ry'], 
+                        hand_pos['rz'], 
+                        "hand_r"
+                    )
+    
+                    SetPlayerAnimation(player, _Eat_animation.animation_id)
+                    RemovePlayerItem(player, player, item_id, 1)
+    
+                    time = _Eat_animation.atach_time
 
-                Delay(_Eat_animation.atach_time, function()
-                    DestroyObject(obj)
-                    consumeItem(player,item.name, food, thirst)
+                    Delay(_Eat_animation.atach_time, function()
+                        DestroyObject(obj)
+                        consumeItem(player,item.name, food, thirst, health)
+                    end)
+                end
+
+                if type == 'medic' then
+                    SetPlayerAnimation(player, _Medic_animation.animation_id)
+                    RemovePlayerItem(player, player, item_id, 1)
+
+                    time = _Medic_animation.time
+
+                    Delay(_Medic_animation.time, function()
+                        consumeItem(player,item.name, food, thirst, health)
+                    end)
+                end
+
+                Delay(time, function()
+                    CallRemoteEvent(player, "FreezePlayer", false)
                 end)
             end
         end
@@ -35,37 +62,65 @@ function UseItem(player, item_id)
 end
 AddRemoteEvent("UseItem", UseItem)
 
-function consumeItem(player, item_name, food, thirst)
-    local negativ = false
-    local food_alert
-    local thirst_alert
+function consumeItem(player, item_name, food, thirst, health)
+    local symbol
+    local alert_dys
 
-    if(food ~= 0) then
-        if(food < 0) then 
+    local alert = {
+        food = {
+            value = food
+        },
+
+        thirst = {
+            value = thirst
+        },
+
+        health = {
+            value = health
+        }
+    }
+
+    alert_dys = string.format("you have consumed <strong>%s</strong>:", item_name)
+
+    for k, v in pairs(alert) do
+        local negativ = false
+        
+        local color
+        local display
+
+        local value = v.value 
+
+        if (value >= 0) then
+            if value == 0 then
+                color = "black"
+                symbol = ""
+            else
+                color = "green"
+                symbol = "+ "
+            end
+        else
             negativ = true
-            food_alert = string.format('food :<span style="color:red">%q</span><br>', food)
-        else
-            negativ = false
-            food_alert = string.format('food :<span style="color:green">+ %q</span><br>', food)
+            color = "red"
+            symbol = ""
         end
-        ManageFood(player, negativ, food)
+
+        local format = string.format('<br>  - %s :<span style="color:%s">%s %s</span>', k, color, symbol, value)
+
+        alert_dys =  string.format('%s %s', alert_dys, format)
+
+        if (k == 'food') then
+            ManageFood(player, negativ, value)
+        end
+
+        if (k == 'thirst') then
+            ManageThirst(player, negativ, value)
+        end
+
+        if (k == 'health') then
+            ManageHealth(player, negativ, value)
+        end
+
     end
 
-    if(thirst ~= 0) then
-        if(thirst < 0) then 
-            negativ = true 
-            thirst_alert = string.format('thirst : <span style="color:red">%q</span>', thirst)
-        else
-            negativ = false
-            thirst_alert = string.format('thirst : <span style="color:green">+ %q</span>', thirst)
-        end
-        ManageThirst(player, negativ, thirst)
-    end
-
-    if(thirst == 0) then thirst_alert = string.format('thirst : <span style="color:black">0</span>', thirst) end
-    if(food == 0) then food_alert = string.format('food :<span style="color:black">0</span><br>', food) end
-
-    local formatAlert = ('you have consumed <strong>%s</strong>:<br> %s %s'):format(item_name, food_alert, thirst_alert)
-
-    SendAlert(player, "info", "Consume", formatAlert)
+    SendAlert(player, "info", "Consume", alert_dys)
 end

@@ -39,6 +39,11 @@ _Eat_animation = {
     atach_time = 1250
 }
 
+_Medic_animation = {
+    animation_id = "CHECK_EQUIPMENT",
+    time = 1250
+}
+
 -- LOG
 _Log_color = {
     ['error'] = "F82C00",

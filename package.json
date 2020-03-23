@@ -33,6 +33,7 @@
 		"survival/client/cl_setupSurvival.lua",
 		
 		"items/client/cl_gather.lua",
+		"items/client/cl_security.lua",
 
 		"data/client/cl_setData.lua"
 	],
