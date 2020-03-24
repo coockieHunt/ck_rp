@@ -2,8 +2,34 @@ $(function() {
     $("#save").hide();
 });
 
-function sendAlert(id, type, title, content){
+function CreateProgressBar(time, color){
+    if(color == undefined) {
+        color = "#43515e";
+    }
+
+    let progress_div = "<div class='progress'></div>"
+    let progress_container_div = "<div class='progress-container'></div>"
+    let progress_element_div = "<div class='progressbar-element' style='background-color: " + color +"'></div>"
+
+    $('#progress_content').append(progress_div);  
+    $('.progress').append(progress_container_div);  
+    $('.progress-container').append(progress_element_div);  
+
+    var start = new Date().getTime();
+    let int = setInterval(function() {
+        var now = new Date().getTime();
+        let time_loop = now - start
+        let wbar = Math.round((time_loop * 100) / time)
+
+        $('.progress-container').css("width", wbar + "%");
+    }, time/50, time);
+
+    setTimeout(function(){ clearInterval(int); $(".progress").remove() }, time);
+
     
+}
+
+function sendAlert(id, type, title, content){
     switch(type) {
         case "warning":
             svg = BuildSvg("warning", "icon")

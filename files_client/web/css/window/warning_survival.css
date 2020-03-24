@@ -74,7 +74,6 @@ strong{
 .alert > .header{
     margin: 0 auto;
     width: 20%;
-    background-color: green;
 }
 
 .alert > .header > .icon{
@@ -103,9 +102,25 @@ strong{
 .alert > .content > h1{
     font-size: 1em;
     margin-bottom: 5px;
-    color: green;
 }
 
 .alert > .content > p{
     font-size: 0.8em;
+}
+
+.progress{
+    width: 100%;
+    position: absolute;
+    margin: 0;
+    transform: perspective(1px) translateY(-50%);
+    box-shadow: -5px 0px 15px 10px rgba(0, 0, 0, 0.048);
+}
+
+.progress-container{
+    background-color: rgba(0, 0, 0, 0.685);
+    border: 0px;
+}
+
+.bg{
+    background-color: red;
 }

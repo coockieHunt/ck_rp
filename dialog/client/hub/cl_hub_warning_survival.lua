@@ -71,3 +71,10 @@ function SendAlert(id, type, title, content)
     ExecuteWebJS(survival_warn_ui, "sendAlert( "..id..", '"..type.."',  '"..title.."', '"..content.."');")
 end
 AddRemoteEvent("SendAlert", SendAlert)
+
+function CeateProgressBar(time, color)
+    if color == nil then color = "#43515e" end
+    
+    ExecuteWebJS(survival_warn_ui, "CreateProgressBar( "..time..", '"..color.."');")
+end
+AddRemoteEvent("CeateProgressBar", CeateProgressBar)

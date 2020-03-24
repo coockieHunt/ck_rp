@@ -21,3 +21,7 @@ function RefrechWarningSurvivalUi(playerid)
 
    CallRemoteEvent(playerid, "SendAlert", data:getAlertCount(), type, title, content)
 end
+
+function CeateProgressBar(playerid, time, color)
+   CallRemoteEvent(playerid, "CeateProgressBar", time, color)
+end
