@@ -50,12 +50,13 @@ function GetItemHandPos(type, item_id)
         local default = _Default_item.hand_pos[type]
         local custom = item.hand_pos[type]
 
-        if(isnil(custom)) then
+        if(custom == false) then
             return default
         else
             if(isnil(default)) then
                 return false
             end
+
             return custom
         end
     end
