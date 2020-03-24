@@ -71,17 +71,20 @@ _Items = {
 _Item_type = {
     food = {
         color = "#ffdb4d",
-        icon = 'food'
+        icon = 'food',
+        consume_time = 2000
     },
 
     drinks = {
         color = "#66c2ff",
-        icon = 'thirst'
+        icon = 'thirst',
+        consume_time = 2000
     },
 
     medic = {
         color = "#d85a5a",
-        icon = 'heart'
+        icon = 'heart',
+        consume_time = 10000
     }
 }
   

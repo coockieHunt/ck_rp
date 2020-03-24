@@ -41,7 +41,6 @@ _Eat_animation = {
 
 _Medic_animation = {
     animation_id = "CHECK_EQUIPMENT",
-    time = 1250
 }
 
 -- LOG
@@ -83,6 +82,7 @@ _Default_item = {
 
     type = {
         color = "#000000",
-        icon = 'info'
+        icon = 'info',
+        consume_time = 2000
     }
 }

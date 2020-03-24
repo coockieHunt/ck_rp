@@ -12,9 +12,10 @@ function UseItem(player, item_id)
             local time
 
             if(food > 0 or thirst > 0 or health > 0) then
-
+                
                 CallRemoteEvent(player, "FreezePlayer", true)
-                time = _Eat_animation.atach_time
+
+                time = GetConsumeTime(item_id)
                 CeateProgressBar(player, time)
 
                 if type == 'food' or type == 'drinks' then
@@ -35,30 +36,23 @@ function UseItem(player, item_id)
     
                     SetPlayerAnimation(player, _Eat_animation.animation_id)
                     RemovePlayerItem(player, player, item_id, 1)
-    
-                    
 
                     Delay(_Eat_animation.atach_time, function()
                         DestroyObject(obj)
-                        consumeItem(player,item.name, food, thirst, health)
                     end)
                 end
 
                 if type == 'medic' then
                     SetPlayerAnimation(player, _Medic_animation.animation_id)
                     RemovePlayerItem(player, player, item_id, 1)
-                    time = _Medic_animation.time
+                    time = GetConsumeTime(item_id)
 
                     CeateProgressBar(player, time)
-
-
-                    Delay(_Medic_animation.time, function()
-                        consumeItem(player,item.name, food, thirst, health)
-                    end)
                 end
 
                 Delay(time, function()
                     CallRemoteEvent(player, "FreezePlayer", false)
+                    consumeItem(player,item.name, food, thirst, health)
                 end)
             end
         end
