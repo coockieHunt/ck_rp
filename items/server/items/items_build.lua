@@ -16,6 +16,8 @@ local item_key = {
 }
 
 function OnPackageStart(player)
+    print("> Loading items ...")
+
     for id, item in pairs(_Items) do
         ValidateItemsConfig(item)
         local i = ItemsData.ClassItem.new(
