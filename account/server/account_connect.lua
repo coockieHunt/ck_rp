@@ -55,7 +55,7 @@ function CreatePlayerAccount(player)
         _New_account.cash,
         _New_account.cash_account,
         '{}',
-        '{kind : "none","body": "none", "hair": "none", "shirt": "none", "accessory": "none", "pants": "none","shoes": "none" }'
+        '{"kind" : "none","body": "none", "hair": "none", "shirt": "none", "accessory": "none", "pants": "none","shoes": "none" }'
     )
 
     mariadb_query(db, query)
