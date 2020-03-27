@@ -60,7 +60,10 @@ function CreatePlayerAccount(player)
 
     mariadb_query(db, query)
 
-    LoadPlayerAccount(player)
+    Delay(500, function()
+        LoadPlayerAccount(player)
+    end)
+    
 end
 
 -- load account
