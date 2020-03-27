@@ -55,12 +55,14 @@ function CreatePlayerAccount(player)
         _New_account.cash,
         _New_account.cash_account,
         '{}',
-        '{"body": "none","hair": "none", "shirt": "none", "accessory": "none", "pants": "none","shoes": "none" }'
+        '{kind : "none","body": "none", "hair": "none", "shirt": "none", "accessory": "none", "pants": "none","shoes": "none" }'
     )
 
     mariadb_query(db, query)
 
-    Delay(500, function()
+    print("> wait for the creation of the account ...")
+
+    Delay(1000, function()
         LoadPlayerAccount(player)
     end)
     
