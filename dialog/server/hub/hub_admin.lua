@@ -255,6 +255,9 @@ AddRemoteEvent("GetDropItemList", function(player)
     end
 	
     CallRemoteEvent(player, "SetDropItemList", ListTable)
-
 end)
 
+
+AddRemoteEvent("GetPlayerInfo", function(player, playerid)
+    admin_GetPlayerInfo(player, player, playerid)
+end)

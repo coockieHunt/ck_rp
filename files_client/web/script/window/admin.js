@@ -139,31 +139,22 @@ function GetForm(){
     return rslt
 }
 
-$("#submit").click(function() {
-    var obj = {};
-    obj['func'] = GetForm()[0]["func"]
+$(".PList").click(function() {
+    let info_visible = $(".PIList").is(":visible")
 
-    $.each( GetForm(), function( key, val ) {
-        let name = val['name'];
-        let value = val['value'];
+    if (info_visible) {
+        let info = $(".PIList")
+        let playerId = $(this).val()
 
-        if(name == "color"){
-            value = value.substring(1);
-        }
-        
-        if (name) {
-            if(value == ""){
-                obj[name] = null
-            }else{
-                obj[name] = value
-            }
-        }
-    });
 
-    let ParsetJs = JSON.stringify(obj);
-    console.log(ParsetJs)
-    CallEvent("CallExecute", ParsetJs);
+        $(".PIList").empty()
+        CallEvent("CallGetPlayerInfo", playerId)
+    }
 });
+
+function addPiList(text, value) {
+    $('.PIList').append(new Option(text + " : " + value, Math.floor((Math.random() * 15000) + 1)))
+}
 
 $(".admin").click(function() {
     CallEvent("CallCloseAdmin");

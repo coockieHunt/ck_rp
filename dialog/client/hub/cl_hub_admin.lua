@@ -54,6 +54,16 @@ function CallCloseAdmin()
 end
 AddEvent("CallCloseAdmin", CallCloseAdmin)
 
+function CallGetPlayerInfo(playerId)
+    CallRemoteEvent("GetPlayerInfo", playerId)
+end
+AddEvent("CallGetPlayerInfo", CallGetPlayerInfo)
+
+
+AddRemoteEvent("SetInfoLst", function(text, value)
+    ExecuteWebJS(admin_ui, "addPiList('"..text.."', '"..value.."')")
+end)
+
 function ClearDropList()
     ExecuteWebJS(admin_ui, "ClearDropItemList()")
 end
