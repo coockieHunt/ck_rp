@@ -139,6 +139,32 @@ function GetForm(){
     return rslt
 }
 
+$("#submit").click(function() {
+    var obj = {};
+    obj['func'] = GetForm()[0]["func"]
+
+    $.each( GetForm(), function( key, val ) {
+        let name = val['name'];
+        let value = val['value'];
+
+        if(name == "color"){	
+            value = value.substring(1);	
+        }
+
+        if (name) {	
+            if(value == ""){	
+                obj[name] = null	
+            }else{	
+                obj[name] = value	
+            }	
+        }	
+    });
+
+    let ParsetJs = JSON.stringify(obj);
+    CallEvent("CallExecute", ParsetJs);
+});
+
+
 $(".PList").click(function() {
     let info_visible = $(".PIList").is(":visible")
 
