@@ -126,6 +126,7 @@ function createPlayerAccount(player, name, data)
             ["cash"] =  data['cash'],
             ["cash_account"] =  data['cash_account'],
             ["inventory"] =  data['inventory'],
+            ["clothing"] =  data['clothing'],
             ["alert_count"] =  0,
             ["active"] =  true,
         })

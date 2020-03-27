@@ -81,6 +81,16 @@ function player:setInventory(inv)
    return true
 end
 
+-- CLOTHING
+function player:getClothing()
+   return self.clothing
+end
+
+function player:setClothing(clot)
+   self.clothing = clot
+   return true
+end
+
 -- WEIGHT
 function player:getMaxWeight()
    return self.MaxWeight
