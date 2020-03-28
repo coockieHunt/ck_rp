@@ -77,6 +77,7 @@ function LoadPlayerAccount(player)
     if(IfCachedPlayer(player)) then
         print("> Load player account by CACHE ("..steam_id..") ")
         setPlayerActive(player, true)
+	    SetPlayerClothing(player)
     else
         print("> Load player account by SQL ("..steam_id..") ")
 
@@ -85,10 +86,12 @@ function LoadPlayerAccount(player)
         mariadb_async_query(db, query, OnAccountLoaded, player)
     end
 
+
 end
 
 function OnAccountLoaded(player)
     if (mariadb_get_row_count() == 0) then
+		KickPlayer(player, "😨 An error occured while loading your account 😨 (EC 002)")
 		KickPlayer(player, "😨 An error occured while loading your account 😨 (EC 002)")
     else
         local player_name = GetPlayerName(player)
@@ -106,6 +109,7 @@ function OnAccountLoaded(player)
 
         createPlayerAccount(player, player_name, result)
         AddPlayerChatAll( ('<span color="#%s">%s </>%s'):format("0438CE", GetPlayerName(player), " a rejoint le serveur"))
+	    SetPlayerClothing(player)
 	end
 end
 
@@ -161,10 +165,4 @@ function IfPlayerActive(player)
 end
 
 
-function DestroyPlayerData(steam_id)
-    for key, value in pairs(playerData) do
-        if(value.steamId == tostring(steam_id)) then
-            table.remove(playerData, key)
-        end
-    end
-end
+

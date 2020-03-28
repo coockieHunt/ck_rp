@@ -54,10 +54,19 @@ function SaveAccountPlayer(player)
         Data.MaxWeight,
         Data.CurWeight,
         Data.inventory,
+        Data.clothing,
         Data.steamId
 	)
         
     mariadb_query(db, query)
     
     ShowIconSaveClient(player)
+end
+
+function DestroyPlayerData(steam_id)
+    for key, value in pairs(playerData) do
+        if(value.steamId == tostring(steam_id)) then
+            table.remove(playerData, key)
+        end
+    end
 end
