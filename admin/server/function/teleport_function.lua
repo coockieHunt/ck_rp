@@ -16,7 +16,7 @@ function admin_tp_to_pos(player, x, y, z)
 			local rx, ry, rz = GetVehicleRotation(vehicle)
 			SetVehicleRotation(vehicle, 0.0, ry, 0.0)
 		else
-			SetPlayerLocation(player, x, y, z + 30)
+			SetPlayerLocation(player, x, y, z)
 			if (0 ~= -1.0) then
 				SetPlayerHeading(player, 0)
 			end
@@ -40,7 +40,8 @@ function get_admin_tp_preset_pos(player, target, dest)
 	if(AdminLevel(player, level)) then
 		local pos = tonumber(dest)
 		if(isnil(pos)) then pos = dest end
-		GetPosByName( pos, player, target)
+		local list =  GetPosById(pos)
+		admin_tp_to_pos(target, list['x'], list['y'], list['z'])
 	end
 end
 
