@@ -13,7 +13,7 @@ _Inventory_account = {
 }
   
 _Init_player = {
-    location = {x = 208488.000000, z = 213661.000000, y = 444.000000, h = 90},
+    location = "bank",
     clothing_preset = 5
 };
 
