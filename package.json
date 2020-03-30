@@ -22,9 +22,10 @@
 		
 		"character/client/clothing/cl_set_clothing.lua",
 		"character/client/clothing/cl_stream.lua",
-		"character/client/clothing/cl_skeletalMesh.lua",
 		"character/client/cl_nearest.lua",
 		"character/client/linetrtace.lua",
+
+		"clothing/client/cl_skeletalMesh.lua",
 		
 		"init/client/cl_init.lua",
 		"init/client/config/cl_weapons.lua",
