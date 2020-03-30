@@ -39,11 +39,11 @@ end
 AddCommand("cc", ChangeClothingPlayer)
 
 
-function setClothing(player, kind, skeletonMeches, id)
+function setClothing(target, kind, skeletonMeches, id)
     local list = GetClothingListByKind(kind)
     if list == false then 
-        DestroyPlayerData(GetPlayerSteamId(player))
-        return KickPlayer(player, "EC006 : your account has a skeleton mesh problem please contact an administrator.")
+        DestroyPlayerData(GetPlayerSteamId(target))
+        return KickPlayer(target, "EC006 : your account has a skeleton mesh problem please contact an administrator.")
     end
 
     list = list[skeletonMeches] 
@@ -51,9 +51,9 @@ function setClothing(player, kind, skeletonMeches, id)
     if(id ~= "none") then
         local slct = list[tonumber(id)]
         if slct ~= nil then
-            CallRemoteEvent(player, "setSkeletalMesh", skeletonMeches, slct['dir'])
+            CallRemoteEvent(target, "setSkeletalMesh", skeletonMeches, slct['dir'])
         end
     else
-        CallRemoteEvent(player, "removeSkeletalMesh", skeletonMeches)
+        CallRemoteEvent(target, "removeSkeletalMesh", skeletonMeches)
     end
 end
