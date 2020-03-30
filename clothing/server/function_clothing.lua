@@ -21,3 +21,11 @@ function ifSkeletonMeshValid(type)
 
     return false
 end
+
+function ifvalueIsKind(kind)
+    if kind == "women" or kind == "men" then
+        return true
+    end
+
+    return false
+end

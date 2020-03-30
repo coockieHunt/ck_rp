@@ -29,7 +29,11 @@ function ChangeClothingPlayer(player, target, type, id)
             if tonumber(id) == 0 then
                 v.value = "none"
             else
-                v.value = tonumber(id)
+                if ifvalueIsKind(id) then
+                    v.value = id
+                else
+                    v.value = tonumber(id)
+                end
             end
         end
     end
