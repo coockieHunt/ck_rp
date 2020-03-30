@@ -771,35 +771,4 @@ _Clothing_women = {
             dir = "/Game/CharacterModels/Female/Meshes/SK_Shoes06"
         }
     }
-}
-
-
--- asset women
--- [10] = {
---     name = "TShirt 2",
---     var = "TShirtShorts01",
---     dir = "/Game/CharacterModels/Female/Meshes/SK_TShirtShorts01"
--- },
-
--- asset men
--- [9] = {
---     name = "beug",
---     var = "pimp_Open",
---     dir = "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Set_Pimp_Open_LPR"
--- },
--- [10] = {
---     name = "beug",
---     var = "police_2",
---     dir = "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Set_Police_LPR"
--- },
--- [11] = {
---     name = "Scientist",
---     var = "scientist",
---     dir = "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Set_Scientist_LPR"
--- },
-
--- [19] = {
---     name = "worker",
---     var = "SK_Worker",
---     dir = "/Game/CharacterModels/Clothing/Meshes/SK_Worker"
--- },
+};
