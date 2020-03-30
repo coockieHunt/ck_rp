@@ -393,6 +393,7 @@ _WeaponsList = {
 
 _PosPresetList = {
     [1] = {
+        var = "main_town",
         name = 'main town',
         x = -182821.000000,
         y = -41675.000000,
@@ -400,6 +401,7 @@ _PosPresetList = {
         h = -90.0
       },
       [2] = {
+        var = "gas_station",
         name = 'gas station',
         x = 125773.000000 ,
         y = 80246.000000,
@@ -407,6 +409,7 @@ _PosPresetList = {
         h = 90.0
       },
       [3] = {
+        var = "beach",
         name = 'beach',
         x = 208591.000000 ,
         y = 212335.000000,
@@ -414,6 +417,7 @@ _PosPresetList = {
         h = 180.0
       },
       [4] = {
+        var = "police_station",
         name = 'police station',
         x = 173479.000000 ,
         y = 192671.000000,
@@ -421,6 +425,7 @@ _PosPresetList = {
         h = -90
       },
       [5] = {
+        var = "small_city",
         name = 'small city',
         x = 41276.2109375 ,
         y = 134418.359375,
@@ -428,6 +433,7 @@ _PosPresetList = {
         h = 89.136711120605
       },
       [6] = {
+        var = "small_diner",
         name = 'small diner',
         x = 119260.0703125 ,
         y = 164159.46875,
@@ -435,6 +441,7 @@ _PosPresetList = {
         h = -129.5276184082
       },
       [7] = {
+        var = "luxe_desk",
         name = 'luxe desk',
         x = 191711.000000 ,
         y = 191871.000000,
@@ -442,6 +449,7 @@ _PosPresetList = {
         h = -90
       },
       [8] = {
+        var = "residential_district",
         name = 'residential district',
         x = 166606.000000 ,
         y = 219968.000000,
@@ -449,6 +457,7 @@ _PosPresetList = {
         h = -90
       },
       [9] = {
+        var = "hospital",
         name = 'hospital',
         x = 212112.53125 ,
         y = 160486.25,
@@ -456,6 +465,7 @@ _PosPresetList = {
         h = 174.63586425781
       },
       [10] = {
+        var = "bank",
         name = 'bank',
         x = 211538.875 ,
         y = 190173.734375,
@@ -463,6 +473,7 @@ _PosPresetList = {
         h = -177.48133850098
       },
       [11] = {
+        var = "jail",
         name = 'jail',
         x = -167958.000000,
         y = 78089.000000,
@@ -470,6 +481,7 @@ _PosPresetList = {
         h = -90
       },
       [12] = {
+        var = 'jail_b-block',
         name = 'jail b-block',
         x = -176209.000000,
         y = 76767.000000,
@@ -477,6 +489,7 @@ _PosPresetList = {
         h = -90
       },
       [13] = {
+        var = 'jail_c-block',
         name = 'jail c-block',
         x = -178464.000000,
         y = 75026.000000,
@@ -484,6 +497,7 @@ _PosPresetList = {
         h = -90
       },
       [14] = {
+        var = 'jail_d-block',
         name = 'jail d-block',
         x = -174202.000000,
         y = 80123.000000,
@@ -491,6 +505,7 @@ _PosPresetList = {
         h = -90
       },
       [15] = {
+        var = 'solar_panels',
         name = 'solar panels',
         x = 114900.375,
         y = -4946.166015625,
@@ -498,6 +513,7 @@ _PosPresetList = {
         h = -90
       },
       [16] = {
+        var = 'radio_station',
         name = 'radio station',
         x = 177599.125,
         y = 9973.447265625,
@@ -505,6 +521,7 @@ _PosPresetList = {
         h = 53
       },
       [17] = {
+        var = 'air_station',
         name = 'air station',
         x = 168904.359375,
         y = -148973.796875,
@@ -512,6 +529,7 @@ _PosPresetList = {
         h = -121
       },
       [18] = {
+        var = 'diner',
         name = 'diner',
         x = 212405.000000,
         y = 94489.000000,
@@ -519,6 +537,7 @@ _PosPresetList = {
         h = -90
       },
       [19] = {
+        var = 'hospital01',
         name = 'hospital 1',
         x = 215242.000000,
         y = 158470.000000,
@@ -526,6 +545,7 @@ _PosPresetList = {
         h = 90
       },
       [20] = {
+        var = 'hospital02',
         name = 'hospital 2',
         x = 212372.000000,
         y = 153763.000000,
