@@ -26,14 +26,10 @@ function ChangeClothingPlayer(player, target, type, id)
 
     for k, v in pairs(decode) do
         if v.id == type then
-            if tonumber(id) == 0 then
-                v.value = "none"
+            if ifvalueIsKind(id) then
+                v.value = id
             else
-                if ifvalueIsKind(id) then
-                    v.value = id
-                else
-                    v.value = tonumber(id)
-                end
+                v.value = tonumber(id)
             end
         end
     end
@@ -42,6 +38,20 @@ function ChangeClothingPlayer(player, target, type, id)
 end
 AddCommand("cc", ChangeClothingPlayer)
 
+function ChangeClothingPresetPlayer(player, target, kind, presetId)
+    local p = getplayer(target)
+
+    local decode = DecodeClothing(p.clothing)
+
+    local presetTable = getPresetClothing(kind, presetId)
+
+    ChangeClothingPlayer(player, target, "kind", kind)
+    for skeletonMeches, id in pairs(presetTable['part']) do
+        ChangeClothingPlayer(player, target, skeletonMeches, id)
+    end
+
+end
+AddCommand("ccp", ChangeClothingPresetPlayer)
 
 function setClothing(target, kind, skeletonMeches, id)
     local list = GetClothingListByKind(kind)
@@ -52,7 +62,7 @@ function setClothing(target, kind, skeletonMeches, id)
 
     list = list[skeletonMeches] 
 
-    if(id ~= "none") then
+    if(id ~= 0) then
         local slct = list[tonumber(id)]
         if slct ~= nil then
             CallRemoteEvent(target, "setSkeletalMesh", skeletonMeches, slct['dir'])

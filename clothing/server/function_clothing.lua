@@ -1,15 +1,13 @@
 function GetClothingListByKind(kind)
-    local rslt = false
-
     if kind == "women" then
-        rslt = _Clothing_women
+        return _Clothing_women
     end
 
     if kind == "men" then
-        rslt = _Clothing_men
+        return _Clothing_men
     end
 
-    return rslt
+    return false
 end
 
 function ifSkeletonMeshValid(type)
@@ -28,4 +26,23 @@ function ifvalueIsKind(kind)
     end
 
     return false
+end
+
+
+function getPresetClothing(kind, id)
+    local rslt = false
+
+    if ifvalueIsKind(kind) then
+        if kind == "women" then
+            rslt = _Clothing_preset_women[tonumber(id)]
+        end
+    
+        if kind == "men" then
+            rslt = _Clothing_preset_men[tonumber(id)]
+        end
+    end
+
+    if rslt == nil then rslt = false end
+
+    return rslt
 end

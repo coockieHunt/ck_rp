@@ -772,3 +772,60 @@ _Clothing_women = {
         }
     }
 };
+
+_Clothing_preset_men = {
+    [1] = {
+        name = "Default men preset",
+        var = "default_preset_m",
+        part = {
+            body = 1,
+            hair = 2,
+            shirt = 3,
+            accessory = 0,
+            pants = 2,
+            shoes = 1
+        }
+    },
+
+    [2] = {
+        name = "Default men preset 2",
+        var = "default_preset_m_2",
+        part = {
+            body = 2,
+            hair = 3,
+            shirt = 4,
+            accessory = 0,
+            pants = 3,
+            shoes = 2
+        }
+    },
+};
+
+
+_Clothing_preset_women = {
+    [1] = {
+        name = "Default women preset",
+        var = "default_preset_w",
+        part = {
+            body = 1,
+            hair = 2,
+            shirt = 3,
+            accessory = 0,
+            pants = 2,
+            shoes = 1
+        }
+    },
+
+    [2] = {
+        name = "Default women preset 2",
+        var = "default_preset_w_2",
+        part = {
+            body = 2,
+            hair = 3,
+            shirt = 4,
+            accessory = 0,
+            pants = 3,
+            shoes = 2
+        }
+    },
+};
