@@ -3,6 +3,7 @@ function OnPlayerJoin(player)
     SetClothingPreset(player)
     SetWeaponsList(player)
     SetPosPresetList(player)
+    SetSkeletalMesh(player)
 end
 AddEvent("OnPlayerJoin", OnPlayerJoin)
 
@@ -58,7 +59,6 @@ function SetPosPresetList(player)
     local ListTable = { }
     local arg = 0
     
-
     for i, v in ipairs(_PosPresetList) do
         arg = arg + 1
         
@@ -68,6 +68,13 @@ function SetPosPresetList(player)
         }
     end
     CallRemoteEvent(player, "SetPosPresetList", ListTable)
+end
+
+function SetSkeletalMesh(player)
+    local ListTable = { }
+    local arg = 0
+    
+    CallRemoteEvent(player, "SetSkeletalMesh", _Registe_SkeletalMesh_player)
 end
 
 

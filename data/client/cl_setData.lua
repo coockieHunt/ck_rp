@@ -2,6 +2,7 @@ __Car_list = {}
 __ClothingPreset_list = {}
 __Weapons_list = {}
 __PosPreset = {}
+__SkeletalMesh = {}
 
 function SetCarList(data)
     __Car_list = data
@@ -22,5 +23,10 @@ function SetPosPresetList(data)
     __PosPreset = data
 end
 AddRemoteEvent("SetPosPresetList", SetPosPresetList)
+
+function SetSkeletalMesh(data)
+    __SkeletalMesh = data
+end
+AddRemoteEvent("SetSkeletalMesh", SetSkeletalMesh)
 
 
