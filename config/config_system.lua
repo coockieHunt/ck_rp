@@ -8,6 +8,7 @@ _Pacakge = {
 _Import_package = {
     "log",
     "character",
+    "clothing",
     "data",
     "inventory",
     "dialog",
@@ -70,7 +71,7 @@ _RequestSql = {
     IfplayerAccountExist = "SELECT id FROM accounts WHERE steam_id = '?' LIMIT 1;",
     CreatePlayerAccount = "INSERT INTO accounts (id, steam_id, health, armor, food, thirst, max_weight, cur_weight, player_name, cash, cash_account, inventory, clothing) VALUES (NULL, '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?');",
     GetPlayerAccount = "SELECT accounts.id, accounts.* , account_administrator.admin_level FROM account_administrator RIGHT JOIN accounts ON account_administrator.account_id = accounts.id WHERE steam_id = '?';",
-    SaveAccount = "UPDATE accounts SET cash= ?, cash_account=?, health= ?, armor=?, food='?', thirst='?', max_weight='?', cur_weight='?', inventory='?' WHERE steam_id = ? LIMIT 1;"
+    SaveAccount = "UPDATE accounts SET cash= ?, cash_account=?, health= ?, armor=?, food='?', thirst='?', max_weight='?', cur_weight='?', inventory='?', clothing='?' WHERE steam_id = ? LIMIT 1;"
 };
 
 -- default config
@@ -85,4 +86,15 @@ _Default_item = {
         icon = 'info',
         consume_time = 2000
     }
+};
+
+
+-- register
+_Registe_SkeletalMesh_player = {
+    body = "Body",
+    hair = "Clothing0",
+    shirt = "Clothing1",
+    accessory = "Clothing3",
+    pants = "Clothing4",
+    shoes = "Clothing5"
 }
