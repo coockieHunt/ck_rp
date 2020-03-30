@@ -179,7 +179,7 @@ $(".PList").click(function() {
 });
 
 function addPiList(text, value) {
-    $('.PIList').append(new Option(text + " : " + value, Math.floor((Math.random() * 15000) + 1)))
+    $('.PIList').append(text + " : " + value + "\n");
 }
 
 $(".admin").click(function() {

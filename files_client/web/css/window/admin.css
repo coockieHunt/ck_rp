@@ -157,3 +157,11 @@ body{
     height: 80%;
     overflow: auto;
 }
+
+.PIList{
+    background-color: var(--gray-light);
+    color: white;
+    width: 100%;
+    height: 87%;
+    resize: none;
+}
