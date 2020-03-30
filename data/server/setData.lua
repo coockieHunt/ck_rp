@@ -78,8 +78,3 @@ function SetSkeletalMesh(player)
 end
 
 
-function GetPosByName(name , player, target)
-    local name = tonumber(name)
-    local list = _PosPresetList[name]
-    admin_tp_to_pos(target, list['x'], list['y'], list['z'])
-end
