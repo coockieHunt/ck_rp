@@ -6,7 +6,9 @@ privacy package rp coockie
 ## athor
 - *coockie-hunt* - Main dev
 - *daryl* - helper
-
+### links
+- dicrod : https://discord.gg/7kwfCth
+- youtube : https://www.youtube.com/playlist?list=PLHzBb4XCRN45K_v5DZhlpCENPL-BITdX8
 ### special thank
 - dictateurfou - https://github.com/dictateurfou/importer
 - vugi99 - https://github.com/vugi99/onset-drift
