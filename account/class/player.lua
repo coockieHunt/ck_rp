@@ -11,6 +11,16 @@ function player:getsteamId()
    return self.money
 end
 
+-- NAME
+function player:getName()
+   return self.name
+end
+
+function player:setName(str)
+   self.name = str
+   return true
+end
+
 -- HEALTH
 function player:getHealth()
    return self.health
