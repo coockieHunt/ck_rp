@@ -92,7 +92,6 @@ end
 function OnAccountLoaded(player)
     if (mariadb_get_row_count() == 0) then
 		KickPlayer(player, "😨 An error occured while loading your account 😨 (EC 002)")
-		KickPlayer(player, "😨 An error occured while loading your account 😨 (EC 002)")
     else
         local player_name = GetPlayerName(player)
         local result = mariadb_get_assoc(1)
