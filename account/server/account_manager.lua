@@ -45,6 +45,7 @@ function SaveAccountPlayer(player)
     end
 
     local query = mariadb_prepare(db, _RequestSql.SaveAccount,
+        Data.name,
         Data.cash,
         Data.cash_account,
         Data.health,
