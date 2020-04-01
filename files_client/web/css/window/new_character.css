@@ -5,16 +5,13 @@
 .info {
     margin: 0;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background-color: var( --gray-dark);
-    width: 80%;
+    width: 25%;
+    height: 100%;
     color: white;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-content: center;
 }
 
@@ -24,7 +21,7 @@
     margin-left: 5px;
 }
 
-.info > div {
+.info > .form {
     background-color: var( --gray-light);
     height: var( --section-size);
     display: flex;
@@ -38,9 +35,8 @@
 }
 
 .info > div > input, select{
-    margin-right: 15px !important;
     flex-grow: 2;
-    width: 80% !important;
+    width: 50% !important;
     height: 30px !important;
     margin: auto !important;
     margin-right: 20px !important;
@@ -60,6 +56,9 @@
     line-height: 50px;
     background-color: var(--red-light );
     cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    text-align:center;
 }
 
 #submit:hover{

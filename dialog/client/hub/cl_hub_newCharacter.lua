@@ -8,6 +8,7 @@ function OpenUINewCharacter()
         SetWebVisibility(new_character, WEB_VISIBLE)
         CloseUISurvival_warn()
     end
+
 end
 
 function CloseUINewCharacter()
@@ -32,9 +33,13 @@ AddEvent("OnPlayerSpawn", OnPlayerSpawn)
 AddEvent("OnKeyPress", function(key)
     if key == GetKeyMapServer("char") then
         if GetWebVisibility(new_character) == WEB_HIDDEN then
+            SetCameraLocation(700,0,0,false)
+            SetCameraRotation(0,180,0,false)
             OpenUINewCharacter()
         else
             CloseUINewCharacter()
+            SetCameraLocation(0, 0, 0, false)
+            SetCameraRotation(0, 0, 0, false)
         end
     end
 end)

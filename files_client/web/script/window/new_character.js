@@ -6,6 +6,7 @@ $("#submit").click(function() {
         "n" : $('.name > input').val(),
         "a" : $('.age > input').val(),
         "k" : $('.kind > select').val(),
+        "p" : $('.preset > select').val(),
     }
 
     if(!$.isNumeric(input.a)) {
