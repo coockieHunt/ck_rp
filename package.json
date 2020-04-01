@@ -15,6 +15,7 @@
 
 		"dialog/client/hub/cl_hub_survival.lua",
 		"dialog/client/hub/cl_hub_warning_survival.lua",
+		"dialog/client/hub/cl_hub_newCharacter.lua",
 
 		"dialog/client/function/cl_get_info.lua",
 		"dialog/client/function/cl_getKeyMapping.lua",
@@ -60,6 +61,7 @@
 		"files_client/web/css/window/survival.css",
 		"files_client/web/css/window/loader_fullScreen.css",
 		"files_client/web/css/window/warning_survival.css",
+		"files_client/web/css/window/new_character.css",
 		"files_client/web/css/form/form.css",
 	
 		"files_client/web/script/game/eu.js",
@@ -71,9 +73,11 @@
 		"files_client/web/script/window/admin.js",
 		"files_client/web/script/window/warning_survival.js",
 		"files_client/web/script/window/survival.js",
+		"files_client/web/script/window/new_character.js",
 
 		"dialog/files/ui_survival.html", 
 		"dialog/files/ui_admin.html",
-		"dialog/files/ui_warning_survival.html"
+		"dialog/files/ui_warning_survival.html",
+		"dialog/files/ui_new_character.html"
 	]
 }
