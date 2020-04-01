@@ -4,9 +4,9 @@ function AddAdminLog(player, msg)
     print(". " .. text)
     LogPlayerChat(player, "ok", "admin", msg)
 
-    file = io.open(_Log_file.folder.."/".._Log_file.admin, "a")
-	file:write(text, "\n")
-	file:close()
+    -- file = io.open(_Log_file.folder.."/".._Log_file.admin, "a")
+	-- file:write(text, "\n")
+	-- file:close()
 end
 
 function AddLoginLog(player)
@@ -15,9 +15,9 @@ function AddLoginLog(player)
 
     print(". " .. text)
 
-    file = io.open(_Log_file.folder.."/".._Log_file.login, "a")
-	file:write(text, "\n")
-	file:close()
+    -- file = io.open(_Log_file.folder.."/".._Log_file.login, "a")
+	-- file:write(text, "\n")
+	-- file:close()
 end
 
 function LogPlayerChat(player, color, type, message)
@@ -40,9 +40,9 @@ function LogCommandeChat(player, cmd, exists)
         LogPlayerChat(player, 'warning', "cmd", "Command '/"..cmd.."' not found!")
 	end
 
-    file = io.open(_Log_file.folder.."/".._Log_file.folder, "a")
-	file:write(text, "\n")
-	file:close()
+    -- file = io.open(_Log_file.folder.."/".._Log_file.folder, "a")
+	-- file:write(text, "\n")
+	-- file:close()
 end
 
 --function 
