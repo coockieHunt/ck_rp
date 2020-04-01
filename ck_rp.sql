@@ -36,6 +36,27 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 
 -- Les données exportées n'étaient pas sélectionnées.
 
+-- Listage de la structure de la table onset. account_administrator
+CREATE TABLE IF NOT EXISTS `account_administrator` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `account_id` int(11) NOT NULL,
+  `admin_level` int(11) NOT NULL,
+  `last_at_admin_state` timestamp NULL DEFAULT NULL,
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- Les données exportées n'étaient pas sélectionnées.
+
+-- Listage de la structure de la table onset. ban
+CREATE TABLE IF NOT EXISTS `ban` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `reason` varchar(50) NOT NULL DEFAULT 'none',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Les données exportées n'étaient pas sélectionnées.
+
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
