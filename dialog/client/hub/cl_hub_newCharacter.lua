@@ -7,6 +7,8 @@ function OpenUINewCharacter()
         LockPlayerInput(true)
         SetWebVisibility(new_character, WEB_VISIBLE)
         CloseUISurvival_warn()
+
+        setupCamUi(GetPlayerId())
     end
 
 end
@@ -17,6 +19,8 @@ function CloseUINewCharacter()
     SetWebVisibility(new_character, WEB_HIDDEN)
 
     OpenUISurvival_warn()
+
+    RemoveCamUi(GetPlayerId())
 end
 
 -- package manager
@@ -33,16 +37,26 @@ AddEvent("OnPlayerSpawn", OnPlayerSpawn)
 AddEvent("OnKeyPress", function(key)
     if key == GetKeyMapServer("char") then
         if GetWebVisibility(new_character) == WEB_HIDDEN then
-            SetCameraLocation(700,0,0,false)
-            SetCameraRotation(0,180,0,false)
             OpenUINewCharacter()
         else
             CloseUINewCharacter()
-            SetCameraLocation(0, 0, 0, false)
-            SetCameraRotation(0, 0, 0, false)
+
         end
     end
 end)
+
+function setupCamUi(player)
+    local x, y, z  = GetPlayerLocation(player)
+    CallRemoteEvent("setupCamUi")
+    SetCameraLocation(x -250, y, z +10 ,true)
+    SetCameraRotation(0,0,0,true)
+end
+
+function RemoveCamUi(player)
+    CallRemoteEvent("RemoveCamUi")
+    SetCameraLocation(0, 0, 0, false)
+    SetCameraRotation(0, 0, 0, false)
+end
 
 -- call ui
 function CallInfoValid(info_json)
