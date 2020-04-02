@@ -26,11 +26,7 @@ function ChangeClothingPlayer(player, target, type, id)
 
     for k, v in pairs(decode) do
         if v.id == type then
-            if ifvalueIsKind(id) then
-                v.value = id
-            else
-                v.value = tonumber(id)
-            end
+            v.value = id
         end
     end
 
@@ -67,6 +63,7 @@ function setClothing(target, kind, skeletonMeches, id)
         if slct ~= nil then
             CallRemoteEvent(target, "setSkeletalMesh", skeletonMeches, slct['dir'])
         end
+
     else
         CallRemoteEvent(target, "removeSkeletalMesh", skeletonMeches)
     end

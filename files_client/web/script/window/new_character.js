@@ -2,12 +2,15 @@ $("#submit").click(function() {
     let error = []
 
     let input = {
-        "fn" : $('.firstname > input').val(),
-        "n" : $('.name > input').val(),
-        "a" : $('.age > input').val(),
-        "k" : $('.kind > select').val(),
-        "p" : $('.preset > select').val(),
+        "fn" : $('section >.firstname > input').val(),
+        "n" : $('section > .name > input').val(),
+        "a" : $('section > .age > input').val(),
+        "k" : $('section > .kind > select').val(),
+        "p" : $('section > .preset > select').val(),
+        "h" : $('section > .hair > select').val(),
+        "hc" : $('#hairColor').val(),
     }
+    console.log(input.hc)
 
     if(!$.isNumeric(input.a)) {
         error.push(["a", "nn"]);
@@ -36,4 +39,16 @@ $("#submit").click(function() {
         console.log(rsltError)
         CallEvent("CallInfoError", rsltError);
     }
+});
+
+$('.color-picker').spectrum({
+    type: "component",
+    color: "#000000",
+    color: tinycolor,
+    showAlpha: false
+});
+
+$('.kind > select').change(function() {
+    let rslt = JSON.stringify($('.kind > select').val());
+    console.log(rslt)
 });

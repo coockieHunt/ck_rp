@@ -1,5 +1,5 @@
 :root {
-    --section-size: 100px
+    --section-size: 75px
 }
 
 .info {
@@ -15,13 +15,17 @@
     align-content: center;
 }
 
-.info > h1 {
+.info  > section{
+    overflow: auto;
+}
+
+.info  > h1 {
     margin-bottom: 10px;
     margin-top: 10px;
     margin-left: 5px;
 }
 
-.info > .form {
+.info  > section > .form {
     background-color: var( --gray-light);
     height: var( --section-size);
     display: flex;
@@ -34,19 +38,20 @@
     text-align:center;
 }
 
-.info > div > input, select{
+.info  > section > div > input, select{
     flex-grow: 2;
-    width: 50% !important;
+    width: 45% !important;
     height: 30px !important;
     margin: auto !important;
     margin-right: 20px !important;
 }
 
-.info > div > span{
+.info > section > div > span{
     flex-grow: 3;
-    text-align: center;
+    text-align: left;
     width: 20%;
     vertical-align: middle;
+    margin-left: 15px;
     line-height: var( --section-size);
 }
 

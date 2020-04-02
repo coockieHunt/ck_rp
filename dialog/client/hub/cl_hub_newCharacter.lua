@@ -62,12 +62,13 @@ end
 function CallInfoValid(info_json)
     AddPlayerChat(info_json)
     CallRemoteEvent("create_charactere", info_json)
-    
+    CloseUINewCharacter()
 end
 AddEvent("CallInfoValid", CallInfoValid)
 
 function CallInfoError(error_json)
     AddPlayerChat("erro_json")
     AddPlayerChat(error_json)
+    CloseUINewCharacter()
 end
 AddEvent("CallInfoError", CallInfoError)
