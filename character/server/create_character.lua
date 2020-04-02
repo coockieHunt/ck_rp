@@ -12,7 +12,7 @@ function create_charactere(player, json)
 
     ChangeClothingPlayer(player, player, "kind", data.k)
     ChangeClothingPresetPlayer(player, player, data.k, tonumber(data.p))
-    ChangeClothingPlayer(player, player, "hair", data.h)
+    -- ChangeClothingPlayer(player, player, "hair", data.h)
     SetPlayerClothing(player)
 
     AddPlayerChat(player, "saved stuff")
