@@ -2,14 +2,34 @@
 Clothing = {}
 
 -- import package
-Clothing.ClassClothing = import("character/class/clothing.lua")
-
+local ClassClothing = import("character/class/clothing.lua")
+-- {
+-- 	"clothing": {
+-- 		"kind": "women",
+-- 		"body": 1,
+-- 		"hair": 1,
+-- 		"shirt": 1,
+-- 		"accessory": 0,
+-- 		"pants": 1,
+-- 		"shoes": 1
+-- 	},
+-- 	"color": {
+-- 		"hair": 0,
+-- 		"shirt": 0,
+-- 		"pants": 0,
+-- 		"shoes": 0
+-- 	}
+-- }
 function DecodeClothing(clothing_json)
     local decode = json_decode(clothing_json)
     local clot = {}
+    local clotCol = {}
 
-    for k, v in pairs(decode) do
-        local i = Clothing.ClassClothing.new(
+    local rslt = {}
+
+
+    for k, v in pairs(decode["clothing"]) do
+        local i = ClassClothing.new(
             {
                 ["id"] = k,
                 ["value"] = v,
@@ -18,23 +38,50 @@ function DecodeClothing(clothing_json)
             table.insert(clot, i)
     end
 
-    return clot
+    for k, v in pairs(decode["color"]) do
+        local i = ClassClothing.new(
+            {
+                ["id"] = k,
+                ["value"] = v,
+            })
+        
+            table.insert(clotCol, i)
+    end
+
+    rslt['clothing'] = clot
+    rslt['color'] = clotCol
+
+
+    return rslt
 end
 
 
 function EncodeClothing(clothing_table)
-    local valid_json = {}
+    local valid_json_clothing = {}
+    local valid_json_color = {}
 
-    for _, value in pairs(clothing_table) do
+    local rslt_json = {}
+
+    for _, value in pairs(clothing_table['clothing']) do
         local id = value['id']
         local value = value['value']
 
 
-        valid_json[id] = value
+        valid_json_clothing[id] = value
     end
-    
 
-    return json_encode(valid_json)
+    for _, value in pairs(clothing_table['color']) do
+        local id = value['id']
+        local value = value['value']
+
+
+        valid_json_color[id] = value
+    end
+
+    rslt_json['color'] = valid_json_color
+    rslt_json['clothing'] = valid_json_clothing
+    
+    return json_encode(rslt_json)
 end
 
 

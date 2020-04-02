@@ -5,13 +5,13 @@ function SetPlayerClothing(pi)
 
 
     local kind
-    for k, v in pairs(decode) do
+    for k, v in pairs(decode["clothing"]) do
         if v.id == "kind" then
             kind = v.value
         end
     end
 
-    for k, v in pairs(decode) do
+    for k, v in pairs(decode["clothing"]) do
         if v.id ~= "kind" and ifSkeletonMeshValid(v.id) then
             setClothing(pi, kind, v.id, v.value)
         end
@@ -24,7 +24,7 @@ function ChangeClothingPlayer(player, target, type, id)
 
     local decode = DecodeClothing(p.clothing)
 
-    for k, v in pairs(decode) do
+    for k, v in pairs(decode["clothing"]) do
         if v.id == type then
             v.value = id
         end
