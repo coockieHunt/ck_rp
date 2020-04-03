@@ -5,15 +5,21 @@ function SetPlayerClothing(pi)
 
 
     local kind
-    for k, v in pairs(decode["clothing"]) do
+    for _, v in pairs(decode["clothing"]) do
         if v.id == "kind" then
             kind = v.value
         end
     end
 
-    for k, v in pairs(decode["clothing"]) do
+    for _, v in pairs(decode["clothing"]) do
         if v.id ~= "kind" and ifSkeletonMeshValid(v.id) then
             setClothing(pi, kind, v.id, v.value)
+        end
+    end
+
+    for _, v in pairs(decode["color"]) do
+        if (v.value ~= 0) then
+            CallRemoteEvent(pi, "setSkeletalMeshColor", v.id, v.value)
         end
     end
 end

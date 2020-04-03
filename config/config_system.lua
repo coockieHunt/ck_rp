@@ -94,7 +94,6 @@ _Registe_SkeletalMesh_player = {
     body = "Body",
     hair = "Clothing0",
     shirt = "Clothing1",
-    hairColor = "hairColor",
     accessory = "Clothing3",
     pants = "Clothing4",
     shoes = "Clothing5"
