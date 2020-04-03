@@ -20,11 +20,6 @@ function setSkeletalMeshColor(type, color)
 end
 AddRemoteEvent("setSkeletalMeshColor", setSkeletalMeshColor)
 
-
-
-function SetColor(type, color)
-end
-
 function removeSkeletalMesh(type)
     local player = GetPlayerId()
 	SkeletalMeshComponent = GetPlayerSkeletalMeshComponent(player, __SkeletalMesh[type])
