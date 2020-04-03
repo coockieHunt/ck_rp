@@ -25,6 +25,12 @@
     margin-left: 5px;
 }
 
+.info  > section > h2 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
 .info  > section > .form {
     background-color: var( --gray-light);
     height: var( --section-size);
