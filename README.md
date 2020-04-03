@@ -29,7 +29,42 @@ privacy package rp coockie
 ***installation guide***
 1. Create an onset server (doc: https://dev.playonset.com/wiki/DedicatedServer)
 2. Setup MariaDB 10.x (http://bit.ly/2tG3bWC)
-3. Execute ck_rp.sql
+3. Execute sql request :
+```sql
+-- --------------------------------------------------------
+-- ref:             1.0
+-- --------------------------------------------------------
+
+CREATE DATABASE IF NOT EXISTS `onset`;
+USE `onset`;
+
+CREATE TABLE IF NOT EXISTS `accounts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `steam_id` varchar(20) DEFAULT NULL,
+  `health` smallint(6) DEFAULT 100,
+  `armor` smallint(6) DEFAULT 100,
+  `food` smallint(11) DEFAULT NULL,
+  `thirst` smallint(11) DEFAULT NULL,
+  `max_weight` int(11) DEFAULT NULL,
+  `cur_weight` int(11) DEFAULT NULL,
+  `player_name` varchar(50) DEFAULT NULL,
+  `cash` int(11) DEFAULT 0,
+  `cash_account` int(11) DEFAULT 0,
+  `inventory` longtext DEFAULT '{}',
+  `clothing` longtext DEFAULT '{}',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `account_administrator` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `account_id` int(11) NOT NULL,
+  `admin_level` int(11) NOT NULL,
+  `last_at_admin_state` timestamp NULL DEFAULT NULL,
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+```
 4. move file *"ck_rp"* to *"yourserveronset\packages"*
 5. update *"server_config"*  :
 ```lua
