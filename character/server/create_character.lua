@@ -35,10 +35,19 @@ end
 AddRemoteEvent("setupCamUi", setupCamUi)
 
 function RemoveCamUi(player)
-    SetPlayerDimension(player, 1)
+    SetPlayerDimension(player, 0)
     if(save_playerHeading ~= nil) then
         SetPlayerHeading(player, save_playerHeading)
     end
 end
 AddRemoteEvent("RemoveCamUi", RemoveCamUi)
 
+
+function refrech_charactere(player, json)
+    local data = json_decode(json)
+    local p = getplayer(player)
+
+   
+
+end
+AddRemoteEvent("refrech_charactere", refrech_charactere)
