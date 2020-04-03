@@ -9,8 +9,8 @@ $("#submit").click(function() {
         "p" : $('section > .preset > select').val(),
         "h" : $('section > .hair > select').val(),
         "hc" : $('#hairColor').val(),
-        "hs" : $('#hairColor').val(),
-        "hp" : $('#hairColor').val(),
+        "hs" : $('#shirtColor').val(),
+        "hp" : $('#pantsColor').val(),
     }
     console.log(input.hc)
 

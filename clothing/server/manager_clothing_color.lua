@@ -5,7 +5,13 @@ function ChangeClothingColorPlayer(player, target, type, color)
 
     for k, v in pairs(decode["color"]) do
         if v.id == type then
-            v.value = color
+            if string.len(color) >= 1 then 
+                v.value = string.sub(color, 2)
+                print(color)
+            else
+                print("empty")
+                v.value = 0
+            end
         end
     end
 
