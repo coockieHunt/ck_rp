@@ -9,6 +9,8 @@ $("#submit").click(function() {
         "p" : $('section > .preset > select').val(),
         "h" : $('section > .hair > select').val(),
         "hc" : $('#hairColor').val(),
+        "hs" : $('#hairColor').val(),
+        "hp" : $('#hairColor').val(),
     }
     console.log(input.hc)
 
@@ -21,7 +23,7 @@ $("#submit").click(function() {
     }
 
     $.each( input, function( key, value ) {
-        if (value == "") {
+        if (value == "" && key !==  "hc" && key !==  "hs" && key !==  "hp") {
             error.push([key, "empty"]);
         }
 
@@ -43,8 +45,11 @@ $("#submit").click(function() {
 
 $('.color-picker').spectrum({
     type: "component",
-    color: "#000000",
-    color: tinycolor,
+    showPalette: false,
+    palette: [],
+    allowEmpty:true,
+    showInitial: true,
+    showInput: true,
     showAlpha: false
 });
 

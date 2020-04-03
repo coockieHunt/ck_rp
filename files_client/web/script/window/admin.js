@@ -121,13 +121,16 @@ $( function() {
 } );
 
 
-
 $('.color-picker').spectrum({
     type: "component",
-    color: "#000000",
-    color: tinycolor,
+    showPalette: false,
+    palette: [],
+    allowEmpty:true,
+    showInitial: true,
+    showInput: true,
     showAlpha: false
 });
+
 
 //call event
 function GetForm(){
