@@ -7,9 +7,7 @@ function ChangeClothingColorPlayer(player, target, type, color)
         if v.id == type then
             if string.len(color) >= 1 then 
                 v.value = string.sub(color, 2)
-                print(color)
             else
-                print("empty")
                 v.value = 0
             end
         end
