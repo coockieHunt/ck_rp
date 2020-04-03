@@ -4,7 +4,6 @@ function admin_car_spawn(player, model, mount, boost , color)
 	if(AdminLevel(player, level)) then
 		local vehicle
 		local model = tonumber(model)
-		color = "0x"..color
 
 		if (model < 1 or model > 26) then return AddPlayerChat(player, "Vehicle model "..model.." does not exist.") end
 	
@@ -22,9 +21,14 @@ function admin_car_spawn(player, model, mount, boost , color)
 	
 		if(boost) then AttachVehicleNitro(vehicle, true) end
 		
+		if(color ~= nil) then
+			color = "0x"..color
+			SetVehicleColor(vehicle, color)
+		else
+			color = "default"
+		end
 
-		SetVehicleColor(vehicle, color)
-		SetVehicleLicensePlate(vehicle, "ADMIN-SPAWN")
+		SetVehicleLicensePlate(vehicle, "ADMIN")
 		
 		AddAdminLog(player, "spawn car id : ".. model.." | color: ".. color .. " | boost : ".. strBool(boost))
 	end
