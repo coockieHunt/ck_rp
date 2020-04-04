@@ -19,7 +19,8 @@ function admin_pos(player)
 	if(AdminLevel(player, level)) then
 		AddAdminLog(player, " save pos")
 		local x, y, z = GetPlayerLocation(player)
-		local text = x..", "..y..", "..z
+		local h = GetPlayerHeading(player)
+		local text = x..", "..y..", "..z..", "..h
 		file = io.open("pos.txt", "a")
 		file:write(text, "\n")
 		file:close()
