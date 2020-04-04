@@ -55,8 +55,9 @@ function CreatePlayerAccount(player)
         _New_account.cash,
         _New_account.cash_account,
         '{}',
-        '{"clothing": {"kind": "women",	"body": 1,	"hair": 1,	"shirt": 1,	"accessory": 0,	"pants": 1,	"shoes": 1	},	"color": {"hair": 0, "shirt": 0, "pants": 0, "shoes": 0	}}'
+        '{"clothing": {"kind": 0,	"body": 0,	"hair": 0,	"shirt": 0,	"accessory": 0,	"pants": 0,	"shoes": 0	},	"color": {"hair": 0, "shirt": 0, "pants": 0, "shoes": 0	}}'
     )
+   -- '{"clothing": {"kind": "women",	"body": 1,	"hair": 1,	"shirt": 1,	"accessory": 0,	"pants": 1,	"shoes": 1	},	"color": {"hair": 0, "shirt": 0, "pants": 0, "shoes": 0	}}'
 
     mariadb_query(db, query)
 
@@ -85,8 +86,6 @@ function LoadPlayerAccount(player)
 
         mariadb_async_query(db, query, OnAccountLoaded, player)
     end
-
-
 end
 
 function OnAccountLoaded(player)
@@ -108,7 +107,13 @@ function OnAccountLoaded(player)
 
         createPlayerAccount(player, player_name, result)
         AddPlayerChatAll( ('<span color="#%s">%s </>%s'):format("0438CE", GetPlayerName(player), " a rejoint le serveur"))
-	    SetPlayerClothing(player)
+        local ValidClothing = SetPlayerClothing(player)
+        if (ValidClothing ~= true) then
+            print("> character not create")
+            print("> opening character customize dialog on the player client")
+            CallRemoteEvent(player, "OpenUINewCharacter")
+            
+        end
 	end
 end
 

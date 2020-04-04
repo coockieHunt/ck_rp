@@ -29,25 +29,25 @@
             </div>
             <div class="age form">  
                 <span>age :</span>
-                <input type="text" name="age" required placeholder="0-99">
+                <input type="text" name="age" required placeholder="16-99" data-refresh="true">
             </div>
             <div class="kind form">
                 <span>kind :</span>       
-                <select name="kind" id="kind">
-                    <option value="women">women</option>
+                <select name="kind" id="kind" data-refresh="true">
                     <option value="men">men</option>
+                    <option value="women">women</option>
                 </select>
             </div>
             <div class="preset form">
                 <span>clothing preset :</span>       
-                <select name="preset" id="preset">
+                <select name="preset" id="preset" data-refresh="true">
                     <option value="1">1</option>
                     <option value="2">2</option>
                 </select>
             </div>
             <div class="hair form">
                 <span>hair :</span>       
-                <select name="hair" id="hair">
+                <select name="hair" id="hair" data-refresh="true">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">2</option>
@@ -56,17 +56,17 @@
 
             <h2>color</h2>
     
-            <div class="hairColor form">
+            <div class="hairColor form" data-refresh="true">
                 <span>hair color:</span>    
                 <input type='text' class='color-picker' name="hairColor" id="hairColor"/>
             </div>
 
-            <div class="shirtColor form">
+            <div class="shirtColor form" data-refresh="true">
                 <span>shirt color:</span>    
                 <input type='text' class='color-picker' name="shirtColor" id="shirtColor"/>
             </div>
 
-            <div class="pantsColor form">
+            <div class="pantsColor form" data-refresh="true">
                 <span>pants color:</span>    
                 <input type='text' class='color-picker' name="pantsColor" id="pantsColor"/>
             </div>

@@ -12,7 +12,6 @@ $("#submit").click(function() {
         "hs" : $('#shirtColor').val(),
         "hp" : $('#pantsColor').val(),
     }
-    console.log(input.hc)
 
     if(!$.isNumeric(input.a)) {
         error.push(["a", "nn"]);
@@ -20,6 +19,10 @@ $("#submit").click(function() {
 
     if(parseInt(input.a) > 100){
         error.push(["a", "ath"])
+    }
+
+    if(parseInt(input.a) < 16){
+        error.push(["a", "atl"])
     }
 
     $.each( input, function( key, value ) {
@@ -32,15 +35,32 @@ $("#submit").click(function() {
         }
     });
 
+
+
     if($.isEmptyObject(error)){
         let rslt = JSON.stringify(input);
-        console.log(rslt)
         CallEvent("CallInfoValid", rslt);
     }else{
         let rsltError = JSON.stringify(error);
-        console.log(rsltError)
         CallEvent("CallInfoError", rsltError);
     }
+});
+
+$("*[data-refresh='true']").change(function() {
+    let input = {
+        "a" : $('section > .age > input').val(),
+        "k" : $('section > .kind > select').val(),
+        "p" : $('section > .preset > select').val(),
+        "h" : $('section > .hair > select').val(),
+        "hc" : $('#hairColor').val(),
+        "hs" : $('#shirtColor').val(),
+        "hp" : $('#pantsColor').val(),
+    }
+
+    let rslt = JSON.stringify(input);
+    CallEvent("CallRefrechCharacterPreview", rslt);
+
+    
 });
 
 $('.color-picker').spectrum({
@@ -51,9 +71,4 @@ $('.color-picker').spectrum({
     showInitial: true,
     showInput: true,
     showAlpha: false
-});
-
-$('.kind > select').change(function() {
-    let rslt = JSON.stringify($('.kind > select').val());
-    console.log(rslt)
 });

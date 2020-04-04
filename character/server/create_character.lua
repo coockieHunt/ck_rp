@@ -1,5 +1,7 @@
 local save_playerHeading
 
+local save_curent_character
+
 function create_charactere(player, json)
     local data = json_decode(json)
 
@@ -25,6 +27,13 @@ function create_charactere(player, json)
 end
 AddRemoteEvent("create_charactere", create_charactere)
 
+function saveCurrentCharacter(player)
+    local p = getplayer(player)
+    save_curent_character = p.clothing
+end
+AddRemoteEvent("saveCurrentCharacter", saveCurrentCharacter)
+
+
 function setupCamUi(player)
     local x, y, z  = GetPlayerLocation(player)
     save_playerHeading = GetPlayerHeading(player)
@@ -40,12 +49,24 @@ function RemoveCamUi(player)
 end
 AddRemoteEvent("RemoveCamUi", RemoveCamUi)
 
+function ErrorClient(player, json)
+    SendAlert(player, "warning", "Error form", json)
+end
+AddRemoteEvent("ErrorClient", ErrorClient)
 
 function refrech_charactere(player, json)
     local data = json_decode(json)
     local p = getplayer(player)
+    
+    ChangeClothingPlayer(player, player, "kind", data.k)
+    ChangeClothingPresetPlayer(player, player, data.k, tonumber(data.p))
+    ChangeClothingPlayer(player, player, "hair", data.h)
 
-   
+    ChangeClothingColorPlayer(player, player, "hair", data.hc)
+    ChangeClothingColorPlayer(player, player, "shirt", data.hs)
+    ChangeClothingColorPlayer(player, player, "pants", data.hp)
+
+    SetPlayerClothing(player)
 
 end
 AddRemoteEvent("refrech_charactere", refrech_charactere)

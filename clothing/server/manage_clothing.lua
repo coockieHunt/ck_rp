@@ -3,11 +3,14 @@ function SetPlayerClothing(pi)
 
     local decode = DecodeClothing(p.clothing)
 
-
     local kind
     for _, v in pairs(decode["clothing"]) do
         if v.id == "kind" then
-            kind = v.value
+            if(v.value == 0 ) then
+                return false
+            else
+                kind = v.value
+            end
         end
     end
 
@@ -22,6 +25,8 @@ function SetPlayerClothing(pi)
             CallRemoteEvent(pi, "setSkeletalMeshColor", v.id, v.value)
         end
     end
+
+    return true
 end
 AddCommand("sc", SetPlayerClothing)
 

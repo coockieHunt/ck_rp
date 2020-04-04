@@ -6,19 +6,18 @@ function OpenUINewCharacter()
         ShowMouseHub(true)
         LockPlayerInput(true)
         SetWebVisibility(new_character, WEB_VISIBLE)
-        CloseUISurvival_warn()
 
         setupCamUi(GetPlayerId())
     end
-
 end
+AddRemoteEvent("OpenUINewCharacter", OpenUINewCharacter)
+
 
 function CloseUINewCharacter()
     ShowMouseHub(false)
     LockPlayerInput(false)
     SetWebVisibility(new_character, WEB_HIDDEN)
 
-    OpenUISurvival_warn()
 
     RemoveCamUi(GetPlayerId())
 end
@@ -33,22 +32,11 @@ function OnPlayerSpawn()
 end
 AddEvent("OnPlayerSpawn", OnPlayerSpawn)
 
--- key mapping
-AddEvent("OnKeyPress", function(key)
-    if key == GetKeyMapServer("char") then
-        if GetWebVisibility(new_character) == WEB_HIDDEN then
-            OpenUINewCharacter()
-        else
-            CloseUINewCharacter()
-
-        end
-    end
-end)
-
 function setupCamUi(player)
     local x, y, z  = GetPlayerLocation(player)
     ShowChat(false)
     CallRemoteEvent("setupCamUi")
+    CallRemoteEvent("saveCurrentCharacter")
     SetCameraLocation(x - 200, y - 30, z + 70,true)
     SetCameraRotation(- 20, 0, 0, true)
 
@@ -70,9 +58,7 @@ end
 AddEvent("CallInfoValid", CallInfoValid)
 
 function CallInfoError(error_json)
-    AddPlayerChat("erro_json")
-    AddPlayerChat(error_json)
-    CloseUINewCharacter()
+    CallRemoteEvent("ErrorClient", error_json)
 end
 AddEvent("CallInfoError", CallInfoError)
 
