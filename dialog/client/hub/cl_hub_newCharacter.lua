@@ -47,12 +47,15 @@ end)
 
 function setupCamUi(player)
     local x, y, z  = GetPlayerLocation(player)
+    ShowChat(false)
     CallRemoteEvent("setupCamUi")
-    SetCameraLocation(x -250, y, z +10 ,true)
-    SetCameraRotation(0,0,0,true)
+    SetCameraLocation(x - 200, y - 30, z + 70,true)
+    SetCameraRotation(- 20, 0, 0, true)
+
 end
 
 function RemoveCamUi(player)
+    ShowChat(true)
     CallRemoteEvent("RemoveCamUi")
     SetCameraLocation(0, 0, 0, false)
     SetCameraRotation(0, 0, 0, false)
@@ -72,3 +75,8 @@ function CallInfoError(error_json)
     CloseUINewCharacter()
 end
 AddEvent("CallInfoError", CallInfoError)
+
+function CallRefrechCharacterPreview(info_json)
+    CallRemoteEvent("refrech_charactere", info_json)
+end
+AddEvent("CallRefrechCharacterPreview", CallRefrechCharacterPreview)

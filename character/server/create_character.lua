@@ -27,8 +27,8 @@ AddRemoteEvent("create_charactere", create_charactere)
 
 function setupCamUi(player)
     local x, y, z  = GetPlayerLocation(player)
-
     save_playerHeading = GetPlayerHeading(player)
+
     SetPlayerHeading(player, 170)
     SetPlayerDimension(player, tonumber(player) + 1)
 end
@@ -36,9 +36,7 @@ AddRemoteEvent("setupCamUi", setupCamUi)
 
 function RemoveCamUi(player)
     SetPlayerDimension(player, 0)
-    if(save_playerHeading ~= nil) then
-        SetPlayerHeading(player, save_playerHeading)
-    end
+    SetPlayerHeading(player, save_playerHeading)
 end
 AddRemoteEvent("RemoveCamUi", RemoveCamUi)
 
