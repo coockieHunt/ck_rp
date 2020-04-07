@@ -31,8 +31,6 @@ end
 
 function getPresetClothing(gender, id)
     local rslt = false
-    print(ifvalueIsGender(gender)) 
-    print(gender) 
     if ifvalueIsGender(gender) then
         if gender == "women" then
             rslt = _Clothing_preset_women[tonumber(id)]
