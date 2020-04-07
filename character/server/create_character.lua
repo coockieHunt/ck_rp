@@ -47,7 +47,6 @@ function saveCurrentCharacter(player)
 end
 AddRemoteEvent("saveCurrentCharacter", saveCurrentCharacter)
 
-
 function setupCamUi(player)
     local x, y, z  = GetPlayerLocation(player)
     save_playerHeading = GetPlayerHeading(player)
@@ -64,7 +63,24 @@ end
 AddRemoteEvent("RemoveCamUi", RemoveCamUi)
 
 function ErrorClient(player, json)
-    SendAlert(player, "warning", "Error form", json)
+    local data = json_decode(json)
+    local formKey = {
+        ["fn"] = "First name", 
+        ["n"] = "Name", 
+        ["a"] = "Age",
+    }
+
+    local formError = {
+        ["nn"] = "must be a numeric value", 
+        ["ath"] = "to hight", 
+        ["ath"] = "to low", 
+        ["empty"] = "must not be empty",
+        ["ws"] = "must not contain spaces",
+    }
+    for k, v in pairs(data) do
+        local str = "<strong>"..formKey[v[1]] .."</strong> : "..formError[v[2]]
+        SendAlert(player, "warning", "Error form", str)
+    end
 end
 AddRemoteEvent("ErrorClient", ErrorClient)
 
