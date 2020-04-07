@@ -21,6 +21,8 @@ function create_charactere(player, json)
 
     SetPlayerClothing(player)
 
+    SaveAccountPlayer(player)
+
     AddPlayerChat(player, "saved stuff")
 end
 AddRemoteEvent("create_charactere", create_charactere)
