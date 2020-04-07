@@ -1,5 +1,5 @@
 :root {
-    --section-size: 75px
+    --section-size: 55px
 }
 
 .info {
@@ -17,18 +17,26 @@
 
 .info  > section{
     overflow: auto;
+    height: 100%;
 }
 
 .info  > h1 {
     margin-bottom: 10px;
     margin-top: 10px;
     margin-left: 5px;
+
 }
 
 .info  > section > h2 {
     margin-bottom: 10px;
     margin-top: 10px;
     margin-left: 5px;
+
+    background: linear-gradient(to right, #30CFD0 0%, rgb(6, 190, 190) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-align: center;
 }
 
 .info  > section > .form {

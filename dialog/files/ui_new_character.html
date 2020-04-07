@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ck_new_character</title>
     <link rel="stylesheet" type="text/css" href="../../files_client/web/css/main.css">
     <link rel="stylesheet" type="text/css" href="../../files_client/web/css/window/new_character.css">
     <link rel="stylesheet" type="text/css" href="../../files_client/web/css/form/form.css">
@@ -16,9 +16,8 @@
 </head>
 <body>
     <section class="info">
-        <h1>Your info :</h1>
-        
         <section>
+            <h2>Civil status</h2>
             <div class="firstname form">
                 <span>First name :</span>
                 <input type="text" name="firstname" required placeholder="jhon">
@@ -31,6 +30,7 @@
                 <span>age :</span>
                 <input type="text" name="age" required placeholder="16-99" data-refresh="true">
             </div>
+
             <div class="gender form">
                 <span>gender :</span>       
                 <select name="gender" id="gender" data-refresh="true">
@@ -38,6 +38,9 @@
                     <option value="women">women</option>
                 </select>
             </div>
+
+            <h2>Appearance</h2>
+            
             <div class="preset form">
                 <span>clothing preset :</span>       
                 <select name="preset" id="preset" data-refresh="true">
@@ -54,7 +57,7 @@
                 </select>
             </div>
 
-            <h2>color</h2>
+            <h2>Color</h2>
     
             <div class="hairColor form" data-refresh="true">
                 <span>hair color:</span>    
@@ -70,6 +73,7 @@
                 <span>pants color:</span>    
                 <input type='text' class='color-picker' name="pantsColor" id="pantsColor"/>
             </div>
+            
         </section>
         
 
