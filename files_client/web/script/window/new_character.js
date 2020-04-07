@@ -1,3 +1,6 @@
+var min_age = 0
+var max_age = 0
+
 $("#submit").click(function() {
     let error = []
 
@@ -17,11 +20,11 @@ $("#submit").click(function() {
         error.push(["a", "nn"]);
     }
 
-    if(parseInt(input.a) > 100){
+    if(parseInt(input.a) > max_age){
         error.push(["a", "ath"])
     }
 
-    if(parseInt(input.a) < 16){
+    if(parseInt(input.a) < min_age){
         error.push(["a", "atl"])
     }
 
@@ -72,4 +75,36 @@ $('.color-picker').spectrum({
     showInitial: true,
     showInput: true,
     showAlpha: false
+});
+
+function setFormAge(confMax_age, Confmin_age){
+    max_age = confMax_age
+    min_age = Confmin_age
+}
+
+function setColorSelection(type){
+    let input = {
+        "hair" : '.hairColor',
+        "shirt" : '.shirtColor',
+        "pants" : '.pantsColor',
+    }
+
+    $(input[type]).show()
+}
+
+function setHairSelection(name, hairVar){
+    $('section > .hair > select').append(new Option(name, hairVar));
+}
+
+
+
+$(function() {
+    let input = {
+        "hair" : '.hairColor',
+        "shirt" : '.shirtColor',
+        "pants" : '.pantsColor',
+    }
+    $.each( input, function( key, value ) {
+        $(value).hide()
+    });
 });
