@@ -64,6 +64,9 @@ AddRemoteEvent("RemoveCamUi", RemoveCamUi)
 
 function ErrorClient(player, json)
     local data = json_decode(json)
+
+    local alert = ""
+
     local formKey = {
         ["fn"] = "First name", 
         ["n"] = "Name", 
@@ -77,10 +80,12 @@ function ErrorClient(player, json)
         ["empty"] = "must not be empty",
         ["ws"] = "must not contain spaces",
     }
+
     for k, v in pairs(data) do
-        local str = "<strong>"..formKey[v[1]] .."</strong> : "..formError[v[2]]
-        SendAlert(player, "warning", "Error form", str)
+        alert = string.format('%s <strong>%s</strong> : %s<br>', alert, formKey[v[1]], formError[v[2]])
     end
+
+    SendAlert(player, "warning", "Error form", alert)
 end
 AddRemoteEvent("ErrorClient", ErrorClient)
 
