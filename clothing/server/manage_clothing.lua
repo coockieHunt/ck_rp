@@ -3,20 +3,20 @@ function SetPlayerClothing(pi)
 
     local decode = DecodeClothing(p.clothing)
 
-    local kind
+    local gender
     for _, v in pairs(decode["clothing"]) do
-        if v.id == "kind" then
+        if v.id == "gender" then
             if(v.value == 0 ) then
                 return false
             else
-                kind = v.value
+                gender = v.value
             end
         end
     end
 
     for _, v in pairs(decode["clothing"]) do
-        if v.id ~= "kind" and ifSkeletonMeshValid(v.id) then
-            setClothing(pi, kind, v.id, v.value)
+        if v.id ~= "gender" and ifSkeletonMeshValid(v.id) then
+            setClothing(pi, gender, v.id, v.value)
         end
     end
 
@@ -45,14 +45,13 @@ function ChangeClothingPlayer(player, target, type, id)
 end
 AddCommand("cc", ChangeClothingPlayer)
 
-function ChangeClothingPresetPlayer(player, target, kind, presetId)
+function ChangeClothingPresetPlayer(player, target, gender, presetId)
     local p = getplayer(target)
 
     local decode = DecodeClothing(p.clothing)
+    local presetTable = getPresetClothing(gender, presetId)
 
-    local presetTable = getPresetClothing(kind, presetId)
-
-    ChangeClothingPlayer(player, target, "kind", kind)
+    ChangeClothingPlayer(player, target, "gender", gender)
     for skeletonMeches, id in pairs(presetTable['part']) do
         ChangeClothingPlayer(player, target, skeletonMeches, id)
     end
@@ -60,8 +59,8 @@ function ChangeClothingPresetPlayer(player, target, kind, presetId)
 end
 AddCommand("ccp", ChangeClothingPresetPlayer)
 
-function setClothing(target, kind, skeletonMeches, id)
-    local list = GetClothingListByKind(kind)
+function setClothing(target, gender, skeletonMeches, id)
+    local list = GetClothingListByGender(gender)
     if list == false then 
         DestroyPlayerData(GetPlayerSteamId(target))
         return KickPlayer(target, "EC006 : your account has a skeleton mesh problem please contact an administrator.")

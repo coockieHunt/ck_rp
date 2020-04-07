@@ -55,9 +55,8 @@ function CreatePlayerAccount(player)
         _New_account.cash,
         _New_account.cash_account,
         '{}',
-        '{"clothing": {"kind": 0,	"body": 0,	"hair": 0,	"shirt": 0,	"accessory": 0,	"pants": 0,	"shoes": 0	},	"color": {"hair": 0, "shirt": 0, "pants": 0, "shoes": 0	}}'
+        '{"clothing": {"gender": 0,	"body": 0,	"hair": 0,	"shirt": 0,	"accessory": 0,	"pants": 0,	"shoes": 0	},	"color": {"hair": 0, "shirt": 0, "pants": 0, "shoes": 0	}}'
     )
-   -- '{"clothing": {"kind": "women",	"body": 1,	"hair": 1,	"shirt": 1,	"accessory": 0,	"pants": 1,	"shoes": 1	},	"color": {"hair": 0, "shirt": 0, "pants": 0, "shoes": 0	}}'
 
     mariadb_query(db, query)
 

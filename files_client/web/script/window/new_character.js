@@ -5,7 +5,7 @@ $("#submit").click(function() {
         "fn" : $('section >.firstname > input').val(),
         "n" : $('section > .name > input').val(),
         "a" : $('section > .age > input').val(),
-        "k" : $('section > .kind > select').val(),
+        "g" : $('section > .gender > select').val(),
         "p" : $('section > .preset > select').val(),
         "h" : $('section > .hair > select').val(),
         "hc" : $('#hairColor').val(),
@@ -49,7 +49,7 @@ $("#submit").click(function() {
 $("*[data-refresh='true']").change(function() {
     let input = {
         "a" : $('section > .age > input').val(),
-        "k" : $('section > .kind > select').val(),
+        "g" : $('section > .gender > select').val(),
         "p" : $('section > .preset > select').val(),
         "h" : $('section > .hair > select').val(),
         "hc" : $('#hairColor').val(),
@@ -58,6 +58,7 @@ $("*[data-refresh='true']").change(function() {
     }
 
     let rslt = JSON.stringify(input);
+    console.log(rslt)
     CallEvent("CallRefrechCharacterPreview", rslt);
 
     

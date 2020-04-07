@@ -9,12 +9,10 @@ function create_charactere(player, json)
 
     local FullName = data.fn .. " " .. data.n
 
-
     p:setName(FullName)
     SetPlayerName(player, FullName)
-
-    ChangeClothingPlayer(player, player, "kind", data.k)
-    ChangeClothingPresetPlayer(player, player, data.k, tonumber(data.p))
+    ChangeClothingPlayer(player, player, "gender", data.g)
+    ChangeClothingPresetPlayer(player, player, data.g, tonumber(data.p))
     ChangeClothingPlayer(player, player, "hair", data.h)
 
     ChangeClothingColorPlayer(player, player, "hair", data.hc)
@@ -26,6 +24,22 @@ function create_charactere(player, json)
     AddPlayerChat(player, "saved stuff")
 end
 AddRemoteEvent("create_charactere", create_charactere)
+
+function refrech_charactere(player, json)
+    local data = json_decode(json)
+    local p = getplayer(player)
+    
+    ChangeClothingPlayer(player, player, "gender", data.g)
+    ChangeClothingPresetPlayer(player, player, data.g, tonumber(data.p))
+    ChangeClothingPlayer(player, player, "hair", data.h)
+
+    ChangeClothingColorPlayer(player, player, "hair", data.hc)
+    ChangeClothingColorPlayer(player, player, "shirt", data.hs)
+    ChangeClothingColorPlayer(player, player, "pants", data.hp)
+
+    SetPlayerClothing(player)
+end
+AddRemoteEvent("refrech_charactere", refrech_charactere)
 
 function saveCurrentCharacter(player)
     local p = getplayer(player)
@@ -54,19 +68,3 @@ function ErrorClient(player, json)
 end
 AddRemoteEvent("ErrorClient", ErrorClient)
 
-function refrech_charactere(player, json)
-    local data = json_decode(json)
-    local p = getplayer(player)
-    
-    ChangeClothingPlayer(player, player, "kind", data.k)
-    ChangeClothingPresetPlayer(player, player, data.k, tonumber(data.p))
-    ChangeClothingPlayer(player, player, "hair", data.h)
-
-    ChangeClothingColorPlayer(player, player, "hair", data.hc)
-    ChangeClothingColorPlayer(player, player, "shirt", data.hs)
-    ChangeClothingColorPlayer(player, player, "pants", data.hp)
-
-    SetPlayerClothing(player)
-
-end
-AddRemoteEvent("refrech_charactere", refrech_charactere)

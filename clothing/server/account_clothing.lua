@@ -3,23 +3,7 @@ Clothing = {}
 
 -- import package
 local ClassClothing = import("character/class/clothing.lua")
--- {
--- 	"clothing": {
--- 		"kind": "women",
--- 		"body": 1,
--- 		"hair": 1,
--- 		"shirt": 1,
--- 		"accessory": 0,
--- 		"pants": 1,
--- 		"shoes": 1
--- 	},
--- 	"color": {
--- 		"hair": 0,
--- 		"shirt": 0,
--- 		"pants": 0,
--- 		"shoes": 0
--- 	}
--- }
+
 function DecodeClothing(clothing_json)
     local decode = json_decode(clothing_json)
     local clot = {}

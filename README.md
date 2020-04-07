@@ -24,7 +24,7 @@ privacy package rp coockie
 - EC003 : server failed to create user profile.
 - EC004 : server failed to configure value items nill.
 - EC005 : server failed to configure value items not like.
-- EC006 : a player does not have a valid kind (clothing)
+- EC006 : a player does not have a valid gender (clothing)
 
 ***installation guide***
 1. Create an onset server (doc: https://dev.playonset.com/wiki/DedicatedServer)
