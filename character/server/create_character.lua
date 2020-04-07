@@ -50,7 +50,8 @@ AddRemoteEvent("saveCurrentCharacter", saveCurrentCharacter)
 function setupCamUi(player)
     local x, y, z  = GetPlayerLocation(player)
     save_playerHeading = GetPlayerHeading(player)
-
+    CallRemoteEvent(player, "removeSkeletalMesh", "body")
+    
     SetPlayerHeading(player, 170)
     SetPlayerDimension(player, tonumber(player) + 1)
 end
