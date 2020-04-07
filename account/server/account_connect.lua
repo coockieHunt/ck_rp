@@ -108,8 +108,7 @@ function OnAccountLoaded(player)
         AddPlayerChatAll( ('<span color="#%s">%s </>%s'):format("0438CE", GetPlayerName(player), " a rejoint le serveur"))
         local ValidClothing = SetPlayerClothing(player)
         if (ValidClothing ~= true) then
-            print("> character not create")
-            print("> opening character customize dialog on the player client")
+            print("> character not create, opening character customize dialog on the player client")
             CallRemoteEvent(player, "OpenUINewCharacter")
             
         end
