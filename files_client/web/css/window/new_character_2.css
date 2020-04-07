@@ -1,0 +1,70 @@
+:root {
+    --section-size: 75px
+}
+
+.info {
+    margin: 0;
+    background-color: var( --gray-dark);
+    width: 30%;
+    height: 90%;
+    color: white;
+    border-radius: 0 10px 10px 0;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.info > section > h1 {
+    --title_size : 150px;
+    line-height: var(--title_size);
+    height: var(--title_size);
+
+    text-align: center;
+    font-size: 40px;
+
+    background: linear-gradient(92deg, rgb(224, 78, 95) 30%, rgb(87, 16, 9) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.info > #gender > #select_gender{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin: 0;
+
+    margin-left: auto;
+    margin-right: auto 
+}
+
+.info > #gender > #select_gender > div{
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px rgb(165, 165, 165) solid;
+    cursor: pointer;
+}
+
+.info > #gender > #select_gender > div:hover{
+    background-color: white;
+}
+
+.info > #gender > #select_gender > div > svg{
+    width: 100px;
+}
+
+.info > #gender > #select_gender > #men > svg{
+    color: blue;
+}
+
+.info > #gender > #select_gender > #women > svg{
+    color: pink;
+}
+
