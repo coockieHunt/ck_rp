@@ -22,6 +22,33 @@ function CloseUINewCharacter()
     RemoveCamUi(GetPlayerId())
 end
 
+function OnWebLoadComplete(webid)
+    local playerId = GetPlayerId()
+    
+	if (new_character == webid) then
+        Delay(500, function(webid, playerid)
+            local formConfig = __CharacterConfig.form
+            local ClothingConfig = __CharacterConfig.clothing
+
+            local min_age = formConfig.min_age
+            local max_age = formConfig.max_age
+        
+            ExecuteWebJS(new_character, "setFormAge('"..max_age.."', '"..min_age.."')")
+
+            for i, v in ipairs(formConfig.color) do
+                ExecuteWebJS(new_character, "setColorSelection('"..v.."')")
+             end
+
+            --  for i, v in pairs(ClothingConfig) do
+            --     for i, v in ipairs(v) do
+            --         ExecuteWebJS(new_character, "setHairSelection('"..v.."','"..v.."')")
+            --      end
+            --  end
+		end, new_character, playerId)
+	end
+end
+AddEvent("OnWebLoadComplete", OnWebLoadComplete)
+
 -- package manager
 function OnPlayerSpawn()
     new_character = CreateWebUI(0, 0, 0, 0, 1, 60)
@@ -51,7 +78,6 @@ end
 
 -- call ui
 function CallInfoValid(info_json)
-    AddPlayerChat(info_json)
     CallRemoteEvent("create_charactere", info_json)
     CloseUINewCharacter()
 end

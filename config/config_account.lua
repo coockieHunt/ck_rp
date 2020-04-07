@@ -20,6 +20,22 @@ _Init_player = {
 _Survival = {
     decrease_food = 1,
     decrease_thirst = 1,
+};
+
+_Character_creation = {
+    form = {
+        min_age = 21,
+        max_age = 100,
+        color = {'pants', "shirt", "hair"},
+    }--,
+
+    -- clothing = {
+    --     hair = {
+    --         "business",
+    --         "normal",
+    --         "normal_Hair_2"
+    --     }
+    -- }
 }
 
 -- auto fetch time

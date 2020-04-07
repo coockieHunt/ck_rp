@@ -4,6 +4,7 @@ function OnPlayerJoin(player)
     SetWeaponsList(player)
     SetPosPresetList(player)
     SetSkeletalMesh(player)
+    SetNewCharacterConfig(player)
 end
 AddEvent("OnPlayerJoin", OnPlayerJoin)
 
@@ -71,10 +72,10 @@ function SetPosPresetList(player)
 end
 
 function SetSkeletalMesh(player)
-    local ListTable = { }
-    local arg = 0
-    
     CallRemoteEvent(player, "SetSkeletalMesh", _Registe_SkeletalMesh_player)
 end
 
+function SetNewCharacterConfig(player)
+    CallRemoteEvent(player, "SetNewCharacterConfig", _Character_creation)
+end
 
