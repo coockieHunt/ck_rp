@@ -45,3 +45,27 @@ function getPresetClothing(gender, id)
 
     return rslt
 end
+
+function getPresetClothingByVar(player, gender, type, var)
+    local list =  GetClothingListByGender(gender)
+
+    for i, v in ipairs(list[type]) do
+        if(v.var == var) then
+            return v
+        end
+    end
+
+    return false
+end
+
+function getIdByVar(gender, type, var)
+    local list =  GetClothingListByGender(gender)
+
+    for i, v in ipairs(list[type]) do
+        if(v.var == var) then
+            return i
+        end
+    end
+
+    return false
+end
