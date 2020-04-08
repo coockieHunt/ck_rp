@@ -113,3 +113,45 @@ $("*[data-refresh='true']").change(function() {
 $("#refresh").click(function() {
     alert( "Handler for .click() called." );
 });
+
+$("#submit").click(function() {
+    let error = []
+
+    let input = {
+        "fn" : $(selectorColor.first_name).val(),
+        "n" : $(selector.name).val(),
+        "a" : $(selector.age).val(),
+        "g" : $(selector.gender).val(),
+    }
+
+    if(!$.isNumeric(input.a)) {
+        error.push(["a", "nn"]);
+    }
+
+    if(parseInt(input.a) > max_age){
+        error.push(["a", "ath"])
+    }
+
+    if(parseInt(input.a) < min_age){
+        error.push(["a", "atl"])
+    }
+
+    $.each( input, function( key, value ) {
+        if (value == "" && key !==  "hc" && key !==  "hs" && key !==  "hp") {
+            error.push([key, "empty"]);
+        }
+
+        if(/\s/.test(value) || /\s/.test(value)) {
+            error.push([key, "ws"]);
+        }
+    });
+
+
+
+    if($.isEmptyObject(error)){
+        CallEvent("CallInfoValid");
+    }else{
+        let rsltError = JSON.stringify(error);
+        CallEvent("CallInfoError", rsltError);
+    }
+});

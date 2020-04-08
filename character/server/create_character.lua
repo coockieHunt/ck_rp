@@ -3,27 +3,8 @@ local save_playerHeading
 local save_curent_character
 
 function create_charactere(player, json)
-    local data = json_decode(json)
-
-    local p = getplayer(player)
-
-    local FullName = data.fn .. " " .. data.n
-
-    p:setName(FullName)
-    SetPlayerName(player, FullName)
-    ChangeClothingPlayer(player, player, "gender", data.g)
-    ChangeClothingPresetPlayer(player, player, data.g, tonumber(data.p))
-    ChangeClothingPlayer(player, player, "hair", data.h)
-
-    ChangeClothingColorPlayer(player, player, "hair", data.hc)
-    ChangeClothingColorPlayer(player, player, "shirt", data.hs)
-    ChangeClothingColorPlayer(player, player, "pants", data.hp)
-
-    SetPlayerClothing(player)
-
-    SaveAccountPlayer(player)
-
     AddPlayerChat(player, "saved stuff")
+    SaveAccountPlayer(player)
 end
 AddRemoteEvent("create_charactere", create_charactere)
 
@@ -54,11 +35,6 @@ function changeGender(player, gender)
 end
 AddRemoteEvent("changeGender", changeGender)
 
-function saveCurrentCharacter(player)
-    local p = getplayer(player)
-    save_curent_character = p.clothing
-end
-AddRemoteEvent("saveCurrentCharacter", saveCurrentCharacter)
 
 function setupCamUi(player)
     local x, y, z  = GetPlayerLocation(player)
@@ -90,7 +66,7 @@ function ErrorClient(player, json)
     local formError = {
         ["nn"] = "must be a numeric value", 
         ["ath"] = "to hight", 
-        ["ath"] = "to low", 
+        ["atl"] = "to low", 
         ["empty"] = "must not be empty",
         ["ws"] = "must not contain spaces",
     }

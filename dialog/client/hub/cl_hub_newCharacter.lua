@@ -70,10 +70,9 @@ function RemoveCamUi(player)
 end
 
 -- call ui
-function CallInfoValid(info_json)
-    SendAlert(1, "error", "debug", info_json)
-    -- CallRemoteEvent("create_charactere", info_json)
-    -- CloseUINewCharacter()
+function CallInfoValid()
+    CallRemoteEvent("create_charactere")
+    CloseUINewCharacter()
 end
 AddEvent("CallInfoValid", CallInfoValid)
 
