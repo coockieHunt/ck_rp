@@ -4,6 +4,7 @@ __Weapons_list = {}
 __PosPreset = {}
 __SkeletalMesh = {}
 __CharacterConfig = {}
+__ClothingList = {}
 
 function SetCarList(data)
     __Car_list = data
@@ -34,5 +35,11 @@ function SetNewCharacterConfig(data)
     __CharacterConfig = data
 end
 AddRemoteEvent("SetNewCharacterConfig", SetNewCharacterConfig)
+
+function SetClothingList(data)
+    __ClothingList = data
+end
+AddRemoteEvent("SetClothingList", SetClothingList)
+
 
 
