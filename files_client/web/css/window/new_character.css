@@ -20,14 +20,8 @@
     height: 100%;
 }
 
-.info  > h1 {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    margin-left: 5px;
 
-}
-
-.info  > section > h2 {
+.info  > section > .sectionInfo > h2 {
     margin-bottom: 10px;
     margin-top: 10px;
     margin-left: 5px;
@@ -39,7 +33,20 @@
     text-align: center;
 }
 
-.info  > section > .form {
+
+.info  > section > .sectionInfo > h2 > .icon {
+    width: 0.5em;
+    float: right;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 7px;
+}
+
+.info  > section > .sectionInfo > h2 > .icon:hover {
+    color: rgb(141, 141, 141);
+}
+
+.info  > section >  .sectionInfo > .form {
     background-color: var( --gray-light);
     height: var( --section-size);
     display: flex;
@@ -52,7 +59,7 @@
     text-align:center;
 }
 
-.info  > section > div > input, select{
+.info  > section >  .sectionInfo > div > input, select{
     flex-grow: 2;
     width: 45% !important;
     height: 30px !important;
@@ -60,7 +67,7 @@
     margin-right: 20px !important;
 }
 
-.info > section > div > span{
+.info > section > .sectionInfo  > div > span{
     flex-grow: 3;
     text-align: left;
     width: 20%;

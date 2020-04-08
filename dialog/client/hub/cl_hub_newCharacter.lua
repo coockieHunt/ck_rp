@@ -28,7 +28,6 @@ function OnWebLoadComplete(webid)
 	if (new_character == webid) then
         Delay(500, function(webid, playerid)
             local formConfig = __CharacterConfig.form
-            local ClothingConfig = __CharacterConfig.clothing
 
             local min_age = formConfig.min_age
             local max_age = formConfig.max_age
@@ -37,13 +36,7 @@ function OnWebLoadComplete(webid)
 
             for i, v in ipairs(formConfig.color) do
                 ExecuteWebJS(new_character, "setColorSelection('"..v.."')")
-             end
-
-            --  for i, v in pairs(ClothingConfig) do
-            --     for i, v in ipairs(v) do
-            --         ExecuteWebJS(new_character, "setHairSelection('"..v.."','"..v.."')")
-            --      end
-            --  end
+            end
 		end, new_character, playerId)
 	end
 end
@@ -78,8 +71,9 @@ end
 
 -- call ui
 function CallInfoValid(info_json)
-    CallRemoteEvent("create_charactere", info_json)
-    CloseUINewCharacter()
+    SendAlert(1, "error", "debug", info_json)
+    -- CallRemoteEvent("create_charactere", info_json)
+    -- CloseUINewCharacter()
 end
 AddEvent("CallInfoValid", CallInfoValid)
 
@@ -92,3 +86,20 @@ function CallRefrechCharacterPreview(info_json)
     CallRemoteEvent("refrech_charactere", info_json)
 end
 AddEvent("CallRefrechCharacterPreview", CallRefrechCharacterPreview)
+
+function CallChangeGender(gender)
+    ExecuteWebJS(new_character, "clearPartSelect()")
+    CallRemoteEvent("changeGender", gender)
+    
+
+    local ClothingConfig = __CharacterConfig.clothing
+    
+    for i, v in pairs(ClothingConfig[gender]) do
+        local part = i
+        for _, v in ipairs(v) do
+            local name = GetClothingNameByVar(gender, part, v)
+            ExecuteWebJS(new_character, "setPartSelection('"..part.."','"..name.."','"..v.."')")
+        end
+    end
+end
+AddEvent("CallChangeGender", CallChangeGender )

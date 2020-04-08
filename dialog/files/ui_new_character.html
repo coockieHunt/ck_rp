@@ -17,63 +17,90 @@
 <body>
     <section class="info">
         <section>
-            <h2>Civil status</h2>
-            <div class="firstname form">
-                <span>First name :</span>
-                <input type="text" name="firstname" required placeholder="jhon">
-            </div>
-            <div class="name form">
-                <span>name :</span>
-                <input type="text" name="name" required placeholder="doe">
-            </div>
-            <div class="age form">  
-                <span>age :</span>
-                <input type="text" name="age" required placeholder="16-99" data-refresh="true">
-            </div>
-
-            <div class="gender form">
-                <span>gender :</span>       
-                <select name="gender" id="gender" data-refresh="true">
-                    <option value="men">men</option>
-                    <option value="women">women</option>
-                </select>
-            </div>
-
-            <h2>Appearance</h2>
-            
-            <div class="preset form">
-                <span>clothing preset :</span>       
-                <select name="preset" id="preset" data-refresh="true">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select>
-            </div>
-            <div class="hair form">
-                <span>hair :</span>       
-                <select name="hair" id="hair" data-refresh="true">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">2</option>
-                </select>
-            </div>
-
-            <h2>Color</h2>
+            <section class="sectionInfo" id="SectionCivil">
+                <h2>Civil status</h2>
+                <div class="firstname form">
+                    <span>First name :</span>
+                    <input type="text" id="form_firstName" name="firstname" required placeholder="jhon">
+                </div>
+                <div class="name form">
+                    <span>name :</span>
+                    <input type="text" id="form_name" name="name" required placeholder="doe">
+                </div>
+                <div class="age form">  
+                    <span>age :</span>
+                    <input type="text" id="form_age" name="age" required placeholder="16-99">
+                </div>
     
-            <div class="hairColor form" data-refresh="true">
-                <span>hair color:</span>    
-                <input type='text' class='color-picker' name="hairColor" id="hairColor"/>
-            </div>
+                <div class="gender form">
+                    <span>gender :</span>       
+                    <select name="gender" id="form_gender">
+                        <option value="men">men</option>
+                        <option value="women">women</option>
+                    </select>
+                </div>
+            </section>
 
-            <div class="shirtColor form" data-refresh="true">
-                <span>shirt color:</span>    
-                <input type='text' class='color-picker' name="shirtColor" id="shirtColor"/>
-            </div>
+            <section class="sectionInfo" id="SectionAppearance">
+                <h2>appearance</h2>
 
-            <div class="pantsColor form" data-refresh="true">
-                <span>pants color:</span>    
-                <input type='text' class='color-picker' name="pantsColor" id="pantsColor"/>
-            </div>
+                <div class="face form">
+                    <span>face :</span>       
+                    <select name="face" id="form_face" data-refresh="true">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </div>
             
+                <div class="hair form">
+                    <span>hair :</span>       
+                    <select name="hair" id="form_hair" data-refresh="true">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </div>
+                <div class="shirt form">
+                    <span>shirt :</span>       
+                    <select name="shirt" id="form_shirt" data-refresh="true">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </div>
+                <div class="pants form">
+                    <span>pants :</span>       
+                    <select name="pants" id="form_pants" data-refresh="true">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </div>
+                <div class="shoes form">
+                    <span>shoes :</span>       
+                    <select name="shoes" id="form_shoes" data-refresh="true">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </div>
+            </section>
+          
+            <section class="sectionInfo" id="SectionColor">
+                <h2>Color<span class="svg" data-svg="refresh" ></span></h2>
+                
+    
+                <div class="hairColor form" data-refresh="true">
+                    <span>hair color:</span>    
+                    <input type='text' class='color-picker' name="hairColor" id="form_hairColor" data-refresh="true"/>
+                </div>
+    
+                <div class="shirtColor form" data-refresh="true">
+                    <span>shirt color:</span>    
+                    <input type='text' class='color-picker' name="shirtColor" id="form_shirtColor" data-refresh="true"/>
+                </div>
+    
+                <div class="pantsColor form" data-refresh="true">
+                    <span>pants color:</span>    
+                    <input type='text' class='color-picker' name="pantsColor" id="form_pantsColor" data-refresh="true"/>
+                </div>
+            </section>
         </section>
         
 

@@ -27,15 +27,73 @@ _Character_creation = {
         min_age = 21,
         max_age = 100,
         color = {'pants', "shirt", "hair"},
-    }--,
+    },
 
-    -- clothing = {
-    --     hair = {
-    --         "business",
-    --         "normal",
-    --         "normal_Hair_2"
-    --     }
-    -- }
+    clothing = {
+        men = {
+            body = {
+                "body_normal_1",
+                "body_normal_2",
+                "body_normal_3"
+            },
+
+            hair = {
+                "business",
+                "scientist",
+                "police_Hair"
+            },
+
+            shirt = {
+                "formalShirt_1",
+                "prison_Guard",
+                "prisoner"
+            },
+
+            pants = {
+                "cargoPants",
+                "denimPants",
+                "jeans"
+            },
+
+            shoes = {
+                "BusinessShoes",
+                "NormalShoes",
+                "Shoes01"
+            }
+        },
+
+        women = {
+            body = {
+                "Female01",
+                "Female02",
+                "Female03"
+            },
+
+            hair = {
+                "Hair01",
+                "Hair02",
+                "Hair03"
+            },
+
+            shirt = {
+                "formal",
+                "prisoner",
+                "prison-Guard"
+            },
+
+            pants = {
+                "denimPants",
+                "formalPants",
+                "Pants01"
+            },
+
+            shoes = {
+                "Shoes03",
+                "Shoes05",
+                "Shoes06"
+            }
+        }
+    }
 }
 
 -- auto fetch time

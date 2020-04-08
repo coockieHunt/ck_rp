@@ -516,7 +516,7 @@ _Clothing_men = {
         },
 
         [3] = {
-            name = "asket",
+            name = "basket",
             var = "Shoes01",
             dir = "/Game/CharacterModels/Clothing/Meshes/SK_Shoes01"
         }
@@ -704,7 +704,7 @@ _Clothing_women = {
 
         [3] = {
             name = "Formal",
-            var = "FormalPants",
+            var = "formalPants",
             dir = "/Game/CharacterModels/Female/Meshes/HZN_Outfit_Piece_FormalPants_LPR"
         },
 
@@ -773,6 +773,9 @@ _Clothing_women = {
     }
 };
 
+--[[
+    PRESET
+--]]
 _Clothing_preset_men = {
     [1] = {
         name = "Default men preset",
@@ -800,7 +803,6 @@ _Clothing_preset_men = {
         }
     },
 };
-
 
 _Clothing_preset_women = {
     [1] = {

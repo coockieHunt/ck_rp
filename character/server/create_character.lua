@@ -30,18 +30,29 @@ AddRemoteEvent("create_charactere", create_charactere)
 function refrech_charactere(player, json)
     local data = json_decode(json)
     local p = getplayer(player)
-    
-    ChangeClothingPlayer(player, player, "gender", data.g)
-    ChangeClothingPresetPlayer(player, player, data.g, tonumber(data.p))
-    ChangeClothingPlayer(player, player, "hair", data.h)
 
-    ChangeClothingColorPlayer(player, player, "hair", data.hc)
-    ChangeClothingColorPlayer(player, player, "shirt", data.hs)
-    ChangeClothingColorPlayer(player, player, "pants", data.hp)
+    ChangeClothingPlayer(player, player, "hair", getIdByVar(data.gender, "hair", data.hair))
+    ChangeClothingPlayer(player, player, "shirt", getIdByVar(data.gender, "shirt", data.shirt))
+    ChangeClothingPlayer(player, player, "pants", getIdByVar(data.gender, "pants", data.pants))
+    ChangeClothingPlayer(player, player, "shoes", getIdByVar(data.gender, "shoes", data.shoes))
+    ChangeClothingPlayer(player, player, "body", getIdByVar(data.gender, "body", data.body))
+
+    ChangeClothingColorPlayer(player, player, "hair", data.hairColor)
+    ChangeClothingColorPlayer(player, player, "shirt", data.shirtColor)
+    ChangeClothingColorPlayer(player, player, "pants", data.pantsColor)
 
     SetPlayerClothing(player)
 end
 AddRemoteEvent("refrech_charactere", refrech_charactere)
+
+function changeGender(player, gender)
+    ChangeClothingPlayer(player, player, "gender", gender)
+    ChangeClothingPlayer(player, player, "body", 1)
+
+    SetPlayerClothing(player)
+
+end
+AddRemoteEvent("changeGender", changeGender)
 
 function saveCurrentCharacter(player)
     local p = getplayer(player)
