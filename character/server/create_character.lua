@@ -91,3 +91,33 @@ function ErrorClient(player, json)
 end
 AddRemoteEvent("ErrorClient", ErrorClient)
 
+function RotateCharacter(player, dir)
+    local curentPh = GetPlayerHeading(player)
+
+
+    local newPh = 0
+
+    local step = _Character_creation.form.rotate_step
+
+    if(dir == "right")then
+        newPh = curentPh + step
+    end
+
+    if(dir == "left")then
+        newPh = curentPh - step
+    end
+
+    SetPlayerHeading(player, newPh)
+end
+AddRemoteEvent("RotateCharacter", RotateCharacter)
+
+function SetCam(player, dir)
+    if(dir == "head") then
+        CallRemoteEvent(player, "SetCameraHead")
+    end
+
+    if(dir == "body") then
+        CallRemoteEvent(player, "SetCameraBody")
+    end
+end
+AddRemoteEvent("SetCam", SetCam)

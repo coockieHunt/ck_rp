@@ -27,16 +27,10 @@ function OnWebLoadComplete(webid)
     
 	if (new_character == webid) then
         Delay(500, function(webid, playerid)
-            local formConfig = __CharacterConfig.form
-
-            local min_age = formConfig.min_age
-            local max_age = formConfig.max_age
+            local min_age = __CharacterConfig.form.min_age
+            local max_age = __CharacterConfig.form.max_age
         
             ExecuteWebJS(new_character, "setFormAge('"..max_age.."', '"..min_age.."')")
-
-            for i, v in ipairs(formConfig.color) do
-                ExecuteWebJS(new_character, "setColorSelection('"..v.."')")
-            end
 		end, new_character, playerId)
 	end
 end
@@ -90,15 +84,28 @@ function CallChangeGender(gender)
     ExecuteWebJS(new_character, "clearPartSelect()")
     CallRemoteEvent("changeGender", gender)
     
-
-    local ClothingConfig = __CharacterConfig.clothing
-    
-    for i, v in pairs(ClothingConfig[gender]) do
+    for i, v in pairs(__CharacterConfig.clothing[gender]) do
         local part = i
         for _, v in ipairs(v) do
             local name = GetClothingNameByVar(gender, part, v)
             ExecuteWebJS(new_character, "setPartSelection('"..part.."','"..name.."','"..v.."')")
         end
     end
+
+    for i, v in ipairs(__CharacterConfig.form.color) do
+        ExecuteWebJS(new_character, "setColorSelection('"..v.."')")
+    end
 end
 AddEvent("CallChangeGender", CallChangeGender )
+
+function CallRotate(dir)
+    CallRemoteEvent("RotateCharacter", dir)
+end
+AddEvent("CallRotate", CallRotate)
+
+
+function CallSetCam(pos)
+    CallRemoteEvent("SetCam", pos)
+end
+AddEvent("CallSetCam", CallSetCam)
+

@@ -49,6 +49,7 @@ function setFormAge(confMax_age, Confmin_age){
 }
 
 function setColorSelection(type){
+    $(selectorSection.color + " > .no").hide()
     $(selectorColor[type]).show()
 }
 
@@ -59,13 +60,12 @@ $(function() {
 
     $.each( selectorSection, function( index, value ) {
         if(index != "civil"){
-            $(value).hide()
+            let no = $(value).append("<p class='no'>not option</p>")
+            $(value + " > div").hide()
         }
     });
 
     $(selector.gender).val("");
-
-
 });
 
 // change gender setup part select
@@ -73,7 +73,8 @@ $('.gender').change(function() {
     let genderVal = $(selector.gender).val()
     $.each( selectorSection, function( index, value ) {
         if(index != "civil"){
-            $(value).show()
+            $(value + " > div").show()
+            $(value + " > .no").hide()
         }
     });
 
@@ -116,7 +117,24 @@ function setPartSelection(type, name, value){
     $(selector[type]).append(new Option(name, value));
 }
 
-//call
+//cam manager
+$( "#rotateLeft" ).click(function() {
+    CallEvent("CallRotate", "left");
+});
+
+$( "#rotateRight" ).click(function() {
+    CallEvent("CallRotate", "right");
+});
+
+$( "#camHead" ).click(function() {
+    CallEvent("CallSetCam", "head");
+});
+
+$( "#CamBody" ).click(function() {
+    CallEvent("CallSetCam", "body");
+});
+
+//refresh
 $("*[data-refresh='true']").change(function() {
     let form = {
         "hair": $(selector.hair).val(),

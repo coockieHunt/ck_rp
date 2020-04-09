@@ -1,5 +1,53 @@
 :root {
-    --section-size: 55px
+    --section-size: 45px
+}
+
+#cam > #rotate {
+    position: absolute; 
+    left: 60%; 
+    transform: translate(-50%); 
+    display: flex;
+}
+
+#cam > #rotate > div{
+   background: var( --gray-dark);
+   width: 50px;
+   height: 50px;
+   margin-right: 10px;
+   cursor: pointer;
+}
+
+#cam > #rotate > div:hover{
+    background: var( --gray-light);
+}
+
+#cam > #camPosition {
+    position: absolute; 
+    right: 0; 
+    display: flex;
+
+}
+
+#cam > #camPosition > div{
+   background: var( --gray-dark);
+   width: 50px;
+   height: 50px;
+   margin-left: 10px;
+   cursor: pointer;
+}
+
+#cam > * > div > svg{
+    width: 65%;
+    height: 65%;
+    color: white;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+ }
+
+#cam > #camPosition > div:hover{
+    background: var( --gray-light);
 }
 
 .info {
@@ -26,11 +74,14 @@
     margin-top: 10px;
     margin-left: 5px;
 
-    background: linear-gradient(to right, #30CFD0 0%, rgb(6, 190, 190) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
     text-align: center;
+    font-size: 1.2em;
+}
+
+.info  > section > .sectionInfo > .no {
+    margin-left: 10px;
+    font-size: 0.8em;
+    color: #6b7986;
 }
 
 
