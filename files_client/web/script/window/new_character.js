@@ -1,5 +1,6 @@
 // set selector
 var selector = {
+    "cam" : "#cam",
     "first_name" : "#form_firstName",
     "name" : "#form_name",
     "age" : "#form_age",
@@ -58,6 +59,8 @@ $(function() {
         $(value).hide()
     });
 
+    $(selector.cam).hide()
+
     $.each( selectorSection, function( index, value ) {
         if(index != "civil"){
             let no = $(value).append("<p class='no'>not option</p>")
@@ -73,10 +76,14 @@ $('.gender').change(function() {
     let genderVal = $(selector.gender).val()
     $.each( selectorSection, function( index, value ) {
         if(index != "civil"){
-            $(value + " > div").show()
+            $(value + " > div").show(200)
             $(value + " > .no").hide()
         }
     });
+
+    $(selector.cam).show(200)
+
+    RefrechCharacte()
 
     $("#refresh").click(function() {
         $.each( selector, function( index,_) {
@@ -85,21 +92,6 @@ $('.gender').change(function() {
             }
         });
 
-        let form = {
-            "hair": $(selector.hair).val(),
-            "shirt": $(selector.shirt).val(),
-            "pants": $(selector.pants).val(),
-            "shoes": $(selector.shoes).val(),
-            "body": $(selector.body).val(),
-            "gender": $(selector.gender).val(),
-    
-            "hairColor": $(selector.hairColor).val(),
-            "shirtColor": $(selector.shirtColor).val(),
-            "pantsColor": $(selector.pantsColor).val(),
-        }
-    
-        let rslt = JSON.stringify(form);
-        CallEvent("CallRefrechCharacterPreview", rslt);
     });
 
     CallEvent("CallChangeGender", genderVal);
@@ -134,8 +126,12 @@ $( "#CamBody" ).click(function() {
     CallEvent("CallSetCam", "body");
 });
 
+$( "#camReset" ).click(function() {
+    CallEvent("CallSetCam", "reset");
+});
+
 //refresh
-$("*[data-refresh='true']").change(function() {
+function RefrechCharacte(){
     let form = {
         "hair": $(selector.hair).val(),
         "shirt": $(selector.shirt).val(),
@@ -151,8 +147,11 @@ $("*[data-refresh='true']").change(function() {
 
     let rslt = JSON.stringify(form);
     CallEvent("CallRefrechCharacterPreview", rslt);
-});
+}
 
+$("*[data-refresh='true']").change(function() {
+    RefrechCharacte()
+});
 
 
 $("#submit").click(function() {
