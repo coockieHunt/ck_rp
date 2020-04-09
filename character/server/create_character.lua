@@ -33,15 +33,10 @@ function changeGender(player, gender)
 
     for k, v in pairs(character_creation[gender]) do
         ChangeClothingPlayer(player, player, k, getIdByVar(gender, k, v[1]))
-        ChangeClothingPlayer(player, player, k, getIdByVar(gender, k, v[1]))
-        ChangeClothingPlayer(player, player, k, getIdByVar(gender, k, v[1]))
-        ChangeClothingPlayer(player, player, k, getIdByVar(gender, k, v[1]))
-        ChangeClothingPlayer(player, player, k, getIdByVar(gender, k, v[1]))
-    end
-    ChangeClothingPlayer(player, player, "body", 1)
-
+    end 
 
     SetPlayerClothing(player)
+
 
 end
 AddRemoteEvent("changeGender", changeGender)
@@ -118,6 +113,10 @@ function SetCam(player, dir)
 
     if(dir == "body") then
         CallRemoteEvent(player, "SetCameraBody")
+    end
+
+    if(dir == "reset") then
+        SetPlayerHeading(player, 170)
     end
 end
 AddRemoteEvent("SetCam", SetCam)
