@@ -147,6 +147,11 @@ $("#submit").click(function() {
     });
 
 
+    if(input.g == null){
+        error.push(["g", "empty"]);
+    }
+
+
 
     if($.isEmptyObject(error)){
         CallEvent("CallInfoValid");

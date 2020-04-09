@@ -27,8 +27,19 @@ end
 AddRemoteEvent("refrech_charactere", refrech_charactere)
 
 function changeGender(player, gender)
+    local character_creation = _Character_creation.clothing
+
     ChangeClothingPlayer(player, player, "gender", gender)
+
+    for k, v in pairs(character_creation[gender]) do
+        ChangeClothingPlayer(player, player, k, getIdByVar(gender, k, v[1]))
+        ChangeClothingPlayer(player, player, k, getIdByVar(gender, k, v[1]))
+        ChangeClothingPlayer(player, player, k, getIdByVar(gender, k, v[1]))
+        ChangeClothingPlayer(player, player, k, getIdByVar(gender, k, v[1]))
+        ChangeClothingPlayer(player, player, k, getIdByVar(gender, k, v[1]))
+    end
     ChangeClothingPlayer(player, player, "body", 1)
+
 
     SetPlayerClothing(player)
 
@@ -61,6 +72,7 @@ function ErrorClient(player, json)
         ["fn"] = "First name", 
         ["n"] = "Name", 
         ["a"] = "Age",
+        ["g"] = "Gender",
     }
 
     local formError = {
