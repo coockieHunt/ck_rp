@@ -3,5 +3,5 @@ _Key_ui = {
     admin = "F5",
     survival = "Tab",
     interact = "E",
-    char = "B",
+    info = "I",
 };
