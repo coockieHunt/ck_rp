@@ -76,6 +76,31 @@ $('.gender').change(function() {
             $(value).show()
         }
     });
+
+    $("#refresh").click(function() {
+        $.each( selector, function( index,_) {
+            if (index.indexOf('Color') > -1){
+                $(".color-picker").spectrum("set", "");
+            }
+        });
+
+        let form = {
+            "hair": $(selector.hair).val(),
+            "shirt": $(selector.shirt).val(),
+            "pants": $(selector.pants).val(),
+            "shoes": $(selector.shoes).val(),
+            "body": $(selector.body).val(),
+            "gender": $(selector.gender).val(),
+    
+            "hairColor": $(selector.hairColor).val(),
+            "shirtColor": $(selector.shirtColor).val(),
+            "pantsColor": $(selector.pantsColor).val(),
+        }
+    
+        let rslt = JSON.stringify(form);
+        CallEvent("CallRefrechCharacterPreview", rslt);
+    });
+
     CallEvent("CallChangeGender", genderVal);
 });
 
@@ -110,9 +135,7 @@ $("*[data-refresh='true']").change(function() {
     CallEvent("CallRefrechCharacterPreview", rslt);
 });
 
-$("#refresh").click(function() {
-    alert( "Handler for .click() called." );
-});
+
 
 $("#submit").click(function() {
     let error = []
@@ -150,8 +173,6 @@ $("#submit").click(function() {
     if(input.g == null){
         error.push(["g", "empty"]);
     }
-
-
 
     if($.isEmptyObject(error)){
         CallEvent("CallInfoValid");
