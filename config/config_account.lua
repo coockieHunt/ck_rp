@@ -28,6 +28,7 @@ _Character_creation = {
         max_age = 100,
         color = {'pants', "shirt", "hair"},
         rotate_step = 10,
+        scene = true;
     },
 
     clothing = {
