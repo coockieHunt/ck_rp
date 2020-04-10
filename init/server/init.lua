@@ -12,5 +12,8 @@ end
 AddEvent("OnPlayerSpawn", OnPlayerSpawn)
 
 function OnPlayerLoadComplete(player)
+	Delay(5000, function()
+		AutoAlertRun(player)
+	end)
 end
 
