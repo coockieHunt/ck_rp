@@ -94,7 +94,7 @@ function OnAccountLoadedCache(player)
     player_name = p.name
     SetPlayerArmor(player, p:getHealth())
     SetPlayerHealth(player, p:getArmor())
-
+    setPlayerActive(player, true)
 	OnPlayerLoadComplete(player)
 end
 
@@ -121,7 +121,8 @@ function OnAccountLoadedSql(player)
             print("> character not create, opening character customize dialog on the player client")
             CallRemoteEvent(player, "OpenUINewCharacter")
         end
-        
+
+        setPlayerActive(player, true)
         OnPlayerLoadComplete(player)
 	end
 end
