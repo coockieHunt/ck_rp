@@ -69,6 +69,16 @@ $(function() {
     });
 
     $(selector.gender).val("");
+
+    $(".rc").click(function() {
+        $.each( selector, function( index,_) {
+            if (index.indexOf('Color') > -1){
+                $(".color-picker").spectrum("set", "");
+            }
+        });
+
+        RefrechCharacte()
+    });
 });
 
 // change gender setup part select
@@ -85,17 +95,10 @@ $('.gender').change(function() {
 
     RefrechCharacte()
 
-    $("#refresh").click(function() {
-        $.each( selector, function( index,_) {
-            if (index.indexOf('Color') > -1){
-                $(".color-picker").spectrum("set", "");
-            }
-        });
-
-    });
-
     CallEvent("CallChangeGender", genderVal);
 });
+
+
 
 function clearPartSelect(){
     $(selector.hair).empty();
