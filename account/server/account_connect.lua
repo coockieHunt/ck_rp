@@ -77,20 +77,31 @@ function LoadPlayerAccount(player)
 
     if(IfCachedPlayer(player)) then
         print("> Load player account by CACHE ("..steam_id..") ")
-        setPlayerActive(player, true)
-	    SetPlayerClothing(player)
+        OnAccountLoadedCache(player)
     else
         print("> Load player account by SQL ("..steam_id..") ")
-
         local query = mariadb_prepare(db,  _RequestSql.GetPlayerAccount, steam_id)
 
-        mariadb_async_query(db, query, OnAccountLoaded, player)
+        mariadb_async_query(db, query, OnAccountLoadedSql, player)
     end
 end
 
-function OnAccountLoaded(player)
+function OnAccountLoadedCache(player)
+    local p = getplayer(player)
+
+    SetPlayerClothing(player)
+
+    player_name = p.name
+    SetPlayerArmor(player, p:getHealth())
+    SetPlayerHealth(player, p:getArmor())
+
+	OnPlayerLoadComplete(player)
+end
+
+function OnAccountLoadedSql(player)
     if (mariadb_get_row_count() == 0) then
-		KickPlayer(player, "😨 An error occured while loading your account 😨 (EC 002)")
+        KickPlayer(player, "😨 An error occured while loading your account 😨 (EC 002)")
+        print("> Error loading player account ("..steam_id..")  ")
     else
         local player_name = GetPlayerName(player)
         local result = mariadb_get_assoc(1)
@@ -104,14 +115,14 @@ function OnAccountLoaded(player)
         SetPlayerArmor(player, tonumber(result['armor']))
         SetPlayerHealth(player, tonumber(result['health']))
 
-
         createPlayerAccount(player, player_name, result)
         local ValidClothing = SetPlayerClothing(player)
         if (ValidClothing ~= true) then
             print("> character not create, opening character customize dialog on the player client")
             CallRemoteEvent(player, "OpenUINewCharacter")
-            
         end
+        
+        OnPlayerLoadComplete(player)
 	end
 end
 
