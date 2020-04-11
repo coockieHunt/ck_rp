@@ -63,9 +63,9 @@ _Log_file = {
 _Mariadb = { 
     host = "127.0.0.1", 
     user = "root", 
-    password = "", 
+    password = "root", 
     database = "onset"
-  };
+};
   
 _RequestSql = {
     IfplayerAccountExist = "SELECT id FROM accounts WHERE steam_id = '?' LIMIT 1;",
