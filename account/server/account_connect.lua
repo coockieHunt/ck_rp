@@ -176,21 +176,20 @@ end
 
 function IfPlayerActive(player)
     local p = getplayer(player)
-
     return p:getActive()
 end
 
 function IfPlayerBackUp(player)
     local p = getplayer(player)
 
-    return p:backup()
+    return p:getBackUpStatus()
 end
 
 function setPlayerBackUp(player, bool)
     local p = getplayer(player)
 
     if(p ~= true) then
-        p:setBackUp(bool)
+        p:setBackUpStatus(bool)
     end
 end
 

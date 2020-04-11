@@ -49,6 +49,8 @@ function setupCamUi(player)
     local x, y, z  = GetPlayerLocation(player)
     local newDimension = tonumber(player) + 1
 
+    setPlayerBackUp(player, false)
+
     save_playerHeading = GetPlayerHeading(player)
     CallRemoteEvent(player, "removeSkeletalMesh", "body")
     
@@ -76,6 +78,8 @@ AddRemoteEvent("setupCamUi", setupCamUi)
 function RemoveCamUi(player)
     SetPlayerDimension(player, 0)
     SetPlayerHeading(player, save_playerHeading)
+
+    setPlayerBackUp(player, true)
 
     if(_Character_creation.form.scene) then
         DestroyObject(wall)
