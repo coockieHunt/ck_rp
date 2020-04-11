@@ -89,7 +89,11 @@ end
 function OnAccountLoadedCache(player)
     local p = getplayer(player)
 
-    SetPlayerClothing(player)
+    local ValidClothing = SetPlayerClothing(player)
+    if (ValidClothing ~= true) then
+        print("> character not create, opening character customize dialog on the player client")
+        CallRemoteEvent(player, "OpenUINewCharacter")
+    end
 
     player_name = p.name
     SetPlayerArmor(player, p:getHealth())
