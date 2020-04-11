@@ -180,6 +180,18 @@ function IfPlayerActive(player)
     return p:getActive()
 end
 
+function IfPlayerBackUp(player)
+    local p = getplayer(player)
 
+    return p:backup()
+end
+
+function setPlayerBackUp(player, bool)
+    local p = getplayer(player)
+
+    if(p ~= true) then
+        p:setBackUp(bool)
+    end
+end
 
 
