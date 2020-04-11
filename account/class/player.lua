@@ -141,6 +141,16 @@ function player:setActive(bool)
    return true
 end
 
+-- BACKUP
+function player:getBackUpStatus()
+   return self.backup_status
+end
+
+function player:setBackUpStatus(bool)
+   self.backup_status = bool
+   return true
+end
+
 local function newPlayer(playerInfo)
    return player:init(playerInfo)
 end

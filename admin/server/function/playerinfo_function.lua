@@ -19,5 +19,6 @@ function admin_GetPlayerInfo(player, target, playerid)
         CallRemoteEvent(player, "SetInfoLst", 'MaxWeight', data.MaxWeight)
         CallRemoteEvent(player, "SetInfoLst", 'CurWeight', data.CurWeight)
         CallRemoteEvent(player, "SetInfoLst", 'alert_count', data.alert_count)
+        CallRemoteEvent(player, "SetInfoLst", 'backup_status', tostring(data:getBackUpStatus()))
 	end
 end

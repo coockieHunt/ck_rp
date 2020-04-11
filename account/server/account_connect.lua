@@ -154,6 +154,7 @@ function createPlayerAccount(player, name, data)
             ["clothing_color"] =  data['clothing_color'],
             ["alert_count"] =  0,
             ["active"] =  true,
+            ["backup_status"] =  true,
         })
 
     table.insert(playerData, p)       
@@ -178,6 +179,7 @@ function IfPlayerActive(player)
 
     return p:getActive()
 end
+
 
 
 
