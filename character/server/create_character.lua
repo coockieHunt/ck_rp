@@ -52,7 +52,6 @@ function setupCamUi(player)
     setPlayerBackUp(player, false)
 
     save_playerHeading = GetPlayerHeading(player)
-    CallRemoteEvent(player, "removeSkeletalMesh", "body")
     
     local x, y, z  = GetPlayerLocation(player)
     
@@ -68,7 +67,6 @@ function setupCamUi(player)
         SetObjectScale(wall, 0, 50, 20)
         SetObjectScale(floor, 0, 50, 20)
     end
-
 
     SetPlayerHeading(player, 170)
     SetPlayerDimension(player, newDimension)

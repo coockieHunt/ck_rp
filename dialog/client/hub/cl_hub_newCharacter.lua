@@ -82,7 +82,7 @@ AddEvent("CallRefrechCharacterPreview", CallRefrechCharacterPreview)
 
 function CallChangeGender(gender)
     ExecuteWebJS(new_character, "clearPartSelect()")
-    CallRemoteEvent("changeGender", gender)
+    
     
     for i, v in pairs(__CharacterConfig.clothing[gender]) do
         local part = i
@@ -95,6 +95,8 @@ function CallChangeGender(gender)
     for i, v in ipairs(__CharacterConfig.form.color) do
         ExecuteWebJS(new_character, "setColorSelection('"..v.."')")
     end
+
+    CallRemoteEvent("changeGender", gender)
 end
 AddEvent("CallChangeGender", CallChangeGender )
 
