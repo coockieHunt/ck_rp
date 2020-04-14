@@ -64,7 +64,6 @@
 		"files_client/web/css/libs/spectrum.css",
 		"files_client/web/css/window/admin.css",
 		"files_client/web/css/window/survival.css",
-		"files_client/web/css/window/loader_fullScreen.css",
 		"files_client/web/css/window/warning_survival.css",
 		"files_client/web/css/window/new_character.css",
 		"files_client/web/css/window/info.css",
