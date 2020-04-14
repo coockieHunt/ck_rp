@@ -7,7 +7,8 @@ function OpenUIAdmin()
         LockPlayerInput(true)
         SetWebVisibility(admin_ui, WEB_VISIBLE)
         CloseUISurvival_warn()
-        
+        CloseUIAlert()
+
         ClearDropList()
         BuildSelect(admin_ui)
     end
@@ -18,6 +19,7 @@ function CloseUIAdmin()
     LockPlayerInput(false)
     SetWebVisibility(admin_ui, WEB_HIDDEN)
 
+    OpenUIAlert()
     OpenUISurvival_warn()
 end
 

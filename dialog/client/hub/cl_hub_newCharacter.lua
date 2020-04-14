@@ -3,11 +3,13 @@ local new_character
 -- manage ui
 function OpenUINewCharacter()
     if new_character ~= nil then
+
         ShowMouseHub(true)
         LockPlayerInput(true)
         SetWebVisibility(new_character, WEB_VISIBLE)
 
         setupCamUi(GetPlayerId())
+
     end
 end
 AddRemoteEvent("OpenUINewCharacter", OpenUINewCharacter)
@@ -18,7 +20,7 @@ function CloseUINewCharacter()
     LockPlayerInput(false)
     SetWebVisibility(new_character, WEB_HIDDEN)
 
-
+    OpenUISurvival_warn()
     RemoveCamUi(GetPlayerId())
 end
 

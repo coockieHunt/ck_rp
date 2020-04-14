@@ -16,7 +16,7 @@ AddEvent("OnPlayerSpawn", function(playerid)
     SetWebAlignment(survival_warn_ui, 0,0)
     SetWebAnchors(survival_warn_ui, 0,0,1,1)
     SetWebURL(survival_warn_ui,  'http://asset/' .. GetPackageName() .. '/dialog/files/ui_warning_survival.html')
-    SetWebVisibility(survival_warn_ui, WEB_VISIBLE)
+    SetWebVisibility(survival_warn_ui, WEB_HIDDEN)
 end)
 
 
@@ -66,15 +66,3 @@ function setSurivalWarning(food, thirst)
     end
 end
 AddRemoteEvent("setSurivalWarning", setSurivalWarning)
-
-function SendAlert(id, type, title, content)
-    ExecuteWebJS(survival_warn_ui, "sendAlert( "..id..", '"..type.."',  '"..title.."', '"..content.."');")
-end
-AddRemoteEvent("SendAlert", SendAlert)
-
-function CeateProgressBar(time, color)
-    if color == nil then color = "#43515e" end
-    
-    ExecuteWebJS(survival_warn_ui, "CreateProgressBar( "..time..", '"..color.."');")
-end
-AddRemoteEvent("CeateProgressBar", CeateProgressBar)

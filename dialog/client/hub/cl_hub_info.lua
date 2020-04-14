@@ -16,7 +16,6 @@ AddEvent("OnPlayerSpawn", function(playerid)
     SetWebAnchors(info_ui, 0,0,1,1)
     SetWebURL(info_ui,  'http://asset/' .. GetPackageName() .. '/dialog/files/ui_info.html')
     SetWebVisibility(info_ui, WEB_HIDDEN)
-
 end)
 
 AddEvent("OnKeyPress", function(key)
