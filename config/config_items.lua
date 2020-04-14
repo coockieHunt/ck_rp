@@ -50,6 +50,23 @@ _Items = {
         }
     },
 
+    firework = {
+        name= "firework",
+        description = "Les chips ou pommes chips, connues aussi sous le néologisme de croustilles au Canada",
+        model = 0,
+        weight= 1,
+        health = 0,
+        thirst = 0,
+        food = 0,
+        usable= "",
+        thumbnail= "../../files_client/web/src/img/chips.png",
+        type= "food",
+        hand_pos = {
+            drop = false,
+            use = false
+        }
+    },
+
     first_aid_kit = {
         name= "first aid kit",
         description = "Le Trousse de secours d’Urgence est une trousse de secours très complète, contenant tout le matériel important de premiers secour.",
@@ -86,5 +103,7 @@ _Item_type = {
         icon = 'heart',
         consume_time = 10000
     }
-}
+};
+
+_Default_model = 517
   

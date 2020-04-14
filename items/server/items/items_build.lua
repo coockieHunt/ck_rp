@@ -20,6 +20,8 @@ function OnPackageStart(player)
 
     for id, item in pairs(_Items) do
         ValidateItemsConfig(item)
+
+        if(item.model == 0) then item.model = _Default_model end
         local i = ItemsData.ClassItem.new(
             {
                 ["id"] = id,
