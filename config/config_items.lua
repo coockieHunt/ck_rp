@@ -58,9 +58,9 @@ _Items = {
         health = 0,
         thirst = 0,
         food = 0,
-        usable= "",
-        thumbnail= "../../files_client/web/src/img/chips.png",
-        type= "food",
+        usable= "firework",
+        thumbnail= "../../files_client/web/src/img/firework.png",
+        type= "other",
         hand_pos = {
             drop = false,
             use = false
@@ -101,6 +101,12 @@ _Item_type = {
     medic = {
         color = "#d85a5a",
         icon = 'heart',
+        consume_time = 10000
+    },
+
+    other = {
+        color = "#585858",
+        icon = 'other',
         consume_time = 10000
     }
 };

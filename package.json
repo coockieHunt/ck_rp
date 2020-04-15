@@ -42,6 +42,7 @@
 		
 		"items/client/cl_gather.lua",
 		"items/client/cl_security.lua",
+		"items/client/cl_item_func.lua",
 
 		"data/client/cl_setData.lua",
 		"data/client/cl_getData.lua"
@@ -56,7 +57,7 @@
 		"files_client/web/src/img/energi_drink.png",
 		"files_client/web/src/img/chips.png",
 		"files_client/web/src/img/first_aid_kit.png",
-		"files_client/web/src/img/sprite.svg",
+		"files_client/web/src/img/firework.png",
 
 		"files_client/web/src/font/Roboto-Regular.ttf",
 
