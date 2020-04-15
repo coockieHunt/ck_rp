@@ -73,3 +73,13 @@ strong{
     background-color: rgba(0, 0, 0, 0.685);
     border: 0px;
 }
+
+#server_v{
+    font-size:large; 
+    position: absolute; 
+    bottom: 0; 
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding-bottom: 15px;
+}
