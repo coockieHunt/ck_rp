@@ -63,6 +63,8 @@ function UseItem(player, item_id)
 
                 item_func[func](player)
             end
+
+            SaveAccountPlayer(player, "inventoy")
         end
     end
 end
