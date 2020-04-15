@@ -89,3 +89,4 @@ _Mariadb = {
 
 ***config guide***
 - items : [here](https://github.com/coockieHunt/onset-ck-rp/blob/master/doc/ITEMS.md) 
+- function : [here](https://github.com/coockieHunt/onset-ck-rp/blob/master/doc/FUNC.md) 
