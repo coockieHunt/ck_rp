@@ -45,5 +45,9 @@ function setCurrentDayTime(time)
     SyncClientTime(time)
 end
 
+function getCurrentDayTime()
+    return currentDayTime
+end
+
 
 
