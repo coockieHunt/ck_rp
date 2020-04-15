@@ -48,6 +48,10 @@
                         <div id="dp_interract">
                             <li id="drop_object_items_action">droped item</li>
                         </div>
+                        <li data-dp_id="environment">environment </li>
+                        <div id="dp_environment">
+                            <li id="change_time_action">Time</li>
+                        </div>
                         <li data-dp_id="other">other</li>
                         <div id="dp_other">
                             <li id="player_cache_action">player cache</li>
@@ -481,8 +485,23 @@
                         </div>
                     </section>
 
-                      <!-- Player info -->
-                      <section id="player_info_action">
+                      <!-- change time -->
+                      <section id="change_time_action">
+                        <h1>change time</h1>
+
+                        <div class="content">
+                            <form>
+                                <label for="target">time: </label>
+
+                                <div>
+                                    <input type='text' name="time"/>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <!-- Player info -->
+                    <section id="player_info_action">
                         <h1>Droped item list</h1>
 
                         <div class="content">

@@ -182,6 +182,21 @@ AddRemoteEvent("Exucute", function(playerid, json)
             end
         end
     end
+
+    if(func == 'change_time_action') then
+        if(isnil(data['time'])) then
+            AddPlayerChat(playerid, "none time")
+        else
+            local time = data['time']
+            local time = tonumber(time)
+            if time > 24 or time < 0 then
+                AddPlayerChat(playerid, "error time <0 - 24>")
+                return false
+            end
+
+            admin_change_time(playerid, time)
+        end
+    end
  end)
 
 AddRemoteEvent("GetAllPlayer", function(player)
