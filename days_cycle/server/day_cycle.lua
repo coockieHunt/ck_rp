@@ -12,7 +12,7 @@ AddEvent("OnPackageStart",function()
 
         currentTime = currentTime + step
 
-        if(currentTime > 24) thencurrentTime = 0 end
+        if(currentTime > 24) then thencurrentTime = 0 end
 
         SyncClientTime(time)
     end, refrech, vehicle)
@@ -36,7 +36,7 @@ function GetDayOrNigth(time)
     time = math.floor(time)
     local current = "day"
 
-    if time > 18 or time < 6 thencurrent = "night" end
+    if time > 18 or time < 6 then thencurrent = "night" end
     return current
 end
 
