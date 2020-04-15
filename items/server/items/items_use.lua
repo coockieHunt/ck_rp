@@ -8,6 +8,7 @@ function UseItem(player, item_id)
             local food = item.food
             local thirst = item.thirst
             local health = item.health
+            local func = item.usable
 
             local time
 
@@ -55,10 +56,18 @@ function UseItem(player, item_id)
                     consumeItem(player,item.name, food, thirst, health)
                 end)
             end
+
+            if not isnil(func) then
+                RemovePlayerItem(player, player, item_id, 1)
+                SendAlert(player, "info", "Use", "You used <strong>".. item.name .."</strong>")
+
+                item_func[func](player)
+            end
         end
     end
 end
 AddRemoteEvent("UseItem", UseItem)
+
 
 function consumeItem(player, item_name, food, thirst, health)
     local symbol
