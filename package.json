@@ -10,6 +10,7 @@
 	"client_scripts": [
 		"utils/json.lua",
 		"account/client/cl_account_autoAlert.lua",
+		"days_cycle/client/cl_days_clycle.lua",
 
 		"dialog/client/hub/cl_hub_admin.lua",
 		"admin/client/function/cl_manage_function.lua",
