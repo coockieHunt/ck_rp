@@ -18,6 +18,7 @@ AddEvent("OnKeyPress", OnKeyPress)
 
 AddEvent("OnPlayerSpawn", function()
 	SetPostEffect("DepthOfField", "Distance", 0)
+	SetPostEffect("Global", "Gain", 250,250,250, 0.01)
 	ShowHealthHUD(false)
     ShowWeaponHUD(false)
 end)
