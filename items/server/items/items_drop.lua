@@ -1,5 +1,4 @@
 function CreateDropItem(player, item_id, quantity)
-    if(IfAccountOwnItem(player, item_id)) then
         local x, y, z = GetPlayerLocation(player)
         local ph = GetPlayerHeading(player)
         local Vx, Vy, Vz = GetPlayerForward(player)
@@ -32,8 +31,6 @@ function CreateDropItem(player, item_id, quantity)
             
             AddItemPickUpList(player, pickup, item.model, ItemText, quantity, item_id)
         end)
-    end
-   
 end
 
 function GatherDropedItem(player, droped_id)
@@ -99,8 +96,10 @@ function AddItemPickUpList(player, pickup, model, ItemText, quantity, item_id)
 end
 
 function drop_item(player, item_id, quantity) 
-    CreateDropItem(player, item_id, quantity)
-    RemovePlayerItem(player, player, item_id, quantity)
+    if(IfAccountOwnItem(player, item_id)) then
+        CreateDropItem(player, item_id, quantity)
+        RemovePlayerItem(player, player, item_id, quantity)
+    end
 end
 AddRemoteEvent("drop_item", drop_item)
 
