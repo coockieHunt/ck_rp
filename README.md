@@ -60,8 +60,6 @@ CREATE TABLE IF NOT EXISTS `account_administrator` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `account_id` int(11) NOT NULL,
   `admin_level` int(11) NOT NULL,
-  `last_at_admin_state` timestamp NULL DEFAULT NULL,
-  `create_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
