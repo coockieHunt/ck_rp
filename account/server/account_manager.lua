@@ -74,7 +74,6 @@ function SaveAccountPlayer(player, filter)
         )
     end
 
-
     mariadb_query(db, query)
 
     ShowIconSaveClient(player)
@@ -90,6 +89,13 @@ end
 
 function OnPlayerQuit(player)
     setPlayerActive(player, false)
-    SaveAccountPlayer(player)
 end
 AddEvent("OnPlayerQuit", OnPlayerQuit)
+
+function OnPlayerDamage(player)
+    local p = getplayer(player)
+
+    p:setHealth(GetPlayerHealth(player))
+    p:setArmor(GetPlayerArmor(player))
+end
+AddEvent("OnPlayerDamage", OnPlayerDamage)
