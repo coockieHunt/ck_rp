@@ -9,32 +9,6 @@ function getplayer(player)
     return KickPlayer(player, "😨 An error occured while loading your account 😨 (EC 003)")
 end
 
-function IfCachedPlayer(player)
-    local steam_id = tostring(GetPlayerSteamId(tonumber(player)))
-    for key, value in pairs(playerData) do
-        if(value.steamId == steam_id) then
-            return true
-        end
-    end
-    return false
-end
-
-function OnPackageStart()
-        local backup = CreateTimer(function()
-            if(tablelength(playerData) > 0) then
-                local countSaved = 0
-                for key, value in pairs(playerData) do
-                    if(value.active and value.backup_status) then
-                        countSaved = countSaved + 1
-                        SaveAccountPlayer(value.id_client)
-                    end
-                end
-                
-                if(countSaved > 0) then print("> Automatic backup account: "..countSaved.." backup") end
-            end
-        end, _Account_timer.save_account_time)
-end
-AddEvent("OnPackageStart", OnPackageStart)
 
 function SaveAccountPlayer(player, filter)
     if isnil(filter) then filter = "all" end
@@ -113,3 +87,9 @@ function DestroyPlayerData(steam_id)
         end
     end
 end
+
+function OnPlayerQuit(player)
+    setPlayerActive(player, false)
+    SaveAccountPlayer(player)
+end
+AddEvent("OnPlayerQuit", OnPlayerQuit)
