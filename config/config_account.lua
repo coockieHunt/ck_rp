@@ -98,21 +98,6 @@ _Character_creation = {
     }
 };
 
-_Auto_message_alert = {
-    active = true,
-
-    config = {
-        timer = 60000*1, -- milisecond (1 min = 60000 milisecond) default - 300000
-        type = "info",
-        title = "Auto message", 
-    },
-
-    message = {
-        "press <strong> i </strong> key to know the keys",
-        "seconde am msg"
-    }
-}
-
 -- auto fetch time
 _Account_timer = {
     save_account_time = 60000*5 ,-- milisecond (1 min = 60000 milisecond) default - 300000

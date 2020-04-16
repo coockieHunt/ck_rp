@@ -93,17 +93,6 @@ _Default_item = {
     }
 };
 
--- day cycle
-_Day_cycle = {
-    start_at = 10,
-    step_by_refrech = 0.1,
-    refrech_time = 60000/2,
-    multiply = {
-        day = 0,
-        night = 2
-    }
-}
-
 -- register
 _Registe_SkeletalMesh_player = {
     body = "Body",
