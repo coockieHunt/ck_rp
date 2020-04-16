@@ -63,6 +63,18 @@ CREATE TABLE IF NOT EXISTS `account_administrator` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
+CREATE TABLE IF NOT EXISTS `ban` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `steam_id` varchar(20) NOT NULL DEFAULT '0',
+  `at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `end` timestamp NOT NULL DEFAULT current_timestamp(),
+  `by` longtext NOT NULL DEFAULT 'none',
+  `reason` longtext NOT NULL DEFAULT '"reason long text"',
+  `active` smallint(6) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+
 ```
 4. move all file to *"yourserveronset\packages\ck_rp"*
 5. update *"server_config"*  :
