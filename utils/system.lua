@@ -1,9 +1,17 @@
+-- date
 function GetSystemTime()
-    local ts = os.time()
-    local time = os.date('%Y-%m-%d %H:%M:%S', ts)
-    return time
+    return os.time(os.date("!*t"))
 end
 
+function DateTimeConvertLua(datetime)
+  local pattern = "(%d+)-(%d+)-(%d+) (%d+):(%d+):(%d+)"
+  local timeToConvert = datetime
+  local runyear, runmonth, runday, runhour, runminute, runseconds = timeToConvert:match(pattern)
+  
+  return os.time({year = runyear, month = runmonth, day = runday, hour = runhour, min = runminute, sec = runseconds})
+end
+
+-- os
 function get_os_name()
   local raw_os_name, raw_arch_name = '', ''
 
@@ -37,50 +45,14 @@ function get_os_name()
       ['SunOS']       = 'Solaris',
   }
   
-  local arch_patterns = {
-      ['^x86$']           = 'x86',
-      ['i[%d]86']         = 'x86',
-      ['amd64']           = 'x86_64',
-      ['x86_64']          = 'x86_64',
-      ['x64']             = 'x86_64',
-      ['Power Macintosh'] = 'powerpc',
-      ['^arm']            = 'arm',
-      ['^mips']           = 'mips',
-  }
-
-  local os_name, arch_name = 'unknown', 'unknown'
-
   for pattern, name in pairs(os_patterns) do
       if raw_os_name:match(pattern) then
           os_name = name
           break
       end
   end
-  for pattern, name in pairs(arch_patterns) do
-      if raw_arch_name:match(pattern) then
-          arch_name = name
-          break
-      end
-  end
+
   return os_name
-end
-
-function switch(t)
-t.case = function (self,x)
-      local f=self[x] or self.default
-      if f then
-        if type(f)=="function" then
-          f(x,self)
-        else
-          return f
-        end
-      end
-    end
-    return t
-end
-
-function isnil(s)
-  return s == nil or s == ''
 end
 
 -- folder
@@ -151,4 +123,8 @@ end
 -- string
 function string_start_by(String,Start)
   return string.sub(String,1,string.len(Start))==Start
+end
+
+function isnil(s)
+  return s == nil or s == ''
 end
