@@ -19,56 +19,48 @@ function OnPlayerSteamAuth(player)
 end
 AddEvent("OnPlayerSteamAuth", OnPlayerSteamAuth)
 
----- manage player account
 function OnAccountConnect(player)
-    if(mariadb_get_row_count() == 0)then
+    if mariadb_get_row_count() == 0 then
         CreatePlayerAccount(player)
     else
-        LoadPlayerAccount(player)
+        local steam_id = tostring(GetPlayerSteamId(player))
+
+        local query = mariadb_prepare(db, _RequestSql.CheckIfBanAccount, steam_id)
+
+        mariadb_async_query(db, query, IfAccountBan, player)
     end
 end
 
-function OnPlayerDamage(player)
-    local p = getplayer(player)
-
-    p:setHealth(GetPlayerHealth(player))
-    p:setArmor(GetPlayerArmor(player))
-end
-AddEvent("OnPlayerDamage", OnPlayerDamage)
-
--- new account
-function CreatePlayerAccount(player)
-    local steam_id = tostring(GetPlayerSteamId(player))
-    local player_name = GetPlayerName(player)
-
-    print("> create new account ("..steam_id..")")
-
-    local query = mariadb_prepare(db,  _RequestSql.CreatePlayerAccount,
-        steam_id,
-        _New_account.health,
-        _New_account.armor,
-        _New_account.food,
-        _New_account.thirst,
-        _Inventory_account.weight_character,
-        0,
-        player_name,
-        _New_account.cash,
-        _New_account.cash_account,
-        '{}',
-        '{"clothing": {"gender": 0,	"body": 0,	"hair": 0,	"shirt": 0,	"accessory": 0,	"pants": 0,	"shoes": 0	},	"color": {"hair": 0, "shirt": 0, "pants": 0, "shoes": 0	}}'
-    )
-
-    mariadb_query(db, query)
-
-    print("> wait for the creation of the account ...")
-
-    Delay(1000, function()
+function IfAccountBan(player)
+    if mariadb_get_row_count() == 0 then
         LoadPlayerAccount(player)
-    end)
-    
-end
+    else
+        local steam_id = tostring(GetPlayerSteamId(player))
 
--- load account
+        print("> An entry and detected for account (".. steam_id ..") in the ban list. verification .. ")
+
+        local result = mariadb_get_assoc(1)
+        local sql_date = result["end"]
+
+        local ban_status = os.difftime(DateTimeConvertLua(sql_date),  GetSystemTime())
+
+        if ban_status < 0 then
+            print("> ban deadline has been exceeded entry deactivation")
+
+            local query = mariadb_prepare(db, _RequestSql.SetActiveBanAccount,
+                0,
+                result["id"]
+            )
+
+            mariadb_query(db, query)
+
+            LoadPlayerAccount(player)
+        else
+            print("> entry is valid player kicked")
+            KickPlayer(player, "ban until : " ..result["end"] .." [" ..result["by"] .." | "..result["reason"] .."]")
+        end
+    end
+end
 
 function LoadPlayerAccount(player)
     
@@ -129,4 +121,36 @@ function OnAccountLoadedSql(player)
         setPlayerActive(player, true)
         OnPlayerLoadComplete(player)
 	end
+end
+
+
+function createPlayerAccount(player, name, data)
+    if(isnil(data['admin_level'])) then data['admin_level'] = 0 end
+    local steam_id = tostring(GetPlayerSteamId(player))
+    local client_id = GetPlayerBySteamId(steam_id)
+
+    local p = playerData.ClassPlayer.new(
+        {
+            ["id_client"] = client_id,
+            ["name"] = name,
+            ["id"] = data['id'],
+            ["admin"] = data['admin_level'],
+            ["steamId"] = data['steam_id'],
+            ["health"] = data['health'],
+            ["armor"] = data['armor'],
+            ["food"] = data['food'],
+            ["thirst"] = data['thirst'],
+            ["MaxWeight"] = data['max_weight'],
+            ["CurWeight"] = data['cur_weight'],
+            ["cash"] =  data['cash'],
+            ["cash_account"] =  data['cash_account'],
+            ["inventory"] =  data['inventory'],
+            ["clothing"] =  data['clothing'],
+            ["clothing_color"] =  data['clothing_color'],
+            ["alert_count"] =  0,
+            ["active"] =  true,
+            ["backup_status"] =  true,
+        })
+
+    table.insert(playerData, p)       
 end

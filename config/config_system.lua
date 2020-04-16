@@ -70,6 +70,8 @@ _Mariadb = {
   
 _RequestSql = {
     IfplayerAccountExist = "SELECT id FROM accounts WHERE steam_id = '?' LIMIT 1;",
+    CheckIfBanAccount = "SELECT * FROM ban WHERE steam_id = '?' AND active = 1 LIMIT 1;",
+    SetActiveBanAccount = "UPDATE ban SET active= ? WHERE  id= ?;",
     CreatePlayerAccount = "INSERT INTO accounts (id, steam_id, health, armor, food, thirst, max_weight, cur_weight, player_name, cash, cash_account, inventory, clothing) VALUES (NULL, '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?');",
     GetPlayerAccount = "SELECT accounts.id, accounts.* , account_administrator.admin_level FROM account_administrator RIGHT JOIN accounts ON account_administrator.account_id = accounts.id WHERE steam_id = '?';",
     SaveAccount = "UPDATE accounts SET player_name='?', cash= ?, cash_account=?, health= ?, armor=?, food='?', thirst='?', max_weight='?', cur_weight='?', inventory='?', clothing='?' WHERE steam_id = ? LIMIT 1;",
