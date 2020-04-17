@@ -70,7 +70,16 @@ function ClearDropList()
     ExecuteWebJS(admin_ui, "ClearDropItemList()")
 end
 
+AddRemoteEvent('setBanList', function(active, by, start, Ban_end, reason)
+    ExecuteWebJS(admin_ui, "BuildBanList('"..active.."','"..by.."', '"..start.."','"..Ban_end.."', '"..reason.."')")
+end)
 
+-- get ban list
+function CallGetBanList(player)
+    ExecuteWebJS(admin_ui, "clearBanList()")
+    CallRemoteEvent("GetBanList", player)
+end
+AddEvent("CallGetBanList", CallGetBanList)
 
 
 

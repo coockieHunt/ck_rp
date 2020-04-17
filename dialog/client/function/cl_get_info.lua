@@ -122,3 +122,5 @@ function SetPlayerCacheList(playersList)
 
 end
 AddRemoteEvent("SetPlayerCacheList", SetPlayerCacheList)
+
+

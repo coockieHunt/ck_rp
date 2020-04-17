@@ -74,6 +74,14 @@ function BuildItemSelect(text, value){
     }
 }
 
+function BuildBanList(active, by, start, end, reason){
+    $('.BanList').append('<tr><td>' + by + '</td><td>' + active + '</td><td>' + start + '</td><td>' + end + '</td><td>' + reason + '</td></tr>');
+}
+
+function clearBanList(){
+    $(".BanList td").parent().remove();
+}
+
 function BuildIDropItemSelect(id, player, model, pos, quantity){
     $('.DropItem').append('<tr><td id="id">' + id + '</td><td>' + player + '</td><td>' + model + '</td><td>' + quantity + '</td><td>' + pos + '</td></tr>');
     $('.DropItem td').click(function(){
@@ -141,6 +149,11 @@ function GetForm(){
 
     return rslt
 }
+
+$("#PListBanView").change(function() {
+    let player = $(this).val()
+    CallEvent("CallGetBanList", player);
+});
 
 $("#submit").click(function() {
     var obj = {};

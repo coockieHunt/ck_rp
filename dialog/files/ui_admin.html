@@ -44,18 +44,19 @@
                             <li id="give_item_action">give item</li>
                             <li id="remove_item_action">remove item</li>
                         </div>
-                        <li data-dp_id="interract">interaction </li>
+                        <li data-dp_id="interract">Interaction</li>
                         <div id="dp_interract">
                             <li id="drop_object_items_action">droped item</li>
                         </div>
-                        <li data-dp_id="environment">environment </li>
+                        <li data-dp_id="environment">Environment</li>
                         <div id="dp_environment">
                             <li id="change_time_action">Time</li>
                         </div>
-                        <li data-dp_id="other">other</li>
+                        <li data-dp_id="other">Account</li>
                         <div id="dp_other">
-                            <li id="player_cache_action">player cache</li>
-                            <li id="player_info_action">player info</li>
+                            <li id="player_cache_action">Cache</li>
+                            <li id="player_info_action">Info</li>
+                            <li id="player_banList_action">Ban list</li>
                         </div>
                     </nav>
 
@@ -465,7 +466,7 @@
 
                     <!-- Player Cache -->
                     <section id="player_cache_action">
-                        <h1>Droped item list</h1>
+                        <h1>Player cache</h1>
 
                         <div class="content">
                             <form>
@@ -502,7 +503,7 @@
 
                     <!-- Player info -->
                     <section id="player_info_action">
-                        <h1>Droped item list</h1>
+                        <h1>Player info</h1>
 
                         <div class="content">
                             <form>
@@ -525,6 +526,34 @@
                                         </textarea>
                                     </div>
                                 </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <!-- Player ban -->
+                    <section id="player_banList_action">
+                        <h1>Player ban list</h1>
+
+                        <div class="content">
+                            <form>
+                                    <h1>View</h1>
+
+                                    <label for="target">player: </label>
+                                    <select size="1" class="PList" id="PListBanView" name="target" style="width: 100%; margin-bottom: 10px;">
+                                        <option value=""></option>
+                                    </select>
+
+                                    <div class="drop_item_container" >
+                                        <table class="BanList" >
+                                            <tr>
+                                                <th>by</th>
+                                                <th>active</th>
+                                                <th>start</th>
+                                                <th>end</th>
+                                                <th>reason</th>
+                                            </tr>
+                                        </table>
+                                    </div>
                             </form>
                         </div>
                     </section>

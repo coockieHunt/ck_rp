@@ -276,3 +276,7 @@ end)
 AddRemoteEvent("GetPlayerInfo", function(player, playerid)
     admin_GetPlayerInfo(player, player, playerid)
 end)
+
+AddRemoteEvent("GetBanList", function(player, playerid)
+    local list = admin_GetBanList(playerid)
+end)
