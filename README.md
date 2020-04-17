@@ -33,7 +33,7 @@ privacy package rp coockie
 3. Execute sql request :
 ```sql
 -- --------------------------------------------------------
--- ref:             1.0
+-- ref:             2.0
 -- --------------------------------------------------------
 
 CREATE DATABASE IF NOT EXISTS `onset`;
@@ -60,8 +60,10 @@ CREATE TABLE IF NOT EXISTS `account_administrator` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `account_id` int(11) NOT NULL,
   `admin_level` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  KEY `FK_account_administrator_accounts` (`account_id`),
+  CONSTRAINT `FK_account_administrator_accounts` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `ban` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -69,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `ban` (
   `at` timestamp NOT NULL DEFAULT current_timestamp(),
   `end` timestamp NOT NULL DEFAULT current_timestamp(),
   `by` longtext NOT NULL DEFAULT 'none',
-  `reason` longtext NOT NULL DEFAULT '"reason long text"',
+  `reason` longtext NOT NULL DEFAULT 'reason long text',
   `active` smallint(6) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
