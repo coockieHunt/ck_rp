@@ -3,30 +3,7 @@ var selector = {
 }
 
 $(function() {
-    // AddNav("info", "playerinfo", "")
 
-    // AddSection("playerinfo")
-
-
-    // AddSectionInput("playerinfo", "text", "name", " ", "nom")
-    // AddSectionInput("playerinfo", "color", "color", " ", "car")
-    // AddSectionInput("playercache", "text", "cache", " ", "cache")
-
-    // AddSectionSelect("playerinfo", "tset", " ", "tset", [{"test": 1}, {"test2": 2}])
-
-
-    // AddGameSelect("playerinfo", "player","player", " ", "target")
-    // AddGameSelect("playerinfo", "vehicles","car", " ", "car")
-    // AddGameSelect("playerinfo", "weapons","Weapon", " ", "Weapon")
-    // AddGameSelect("playerinfo", "preset_pos","pos", " ", "pos")
-    // AddGameSelect("playerinfo", "items","items", " ", "items")
-    // AddGameSelect("playerinfo", "items","items", " ", "items")
-
-    // AddSectionSpacer("playerinfo", "test")
-    
-    // AddCheckBox("playerinfo", "test", "testid", false)
-
-    // BuildEnd()
 });
 
 // END
@@ -35,6 +12,7 @@ function BuildEnd(){
     NavClickEvent()
     SetupColorPicker()
     CreateDp()
+    RemoveEmptyDropDown()
 }
 
 // NAV
@@ -63,6 +41,19 @@ function AddNav(title, id,  DropDown){
     }
 }
 
+function RemoveEmptyDropDown(){
+    $( "li" ).each(function( i ) {
+        if($(this).data("dp_id") != null){
+            let div = "#dp_" + $(this).data("dp_id")
+            let count = $(div).children().length
+            if(count <= 0){
+                $(div).remove()
+                $(this).remove()
+            }
+            
+        }
+    });
+}
 
 function AddDropDown(id, title){
     title = ToUperCase(title)
