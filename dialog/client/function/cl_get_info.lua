@@ -5,11 +5,10 @@ function BuildSelect(ui)
     
     GetCarList()
     GetPlayerList()
-    GetClothingPresetList()
     GetWeaponsList()
     GetTpList()
     GetItemsList()
-    GetDropItemList()
+    -- GetDropItemList()
     GetPlayerCacheList()
 end
 

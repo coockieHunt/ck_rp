@@ -23,8 +23,8 @@ label{
   margin-top: 5px;
 }
 
-* > input[type=text] {
-  width: 80%;
+* > input[type=text], .color-picker {
+  width: 100% !important;
   padding: 5px 5px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -32,7 +32,18 @@ label{
   border: none;
   border: 1px rgba(255, 255, 255, 0.116) solid;
   color: white;
+  border: 1px solid #a4a5a6;
 }
+
+.color-picker {
+  width: 100%;
+  background-color: var(--gray-light);
+  border: none;
+  border: 1px rgba(255, 255, 255, 0.116) solid;
+  color: white;
+  border: 1px solid #a4a5a6;
+}
+
 
 input[type=text]:focus {
   outline: none;
@@ -40,7 +51,7 @@ input[type=text]:focus {
 }
 
 select{
-  width: 90%;
+  width: 100%;
   background-color: var(--gray-light);
   color: white;
   margin-top: 7px;
@@ -71,8 +82,10 @@ input[type="checkbox"]:checked {
 
 }
 
+/* TABLE */
+
 table {
-  width: 90%;
+  width: 100%;
   margin: auto;
   background-color: var(--gray-light);
   border-radius: 5px;
@@ -85,7 +98,7 @@ td {
   font-family: sans-serif;
   border:1px solid var(--spacer);
   width: 50%;
-  padding: 15px;
+  padding: 10px;
   text-align: center;
   background-color: var(--gray-light);
 }

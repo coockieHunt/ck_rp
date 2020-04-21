@@ -44,6 +44,17 @@ AddEvent("OnKeyPress", function(key)
     end
 end)
 
+function OnWebLoadComplete(webid)
+    local playerId = GetPlayerId()
+    
+	if (admin_ui == webid) then
+        Delay(500, function(webid, playerid)
+            BuildDialog()
+		end, admin_ui, playerId)
+	end
+end
+AddEvent("OnWebLoadComplete", OnWebLoadComplete)
+
 -- call ui
 function CallExecute(rslt)    
     CallRemoteEvent("Exucute", rslt)
@@ -81,5 +92,77 @@ function CallGetBanList(player)
 end
 AddEvent("CallGetBanList", CallGetBanList)
 
+
+-- 
+-- Build
+-- 
+local call_stack = {}
+
+function BuildDialog()
+    AddPlayerChat(('<span color="%s">[client]</>%s'):format("#DFBE08", " build admin dialog ..."))
+    CallRemoteEvent("BuildDialog")
+end
+
+function AddCallStack(add)
+    table.insert(call_stack, add)
+end
+
+
+function ExecCallStack()
+    for k, v in ipairs(call_stack) do
+        ExecuteWebJS(admin_ui, v)
+    end
+
+    AddPlayerChat(('<span color="%s">[client]</>%s'):format("#DFBE08", " end build admin dialog"))
+end
+AddRemoteEvent("ExecCallStack", ExecCallStack)
+
+function BuildDropDown(id, name)
+    local exec = "AddDropDown('"..id.."','"..name.."')"
+    ExecuteWebJS(admin_ui, exec)
+end
+AddRemoteEvent("BuildDropDown", BuildDropDown)
+
+function BuildNav(name, id, section)
+    local exec = "AddNav('"..name.."','"..id.."','"..section.."')"
+    ExecuteWebJS(admin_ui, exec)
+end
+AddRemoteEvent("BuildNav", BuildNav)
+
+function BuildSection(id)
+    local exec = "AddSection('"..id.."')"
+    ExecuteWebJS(admin_ui, exec)
+end
+AddRemoteEvent("BuildSection", BuildSection)
+
+function BuildInput(section, type, id, custom, name)
+    AddCallStack("AddSectionInput('"..section.."','"..type.."','"..id.."','"..custom.."','"..name.."')")
+end
+AddRemoteEvent("BuildInput", BuildInput)
+
+function BuildGameSelect(section, select, id, custom, name)
+    AddCallStack("AddGameSelect('"..section.."','"..select.."','"..id.."','"..custom.."','"..name.."')")
+end
+AddRemoteEvent("BuildGameSelect", BuildGameSelect)
+
+function BuildSelect(section, id, custom, name, options)
+    AddCallStack("AddSectionSelect('"..section.."','"..id.."','"..custom.."','"..name.."',"..options..")")
+end
+AddRemoteEvent("BuildSelect", BuildSelect)
+
+function BuildCheckbox(section, name, id, checked)
+    AddCallStack("AddCheckBox('"..section.."','"..name.."','"..id.."',"..tostring(checked)..")")
+end
+AddRemoteEvent("BuildCheckbox", BuildCheckbox)
+
+function BuildSpacer(section, title)
+    AddCallStack("AddSectionSpacer('"..section.."','"..title.."')")
+end
+AddRemoteEvent("BuildSpacer", BuildSpacer)
+
+function BuildEnd()
+    ExecuteWebJS(admin_ui, "BuildEnd()")
+end
+AddRemoteEvent("BuildEnd", BuildEnd)
 
 

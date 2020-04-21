@@ -110,3 +110,15 @@ html, body {height: 100%;  user-select: none;}
   bottom: 0px;
   width: 100%;
 }
+
+.center{
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center > p{
+  text-align: center;
+}

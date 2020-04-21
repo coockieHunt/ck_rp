@@ -1,25 +1,264 @@
-// section
-function ShowCurrentSection(id){
-    $('.form_action > #' + id).attr("hidden",false);
+var selector = {
+    "nav" : "#left_nav > nav"
 }
 
-function ShowFirstSection(){
-    let first = $("li").first()
-    first.addClass("active");
-    let key = first.attr('id');
-    ShowCurrentSection(key)
+$(function() {
+    // AddNav("info", "playerinfo", "")
+
+    // AddSection("playerinfo")
+
+
+    // AddSectionInput("playerinfo", "text", "name", " ", "nom")
+    // AddSectionInput("playerinfo", "color", "color", " ", "car")
+    // AddSectionInput("playercache", "text", "cache", " ", "cache")
+
+    // AddSectionSelect("playerinfo", "tset", " ", "tset", [{"test": 1}, {"test2": 2}])
+
+
+    // AddGameSelect("playerinfo", "player","player", " ", "target")
+    // AddGameSelect("playerinfo", "vehicles","car", " ", "car")
+    // AddGameSelect("playerinfo", "weapons","Weapon", " ", "Weapon")
+    // AddGameSelect("playerinfo", "preset_pos","pos", " ", "pos")
+    // AddGameSelect("playerinfo", "items","items", " ", "items")
+    // AddGameSelect("playerinfo", "items","items", " ", "items")
+
+    // AddSectionSpacer("playerinfo", "test")
+    
+    // AddCheckBox("playerinfo", "test", "testid", false)
+
+    // BuildEnd()
+});
+
+// END
+function BuildEnd(){
+    HideAllSection()
+    NavClickEvent()
+    SetupColorPicker()
+    CreateDp()
 }
 
-// build dynamic element
-function BuildVehicleSelect(text, value){
-    if ( $( ".VList" ).length ) {
-        let count = $(".VList option[value='" + value + "']").length
-        if(count == 0){
-            $('.VList').append(new Option(text, value))
+// NAV
+function NavClickEvent(){
+    $( 'li' ).click(function( ) {
+        let id = $(this).attr('id')
+        if(id != undefined){
+            HideAllSection()
+            ShowSection(id)
         }
+    });
+}
+
+function AddNav(title, id,  DropDown){
+    title = ToUperCase(title)
+    let li = "<li id=action_" + id + ">" + title + " </li>"
+    if( DropDown != false){
+        let DpCount = $("div#dp_"+ DropDown).length
+        if(DpCount > 0){
+            $("div#dp_"+ DropDown).append(li)
+        }else{ 
+            $(selector.nav).append(li) 
+        }
+    }else{ 
+        $(selector.nav).append(li) 
     }
 }
 
+
+function AddDropDown(id, title){
+    title = ToUperCase(title)
+    let DpCount = $("div#dp_"+ id).length
+    if(DpCount == 0){
+        $(selector.nav).append(" <li data-dp_id="+ id + ">" + title + " </li>")
+        $(selector.nav).append("<div id=dp_" + id + "></div>")
+    }
+}
+
+function CreateDp(){
+    $( "li" ).each(function( i ) {
+        if($(this).data("dp_id") != null){
+            $(this).append( "<img src='../../files_client/web/src/img/arrow_down.png' height='10' width='10' class='dp_icon'>" );
+            let id = $(this).data("dp_id")
+            let list = "#dp_" + id
+            $(list).slideUp(100);
+            $(this).data( "dp_toggle", false );
+        }
+    });
+
+    $( "li" ).click(function() {
+
+        if($(this).data("dp_id") != null){
+            let img = $(this).find( "img" );
+            let id = $(this).data("dp_id")
+            let list = "#dp_" + id
+
+            img.remove()
+            
+            if($(this).data( "dp_toggle" ) === true){
+                $(list).slideUp(100);
+                $(this).data( "dp_toggle", false );
+                $(this).append( "<img src='../../files_client/web/src/img/arrow_down.png' height='10' width='10' class='dp_icon'>" );
+            }else{
+                $(list).slideDown(100);
+                $(this).data( "dp_toggle", true );
+                $(this).append( "<img src='../../files_client/web/src/img/arrow_up.png' height='10' width='10' class='dp_icon'>" );
+                close(id)
+            }
+        }
+    });
+
+    
+    $( "li" ).click(function() {
+        if($(this).data("dp_id") == null){
+            $( "li" ).each(function( i ) {
+                $(this).removeClass("active");
+            });
+            $(this).addClass("active")
+            $('#helloScreen').hide()
+        }
+    });
+}
+
+// SECTION 
+function HideAllSection(){
+    $( '.form_action > section' ).each(function( ) {
+        let id = $(this).attr("id")
+        if(id != "helloScreen"){
+            $(this).hide()
+        }
+    });
+}
+
+function AddSection(id){
+    id = "action_" + id
+
+    $('.form_action').append("<section id=" + id + "><form></form></section>")
+}
+
+function ShowSection(id){
+    $('.form_action > #' + id).show()
+}
+
+function AddInputSection(id, input){
+    id = "section#action_"+ id + " > form"
+    let idCount = $(id).length
+    if( idCount > 0){
+        $(id).append(input)
+    }
+}
+
+// INPUT
+function SetupColorPicker(){
+    $('.color-picker').spectrum({
+        type: "text",
+        showPalette: false,
+        palette: [],
+        allowEmpty:true,
+        showInitial: true,
+        showInput: true,
+        showAlpha: false
+    });
+}
+
+function AddSectionSpacer(section, title){
+    AddInputSection(section, "<span class='spacer'>" + title + "</span>")
+}
+
+function AddSectionInput(section, type, id, custom, name){
+    let output
+    switch (type) {
+        case "text":
+            output = "<label for='" + id + "'>" + name + " :</label><input type='text' name='" + id + "' class='" + custom + "'>"
+        break;
+
+        case "color":
+            output = "<label for='" + id + "'>" + name + " :</label><input type='text' class='color-picker "+ custom + "' name='" + id + "' id='showInputInitialClear'/>"
+        break;
+    
+        default:
+            return false
+        break;
+    }
+
+    AddInputSection(section, output)
+}
+
+function AddSectionSelect(section, id, custom, name, options){
+    let output
+
+    let optionsFormat = ""
+
+    $( options ).each(function( index ) {
+        $.each( options[index], function( nameOption, valueOption ) {
+            optionsFormat = optionsFormat + "<option value=" + valueOption + ">" + nameOption + "</option> "
+        });
+    });
+
+    output =  "<label for='" + id + "'>" + name + " :</label><select size='1' name='" + id + "' class='" + custom + "'>" + optionsFormat + "</select>"
+    AddInputSection(section, output)
+}
+
+function AddGameSelect(section, select, id, custom, name){
+    let output
+    switch (select) {
+        case "player":
+            output = "<label for='" + id + "'>" + name + " :</label><select class='PList " + custom + "' name='" + id + "'>"
+        break;
+
+        case "player_cache":
+            output = "<label for='" + id + "'>" + name + " :</label><select class='PCList " + custom + "' name='" + id + "'>"
+        break;
+
+        case "vehicles":
+            output = "<label for='" + id + "'>" + name + " :</label><select class='VList " + custom + "' name='" + id + "'>"
+        break;
+
+        case "weapons":
+            output = "<label for='" + id + "'>" + name + " :</label><select class='WList " + custom + "' name='" + id + "'>"
+        break;
+        
+        case "preset_pos":
+            output = "<label for='" + id + "'>" + name + " :</label><select class='PPist " + custom + "' name='" + id + "'>"
+        break;
+
+        case "items":
+            output = "<label for='" + id + "'>" + name + " :</label><select class='ItemListe " + custom + "' name='" + id + "'>"
+        break;
+    
+        default:
+            return false
+        break;
+    }
+
+    AddInputSection(section, output)
+}
+
+function AddCheckBox(section, name, id, checked){
+    let checkedOutput = ""
+    if(checked) {checkedOutput = "checked"}
+    let output = "<label for='" + id + "'>" + name + "</label><input type='checkbox' name='" + id + "' " + checkedOutput + ">"
+    AddInputSection(section, output)
+
+}
+
+function AddTable(section, id, header){
+    let div_id = "div_"+ id 
+    
+    let divOverFlow = "<div style='overflow:auto;' id = '" + div_id + "'></div>"
+    AddInputSection(section, divOverFlow)
+
+    $("#" + div_id).append("<table>") 
+    $("#" + div_id + " > table").append("<tr>") 
+
+    $( header ).each(function( _, val ) {
+       $("#" + div_id + " > table > tr").append(" <th>" + val + "</th>") 
+    });
+
+    $("#" + div_id + " > table").append("</tr>") 
+    $("#" + div_id).append("</table>") 
+}
+
+
+//CUSTOM BUILD SELECT
 function BuildPlayerListSelect(text, value){
     if ( $( ".PList" ).length ) {
         let count = $(".PList option[value='" + value + "']").length
@@ -29,20 +268,11 @@ function BuildPlayerListSelect(text, value){
     }
 }
 
-function BuildPlayerCacheListSelect(text, value){
-    if ( $( ".PCList" ).length ) {
-        let count = $(".PCList option[value='" + value + "']").length
+function BuildVehicleSelect(text, value){
+    if ( $( ".VList" ).length ) {
+        let count = $(".VList option[value='" + value + "']").length
         if(count == 0){
-            $('.PCList').append(new Option(text, value))
-        }
-    }
-}
-
-function BuildClothingPresetSelect(text, value){
-    if ( $( ".CPList" ).length ) {
-        let count = $(".CPList option[value='" + value + "']").length
-        if(count == 0){
-            $('.CPList').append(new Option(text, value))
+            $('.VList').append(new Option(text, value))
         }
     }
 }
@@ -55,6 +285,7 @@ function BuildWeaponsSelect(text, value){
         }
     }
 }
+
 
 function BuildPresetPosSelect(text, value){
     if ( $( ".PPist" ).length ) {
@@ -74,92 +305,30 @@ function BuildItemSelect(text, value){
     }
 }
 
-function BuildBanList(active, by, start, end, reason){
-    $('.BanList').append('<tr><td>' + by + '</td><td>' + active + '</td><td>' + start + '</td><td>' + end + '</td><td>' + reason + '</td></tr>');
-}
-
-function clearBanList(){
-    $(".BanList td").parent().remove();
-}
-
-function BuildIDropItemSelect(id, player, model, pos, quantity){
-    $('.DropItem').append('<tr><td id="id">' + id + '</td><td>' + player + '</td><td>' + model + '</td><td>' + quantity + '</td><td>' + pos + '</td></tr>');
-    $('.DropItem td').click(function(){
-        $( ".DropItem tr" ).each(function( index ) {
-            $(this).removeClass("active")
-        });
-
-        let parent = $( this ).parent()
-        let id = $(parent).find("#id").html()
-
-        $(parent).addClass("active")
-        $('#droped_id').val(id)
-    });
-}
-
-function ClearDropItemList(){
-    $(".DropItem td").parent().remove();
-}
-
-
-$( function() {
-    //hide all section
-    $('section').attr("hidden",true);
-    
-    ShowFirstSection()
-
-    //dragable
-    $("#window").draggable({
-        opacity: 0.25,
-        containment: "parent", 
-        handle: "#top_bar"
-    });
-
-    //change section
-    $("li").click(function() {
-        if($(this).data("dp_id") == null){
-            let id = $( this ).attr("id")
-            $('section').attr("hidden",true);
-
-            if(id != null){
-                $('.form_action > #' + id).attr("hidden",false);
-            }
+function BuildPlayerCacheListSelect(text, value){
+    if ( $( ".PCList" ).length ) {
+        let count = $(".PCList option[value='" + value + "']").length
+        if(count == 0){
+            $('.PCList').append(new Option(text, value))
         }
-     });
-} );
+    }
+}
 
-
-$('.color-picker').spectrum({
-    type: "component",
-    showPalette: false,
-    palette: [],
-    allowEmpty:true,
-    showInitial: true,
-    showInput: true,
-    showAlpha: false
-});
-
-
-//call event
+//FORM
 function GetForm(){
     let cur = $('.active').attr('id');;
-    let cur_class = "#" + cur + " > .content  > form" ;
+    let cur_class = "#" + cur + "  > form";
     let form = $(cur_class).serializeArray();
     const rslt = [{"func" : cur}].concat(form) 
 
     return rslt
 }
 
-$("#PListBanView").change(function() {
-    let player = $(this).val()
-    CallEvent("CallGetBanList", player);
-});
-
 $("#submit").click(function() {
     var obj = {};
     obj['func'] = GetForm()[0]["func"]
 
-    $.each( GetForm(), function( key, val ) {
+    $.each( GetForm(), function( index, val ) {
         let name = val['name'];
         let value = val['value'];
 
@@ -177,28 +346,6 @@ $("#submit").click(function() {
     });
 
     let ParsetJs = JSON.stringify(obj);
+    console.log(ParsetJs)
     CallEvent("CallExecute", ParsetJs);
 });
-
-
-$(".PList").click(function() {
-    let info_visible = $(".PIList").is(":visible")
-
-    if (info_visible) {
-        let info = $(".PIList")
-        let playerId = $(this).val()
-
-
-        $(".PIList").empty()
-        CallEvent("CallGetPlayerInfo", playerId)
-    }
-});
-
-function addPiList(text, value) {
-    $('.PIList').append(text + " : " + value + "\n");
-}
-
-$(".admin").click(function() {
-    CallEvent("CallCloseAdmin");
-});
-

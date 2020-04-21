@@ -26,3 +26,9 @@ function admin_pos(player)
 		file:close()
 	end
 end
+
+function admin_debug(player, print)
+	file = io.open("debug.txt", "a")
+	file:write(print, "\n")
+	file:close()
+end
