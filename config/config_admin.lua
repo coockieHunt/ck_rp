@@ -12,6 +12,7 @@ _Dialog_admin = {
         -- CAR
         car_spawn = {
             name = "spawn",
+            level = 1,
             drop_down_id = "car",
             form = {
                 {type = "vehicles", id = "car_id", custom = "", name = "cars"},
@@ -28,6 +29,7 @@ _Dialog_admin = {
         tp_pos = {
             name = "teleport XYZ",
             drop_down_id = "teleport",
+            level = 20,
             form = {
                 {type = "player", id = "target", custom = "", name = "target"},
 
@@ -40,6 +42,7 @@ _Dialog_admin = {
         tp_to = {
             name = "teleport to",
             drop_down_id = "teleport",
+            level = 1,
             form = {
                 {type = "player", id = "main", custom = "", name = "player"},
                 {type = "player", id = "to", custom = "", name = "target"},
@@ -49,6 +52,7 @@ _Dialog_admin = {
         tp_preset = {
             name = "teleport preset",
             drop_down_id = "teleport",
+            level = 1,
             form = {
                 {type = "player", id = "target", custom = "", name = "player"},
                 {type = "preset_pos", id = "preset_id", custom = "", name = "preset"},
@@ -59,6 +63,7 @@ _Dialog_admin = {
         weapon = {
             name = "weapon",
             drop_down_id = "inventory",
+            level = 1,
             form = {
                 {type = "player", id = "target", custom = "", name = "player"},
                 {type = "text", id = "ammo", custom = "", name = "ammo amount"},
@@ -76,6 +81,7 @@ _Dialog_admin = {
         give_remove_item = {
             name = "give | remove items",
             drop_down_id = "inventory",
+            level = 1,
             form = {
                 {type = "player", id = "target", custom = "", name = "player"},
                 {type = "text", id = "quantity", custom = "", name = "quantity"},
@@ -93,6 +99,7 @@ _Dialog_admin = {
         health_armor = {
             name = "health armor",
             drop_down_id = "survival",
+            level = 1,
             form = {
                 {type = "player", id = "target", custom = "", name = "player"},
                 {type = "text", id = "amount", custom = "", name = "amount"},
@@ -108,6 +115,7 @@ _Dialog_admin = {
         food_thirst = {
             name = "food thirst",
             drop_down_id = "survival",
+            level = 1,
             form = {
                 {type = "player", id = "target", custom = "", name = "player"},
                 {type = "text", id = "amount", custom = "", name = "amount"},
@@ -123,6 +131,7 @@ _Dialog_admin = {
         kill = {
             name = "kill",
             drop_down_id = "survival",
+            level = 1,
             form = {
                 {type = "player", id = "target", custom = "", name = "player"},
             }
@@ -132,6 +141,7 @@ _Dialog_admin = {
         change_time = {
             name = "time",
             drop_down_id = "environment",
+            level = 1,
             form = {
                 {type = "text", id = "time", custom = "", name = "time <0 - 24>"},
             }
@@ -141,6 +151,7 @@ _Dialog_admin = {
         cache_remove = {
             name = "cache",
             drop_down_id = "account",
+            level = 1,
             form = {
                 {type = "spacer", title = "remove cache"},
                 {type = "player_cache", id = "target", custom = "", name = "player"},
