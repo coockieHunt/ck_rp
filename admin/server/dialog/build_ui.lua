@@ -18,8 +18,7 @@ AddRemoteEvent("BuildDialog", function(player)
             if id == "drop_down_id" then section_id = value end
             if id == "level" then admin_level = value end
         end
-
-        if AdminLevel(player, admin_level) then CallRemoteEvent(player, "BuildNav", name, cur_id, section_id) end
+        if CheckIfAdminSufficient(cur_id, player) then CallRemoteEvent(player, "BuildNav", name, cur_id, section_id) end
         CallRemoteEvent(player, "BuildSection", cur_id)
     end
 

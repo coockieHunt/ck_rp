@@ -28,7 +28,7 @@ function NavClickEvent(){
 
 function AddNav(title, id,  DropDown){
     title = ToUperCase(title)
-    let li = "<li id=action_" + id + ">" + title + " </li>"
+    let li = "<li id=" + id + ">" + title + " </li>"
     if( DropDown != false){
         let DpCount = $("div#dp_"+ DropDown).length
         if(DpCount > 0){
@@ -120,7 +120,7 @@ function HideAllSection(){
 }
 
 function AddSection(id){
-    id = "action_" + id
+    id = id
 
     $('.form_action').append("<section id=" + id + "><form></form></section>")
 }
@@ -130,7 +130,7 @@ function ShowSection(id){
 }
 
 function AddInputSection(id, input){
-    id = "section#action_"+ id + " > form"
+    id = "section#"+ id + " > form"
     let idCount = $(id).length
     if( idCount > 0){
         $(id).append(input)

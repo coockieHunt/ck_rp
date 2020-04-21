@@ -29,7 +29,7 @@ _Dialog_admin = {
         tp_pos = {
             name = "teleport XYZ",
             drop_down_id = "teleport",
-            level = 20,
+            level = 1,
             form = {
                 {type = "player", id = "target", custom = "", name = "target"},
 
