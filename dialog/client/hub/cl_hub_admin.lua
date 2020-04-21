@@ -1,4 +1,5 @@
 local admin_ui
+local admin_ui_builded = false
 
 -- manage ui
 function OpenUIAdmin()
@@ -35,7 +36,7 @@ AddEvent("OnPlayerSpawn", OnPlayerSpawn)
 
 -- key mapping
 AddEvent("OnKeyPress", function(key)
-    if key == GetKeyMapServer("admin") then
+    if key == GetKeyMapServer("admin") and admin_ui_builded == true  then
         if GetWebVisibility(admin_ui) == WEB_HIDDEN then
             OpenUIAdmin()
         else
@@ -99,8 +100,10 @@ AddEvent("CallGetBanList", CallGetBanList)
 local call_stack = {}
 
 function BuildDialog()
-    AddPlayerChat(('<span color="%s">[client]</>%s'):format("#DFBE08", " build admin dialog ..."))
-    CallRemoteEvent("BuildDialog")
+    if(admin_ui_builded ~= true) then
+        CallRemoteEvent("BuildDialog")
+        admin_ui_builded = true
+    end
 end
 
 function AddCallStack(add)
@@ -113,7 +116,7 @@ function ExecCallStack()
         ExecuteWebJS(admin_ui, v)
     end
 
-    AddPlayerChat(('<span color="%s">[client]</>%s'):format("#DFBE08", " end build admin dialog"))
+    AddPlayerChat(('<span color="%s">[client]</> %s'):format("#DFBE08", "admin dialog build press " .. GetKeyMapServer("admin") .. " for open menu"))
 end
 AddRemoteEvent("ExecCallStack", ExecCallStack)
 
