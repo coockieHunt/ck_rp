@@ -106,7 +106,7 @@ local call_stack = {}
 
 function BuildDialog()
     if(admin_ui_builded ~= true) then
-        CallRemoteEvent("BuildDialog")
+        CallRemoteEvent("BuildAdminDialog")
         admin_ui_builded = true
     end
 end

@@ -1,13 +1,9 @@
-local modules_count = 0
-
 _module = {}
-
 
 local content_section = {}
 
 function AddAdminModule(module)
     table.insert(_module, module)
-    modules_count = modules_count + 1
 end
 
 function BuildForm(playerId, section_id)
@@ -63,12 +59,11 @@ function AddForm(type, name, id, data)
 end
 
 function AddSection(playerId, id, name, select)
-
     CallRemoteEvent(playerId, "BuildNav", name, id, select) 
     CallRemoteEvent(playerId, "BuildSection", id)
 end
 
-AddRemoteEvent("BuildDialog", function(playerId)
+AddRemoteEvent("BuildAdminDialog", function(playerId)
     local data = getplayer(playerId)
 
     CallRemoteEvent(playerId, "BuildTitleBar", "your admin levels : " .. data.admin)
