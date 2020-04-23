@@ -14,6 +14,14 @@ body{
 
 #window > #top_bar{
     width: 80%;
+    height: 30px;
+}
+
+#window > #top_bar > #text_top_bar{
+   margin-left: 20%;
+   padding: 10px;
+   font-size: 0.8em;
+   line-height: 30px;
 }
 
 #window > #content{

@@ -58,10 +58,15 @@ AddEvent("OnWebLoadComplete", OnWebLoadComplete)
 
 -- call ui
 function CallExecute(rslt)    
-    CallRemoteEvent("Exucute", rslt)
+    CallRemoteEvent("Exucute_admin_module", rslt)
     CloseUIAdmin()
 end
 AddEvent("CallExecute", CallExecute)
+
+function CallOpenModules(module_id)
+    CallRemoteEvent("Open_admin_module", module_id)
+end
+AddEvent("CallOpenModules", CallOpenModules)
 
 function CallCloseAdmin()
     CloseUIAdmin()
@@ -137,6 +142,12 @@ function BuildSection(id)
     ExecuteWebJS(admin_ui, exec)
 end
 AddRemoteEvent("BuildSection", BuildSection)
+
+function BuildTitleBar(text)
+    local exec = "setTitleWindows('"..text.."')"
+    ExecuteWebJS(admin_ui, exec)
+end
+AddRemoteEvent("BuildTitleBar", BuildTitleBar)
 
 function BuildInput(section, type, id, custom, name)
     AddCallStack("AddSectionInput('"..section.."','"..type.."','"..id.."','"..custom.."','"..name.."')")

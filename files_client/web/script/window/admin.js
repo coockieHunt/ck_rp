@@ -22,6 +22,7 @@ function NavClickEvent(){
         if(id != undefined){
             HideAllSection()
             ShowSection(id)
+            CallEvent("CallOpenModules", id);
         }
     });
 }
@@ -135,6 +136,11 @@ function AddInputSection(id, input){
     if( idCount > 0){
         $(id).append(input)
     }
+}
+
+// TITLE
+function setTitleWindows(text){
+    $("#text_top_bar").text(text)
 }
 
 // INPUT
