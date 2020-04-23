@@ -3,7 +3,6 @@
 # disclaimer
 this code is only in its preamble, a public installation and not recommended
 # onset ck role play
-privacy package rp coockie
 ## athor
 - *coockie-hunt* - Main dev
 - *daryl* - helper
