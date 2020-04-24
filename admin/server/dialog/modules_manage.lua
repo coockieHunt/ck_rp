@@ -19,7 +19,7 @@ function BuildForm(playerId, section_id)
             CallRemoteEvent(playerId, "BuildSpacer", section_id, name)
         end
 
-        if type == "player" or type == "vehicles" or type == "weapons" or type == "preset_pos" or type == "items" or type == "player_cache" then
+        if type == "player" or type == "vehicles" or type == "weapons" or type == "preset_pos" or type == "items" or type == "player_cache" or type == "droped_items" then
             CallRemoteEvent(playerId, "BuildGameSelect", section_id, type, id, custom, name)
         end
 
@@ -69,8 +69,8 @@ AddRemoteEvent("BuildAdminDialog", function(playerId)
     CallRemoteEvent(playerId, "BuildTitleBar", "your admin levels : " .. data.admin)
 
 
-    for id, name in pairs(_Dialog_admin.module_select) do
-        CallRemoteEvent(playerId, "BuildDropDown", id, name)
+    for _, table in ipairs(_Dialog_admin.module_select) do
+        CallRemoteEvent(playerId, "BuildDropDown", table.id, table.name)
     end 
 
     for _, module in ipairs(_module) do
