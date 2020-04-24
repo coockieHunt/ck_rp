@@ -10,7 +10,6 @@ function OpenUIAdmin()
         CloseUISurvival_warn()
         CloseUIAlert()
 
-        ClearDropList()
         BuildSelect(admin_ui)
     end
 end
@@ -72,30 +71,9 @@ function CloseDialogAdmin()
 end
 AddRemoteEvent("CloseDialogAdmin", CloseDialogAdmin)
 
-function CallGetPlayerInfo(playerId)
-    CallRemoteEvent("GetPlayerInfo", playerId)
-end
-AddEvent("CallGetPlayerInfo", CallGetPlayerInfo)
 
 
-AddRemoteEvent("SetInfoLst", function(text, value)
-    ExecuteWebJS(admin_ui, "addPiList('"..text.."', '"..value.."')")
-end)
 
-function ClearDropList()
-    ExecuteWebJS(admin_ui, "ClearDropItemList()")
-end
-
-AddRemoteEvent('setBanList', function(active, by, start, Ban_end, reason)
-    ExecuteWebJS(admin_ui, "BuildBanList('"..active.."','"..by.."', '"..start.."','"..Ban_end.."', '"..reason.."')")
-end)
-
--- get ban list
-function CallGetBanList(player)
-    ExecuteWebJS(admin_ui, "clearBanList()")
-    CallRemoteEvent("GetBanList", player)
-end
-AddEvent("CallGetBanList", CallGetBanList)
 
 
 -- 
