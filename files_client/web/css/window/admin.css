@@ -42,6 +42,16 @@ body{
     overflow: auto;
 }
 
+
+#left_nav > nav > div > li{
+    background: var(--gray-mid);
+}
+
+#left_nav > nav > div > li:hover{
+    border-style: inset;
+    border: 1px solid white;
+}
+
 #left_nav > #title{
     background-color: var(--red-dark );
     width: 100%;
