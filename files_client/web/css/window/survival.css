@@ -5,8 +5,9 @@ body{
   width: 900px;
   height: 500px;
   color: white;
-  margin: auto;
-  margin-top: 90px;
+  position: absolute; 
+  top: 40%; left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #side_bottom_window {
