@@ -43,13 +43,9 @@ body{
 }
 
 
-#left_nav > nav > div > li{
-    background: var(--gray-mid);
-}
 
 #left_nav > nav > div > li:hover{
-    border-style: inset;
-    border: 1px solid white;
+    background-color: var(--gray-mid);
 }
 
 #left_nav > #title{
@@ -93,7 +89,7 @@ body{
 }
 
 .active{
-    background: var(--gray-mid);
+    background: var(--red-dark);
 }
 
 #left_nav > nav > ul:hover{
@@ -113,6 +109,12 @@ body{
 #left_nav > nav > .dp > li{ 
     padding-left: 20px;
     border-bottom: rgba(0, 0, 0, 0.144) solid 1px;
+}
+
+#left_nav > nav > li > img{
+    float: right;
+    margin-top: 13px;
+    margin-right: 10px;
 }
 
 .form_action{
@@ -181,14 +183,6 @@ body{
     width: 100%;
     height: 80%;
     overflow: auto;
-}
-
-.PIList{
-    background-color: var(--gray-light);
-    color: white;
-    width: 100%;
-    height: 87%;
-    resize: none;
 }
 
 .spacer{
