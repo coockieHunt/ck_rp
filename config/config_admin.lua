@@ -1,10 +1,11 @@
 _Dialog_admin = {
     module_select = {
-        car = "Car",
-        teleport = "Teleport",
-        survival = "Surivival",
-        inventory = "Inventory",
-        account = "Account",
-        environment = "Environment",
+        {id = 'car', name = 'car'},
+        {id = 'teleport', name = 'Teleport'},
+        {id = 'survival', name = 'Surivival'},
+        {id = 'inventory', name = 'Inventory'},
+        {id = 'account', name = 'Account'},
+        {id = 'environment', name = 'Environment'},
+        {id = 'entity', name = 'Entity'}
     }
 };

@@ -1,15 +1,21 @@
 local web_ui
 
-function BuildSelect(ui)
+function BuildSelectOnStart(ui)
     web_ui = ui
     
     GetCarList()
-    GetPlayerList()
     GetWeaponsList()
     GetTpList()
     GetItemsList()
-    -- GetDropItemList()
+    
+end
+
+function BuildSelectOnOpen(ui)
+    web_ui = ui
+
+    GetPlayerList()
     GetPlayerCacheList()
+    GetDropItemList()
 end
 
 -- car list
@@ -66,19 +72,22 @@ end
 AddRemoteEvent("SetItemsList", SetItemsList)
 
 -- Droped item list
+
 function GetDropItemList(ui)
     CallRemoteEvent('GetDropItemList', ui)
 end
 
-function SetDropItemList(ItemsList)
-    for k, v in ipairs(ItemsList) do
+function SetDropItemList(DropedList)
+    ExecuteWebJS(web_ui, 'ClearDropedItemListSelect()')
+
+    for k, v in ipairs(DropedList) do
         local id = v["id"]
         local player = v["player"]
         local pos = v["pos"]
         local model_name = v["model_name"]
         local quantity = tostring(v["quantity"])
 
-        local str = string.format("BuildIDropItemSelect('%q', '%q', '%q', '%q', '%q')", id, GetPlayerName(player), model_name, pos, quantity)
+        local str = string.format("BuildPDropedItemListSelect('%q - %q - %q - %q',  %q)", id, GetPlayerName(player), model_name, pos, id)
 
         ExecuteWebJS(web_ui, str)
     end
@@ -99,7 +108,6 @@ function SetPlayerList(playersList)
 
 end
 AddRemoteEvent("SetPlayerList", SetPlayerList)
-
 
 -- Player cache list
 function GetPlayerCacheList(ui)

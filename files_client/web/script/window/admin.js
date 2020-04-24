@@ -220,7 +220,11 @@ function AddGameSelect(section, select, id, custom, name){
         case "items":
             output = "<label for='" + id + "'>" + name + " :</label><select class='ItemListe " + custom + "' name='" + id + "'>"
         break;
-    
+
+        case 'droped_items':
+            output = "<label for='" + id + "'>" + name + " :</label><select class='IDList " + custom + "' name='" + id + "'>"
+        break
+
         default:
             return false
         break;
@@ -307,6 +311,19 @@ function BuildPlayerCacheListSelect(text, value){
         let count = $(".PCList option[value='" + value + "']").length
         if(count == 0){
             $('.PCList').append(new Option(text, value))
+        }
+    }
+}
+
+function ClearDropedItemListSelect(){
+    $('.IDList').empty()
+}
+
+function BuildPDropedItemListSelect(text, value){
+    if ( $( ".IDList" ).length ) {
+        let count = $(".IDList option[value='" + value + "']").length
+        if(count == 0){
+            $('.IDList').append(new Option(text, value))
         }
     }
 }

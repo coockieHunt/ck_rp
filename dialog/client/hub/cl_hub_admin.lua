@@ -10,7 +10,7 @@ function OpenUIAdmin()
         CloseUISurvival_warn()
         CloseUIAlert()
 
-        BuildSelect(admin_ui)
+        BuildSelectOnStart(admin_ui)
     end
 end
 
@@ -38,6 +38,7 @@ AddEvent("OnKeyPress", function(key)
     if key == GetKeyMapServer("admin") and admin_ui_builded == true  then
         if GetWebVisibility(admin_ui) == WEB_HIDDEN then
             OpenUIAdmin()
+            BuildSelectOnOpen(admin_ui)
         else
             CloseUIAdmin()
         end
@@ -70,11 +71,6 @@ function CloseDialogAdmin()
     CloseUIAdmin()
 end
 AddRemoteEvent("CloseDialogAdmin", CloseDialogAdmin)
-
-
-
-
-
 
 -- 
 -- Build
