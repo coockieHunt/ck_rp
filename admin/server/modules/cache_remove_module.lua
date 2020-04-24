@@ -32,6 +32,8 @@ end
 function module:Onexecute(playerId, data)
     local target = data['target']
     admin_remove_cache_player(playerId, target)
+
+    CloseAdminDialog(playerId)
 end
 
 AddAdminModule(module)

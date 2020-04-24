@@ -59,7 +59,6 @@ AddEvent("OnWebLoadComplete", OnWebLoadComplete)
 -- call ui
 function CallExecute(rslt)    
     CallRemoteEvent("Exucute_admin_module", rslt)
-    CloseUIAdmin()
 end
 AddEvent("CallExecute", CallExecute)
 
@@ -68,10 +67,10 @@ function CallOpenModules(module_id)
 end
 AddEvent("CallOpenModules", CallOpenModules)
 
-function CallCloseAdmin()
+function CloseDialogAdmin()
     CloseUIAdmin()
 end
-AddEvent("CallCloseAdmin", CallCloseAdmin)
+AddRemoteEvent("CloseDialogAdmin", CloseDialogAdmin)
 
 function CallGetPlayerInfo(playerId)
     CallRemoteEvent("GetPlayerInfo", playerId)

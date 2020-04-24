@@ -33,6 +33,8 @@ function module:Onexecute(playerId, data)
     local p = data['target']
 
     admin_kill(playerId, p)
+
+    CloseAdminDialog(playerId)
 end
 
 AddAdminModule(module)

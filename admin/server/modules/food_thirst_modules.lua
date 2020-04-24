@@ -47,6 +47,8 @@ function module:Onexecute(playerId, data)
     else
         admin_thirst(playerId, target, amount)
     end
+
+    CloseAdminDialog(playerId)
 end
 
 AddAdminModule(module)

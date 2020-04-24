@@ -38,6 +38,8 @@ function module:Onexecute(playerId, data)
     end
 
     admin_change_time(playerId, time)
+
+    CloseAdminDialog(playerId)
 end
 
 AddAdminModule(module)

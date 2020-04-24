@@ -49,6 +49,8 @@ function module:Onexecute(playerId, data)
     else
         admin_removeItem(playerId, target, items_id, quantity)
     end
+
+    CloseAdminDialog(playerId)
 end
 
 AddAdminModule(module)

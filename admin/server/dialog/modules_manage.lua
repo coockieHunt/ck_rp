@@ -107,6 +107,11 @@ AddRemoteEvent("Open_admin_module", function(playerId, func)
     end 
 end)
 
+
+function CloseAdminDialog(playerId)
+    CallRemoteEvent(playerId, "CloseDialogAdmin")
+end
+
 function GetModulesSettings(module)
     settings = {
         id = module:GetId(),

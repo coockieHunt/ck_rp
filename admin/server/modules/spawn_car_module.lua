@@ -38,6 +38,8 @@ function module:Onexecute(playerId, data)
     if(data.AutoMount == 'on') then AutoMount = true end
     if(data.boost == 'on') then boost = true end
     admin_car_spawn(playerId, data.car_id, AutoMount, boost, data.color)
+
+    CloseAdminDialog(playerId)
 end
 
 AddAdminModule(module)

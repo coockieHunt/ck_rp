@@ -36,6 +36,8 @@ function module:Onexecute(playerId, data)
     local to = data['to']
 
     admin_tp_to(main, to)
+
+    CloseAdminDialog(playerId)
 end
 
 AddAdminModule(module)

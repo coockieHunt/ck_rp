@@ -36,6 +36,8 @@ function module:Onexecute(playerId, data)
     local preset_id = data['preset_id']
 
     get_admin_tp_preset_pos(playerid, target, preset_id)
+
+    CloseAdminDialog(playerId)
 end
 
 AddAdminModule(module)
