@@ -47,8 +47,8 @@ _Character_creation = {
 
             shirt = {
                 "formalShirt_1",
-                "prison_Guard",
-                "prisoner"
+                "formalShirt_2",
+                "us_pullover"
             },
 
             pants = {
@@ -79,8 +79,8 @@ _Character_creation = {
 
             shirt = {
                 "formal",
-                "prisoner",
-                "prison-Guard"
+                "TShirt01",
+                "Pullover01"
             },
 
             pants = {

@@ -354,7 +354,7 @@ _Clothing_men = {
 
         [6] = {
             name = "Formal Shirt 2",
-            var = "formalShirt-2",
+            var = "formalShirt_2",
             dir = "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_FormalShirt2_LPR"
         },
 
