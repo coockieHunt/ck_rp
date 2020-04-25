@@ -66,25 +66,27 @@ end
 AddRemoteEvent("BuildAdminDialog", function(playerId)
     local data = getplayer(playerId)
 
-    CallRemoteEvent(playerId, "BuildTitleBar", "your admin levels : " .. data.admin)
+    if(tonumber(data.admin) > 0) then
+        CallRemoteEvent(playerId, "BuildTitleBar", "your admin levels : " .. data.admin)
 
 
-    for _, table in ipairs(_Dialog_admin.module_select) do
-        CallRemoteEvent(playerId, "BuildDropDown", table.id, table.name)
-    end 
-
-    for _, module in ipairs(_module) do
-        local settings = GetModulesSettings(module)
-        
-        if AdminLevel(playerId, settings.admin_level ) then
-            AddSection(playerId, settings.id, settings.name, settings.select)
-            module:OnBuild()
-            BuildForm(playerId, settings.id)
-        end
-    end 
-
-    CallRemoteEvent(playerId, "ExecCallStack")
-    CallRemoteEvent(playerId, "BuildEnd")
+        for _, table in ipairs(_Dialog_admin.module_select) do
+            CallRemoteEvent(playerId, "BuildDropDown", table.id, table.name)
+        end 
+    
+        for _, module in ipairs(_module) do
+            local settings = GetModulesSettings(module)
+            
+            if AdminLevel(playerId, settings.admin_level ) then
+                AddSection(playerId, settings.id, settings.name, settings.select)
+                module:OnBuild()
+                BuildForm(playerId, settings.id)
+            end
+        end 
+    
+        CallRemoteEvent(playerId, "ExecCallStack")
+        CallRemoteEvent(playerId, "BuildEnd")
+    end
 end)
 
 AddRemoteEvent("Exucute_admin_module", function(playerId, json)
