@@ -1,10 +1,32 @@
-_module = {}
+-- master list modules
+_moduleList = {}
 
+-- section module content
 local content_section = {}
 
-function AddAdminModule(module)
-    table.insert(_module, module)
-end
+AddRemoteEvent("BuildAdminDialog", function(playerId)
+    local data = getplayer(playerId)
+
+    if(tonumber(data.admin) > 0) then
+        CallRemoteEvent(playerId, "BuildTitleBar", "your admin levels : " .. data.admin)
+
+
+        for _, table in ipairs(_Dialog_admin.module_select) do
+            CallRemoteEvent(playerId, "BuildDropDown", table.id, table.name)
+        end 
+    
+        for _, module in ipairs(_moduleList) do
+            if AdminLevel(playerId,module:GetLevel() ) then
+                AddSection(playerId, module:GetId(), module:GetName(), module:GetSelect())
+                module:OnBuild()
+                BuildForm(playerId, module:GetId())
+            end
+        end 
+    
+        CallRemoteEvent(playerId, "ExecCallStack")
+        CallRemoteEvent(playerId, "BuildEnd")
+    end
+end)
 
 function BuildForm(playerId, section_id)
     for _, form in ipairs(content_section) do
@@ -61,66 +83,4 @@ end
 function AddSection(playerId, id, name, select)
     CallRemoteEvent(playerId, "BuildNav", name, id, select) 
     CallRemoteEvent(playerId, "BuildSection", id)
-end
-
-AddRemoteEvent("BuildAdminDialog", function(playerId)
-    local data = getplayer(playerId)
-
-    if(tonumber(data.admin) > 0) then
-        CallRemoteEvent(playerId, "BuildTitleBar", "your admin levels : " .. data.admin)
-
-
-        for _, table in ipairs(_Dialog_admin.module_select) do
-            CallRemoteEvent(playerId, "BuildDropDown", table.id, table.name)
-        end 
-    
-        for _, module in ipairs(_module) do
-            local settings = GetModulesSettings(module)
-            
-            if AdminLevel(playerId, settings.admin_level ) then
-                AddSection(playerId, settings.id, settings.name, settings.select)
-                module:OnBuild()
-                BuildForm(playerId, settings.id)
-            end
-        end 
-    
-        CallRemoteEvent(playerId, "ExecCallStack")
-        CallRemoteEvent(playerId, "BuildEnd")
-    end
-end)
-
-AddRemoteEvent("Exucute_admin_module", function(playerId, json)
-    local data = json_decode(json)
-    local func = data['func']
-    for _, module in ipairs(_module) do
-        if module:GetId() == func then
-            if AdminLevel(playerId, module:GetLevel() ) then
-                module:Onexecute(playerId, data)
-            end
-        end
-    end 
-end)
-
-AddRemoteEvent("Open_admin_module", function(playerId, func)
-    for _, module in ipairs(_module) do
-        if module:GetId() == func then
-            module:OnOpen(playerId)
-        end
-    end 
-end)
-
-
-function CloseAdminDialog(playerId)
-    CallRemoteEvent(playerId, "CloseDialogAdmin")
-end
-
-function GetModulesSettings(module)
-    settings = {
-        id = module:GetId(),
-        name = module:GetName(),
-        select = module:GetSelect(),
-        admin_level = module:GetLevel(),
-    }
-
-    return settings
 end
