@@ -32,8 +32,8 @@ WIP
 - line 2 'admin_level' share administrator level (SET @ADMIN_LEVEL = 10;)
 
 ```sql
-SET @STEAM_ID = '76561198145622969';
-SET @ADMIN_LEVEL = 10;
+SET @STEAM_ID = 'steam id';
+SET @ADMIN_LEVEL = admin_level;
 
 SET @ACCOUNT_ID = (
 	SELECT id
