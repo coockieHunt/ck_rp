@@ -2,7 +2,7 @@
 
 <h1>Administration</h1> 
 
-![m](https://img.shields.io/badge/Modules-12-green) ![v](https://img.shields.io/badge/Version-2-yellow) 
+![m](https://img.shields.io/badge/Modules-13-green) ![v](https://img.shields.io/badge/Version-2-yellow) 
 
 
 
