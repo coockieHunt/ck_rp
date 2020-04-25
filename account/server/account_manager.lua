@@ -67,7 +67,7 @@ function SaveAccountPlayer(player, filter)
     end
 
     if filter == "cash" then
-        query = mariadb_prepare(db, _RequestSql.SaveAccountSurvival,
+        query = mariadb_prepare(db, _RequestSql.SaveAccountCash,
             Data.cash,
             Data.cash_account,
             Data.steamId
