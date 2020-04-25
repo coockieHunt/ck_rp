@@ -1,7 +1,13 @@
-<center> ![main logo](https://i.ibb.co/8zHdNXk/Sans-titre-3.png) 
-![](https://img.shields.io/badge/Modules-12-green) ![]](https://img.shields.io/badge/Version-2-yellow)
+<center> 
+![main logo](https://i.ibb.co/8zHdNXk/Sans-titre-3.png) 
+
+ </center>
+
+<center> 
+<h1>Administration</h1> 
+![m](https://img.shields.io/badge/Modules-12-green)
+![v](https://img.shields.io/badge/Version-2-yellow) 
 </center>
-<center> <h1>Administration</h1> </center>
 
 ### Features
 
@@ -14,7 +20,7 @@
 
 **Table of Contents**
 
-[TOC]
+WIP
 
 ### Administrator management
                 
