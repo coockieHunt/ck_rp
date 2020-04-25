@@ -1,7 +1,5 @@
-function OnPlayerSpawn(playerid)
-    -- Delay(1000, function()
-	-- 	SetPlayerClothing(playerid)
-	-- end)
-    
+function OnPlayerStreamIn(player, otherplayer)
+	local otherplayerData = getplayer(otherplayer)
+	SetPlayerClothing(otherplayer)
 end
-AddEvent("OnPlayerSpawn", OnPlayerSpawn)
+AddEvent("OnPlayerStreamIn", OnPlayerStreamIn)
