@@ -97,7 +97,8 @@ _Mariadb = {
     database = "onset" -- database name
 };
 ```
-7. enjoy
+7. Set first administrator -> https://github.com/coockieHunt/onset-ck-rp/blob/master/doc/ADMIN.md#add-wip
+8. enjoy
 
 ***config guide***
 - items : [here](https://github.com/coockieHunt/onset-ck-rp/blob/master/doc/ITEMS.md) 
