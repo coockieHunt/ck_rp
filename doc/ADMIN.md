@@ -24,11 +24,11 @@ WIP
 ----
 
 #### add (wip)
-1. connect once to the servers.
-2. disconnected from the server.
-3. shut down the server.
-4. execute this SQL query modify it:
-- line 1 'steam id' the id steam of the player who will become administrator (SET @STEAM_ID = '76561195555555555';)
+1. connect once to servers.
+2. disconnected server.
+3. shut down server.
+4. Modify end execute this sql request:
+- line 1 'steam id' id steam of the player who will become administrator (SET @STEAM_ID = '76561195555555555';)
 - line 2 'admin_level' share administrator level (SET @ADMIN_LEVEL = 10;)
 
 ```sql
@@ -43,6 +43,7 @@ SET @ACCOUNT_ID = (
 
 INSERT INTO onset.account_administrator (account_id, admin_level) VALUES (@ACCOUNT_ID, @ADMIN_LEVEL);
 ``` 
-
+5. Reconnect server
+6. Enjoy !!!
 
 
