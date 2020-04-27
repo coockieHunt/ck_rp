@@ -5,7 +5,7 @@ All of the functions listed here allow you to manage the framework. for added fu
 
 *getplayer*
 #### Description
-retrieves player data as an object
+Retrieves player data as an object.
 #### syntax
 ```lua 
 getplayer(player)
@@ -17,21 +17,21 @@ getplayer(player)
 
 *SaveAccountPlayer*
 #### Description
-allows to save the data of an account.
+Allows to save the data of an account.
 #### syntax
 ```lua 
 SaveAccountPlayer(player, [filter])
 ```
 #### Parameters
 - **player [int]** (player id)
-- **filter [string]** (save the corresponding data ***[all, inventoy, clothing, surival, cash] ***)
+- **filter [string]** (save the corresponding data **[all, inventoy, clothing, surival, cash]**)
 
 
 ------------
 
 *DestroyPlayerData*
 #### Description
-destroy all player data in the server cache
+Destroys all player data in the server cache.
 #### syntax
 ```lua 
 DestroyPlayerData(steam_id)
@@ -43,7 +43,7 @@ DestroyPlayerData(steam_id)
 
 *IfCachedPlayer*
 #### Description
-check if the player and an existing cache.
+Checks if the player and an existing cache.
 #### syntax
 ```lua 
 IfCachedPlayer(player)
@@ -54,7 +54,7 @@ IfCachedPlayer(player)
 ## items
 *CreateDropItem*
 #### Description
-create an object on the ground that will be picked up.
+Creates an object on the ground that will be picked up.
 #### syntax
 ```lua 
 CreateDropItem(player, item_id, quantity)
@@ -68,7 +68,7 @@ CreateDropItem(player, item_id, quantity)
 
 *RemoveDropedItem*
 #### Description
-destroys an object on the ground.
+Destroys an object on the ground.
 #### syntax
 ```lua 
 RemoveDropedItem(droped_id)

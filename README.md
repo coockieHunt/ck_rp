@@ -1,13 +1,13 @@
 ![main logo](https://i.ibb.co/8zHdNXk/Sans-titre-3.png)
 
 # disclaimer
-this code is only in its preamble, a public installation and not recommended
+This code is only in its preamble, a public installation and not recommended
 # onset ck role play
 ## athor
 - *coockie-hunt* - Main dev
 - *daryl* - helper
 ### links
-- dicrod : https://discord.gg/7kwfCth
+- discord : https://discord.gg/7kwfCth
 - youtube : https://www.youtube.com/playlist?list=PLHzBb4XCRN45K_v5DZhlpCENPL-BITdX8
 ### special thank
 - dictateurfou - https://github.com/dictateurfou/importer
@@ -18,7 +18,7 @@ this code is only in its preamble, a public installation and not recommended
 - game officiel doc : https://dev.playonset.com/wiki/Main_Page
 - mysql doc : https://dev.mysql.com/doc/
 
-### error codde
+### error codes
 - EC001 : server failed to retrieve the user's steam ID.
 - EC002 : server failed to retrieve user data on Connection.
 - EC003 : server failed to create user profile.
@@ -77,8 +77,8 @@ CREATE TABLE IF NOT EXISTS `ban` (
 
 
 ```
-4. move all file to *"yourserveronset\packages\ck_rp"*
-5. update *"server_config"*  :
+4. Move all files to *"yourserveronset\packages\ck_rp"*
+5. Update *"server_config"*  :
 ```lua
 	"plugins": [
 		"mariadb",
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `ban` (
 		"ck_rp"
 	],
 ```
-6. edit sql account *_Mariadb* *"yourserveronset\packages\ck_rp\config\config_systeme.lua"*
+6. Edit sql account *_Mariadb* *"yourserveronset\packages\ck_rp\config\config_systeme.lua"*
 ```lua
 _Mariadb = { 
     host = "127.0.0.1", --sql server
@@ -98,7 +98,7 @@ _Mariadb = {
 };
 ```
 7. Set first administrator -> https://github.com/coockieHunt/onset-ck-rp/blob/master/doc/ADMIN.md#add-wip
-8. enjoy
+8. Enjoy
 
 ***config guide***
 - items : [here](https://github.com/coockieHunt/onset-ck-rp/blob/master/doc/ITEMS.md) 

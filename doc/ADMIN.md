@@ -10,7 +10,7 @@
 
 - Advanced module manager.
 - Automatic module loading.
-- log of each action.
+- Log of each action.
 - All the modules necessary for the administration of your server provided at the first start-up.
 
 
@@ -24,9 +24,9 @@ WIP
 ----
 
 #### add (wip)
-1. connect once to servers.
-2. disconnected server.
-3. shut down server.
+1. Connect once to the server.
+2. Disconnect from the server.
+3. Shut down the server.
 4. Modify end execute this sql request:
 - line 1 'steam id' id steam of the player who will become administrator (SET @STEAM_ID = '76561195555555555';)
 - line 2 'admin_level' share administrator level (SET @ADMIN_LEVEL = 10;)
@@ -43,7 +43,7 @@ SET @ACCOUNT_ID = (
 
 INSERT INTO onset.account_administrator (account_id, admin_level) VALUES (@ACCOUNT_ID, @ADMIN_LEVEL);
 ``` 
-5. Reconnect server
+5. Reconnect to the server
 6. Enjoy !!!
 
 
