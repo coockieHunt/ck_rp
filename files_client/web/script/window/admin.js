@@ -15,6 +15,11 @@ function BuildEnd(){
     RemoveEmptyDropDown()
 }
 
+// WINDOWS
+$( "#close" ).click(function() {
+    CallEvent("CloseDialogAdmin");
+});
+
 // NAV
 function NavClickEvent(){
     $( 'li' ).click(function( ) {
@@ -22,7 +27,6 @@ function NavClickEvent(){
         if(id != undefined){
             HideAllSection()
             ShowSection(id)
-            CallEvent("CallOpenModules", id);
         }
     });
 }

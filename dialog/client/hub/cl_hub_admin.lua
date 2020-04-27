@@ -71,6 +71,8 @@ function CloseDialogAdmin()
     CloseUIAdmin()
 end
 AddRemoteEvent("CloseDialogAdmin", CloseDialogAdmin)
+AddEvent("CloseDialogAdmin", CloseDialogAdmin)
+
 
 -- 
 -- Build
