@@ -27,9 +27,9 @@
 		
 		"character/client/clothing/cl_set_clothing.lua",
 		"character/client/clothing/cl_stream.lua",
-		"character/client/cl_nearest.lua",
-		"character/client/linetrtace.lua",
-		"character/client/cl_create_character.lua",
+		"character/client/nearest/cl_nearest.lua",
+		"character/client/nearest/cl_linetrtace.lua",
+		"character/client/clothing/cl_create_character.lua",
 
 		"clothing/client/cl_skeletalMesh.lua",
 		

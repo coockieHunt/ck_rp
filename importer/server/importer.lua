@@ -11,6 +11,7 @@ function import(filename)
 end
 
 import("utils/system.lua")
+import("utils/game.lua")
 import("utils/json.lua")
 
 print("-- LOAD CONFIGURATION FILLE --" )
