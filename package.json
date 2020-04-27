@@ -20,16 +20,15 @@
 		"dialog/client/hub/cl_hub_warning_survival.lua",
 		"dialog/client/hub/cl_hub_newCharacter.lua",
 		"dialog/client/hub/cl_hub_info.lua",
-
 		"dialog/client/function/cl_get_info.lua",
 		"dialog/client/function/cl_getKeyMapping.lua",
 		"dialog/client/function/cl_input_manager.lua",
 		
 		"character/client/clothing/cl_set_clothing.lua",
 		"character/client/clothing/cl_stream.lua",
-		"character/client/cl_nearest.lua",
-		"character/client/linetrtace.lua",
-		"character/client/cl_create_character.lua",
+		"character/client/clothing/cl_create_character.lua",
+		"character/client/nearest/cl_nearest.lua",
+		"character/client/nearest/cl_linetrtace.lua",
 
 		"clothing/client/cl_skeletalMesh.lua",
 		
