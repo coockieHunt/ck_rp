@@ -13,7 +13,7 @@
 - Log of each action.
 - All the modules necessary for the administration of your server provided at the first start-up.
 
-
+![admin preview](https://zupimages.net/up/20/18/qrww.png) 
 
 **Table of Contents**
 
