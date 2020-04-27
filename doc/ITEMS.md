@@ -1,5 +1,5 @@
 # Items
-add items end type item
+Add items end item types
 
 ## configurations
 1. add item:
