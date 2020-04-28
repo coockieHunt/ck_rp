@@ -1,10 +1,11 @@
 __dialogList = {}
 
 function BuildClientDialog(id, key, type, view)
-    local new_ui = createDialog(view)
-    CallRemoteEvent("OnCreateDialog", id)
-
-    __dialogList[id] = {['key'] = key, ['type'] = type, ['view'] = view, ['ui'] = new_ui}
+    if __dialogList[id] ~= nil then
+        local new_ui = createDialog(view)
+        CallRemoteEvent("OnCreateDialog", id)
+        __dialogList[id] = {['key'] = key, ['type'] = type, ['view'] = view, ['ui'] = new_ui}
+    end
 end
 AddRemoteEvent("BuildClientDialog", BuildClientDialog)
 
