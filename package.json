@@ -12,8 +12,8 @@
 		"account/client/cl_account_autoAlert.lua",
 		"days_cycle/client/cl_days_clycle.lua",
 
-		"dialog/client/hub/cl_hub_admin.lua",
 		"admin/client/function/cl_manage_function.lua",
+		"admin/client/dialog/cl_hub_admin.lua",
 		
 		"dialog/client/manage/cl_build.lua",
 		"dialog/client/manage/cl_manage.lua",
@@ -23,6 +23,7 @@
 		"dialog/client/hub/cl_hub_warning_survival.lua",
 		"dialog/client/hub/cl_hub_newCharacter.lua",
 		"dialog/client/hub/cl_hub_info.lua",
+		
 		"dialog/client/function/cl_get_info.lua",
 		"dialog/client/function/cl_getKeyMapping.lua",
 		"dialog/client/function/cl_input_manager.lua",

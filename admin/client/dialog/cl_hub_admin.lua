@@ -35,7 +35,7 @@ AddEvent("OnPlayerSpawn", OnPlayerSpawn)
 
 -- key mapping
 AddEvent("OnKeyPress", function(key)
-    if key == GetKeyMapServer("admin") and admin_ui_builded == true  then
+    if key == "F5" and admin_ui_builded == true  then
         if GetWebVisibility(admin_ui) == WEB_HIDDEN then
             OpenUIAdmin()
             BuildSelectOnOpen(admin_ui)
