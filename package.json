@@ -22,7 +22,6 @@
 		"dialog/client/hub/cl_hub_survival.lua",
 		"dialog/client/hub/cl_hub_warning_survival.lua",
 		"dialog/client/hub/cl_hub_newCharacter.lua",
-		"dialog/client/hub/cl_hub_info.lua",
 		
 		"dialog/client/function/cl_get_info.lua",
 		"dialog/client/function/cl_getKeyMapping.lua",
