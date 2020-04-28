@@ -25,6 +25,7 @@ AddRemoteEvent("BuildAdminDialog", function(playerId)
     
         CallRemoteEvent(playerId, "ExecCallStack")
         CallRemoteEvent(playerId, "BuildEnd")
+        CallRemoteEvent(playerId, "BuidlEndPlayerChat", _Dialog_admin.key)
     end
 end)
 
@@ -83,4 +84,8 @@ end
 function AddSection(playerId, id, name, select)
     CallRemoteEvent(playerId, "BuildNav", name, id, select) 
     CallRemoteEvent(playerId, "BuildSection", id)
+end
+
+function BuildEndPlayerChat(playerId, key)
+    CallRemoteEvent(playerId, _Dialog_admin.key)
 end

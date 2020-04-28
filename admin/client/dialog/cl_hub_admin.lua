@@ -95,10 +95,14 @@ function ExecCallStack()
     for k, v in ipairs(call_stack) do
         ExecuteWebJS(admin_ui, v)
     end
-
-    AddPlayerChat(('<span color="%s">[client]</> %s'):format("#DFBE08", "admin dialog build press " .. GetKeyMapServer("admin") .. " for open menu"))
 end
 AddRemoteEvent("ExecCallStack", ExecCallStack)
+
+function BuidlEndPlayerChat(key)
+    AddPlayerChat(('<span color="%s">[client]</> %s'):format("#DFBE08", "admin dialog build press " .. key .. " for open menu"))
+end
+AddRemoteEvent("BuidlEndPlayerChat", BuidlEndPlayerChat)
+
 
 function BuildDropDown(id, name)
     local exec = "AddDropDown('"..id.."','"..name.."')"

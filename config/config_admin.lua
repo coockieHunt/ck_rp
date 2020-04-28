@@ -1,4 +1,6 @@
 _Dialog_admin = {
+    key = 'F5',
+
     module_select = {
         {id = 'car', name = 'car'},
         {id = 'teleport', name = 'Teleport'},
