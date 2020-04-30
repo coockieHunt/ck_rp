@@ -1,4 +1,5 @@
 {
     "admin_dialog_build_end_notify" : "admin dialog build press {1} for open menu",
-    "on_connect_chat_all" : "<span color={1}>{2}</> joined the server"
+    "on_connect_chat_all" : "<span color={1}>{2}</> joined the server",
+    "on_player_chat" : "<span color={1}>[{2}] </> say : {3}"
 }
