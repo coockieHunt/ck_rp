@@ -3,14 +3,15 @@
 	"version": "1.0",
 	"server_scripts": [
 		"utils/system.lua",
-
         "importer/server/importer.lua"
 	],
 	
 	"client_scripts": [
 		"utils/json.lua",
+
 		"account/client/cl_account_autoAlert.lua",
-		"days_cycle/client/cl_days_clycle.lua",
+
+		"environment/client/cl_days_clycle.lua",
 		
 		"dialog/client/manage/cl_build.lua",
 		"dialog/client/manage/cl_manage.lua",
