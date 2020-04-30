@@ -84,7 +84,7 @@ function OnAccountLoadedCache(player)
     local ValidClothing = SetPlayerClothing(player)
     if (ValidClothing ~= true) then
         print("> character not create, opening character customize dialog on the player client")
-        CallRemoteEvent(player, "OpenUINewCharacter")
+        OpenDialogClient(player, "newCharacter")
     end
 
     player_name = p.name
@@ -115,7 +115,7 @@ function OnAccountLoadedSql(player)
         local ValidClothing = SetPlayerClothing(player)
         if (ValidClothing ~= true) then
             print("> character not create, opening character customize dialog on the player client")
-            CallRemoteEvent(player, "OpenUINewCharacter")
+            OpenDialogClient(player, "newCharacter")
         end
 
         setPlayerActive(player, true)

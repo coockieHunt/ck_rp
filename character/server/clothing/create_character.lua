@@ -30,61 +30,12 @@ end
 AddRemoteEvent("refrech_charactere", refrech_charactere)
 
 function changeGender(player, gender)
-    local character_creation = _Character_creation.clothing
-
-    ChangeClothingPlayer(player, player, "gender", gender)
-
-    for k, v in pairs(character_creation[gender]) do
-        ChangeClothingPlayer(player, player, k, getIdByVar(gender, k, v[1]))
-    end 
-
-    SetPlayerClothing(player)
+  
 
 
 end
 AddRemoteEvent("changeGender", changeGender)
 
-
-function setupCamUi(player)
-    local x, y, z  = GetPlayerLocation(player)
-    local newDimension = tonumber(player) + 1
-
-    setPlayerBackUp(player, false)
-
-    save_playerHeading = GetPlayerHeading(player)
-    
-    local x, y, z  = GetPlayerLocation(player)
-    
-    if(_Character_creation.form.scene) then
-        wall = CreateObject(1568, x + 320, y, z - 100)
-        floor = CreateObject(1568, x + 320, y, z - 55)
-    
-        SetObjectRotation(floor, 90, 0,0)
-        
-        SetObjectDimension(wall, newDimension)
-        SetObjectDimension(floor, newDimension)
-    
-        SetObjectScale(wall, 0, 50, 20)
-        SetObjectScale(floor, 0, 50, 20)
-    end
-
-    SetPlayerHeading(player, 170)
-    SetPlayerDimension(player, newDimension)
-end
-AddRemoteEvent("setupCamUi", setupCamUi)
-
-function RemoveCamUi(player)
-    SetPlayerDimension(player, 0)
-    SetPlayerHeading(player, save_playerHeading)
-
-    setPlayerBackUp(player, true)
-
-    if(_Character_creation.form.scene) then
-        DestroyObject(wall)
-        DestroyObject(floor)
-    end
-end
-AddRemoteEvent("RemoveCamUi", RemoveCamUi)
 
 function ErrorClient(player, json)
     local data = json_decode(json)
