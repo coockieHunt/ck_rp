@@ -1,6 +1,8 @@
 function admin_kill(player, target)
 	AddAdminLog(player, " kill " .. GetPlayerName(target))
 	SetPlayerHealth(target, 0)
+	RefrechSurvivalIventoryUi(target)
+	RefrechWarningSurvivalUi(target)
 end
 
 function admin_heal(player, target, num)
@@ -9,8 +11,8 @@ function admin_heal(player, target, num)
 	local p = getplayer(target)
 	p:setHealth(num)
 
-	SetUiDamage(target)
-	setUiWarnDamage(target)
+	RefrechSurvivalIventoryUi(target)
+	RefrechWarningSurvivalUi(target)
  end
 
 
@@ -20,8 +22,8 @@ function admin_heal(player, target, num)
 	local p = getplayer(target)
 	p:setArmor(num)
 	
-	SetUiDamage(target)
-	setUiWarnDamage(target)
+	RefrechSurvivalIventoryUi(target)
+	RefrechWarningSurvivalUi(target)
  end
 
  function admin_thirst(player, target, num)
@@ -30,8 +32,8 @@ function admin_heal(player, target, num)
 	local p = getplayer(target)
 	p:setThirst(num)
 	
-	SetSUiurvival(target)
-	setUiWarnSuvival(target)
+	RefrechSurvivalIventoryUi(target)
+	RefrechWarningSurvivalUi(target)
  end
 
  function admin_food(player, target, num)
@@ -39,6 +41,6 @@ function admin_heal(player, target, num)
 	local p = getplayer(target)
 	p:setFood(num)
 	
-	SetSUiurvival(target)
-	setUiWarnSuvival(target)
+	RefrechSurvivalIventoryUi(target)
+	RefrechWarningSurvivalUi(target)
  end

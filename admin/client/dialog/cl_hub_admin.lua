@@ -4,23 +4,25 @@ local admin_ui_builded = false
 -- manage ui
 function OpenUIAdmin()
     if admin_ui ~= nil then
-        ShowMouseHub(true)
-        LockPlayerInput(true)
-        SetWebVisibility(admin_ui, WEB_VISIBLE)
-        CloseUISurvival_warn()
-        CloseUIAlert()
+        ShowMouse(true)
+        FreezePlayerInput(true)
 
+        SetWebVisibility(admin_ui, WEB_VISIBLE)
         BuildSelectOnStart(admin_ui)
+
+        CloseDialog("warning")
+        CloseDialog("alert")
     end
 end
 
 function CloseUIAdmin()
-    ShowMouseHub(false)
-    LockPlayerInput(false)
-    SetWebVisibility(admin_ui, WEB_HIDDEN)
+    ShowMouse(false)
+    FreezePlayerInput(false)
 
-    OpenUIAlert()
-    OpenUISurvival_warn()
+    OpenDialog("warning")
+    OpenDialog("alert")
+
+    SetWebVisibility(admin_ui, WEB_HIDDEN)
 end
 
 -- package manager
@@ -30,6 +32,7 @@ function OnPlayerSpawn()
     SetWebAlignment(admin_ui, 0.0, 0.0)
     SetWebAnchors(admin_ui, 0.0, 0.0, 1.0, 1.0)
     SetWebVisibility(admin_ui, WEB_HIDDEN)
+
 end
 AddEvent("OnPlayerSpawn", OnPlayerSpawn)
 
@@ -38,7 +41,10 @@ AddEvent("OnKeyPress", function(key)
     if key == "F5" and admin_ui_builded == true  then
         if GetWebVisibility(admin_ui) == WEB_HIDDEN then
             OpenUIAdmin()
+
             BuildSelectOnOpen(admin_ui)
+            
+
         else
             CloseUIAdmin()
         end
