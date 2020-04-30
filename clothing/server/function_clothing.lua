@@ -69,3 +69,15 @@ function getIdByVar(gender, type, var)
 
     return false
 end
+
+function GetNameByVar(gender, type, var)
+    local list =  GetClothingListByGender(gender)
+
+    for i, v in ipairs(list[type]) do
+        if(v.var == var) then
+            return v.name
+        end
+    end
+
+    return false
+end
