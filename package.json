@@ -11,21 +11,16 @@
 		"utils/json.lua",
 		"account/client/cl_account_autoAlert.lua",
 		"days_cycle/client/cl_days_clycle.lua",
-
-		"admin/client/function/cl_manage_function.lua",
-		"admin/client/dialog/cl_hub_admin.lua",
 		
 		"dialog/client/manage/cl_build.lua",
 		"dialog/client/manage/cl_manage.lua",
+		"dialog/client/manage/cl_event.lua",
 
-		"dialog/client/hub/cl_hub_alert.lua",
-		"dialog/client/hub/cl_hub_survival.lua",
-		"dialog/client/hub/cl_hub_warning_survival.lua",
-		"dialog/client/hub/cl_hub_newCharacter.lua",
-		
+		"admin/client/function/cl_manage_function.lua",
+		"admin/client/dialog/cl_hub_admin.lua",
+
 		"dialog/client/function/cl_get_info.lua",
 		"dialog/client/function/cl_getKeyMapping.lua",
-		"dialog/client/function/cl_input_manager.lua",
 		
 		"character/client/clothing/cl_set_clothing.lua",
 		"character/client/clothing/cl_stream.lua",
@@ -87,9 +82,8 @@
 		"files_client/web/script/window/info.js",
 		"files_client/web/script/window/alert.js",
 
-		"dialog/files/ui_survival.html", 
+		"dialog/files/ui_inventory.html", 
 		"dialog/files/ui_admin.html",
-		"dialog/files/ui_warning_survival.html",
 		"dialog/files/ui_new_character.html",
 		"dialog/files/ui_alert.html",
 		"dialog/files/ui_info.html"
