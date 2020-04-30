@@ -65,7 +65,6 @@ end
 function LoadPlayerAccount(player)
     
     local steam_id = tostring(GetPlayerSteamId(player))
-    AddPlayerChatAll( ('<span color="#%s">%s </>%s'):format("0438CE", GetPlayerName(player), " a rejoint le serveur"))
 
     if(IfCachedPlayer(player)) then
         print("> Load player account by CACHE ("..steam_id..") ")

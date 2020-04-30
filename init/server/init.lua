@@ -1,16 +1,13 @@
 --init player
-function OnPlayerJoin(player)
+function OnPlayerJoin(playerId)
 	local sp = GetPosByVar(_Init_player.location)
-	SetPlayerSpawnLocation(player, sp['x'], sp['y'], sp['z'], sp['h'])
+	SetPlayerSpawnLocation(playerId, sp['x'], sp['y'], sp['z'], sp['h'])
 end
 AddEvent("OnPlayerJoin", OnPlayerJoin)
 
-function OnPlayerLoadComplete(player)
-	local delay = 5000
-
-	Delay(delay, function()
-		AutoAlertRun(player)
-		AddPlayerChat(player, _("text_to_send"))
-	end)
+function OnPlayerLoadComplete(playerId)
+	local notify_alert = _("on_connect_chat_all",'"#43d815"', GetPlayerName(playerId))
+	AddPlayerChatAll(notify_alert)
+	AutoAlertRun(playerId)
 end
 
