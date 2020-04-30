@@ -22,7 +22,7 @@ function blink(element, bool, level){
     let e = "#" + element
     if(bool)
     {
-        if(level < 50){
+        if(level < 50 && level > 25){
             if($(e).hasClass("blink"))
             {
                 $(e).removeClass("blink");
@@ -31,6 +31,8 @@ function blink(element, bool, level){
         }
 
         if(level < 25){
+            console.log("-25")
+
             if($(e).hasClass("blink") != true){
                 $(e).fadeIn( "slow", function() {
                     $(e).addClass("blink")
