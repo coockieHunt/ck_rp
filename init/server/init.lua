@@ -5,17 +5,12 @@ function OnPlayerJoin(player)
 end
 AddEvent("OnPlayerJoin", OnPlayerJoin)
 
-function OnPlayerSpawn(player)
-	local id = _Init_player.clothing_preset
-	CallRemoteEvent(player, "spawn_init_clothing", id)
-	AddPlayerChat(player, "show cmd available </cmd>")
-	
-end
-AddEvent("OnPlayerSpawn", OnPlayerSpawn)
-
 function OnPlayerLoadComplete(player)
-	Delay(5000, function()
+	local delay = 5000
+
+	Delay(delay, function()
 		AutoAlertRun(player)
+		AddPlayerChat(player, _("text_to_send"))
 	end)
 end
 

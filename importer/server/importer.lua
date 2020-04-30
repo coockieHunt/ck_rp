@@ -4,9 +4,13 @@ local importedPacakge= {}
 
 function import(filename)
 	if(importedFile[filename] == nil) then
-		local f = assert(loadfile("packages/ck_rp/"..filename))
-		importedFile[filename] = true
-		return f()
+		if GetFileExtension(filename) == ".lua" then
+			local f = assert(loadfile("packages/ck_rp/"..filename))
+			importedFile[filename] = true
+			return f()
+		end
+
+		return false
 	end
 end
 
@@ -59,12 +63,8 @@ function packagesImport(packageName)
 			if(_Pacakge.display_console) then AddPackageLog(packageName, "package", true) end
 			local filesPacakge = GetFilesFolder(folder)
 			if(has_value(filesPacakge, _Pacakge.server_folder)) then
-
-
 				filesPacakgeServer = GetFilesFolder(folder.."/".._Pacakge.server_folder)
-
 				for _, value in ipairs(filesPacakgeServer) do
-
 					if(GetFileExtension(value) == ".lua") then 
 						import(packageName.."/".._Pacakge.server_folder.."/"..value)
 					else

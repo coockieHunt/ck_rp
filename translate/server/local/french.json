@@ -1,0 +1,4 @@
+{
+	"hello_string_test": "FR string de test, var 1 : %v, var 2 : %v",
+	"hello_string_test_deux": "FR string de test, vare 1 : %v, vare 2 : %v"
+}

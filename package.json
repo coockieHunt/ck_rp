@@ -8,6 +8,7 @@
 	
 	"client_scripts": [
 		"utils/json.lua",
+		"translate/client/cl_loader.lua",
 
 		"account/client/cl_account_autoAlert.lua",
 
