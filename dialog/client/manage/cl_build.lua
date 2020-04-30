@@ -1,10 +1,10 @@
 __dialogList = {}
 
-function BuildClientDialog(id, key, type, view)
+function BuildClientDialog(id, key, dysplay_on_spawn, type, view)
     if __dialogList[id] == nil then
-        local new_ui = createDialog(view)
+        local new_ui = createDialog(view, dysplay_on_spawn)
         CallRemoteEvent("OnCreateDialog", id)
-        __dialogList[id] = {['key'] = key, ['type'] = type, ['view'] = view, ['ui'] = new_ui}
+        __dialogList[id] = {['key'] = key, ['type'] = type, ['DysplayOnSpawn'] = dysplay_on_spawn, ['view'] = view, ['ui'] = new_ui}
     end
 end
 AddRemoteEvent("BuildClientDialog", BuildClientDialog)
@@ -63,12 +63,18 @@ end
 AddEvent("OnWebLoadComplete", OnWebLoadComplete)
 
 
-function createDialog(view)
+function createDialog(view, dysplay_on_spawn)
     local ui = CreateWebUI(0,0,0,0,1,16)
     SetWebAlignment(ui , 0,0)
     SetWebAnchors(ui , 0,0,1,1)
     SetWebURL(ui , 'http://asset/' .. GetPackageName() .. '/dialog/files/'..view)
-    SetWebVisibility(ui , WEB_VISIBLE)
+
+    
+    if dysplay_on_spawn then
+        SetWebVisibility(ui , WEB_VISIBLE)
+    else
+        SetWebVisibility(ui , WEB_HIDDEN)
+    end
 
     return ui
 end

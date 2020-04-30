@@ -7,6 +7,7 @@ function OnPlayerSpawn(playerid)
             "BuildClientDialog", 
             dialog:GetId(), 
             dialog:GetKey(), 
+            dialog:GetDysplayOnSpawn(),
             dialog:GetType(), 
             dialog:GetView()
         )
