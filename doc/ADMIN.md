@@ -19,11 +19,11 @@
 
 WIP
 
-### Administrator management
+### __Administrator management__
                 
 ----
 
-#### add (wip)
+#### __add (wip)__
 1. Connect once to the server.
 2. Disconnect from the server.
 3. Shut down the server.
@@ -45,5 +45,61 @@ INSERT INTO onset.account_administrator (account_id, admin_level) VALUES (@ACCOU
 ``` 
 5. Reconnect to the server
 6. Enjoy !!!
+----
 
+### add select
+Allows you to create a menu that contains modules (Drop down). which makes it easier to find yourself in the interface.
 
+1. Edit this files [*'ck_rp/config/config_admin.lua'*](https://github.com/coockieHunt/onset-ck-rp/blob/master/config/config_admin.lua).
+
+2. Add your select in the tables *module_select*.
+```lua
+module_select = {
+	{id = '<NEW_SELECT_ID>', name = '<NEW_SELECT_NAME>'}
+}
+```
+> #### parameter
+>- <NEW_SELECT_ID> : id which will add modules to select (<span style="color:orange">no space</span>).
+>- <NEW_SELECT_NAME> : the name that will be displayed in the menu.
+
+----
+
+### Create module
+Create a module to add a menu to administrators.
+
+#### prerequisite 
+- var module : module variable (<span style="color:orange">no space</span>).
+- name module : module name.
+- module level : the minimum level for an administrator to use this module.
+
+### Create
+1. create a file in the folder  [*'ck_rp/admin/server/modules'*](https://github.com/coockieHunt/onset-ck-rp/tree/master/admin/server/modules) named the <id_module> _modules.lua ( ex:  MyModule_module.lua ).
+2. edit the file by adding this module structure :
+```lua
+local module = {
+    name = "<module_name>",
+    id = "<module_id>",
+    select = "<select_id>",
+    level = <admin_level>
+}
+
+function module:GetName()
+    return module.name
+end
+
+function module:GetSelect()
+    return module.select
+end
+
+function module:GetId()
+    return module.id
+end
+
+function module:GetLevel()
+    return module.level
+end
+
+AddAdminModule(module)
+```
+
+WIP
