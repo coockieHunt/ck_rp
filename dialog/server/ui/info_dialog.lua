@@ -2,6 +2,7 @@ local dialog = {
     id = "info",
     key = "I",
     type = "release",
+    dysplay_on_spawn = false,
     view = "ui_info.html"
 }
 
@@ -13,6 +14,10 @@ function dialog:GetKey()
     return dialog.key
 end
 
+function dialog:GetDysplayOnSpawn()
+    return dialog.dysplay_on_spawn
+end
+
 function dialog:GetView()
     return dialog.view
 end
@@ -22,7 +27,6 @@ function dialog:GetType()
 end
 
 function dialog:onCreate(playerId, DialogId)
-    CloseDialog(playerId, DialogId)
 end
 
 function dialog:onOpen(playerId, DialogId)
