@@ -46,6 +46,8 @@ function SendAlert(playerId, type, title, content)
     data:setAlertCount(data:getAlertCount() + 1)
     ExecWebJs(playerId, dialog:GetId(), "sendAlert( "..data:getAlertCount()..", '"..type.."',  '"..title.."', '"..content.."');")
 end
+AddRemoteEvent("SendAlert", SendAlert)
+
 
 function CeateProgressBar(playerId, time, color)
     if color == nil then color = "#43515e" end
