@@ -6,6 +6,7 @@ _Pacakge = {
 };
 
 _Import_package = {
+    "translate",
     "log",
     "environment",
     "character",
