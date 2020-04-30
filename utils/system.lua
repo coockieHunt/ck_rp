@@ -129,3 +129,17 @@ end
 function isnil(s)
   return s == nil or s == ''
 end
+
+-- file
+function readFile(name)
+  local fh = io.open(name, "r")
+  if fh == nil then
+      return nil
+  end
+  fh:close()
+  local content = ""
+  for line in io.lines(name) do
+      content = content..line
+  end
+  return content
+end
