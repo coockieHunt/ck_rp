@@ -99,6 +99,15 @@ function module:GetLevel()
     return module.level
 end
 
+function module:OnBuild()
+end
+
+function module:OnOpen(playerId)
+end
+
+function module:Onexecute(playerId, data)
+end
+
 AddAdminModule(module)
 ```
 
