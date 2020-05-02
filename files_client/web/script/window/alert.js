@@ -16,6 +16,10 @@ function sendAlert(id, type, title, content){
             svg = BuildSvg("error", "icon")
             color = "#CA2121"
         break;
+        case "admin":
+            svg = BuildSvg("hammers", "icon")
+            color = "#D76735"   
+        break
         default:
             svg = BuildSvg("error", "icon")
     }
