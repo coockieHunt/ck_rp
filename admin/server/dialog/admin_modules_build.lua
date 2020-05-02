@@ -26,7 +26,7 @@ AddRemoteEvent("BuildAdminDialog", function(playerId)
         CallRemoteEvent(playerId, "ExecCallStack")
         CallRemoteEvent(playerId, "BuildEnd")
         local alert = _("admin_dialog_build_end_notify", _Dialog_admin.key)
-        SendAlert(playerId, 'info', 'server', alert)
+        SendAlert(playerId, 'admin', 'server', alert)
     end
 end)
 
