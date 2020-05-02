@@ -102,7 +102,7 @@ _Character_creation = {
 _Chat_account = {
     allow_chat = {
         global = true,
-        range = fatruelse
+        range = true
     },
 
     chat_range_dist = 1000, -- in centimeters
