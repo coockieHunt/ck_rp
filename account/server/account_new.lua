@@ -10,7 +10,7 @@ function CreatePlayerAccount(player)
         _New_account.armor,
         _New_account.food,
         _New_account.thirst,
-        _Inventory_account.weight_character,
+        _New_account.weight_character,
         0,
         player_name,
         _New_account.cash,

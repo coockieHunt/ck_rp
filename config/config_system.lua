@@ -1,3 +1,6 @@
+-- language
+_Language = "english"
+
 -- Package
 _Pacakge = {
     server_folder = "server",

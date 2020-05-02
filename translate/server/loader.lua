@@ -1,4 +1,4 @@
-local language = "english"
+local language = _Language
 
 local translate = {}
 translate_ready = false;

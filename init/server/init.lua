@@ -1,6 +1,6 @@
 --init player
 function OnPlayerJoin(playerId)
-	local sp = GetPosByVar(_Init_player.location)
+	local sp = GetPosByVar(_Spawn_location)
 	SetPlayerSpawnLocation(playerId, sp['x'], sp['y'], sp['z'], sp['h'])
 end
 AddEvent("OnPlayerJoin", OnPlayerJoin)
