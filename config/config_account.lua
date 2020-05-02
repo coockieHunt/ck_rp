@@ -98,6 +98,18 @@ _Character_creation = {
     }
 };
 
+-- chat
+_Chat_account = {
+    allow_chat = {
+        global = true,
+        range = fatruelse
+    },
+
+    chat_range_dist = 1000, -- in centimeters
+
+    chat_global_commande = "global",
+}
+
 -- auto fetch time
 _Account_timer = {
     save_account_time = 60000*5 ,-- milisecond (1 min = 60000 milisecond) default - 300000

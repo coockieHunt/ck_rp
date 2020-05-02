@@ -1,5 +1,7 @@
 {
     "admin_dialog_build_end_notify" : "admin dialog build press {1} for open menu",
     "on_connect_chat_all" : "<span color={1}>{2}</> joined the server",
-    "on_player_chat" : "<span color={1}>[{2}] </> say : {3}"
+    "chat_not_allow" : "<span color={1}>[server] </> this server does not allow spoken in the chat in {2}",
+    "on_player_chat" : "<span color={1}>[{2}] </> say : {3}",
+    "on_player_chat_range" : "<span color={1}>[{2}] </> say range: {3}"
 }

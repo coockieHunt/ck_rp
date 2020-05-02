@@ -3,6 +3,3 @@ function OnPlayerDeath(player, instigator)
 end
 AddEvent("OnPlayerDeath", OnPlayerDeath)
 
-AddEvent("OnPlayerChat", function(playerId, text)
-	AddPlayerChatAll(_("on_player_chat", '"#43d815"', GetPlayerName(playerId), text))
-end)
