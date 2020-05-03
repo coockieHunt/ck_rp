@@ -1,5 +1,5 @@
 function OnPlayerJoin(player)
-	AddPlayerChat(player, "") -- clear chat
+	AddPlayerChat(player, "")
 	AddLoginLog(player)
 end
 AddEvent("OnPlayerJoin", OnPlayerJoin)

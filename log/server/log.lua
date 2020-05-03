@@ -1,38 +1,18 @@
 function AddAdminLog(player, msg)
     local text = FormatLogAdmin(player, msg)
     
-    if get_os_name() == "Windows" then
-        file = io.open(_Log_file.folder.."/".._Log_file.admin, "a")
-        file:write(text, "\n")
-        file:close()
-    end
-
-    if get_os_name() == "Linux" then
-        
-    end
+    file = io.open(_Log_file.admin, "a")
+    file:write(text, "\n")
+    file:close()
 end
 
 function AddLoginLog(player)
 	local time = GetSystemTime()
     local text = "[login] ("..time..") - connected "..GetPlayerName(player)
 
-    print(". " .. text)
-
-    -- file = io.open(_Log_file.folder.."/".._Log_file.login, "a")
-	-- file:write(text, "\n")
-	-- file:close()
-end
-
-function LogPlayerChat(player, color, type, message)
-    local hex = _Log_color[color]
-    if(isnil(hex)) then hex = color end
-    AddPlayerChat(player, ('<span color="#%s">[%s] </>%s'):format(hex, type, message))
-end
-
-function LogPlayerChatAll(player, color, type, message)
-    local hex = _Log_color[color]
-    if(isnil(hex)) then hex = color end
-    AddPlayerChat(player, ('<span color="#%s">[%s] </>%s'):format(hex, type, message))
+    file = io.open(_Log_file.login, "a")
+	file:write(text, "\n")
+	file:close()
 end
 
 function LogCommandeChat(player, cmd, exists)
@@ -40,17 +20,17 @@ function LogCommandeChat(player, cmd, exists)
     local text = "[commande] ("..time..") - "..GetPlayerName(player).. " execut Command '/"..cmd.."'"
 
     if not exists then
-        LogPlayerChat(player, 'warning', "cmd", "Command '/"..cmd.."' not found!")
+        AddPlayerChat(player, ('<span color="#D76735">[server] </>%s command not exist '):format(cmd))
 	end
 
-    -- file = io.open(_Log_file.folder.."/".._Log_file.folder, "a")
-	-- file:write(text, "\n")
-	-- file:close()
+    file = io.open(_Log_file.commande, "a")
+	file:write(text, "\n")
+	file:close()
 end
 
 --function 
 function FormatLogAdmin(player, msg)
-    local time = GetSystemTime()
+    local time = os.time(os.date('*t'))
     local steam_id = GetPlayerSteamId(player)
     local name = GetPlayerName(player)
     

@@ -58,7 +58,6 @@ _Log_color = {
   };
   
 _Log_file = {
-    folder = "logs",
     admin = "log_admin.txt",
     login = "log_login.txt",
     commande = "log_commande.txt"
