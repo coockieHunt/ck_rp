@@ -4,6 +4,7 @@ AddRemoteEvent("Exucute_admin_module", function(playerId, json)
     for _, module in ipairs(_moduleList) do
         if module:GetId() == func then
             if AdminLevel(playerId, module:GetLevel() ) then
+                AddAdminLog(playerId, "msg")
                 module:Onexecute(playerId, data)
             end
         end

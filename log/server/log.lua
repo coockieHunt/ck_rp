@@ -1,12 +1,15 @@
 function AddAdminLog(player, msg)
     local text = FormatLogAdmin(player, msg)
     
-    print(". " .. text)
-    LogPlayerChat(player, "ok", "admin", msg)
+    if get_os_name() == "Windows" then
+        file = io.open(_Log_file.folder.."/".._Log_file.admin, "a")
+        file:write(text, "\n")
+        file:close()
+    end
 
-    -- file = io.open(_Log_file.folder.."/".._Log_file.admin, "a")
-	-- file:write(text, "\n")
-	-- file:close()
+    if get_os_name() == "Linux" then
+        
+    end
 end
 
 function AddLoginLog(player)

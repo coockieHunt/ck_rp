@@ -1,6 +1,5 @@
 function admin_tp_to_pos(player, x, y, z)
 	local msg = "teleport to x =" .. x ..", y= ".. y ..", z= " .. z
-	AddAdminLog(player, msg)
 	if (GetPlayerVehicleSeat(player) == 1) then
 	local vehicle = GetPlayerVehicle(player)
 	SetVehicleLocation(vehicle, x, y, z + 30)
