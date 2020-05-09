@@ -1,7 +1,5 @@
 AddEvent("OnVehicleDamage", function(vehicle, healthDamage, damageIndex, damageAmount)
     local healt_car = GetVehicleHealth(vehicle)
-    print("id : " .. vehicle .. " healt : " .. healt_car)
-
     local ALive = GetVehiclePropertyValue(vehicle, "ALive")
 
     if healt_car <= 0 and ALive == true then
