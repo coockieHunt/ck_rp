@@ -1,4 +1,4 @@
-function admin_car_spawn(player, model, mount, boost , color)
+function admin_car_spawn(player, model, mount, boost , color, health)
 	local vehicle
 	local model = tonumber(model)
 
@@ -26,6 +26,9 @@ function admin_car_spawn(player, model, mount, boost , color)
 	end
 
 	SetVehicleLicensePlate(vehicle, "ADMIN")
+	SetVehicleHealth(vehicle, health)
+	SetVehiclePropertyValue(vehicle, "ALive", true, true)
+	
 	
 	AddAdminLog(player, "spawn car id : ".. model.." | color: ".. color .. " | boost : ".. strBool(boost))
 end
