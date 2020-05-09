@@ -27,6 +27,7 @@ function module:OnBuild()
     AddForm('color', "color", "color", {})
     AddForm('checkbox', "boost", "boost", {checked = true})
     AddForm('checkbox', "Auto mount", "AutoMount", {checked = true})
+    AddForm('text', "healt", "healt", {})
 end
 
 function module:OnOpen(playerId)
@@ -37,7 +38,7 @@ function module:Onexecute(playerId, data)
     local boost = false
     if(data.AutoMount == 'on') then AutoMount = true end
     if(data.boost == 'on') then boost = true end
-    admin_car_spawn(playerId, data.car_id, AutoMount, boost, data.color)
+    admin_car_spawn(playerId, data.car_id, AutoMount, boost, data.color, data.healt)
 
     CloseAdminDialog(playerId)
 end
