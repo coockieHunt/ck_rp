@@ -1,7 +1,7 @@
-function RequestCreateCarAccount(targetId, id_car, color)
+function RequestCreateCarAccount(targetId, car_id, color)
     local new_car = {
         target = targetId,
-        id_car = id_car,
+        id_car = car_id,
         color = color
     }
     
@@ -20,25 +20,23 @@ function SaveNewCarAccount(new_car)
 end
 
 function SpawnCarAccount(targetId, car_id)
-    local steam_id = tostring(GetPlayerSteamId(playerId))
-    
     local p = getplayer(targetId)
 
     local query = mariadb_prepare(db, _RequestSql.GetAccountCar, p.id)
 
 
-    mariadb_async_query(db, query, ResultGetAccountCar, playerId, car_id)
+    mariadb_async_query(db, query, ResultGetAccountCar, targetId, car_id)
 end
 
-function ResultGetAccountCar(playerId, car_id)
+function ResultGetAccountCar(targetId, car_id)
     if mariadb_get_row_count() == 0 then
-       retrun false
+       return false
     else
         local count = mariadb_get_row_count()
 
         for i = 1, count do
             local result = mariadb_get_assoc(i)
-            local x,y,z = GetPlayerLocation(playerId)
+            local x,y,z = GetPlayerLocation(targetId)
             
             if car_id == result['id'] then
                 local car = CreateVehicle(result['car_id'], x , y - 300, z, 90.0)
