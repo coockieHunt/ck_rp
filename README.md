@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `inventory` longtext DEFAULT '{}',
   `clothing` longtext DEFAULT '{}',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `account_administrator` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `account_administrator` (
   PRIMARY KEY (`id`),
   KEY `FK_account_administrator_accounts` (`account_id`),
   CONSTRAINT `FK_account_administrator_accounts` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `ban` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `ban` (
   `reason` longtext NOT NULL DEFAULT 'reason long text',
   `active` smallint(6) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `account_vehicle` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `account_vehicle` (
   PRIMARY KEY (`id`),
   KEY `FK_account_vehicle_accounts` (`account_id`),
   CONSTRAINT `FK_account_vehicle_accounts` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 ```
