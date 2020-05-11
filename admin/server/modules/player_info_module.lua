@@ -25,18 +25,18 @@ end
 function module:OnBuild()
     AddForm('player', "target", "target", {})
     AddForm('select', 'view', 'view', {
-        options = {
-            cash = "cash",
-            cash_account = "cash account",
-            health = "health",
-            armor = "armor",
-            food = "food",
-            thirst = "thirst",
-            MaxWeight = "MaxWeight",
-            CurWeight = "CurWeight",
-            inventory = "inventory",
-            clothing = "clothing",
-            steamId = "steamId",
+        ['options'] = {
+            ['cash'] = "cash",
+            ['cash_account'] = "cash account",
+            ['health'] = "health",
+            ['armor'] = "armor",
+            ['food'] = "food",
+            ['thirst'] = "thirst",
+            ['MaxWeight'] = "MaxWeight",
+            ['CurWeight'] = "CurWeight",
+            ['inventory'] = "inventory",
+            ['clothing'] = "clothing",
+            ['steamId'] = "steamId",
         }
     })
 end

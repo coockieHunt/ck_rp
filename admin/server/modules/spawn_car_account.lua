@@ -23,9 +23,10 @@ end
 
 -- func
 function module:OnBuild()
-    AddForm('player', "target", "target", {})
+    AddForm('player', "target", "target", {
+        ['place_holder'] = '<1 - 26>'
+    })
     AddForm('text', 'car_id', 'car_id', {})
-
 end
 
 function module:OnOpen(playerId)

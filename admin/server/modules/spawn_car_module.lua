@@ -23,11 +23,25 @@ end
 
 -- func
 function module:OnBuild()
-    AddForm('vehicles', "vehicles", "car_id", {})
+    AddForm('vehicles', "vehicles", "car_id", {
+        ["default_select"] = 5
+    })
     AddForm('color', "color", "color", {})
-    AddForm('checkbox', "boost", "boost", {checked = true})
-    AddForm('checkbox', "Auto mount", "AutoMount", {checked = true})
-    AddForm('text', "healt", "healt", {})
+    AddForm('text', "healt", "healt", {
+        ['default_value'] = "5000",
+        ['place_holder'] = 'max 5000',
+    })
+    AddForm('spacer', "option", "",  {})
+    AddForm('checkbox', "boost", "boost",  
+        {
+            ['checked'] = true
+        }
+    )
+    AddForm('checkbox', "Auto mount", "AutoMount",
+        {
+            ['checked'] = true
+        }
+    )
 end
 
 function module:OnOpen(playerId)

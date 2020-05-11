@@ -24,17 +24,26 @@ end
 -- func
 function module:OnBuild()
     AddForm('player', "target", "target", {})
-    AddForm('text', "ammount", "ammount", {})
-    AddForm('select', 'type', 'type', {
-        options = {
-            cash = "cash",
-            cash_account = "account",
+
+    AddForm('text', "ammount", "ammount", {
+        ['place_holder'] = "max value 1000000"
+    })
+
+    AddForm('spacer', 'to', '', {})
+
+    AddForm('select', 'type', 'type',{
+        ['default_option'] = "cash_account",
+        ['options'] = {
+            ['cash'] = "cash",
+            ['cash_account'] = "account",
         }
     })
+
     AddForm('select', 'action', 'action', {
-        options = {
-            give = "give",
-            remove = "remove",
+        ['default_option'] = "give",
+        ['options'] = {
+            ['give'] = "give",
+            ['remove'] = "remove",
         }
     })
 end
@@ -43,9 +52,12 @@ function module:OnOpen(playerId)
 end
 
 function module:Onexecute(playerId, data)
-    admin_cash(playerId, data['target'], data['ammount'], data['type'], data['action'])
 
-    CloseAdminDialog(playerId)
+    if(data['ammount'] <= 1000000) then
+        admin_cash(playerId, data['target'], data['ammount'], data['type'], data['action'])
+
+        CloseAdminDialog(playerId)
+    end
 end
 
 AddAdminModule(module)

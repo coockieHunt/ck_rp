@@ -25,8 +25,12 @@ end
 function module:OnBuild()
     AddForm('player', "target", "target", {})
 
-    AddForm('text', 'amount', 'amount', {})
+    AddForm('text', 'amount', 'amount', {
+        ['place_holder'] = 'Amount max 100'
+    })
     AddForm('select', 'action', 'action', {
+        ['default_option'] = 'healt',
+
         options = {
             healt = "healt",
             armor = "armor",

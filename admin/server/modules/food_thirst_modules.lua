@@ -24,12 +24,16 @@ end
 -- func
 function module:OnBuild()
     AddForm('player', "target", "target", {})
+    
+    AddForm('text', 'amount', 'amount', {
+        ['place_holder'] = 'Amount max 100'
+    })
 
-    AddForm('text', 'amount', 'amount', {})
     AddForm('select', 'action', 'action', {
-        options = {
-            food = "food",
-            thirst = "thirst",
+        ['default_option'] = 'food',
+        ['options'] = {
+            ['food'] = "food",
+            ['thirst'] = "thirst",
         }
     })
 end

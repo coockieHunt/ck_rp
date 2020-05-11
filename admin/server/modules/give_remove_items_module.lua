@@ -26,11 +26,15 @@ function module:OnBuild()
     AddForm('player', "target", "target", {})
     AddForm('items', "items", "item_id", {})
 
-    AddForm('text', 'quantity', 'quantity', {})
+    AddForm('text', 'quantity', 'quantity', {
+        ['default_value'] = 1
+    })
     AddForm('select', 'action', 'action', {
-        options = {
-            give = "give",
-            remove = "remove",
+        ['default_option'] = 'give',
+
+        ['options'] = {
+            ['give'] = "give",
+            ['remove'] = "remove",
         }
     })
 end

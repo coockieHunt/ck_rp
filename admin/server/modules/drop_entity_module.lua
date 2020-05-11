@@ -25,9 +25,11 @@ end
 function module:OnBuild()
     AddForm('droped_items', "droped", "droped_id", {})
     AddForm('select', 'action', 'action', {
-        options = {
-            tp = "teleport to",
-            del = "delete",
+        ['default_option'] = "tp",
+
+        ['options'] = {
+            ['tp'] = "teleport to",
+            ['del'] = "delete",
         }
     })
 end

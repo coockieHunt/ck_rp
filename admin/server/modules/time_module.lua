@@ -23,7 +23,9 @@ end
 
 -- func
 function module:OnBuild()
-    AddForm('text', 'time', 'time', {})
+    AddForm('text', 'time', 'time', {
+        ['place_holder'] = "0 - 12"
+    })
 end
 
 function module:OnOpen(playerId)

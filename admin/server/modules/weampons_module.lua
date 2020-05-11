@@ -25,15 +25,25 @@ end
 function module:OnBuild()
     AddForm('player', "target", "target", {})
     AddForm('weapons', "weapon", "weapon", {})
-    AddForm('text', 'amount', 'amount', {})
-    AddForm('text', 'slot', 'slot', {})
+    AddForm('text', 'amount', 'amount', {
+        ['default_value'] = "100",
+    })
+    AddForm('select', 'slot', 'slot', {
+        ['default_option'] = '2',
+
+        ["options"] = {
+            ["1"] = "1",
+            ["2"] = "2",
+            ["3"] = "3",
+        }
+    })
 end
 
 function module:OnOpen(playerId)
 end
 
 function module:Onexecute(playerId, data)
-    SetPlayerWeapon(data.target, data.weapon, data.amount, true, data.slot, true)
+    SetPlayerWeapon(data.target, data.weapon, data.amount, true, tonumber(data.slot), true)
 
     CloseAdminDialog(playerId)
 end
