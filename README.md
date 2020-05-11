@@ -75,6 +75,18 @@ CREATE TABLE IF NOT EXISTS `ban` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `account_vehicle` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `account_id` int(11) NOT NULL,
+  `car_id` int(11) NOT NULL,
+  `damage` int(11) DEFAULT 5000,
+  `plate` text DEFAULT NULL,
+  `color` text DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_account_vehicle_accounts` (`account_id`),
+  CONSTRAINT `FK_account_vehicle_accounts` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+
 
 ```
 4. Move all files to *"yourserveronset\packages\ck_rp"*
