@@ -134,8 +134,8 @@ function BuildTitleBar(text)
 end
 AddRemoteEvent("BuildTitleBar", BuildTitleBar)
 
-function BuildInput(section, type, id, custom, name)
-    AddCallStack("AddSectionInput('"..section.."','"..type.."','"..id.."','"..custom.."','"..name.."')")
+function BuildInput(section, type, id, data, custom)
+    AddCallStack("AddSectionInput('"..section.."','"..type.."','"..id.."','"..data.."','"..custom.."')")
 end
 AddRemoteEvent("BuildInput", BuildInput)
 
@@ -144,18 +144,18 @@ function BuildGameSelect(section, select, id, custom, name)
 end
 AddRemoteEvent("BuildGameSelect", BuildGameSelect)
 
-function BuildSelect(section, id, custom, name, options)
-    AddCallStack("AddSectionSelect('"..section.."','"..id.."','"..custom.."','"..name.."',"..options..")")
+function BuildSelect(section, id, custom, name)
+    AddCallStack("AddSectionSelect('"..section.."','"..id.."','"..custom.."','"..name.."')")
 end
 AddRemoteEvent("BuildSelect", BuildSelect)
 
-function BuildCheckbox(section, name, id, checked)
-    AddCallStack("AddCheckBox('"..section.."','"..name.."','"..id.."',"..tostring(checked)..")")
+function BuildCheckbox(section, name, id, custom)
+    AddCallStack("AddCheckBox('"..section.."','"..name.."','"..id.."','"..custom.."')")
 end
 AddRemoteEvent("BuildCheckbox", BuildCheckbox)
 
-function BuildSpacer(section, title)
-    AddCallStack("AddSectionSpacer('"..section.."','"..title.."')")
+function BuildSpacer(section, title, custom)
+    AddCallStack("AddSectionSpacer('"..section.."','"..title.."', '"..custom.."')")
 end
 AddRemoteEvent("BuildSpacer", BuildSpacer)
 

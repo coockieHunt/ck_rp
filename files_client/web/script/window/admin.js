@@ -160,19 +160,80 @@ function SetupColorPicker(){
     });
 }
 
-function AddSectionSpacer(section, title){
-    AddInputSection(section, "<span class='spacer'>" + title + "</span>")
+function AddSectionSpacer(section, title, custom){
+    let custom_class = ""
+
+    if ( custom != "" ) {
+        let customDecode = JSON.parse(custom)
+
+        $.each(customDecode, function( i, v ) {
+            
+            if( i == "custom_class"){
+                custom_class = v
+            }
+
+        });
+    }
+
+    output = format("<span class='spacer {customClass}'> {title_input}  </span>",
+        {
+            title_input : title,
+            customClass : custom_class
+        }
+    );
+    AddInputSection(section, output)
 }
 
 function AddSectionInput(section, type, id, custom, name){
     let output
+
+    let default_value = ""
+    let place_holder = ""
+    let custom_class = ""
+
+    if ( custom != "" ) {
+        let customDecode = JSON.parse(custom)
+
+        $.each(customDecode, function( i, v ) {
+            
+            if( i == "default_value"){
+                default_value = v
+            }
+
+            if( i == "place_holder"){
+                place_holder = v
+            }
+
+            if( i == "custom_class"){
+                custom_class = v
+            }
+
+        });
+    }
+
     switch (type) {
         case "text":
-            output = "<label for='" + id + "'>" + name + " :</label><input type='text' name='" + id + "' class='" + custom + "'>"
+            output = format("<label for='{id_input}'> {name_input} :</label><input type='text' placeholder='{placeHolder}' value='{defaultValue}' name='{id_input}' class='{customClass}'>",
+                {
+                    id_input : id,
+                    name_input : name,
+                    placeHolder : place_holder,
+                    defaultValue : default_value,
+                    customClass : custom_class
+                }
+            );
         break;
 
         case "color":
-            output = "<label for='" + id + "'>" + name + " :</label><input type='text' class='color-picker "+ custom + "' name='" + id + "' id='showInputInitialClear'/>"
+            output = format("<label for='{id_input}'> {name_input} :</label><input type='text' class='color-picker {customClass}' name='{id_input}' placeholder='{placeHolder}' value='{defaultValue}'  id='showInputInitialClear'/>",
+                {
+                    id_input : id,
+                    name_input : name,
+                    placeHolder : place_holder,
+                    defaultValue : default_value,
+                    customClass : custom_class
+                }
+            );
         break;
     
         default:
@@ -181,68 +242,169 @@ function AddSectionInput(section, type, id, custom, name){
     }
 
     AddInputSection(section, output)
+
+    return true
 }
 
-function AddSectionSelect(section, id, custom, name, options){
+function AddSectionSelect(section, id, custom, name){
     let output
 
+    let custom_class = ""
     let optionsFormat = ""
+    let default_option = ""
 
-    $( options ).each(function( index ) {
-        $.each( options[index], function( nameOption, valueOption ) {
-            optionsFormat = optionsFormat + "<option value=" + valueOption + ">" + nameOption + "</option> "
+    let options = ""
+
+    if ( custom != "" ) {
+        let customDecode = JSON.parse(custom)
+
+        $.each(customDecode, function( i, v ) {
+            
+            if( i == "custom_class"){
+                custom_class = v
+            }
+
+            if( i == "options"){
+                options = v
+            }
+
+            if( i == "default_option"){
+                default_option = v
+            }
+
         });
+    }
+
+    $.each(options, function( i, v ) {
+        let selected = ""
+
+        if( i == default_option ){
+            selected = "selected"
+        }
+
+        let newOptions = format("<option value='{idOption}' {slectedOptions} > {titleOption} </option>",
+            {
+                idOption : i,
+                titleOption : v,
+                slectedOptions : selected
+            }
+        )
+        optionsFormat = optionsFormat + " " + newOptions
     });
 
-    output =  "<label for='" + id + "'>" + name + " :</label><select size='1' name='" + id + "' class='" + custom + "'>" + optionsFormat + "</select>"
+    output = format("<label for='{id_input}'> {name_input}:</label><select size='1' name='{id_input}' class='{customClass}'> {option_format} </select>",
+        {
+            id_input : id,
+            name_input : name,
+            option_format : optionsFormat,
+            customClass : custom_class
+        }
+    );
+
     AddInputSection(section, output)
+
+    return true
 }
 
 function AddGameSelect(section, select, id, custom, name){
     let output
+    let class_form
+
+    let custom_class = ""
+
+    if ( custom != "" ) {
+        let customDecode = JSON.parse(custom)
+
+        $.each(customDecode, function( i, v ) {
+            
+            if( i == "custom_class"){
+                custom_class = v
+            }
+
+        });
+    }
+
     switch (select) {
         case "player":
-            output = "<label for='" + id + "'>" + name + " :</label><select class='PList " + custom + "' name='" + id + "'>"
+            class_form = "PList"
         break;
 
         case "player_cache":
-            output = "<label for='" + id + "'>" + name + " :</label><select class='PCList " + custom + "' name='" + id + "'>"
+            class_form = "PCList"
         break;
 
         case "vehicles":
-            output = "<label for='" + id + "'>" + name + " :</label><select class='VList " + custom + "' name='" + id + "'>"
+            class_form = "VList"
         break;
 
         case "weapons":
-            output = "<label for='" + id + "'>" + name + " :</label><select class='WList " + custom + "' name='" + id + "'>"
+            class_form = "WList"
         break;
         
         case "preset_pos":
-            output = "<label for='" + id + "'>" + name + " :</label><select class='PPist " + custom + "' name='" + id + "'>"
+            class_form = "PPist"
         break;
 
         case "items":
-            output = "<label for='" + id + "'>" + name + " :</label><select class='ItemListe " + custom + "' name='" + id + "'>"
+            class_form = "ItemListe"
         break;
 
-        case 'droped_items':
-            output = "<label for='" + id + "'>" + name + " :</label><select class='IDList " + custom + "' name='" + id + "'>"
+        case "droped_items":
+            class_form = "IDList"
         break
 
         default:
             return false
         break;
     }
+    
+    output = format("<label for='{id_input}'> {name_input} :</label><select class='{class_inputGame} {customClass}' name='{id_input}'>",
+        {
+            id_input : id,
+            name_input : name,
+            class_inputGame : class_form,
+            customClass : custom_class
+        }
+    );
 
     AddInputSection(section, output)
+
+    return true
 }
 
-function AddCheckBox(section, name, id, checked){
-    let checkedOutput = ""
-    if(checked) {checkedOutput = "checked"}
-    let output = "<label for='" + id + "'>" + name + "</label><input type='checkbox' name='" + id + "' " + checkedOutput + ">"
-    AddInputSection(section, output)
+function AddCheckBox(section, name, id, custom){
+    let checked = ""
+    let custom_class = ''
 
+    if ( custom != "" ) {
+        let customDecode = JSON.parse(custom)
+
+        $.each(customDecode, function( i, v ) {
+            
+          if( i == "checked" ){
+              if( v ){
+                  checked = "checked"
+              }
+          }
+
+          if( i == "custom_class"){
+            custom_class = v
+        }
+
+        });
+    }
+
+    output = format("<label for='{id_input}'> {name_input} </label><input type='checkbox' name='{id_input}' class='{customClass}' {IfChecked}>",
+        {
+            id_input : id,
+            name_input : name,
+            customClass : custom_class,
+            IfChecked : checked,
+        }
+    );
+
+    AddInputSection(section, output)
+    return true
 }
 
 function AddTable(section, id, header){
