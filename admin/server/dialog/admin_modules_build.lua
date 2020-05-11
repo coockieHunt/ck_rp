@@ -32,47 +32,28 @@ end)
 
 function BuildForm(playerId, section_id)
     for _, form in ipairs(content_section) do
-        local type, id, name, data = form['type'], form['id'], form['name'], form.data 
-        local custom = ""
+        local type, id, name, data = form['type'], form['id'], form['name'], form['data']
+
+        if tablelength(data) > 0 then data = json_encode(data) else data = "" end
 
         if type == "text" or type == "color" then
-            CallRemoteEvent(playerId, "BuildInput", section_id, type, id, "", name)
+            CallRemoteEvent(playerId, "BuildInput", section_id, type, id, data, name)
         end
 
         if type == "spacer" then
-            CallRemoteEvent(playerId, "BuildSpacer", section_id, name)
+            CallRemoteEvent(playerId, "BuildSpacer", section_id, name, data)
         end
 
         if type == "player" or type == "vehicles" or type == "weapons" or type == "preset_pos" or type == "items" or type == "player_cache" or type == "droped_items" then
-            CallRemoteEvent(playerId, "BuildGameSelect", section_id, type, id, custom, name)
+            CallRemoteEvent(playerId, "BuildGameSelect", section_id, type, id, data, name)
         end
 
         if type == "select" then
-            local optionsBuild = "[]"
-
-            if(not isnil(data['options'])) then
-                local options = data['options']
-
-                if(tablelength(options) > 0) then
-                    optionsBuild = "[" 
-        
-                    for id, value in pairs(options) do
-                        optionsBuild = optionsBuild .. "{"
-                        optionsBuild = optionsBuild .. "'" .. value .. "':'" .. id .. "'"
-                        optionsBuild = optionsBuild .. "},"
-                    end
-        
-                    optionsBuild = optionsBuild:sub(1, -2) .. "]" 
-                end
-            end
-            
-            CallRemoteEvent(playerId, "BuildSelect", section_id, id, custom, name, optionsBuild)
+            CallRemoteEvent(playerId, "BuildSelect", section_id, id, data, name)
         end
 
         if type == "checkbox" then
-            local checked = false
-            if(not isnil(data['checked'])) then checked = data['checked'] end
-            CallRemoteEvent(playerId, "BuildCheckbox", section_id, name, id, checked)
+            CallRemoteEvent(playerId, "BuildCheckbox", section_id, name, id, data)
         end
     end 
     content_section = {}
