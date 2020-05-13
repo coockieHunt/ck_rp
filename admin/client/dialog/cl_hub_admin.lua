@@ -26,15 +26,15 @@ function CloseUIAdmin()
 end
 
 -- package manager
-function OnPlayerSpawn()
+function OnPackageStart()
     admin_ui = CreateWebUI(0, 0, 0, 0, 1, 60)
     LoadWebFile(admin_ui,'http://asset/' .. GetPackageName() .. '/dialog/files/ui_admin.html')
     SetWebAlignment(admin_ui, 0.0, 0.0)
     SetWebAnchors(admin_ui, 0.0, 0.0, 1.0, 1.0)
     SetWebVisibility(admin_ui, WEB_HIDDEN)
-
 end
-AddEvent("OnPlayerSpawn", OnPlayerSpawn)
+AddEvent("OnPackageStart", OnPackageStart)
+
 
 -- key mapping
 AddEvent("OnKeyPress", function(key)
@@ -86,10 +86,8 @@ AddEvent("CloseDialogAdmin", CloseDialogAdmin)
 local call_stack = {}
 
 function BuildDialog()
-    if(admin_ui_builded ~= true) then
         CallRemoteEvent("BuildAdminDialog")
         admin_ui_builded = true
-    end
 end
 
 function AddCallStack(add)
