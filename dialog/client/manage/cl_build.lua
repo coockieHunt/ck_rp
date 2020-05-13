@@ -69,12 +69,7 @@ function createDialog(view, dysplay_on_spawn)
     SetWebAnchors(ui , 0,0,1,1)
     SetWebURL(ui , 'http://asset/' .. GetPackageName() .. '/dialog/files/'..view)
 
-    
-    if dysplay_on_spawn then
-        SetWebVisibility(ui , WEB_VISIBLE)
-    else
-        SetWebVisibility(ui , WEB_HIDDEN)
-    end
+    if dysplay_on_spawn then SetWebVisibility(ui , WEB_VISIBLE) else SetWebVisibility(ui , WEB_HIDDEN) end
 
     return ui
 end
