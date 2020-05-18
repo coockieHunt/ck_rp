@@ -106,6 +106,7 @@ function RemovePlayerItem(target, var, quantity)
                     local new_inventory = EncodeInventory(inventory_decode)
                     SaveInventory(target, new_inventory)
                     SaveHeightInventory(target, new_weight[2])
+                    item_info:OnDestroy(target, new_quantity)
                     return true
                 else
                     SendAlert(

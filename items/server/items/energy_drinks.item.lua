@@ -13,11 +13,12 @@ local item = {
 --]=====]
 
 function item:OnCreate(playerId, quantity)
-  print("create " .. item.var)
+end
+
+function item:OnDestroy(playerId, quantity)
 end
 
 function item:OnUse(playerId, quantity)
-  print('use ' .. item.var)
 end
 
 function item:OnDrop(playerId, quantity)
