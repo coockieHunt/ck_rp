@@ -17,7 +17,9 @@ function GatherDropedItem(playerId, droped_id)
             local new_quantity = math.floor(math.abs(to_hight_quantity - po_quantity))
             SetPickupPropertyValue(droped_id, 'quantity', to_hight_quantity)
             SetText3DText(po_text, item_name .. ' - (' .. to_hight_quantity .. ')')
-            AddPlayerItem(playerId, po_id, new_quantity)
+            if new_quantity ~= 0 then
+                AddPlayerItem(playerId, po_id, new_quantity)
+            end
         else
             RemoveDropedItem(droped_id)
         end
