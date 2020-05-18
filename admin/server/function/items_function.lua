@@ -1,22 +1,22 @@
 function admin_addItem(player, target, item_id, quantity)
-	local add = AddPlayerItem(player, target, item_id, quantity)
+	local add = AddPlayerItem(target, item_id, quantity)
 
-	if(add == true) then
+	if add then
 		AddAdminLog(player, "add item "..GetPlayerName(target).." id : " .. item_id.. " quantity :" .. quantity)
 		SendAlert(target, "warning", "Admin", "An administrator give you <strong>" .. quantity .. " " .. item_id.."</strong>")
 	else
 		SendAlert(player, "error", "Admin", 
-		GetPlayerName(target).." has full inventory, there are <strong>" .. add.. "</strong> too many")
+		GetPlayerName(target).." error admin invetory")
 	end
 end
 
 function admin_removeItem(player, target, item_id, quantity)
-	local del = RemovePlayerItem(player, target, item_id, quantity)
+	local del = RemovePlayerItem(target, item_id, quantity)
 	
-	if(del) then
+	if del then
 		AddAdminLog(player, "remove item "..GetPlayerName(target).." id : " .. item_id.. " quantity :" .. quantity)
-		SendAlert(target, "error", "Admin", "An administrator remove you <strong>" .. quantity .. " " .. item_id.."</strong>")
+		SendAlert(target, "warning", "Admin", "An administrator remove you <strong>" .. quantity .. " " .. item_id.."</strong>")
 	else
-		SendAlert(player, "error", "Admin", "Player <strong>".. GetPlayerName (player) .."</strong> does not have enough item <strong>".. item_id .."</strong> in his inventory")
+		SendAlert(player, "error", "Admin", " error admin invetory")
 	end
 end

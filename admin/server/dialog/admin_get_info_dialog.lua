@@ -27,12 +27,13 @@ end)
 AddRemoteEvent("GetItemsList", function(player)
 	local ListTable = { }
     local arg = 0
+    print(tablelength(_itemsList))
+    for id ,info in pairs(_itemsList) do
 
-    for id, item in pairs(_Items) do
         arg = arg + 1
         
         ListTable[arg] = {
-            item.name,
+            info.name,
             id,
         }
     end
@@ -50,22 +51,24 @@ AddRemoteEvent("GetDropItemList", function(player)
         local po_type = GetPickupPropertyValue(pickupId, "type")
         local po_player = GetPickupPropertyValue(pickupId, "player_drop")
         local po_posX, po_posY, po_posZ = GetPickupLocation(pickupId)
-        local po_ModelName = GetPickupPropertyValue(pickupId, "model")
         local po_quantity = GetPickupPropertyValue(pickupId, "quantity")
+        local po_item = GetPickupPropertyValue(pickupId, "item_id")
         
         local pos = po_posX .. " - " .. po_posY .. " - " .. po_posZ
-        local model_name = GetItemNameByModelId(po_ModelName)
+        local item_info = getItemInfo(po_item)
 
-        if(po_type == 'droped_item') then
-            ListTable[arg] = {
-                ["id"] = pickupId, 
-                ["player"] = po_player, 
-                ["pos"] = pos,
-                ["model_name"] = model_name,
-                ["quantity"] = po_quantity
-            }
+        if item_info ~= false then
+
+            if(po_type == 'droped_item') then
+                ListTable[arg] = {
+                    ["id"] = pickupId,
+                    ["name"] = item_info.name,
+                    ["player"] = po_player, 
+                    ["pos"] = pos,
+                    ["quantity"] = po_quantity
+                }
+            end
         end
-       
     end
 	
     CallRemoteEvent(player, "SetDropItemList", ListTable)
