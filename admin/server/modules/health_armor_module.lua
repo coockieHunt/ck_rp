@@ -42,14 +42,34 @@ function module:OnOpen(playerId)
 end
 
 function module:Onexecute(playerId, data)
-    local amount = data['amount']
+    local amount = tonumber(data['amount'])
     local target = data['target']
     local type = data['action']
 
     if type == "healt" then
-        admin_heal(playerId, target, amount)
+        AddAdminLog(playerId, GetPlayerName(playerId).." set heal ".. GetPlayerName(target) .." | " .. amount)
+        SetPlayerHealth(target, amount)
+        local p = getplayer(target)
+
+        if amount < 0 then amount = 0 end
+        if amount > 100 then amount = 100 end
+
+        p:setHealth(amount)
+
+        RefrechSurvivalIventoryUi(target)
+        RefrechWarningSurvivalUi(target)
     else
-        admin_armor(playerId,target , amount)
+        AddAdminLog(playerId, GetPlayerName(playerId).." set armor ".. GetPlayerName(target) .." | " .. amount)
+        SetPlayerArmor(target, amount)
+        local p = getplayer(target)
+    
+        if amount < 0 then amount = 0 end
+        if amount > 100 then amount = 100 end
+    
+        p:setArmor(amount)
+        
+        RefrechSurvivalIventoryUi(target)
+        RefrechWarningSurvivalUi(target)
     end
 
     CloseAdminDialog(playerId)

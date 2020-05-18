@@ -30,8 +30,15 @@ function module:OnOpen(playerId)
 end
 
 function module:Onexecute(playerId, data)
-    local target = data['target']
-    admin_remove_cache_player(playerId, target)
+    local target = tonumber(data['target'])
+
+    AddAdminLog(playerId, "admin :"..GetPlayerName(playerId).." remove cache for : " .. GetPlayerName(target))
+	SaveAccountPlayer(target)
+	local steam_id = GetPlayerSteamId(target)
+	KickPlayer(target ,"😨 you were kicked by an administrator who works on your user data 😨" )
+	Delay(1000, function()
+		DestroyPlayerData(steam_id)
+	end)
 
     CloseAdminDialog(playerId)
 end

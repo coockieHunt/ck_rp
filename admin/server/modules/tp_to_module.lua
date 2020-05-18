@@ -35,8 +35,10 @@ function module:Onexecute(playerId, data)
     local main = data['main']
     local to = data['to']
 
-    admin_tp_to(main, to)
-
+    AddAdminLog(playerId, GetPlayerName(main).." tp to " .. GetPlayerName(to))
+	local x, y, z = GetPlayerLocation(to)
+    admin_tp_to_pos(main, x, y, z)
+    
     CloseAdminDialog(playerId)
 end
 

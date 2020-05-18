@@ -38,15 +38,19 @@ function module:OnOpen(playerId)
 end
 
 function module:Onexecute(playerId, data)
-    local id = data['droped_id']	
+    local droped_id = data['droped_id']	
     local act = data['action']	
 
     if(act == "tp") then	
-        admin_teleport_droped_Item(playerId, id)	
+        AddAdminLog(playerId, "Teleported item id : " .. droped_id)
+        local po_posX, po_posY, po_posZ = GetPickupLocation(droped_id)
+      
+        admin_tp_to_pos(playerId, po_posX, po_posY, po_posZ)
     end	
 
     if(act == "del") then	
-        admin_delete_droped_Item(playerId, id)	
+        AddAdminLog(playerId, "Droped item id : " .. droped_id.. " has been deleted")
+        RemoveDropedItem(droped_id)
     end
 
     CloseAdminDialog(playerId)

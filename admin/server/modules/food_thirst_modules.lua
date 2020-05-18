@@ -42,14 +42,33 @@ function module:OnOpen(playerId)
 end
 
 function module:Onexecute(playerId, data)
-    local amount = data['amount']
+    local amount = tonumber(data['amount'])
     local target = data['target']
     local action = data['action']
 
     if type == "food" then
-        admin_food(playerId, target, amount)
+        AddAdminLog(playerId, GetPlayerName(playerId).." set food ".. GetPlayerName(target) .." | " .. amount)
+        local p = getplayer(target)
+    
+        if amount < 0 then amount = 0 end
+        if amount > 100 then amount = 100 end
+    
+        p:setFood(amount)
+        
+        RefrechSurvivalIventoryUi(target)
+        RefrechWarningSurvivalUi(target)
     else
-        admin_thirst(playerId, target, amount)
+        AddAdminLog(playerId, GetPlayerName(playerId).." set thirst ".. GetPlayerName(target) .." | " .. amount)
+
+        local p = getplayer(target)
+    
+        if amount < 0 then amount = 0 end
+        if amount > 100 then amount = 100 end
+    
+        p:setThirst(amount)
+        
+        RefrechSurvivalIventoryUi(target)
+        RefrechWarningSurvivalUi(target)
     end
 
     CloseAdminDialog(playerId)

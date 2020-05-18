@@ -39,7 +39,8 @@ function module:Onexecute(playerId, data)
         return false
     end
 
-    admin_change_time(playerId, time)
+    AddAdminLog(playerId, "admin " .. GetPlayerName(playerId) .. " change time : " .. tostring(time))
+    setCurrentDayTime(time)
 
     CloseAdminDialog(playerId)
 end

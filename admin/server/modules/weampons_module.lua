@@ -43,7 +43,8 @@ function module:OnOpen(playerId)
 end
 
 function module:Onexecute(playerId, data)
-    SetPlayerWeapon(data.target, data.weapon, data.amount, true, tonumber(data.slot), true)
+	AddAdminLog(data.target, "spawn weapon id : " .. data.weapon .. " slot: " ..tonumber(data.slot).. " ammo: " .. data.amount)
+	SetPlayerWeapon(data.target, data.weapon, data.amount, true, tonumber(data.slot), true)
 
     CloseAdminDialog(playerId)
 end

@@ -30,9 +30,12 @@ function module:OnOpen(playerId)
 end
 
 function module:Onexecute(playerId, data)
-    local p = data['target']
+    local target = data['target']
 
-    admin_kill(playerId, p)
+	AddAdminLog(playerId, " kill " .. GetPlayerName(target))
+	SetPlayerHealth(target, 0)
+	RefrechSurvivalIventoryUi(target)
+	RefrechWarningSurvivalUi(target)
 
     CloseAdminDialog(playerId)
 end

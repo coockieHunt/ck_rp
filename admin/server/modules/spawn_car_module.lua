@@ -52,7 +52,40 @@ function module:Onexecute(playerId, data)
     local boost = false
     if(data.AutoMount == 'on') then AutoMount = true end
     if(data.boost == 'on') then boost = true end
-    admin_car_spawn(playerId, data.car_id, AutoMount, boost, data.color, data.healt)
+    local model = tonumber(data.car_id)
+
+    local vehicle
+
+	if (model < 1 or model > 26) then return AddPlayerChat(playerId, "Vehicle model "..model.." does not exist.") end
+
+	local x, y, z = GetPlayerLocation(playerId)
+	local h = GetPlayerHeading(playerId)
+
+	if (vehicle == false) then return AddPlayerChat(playerId, "Failed to spawn your vehicle") end
+	if(AutoMount)then
+		vehicle = CreateVehicle(model, x, y, z, h)
+		SetPlayerInVehicle(playerId, vehicle)
+	else
+		vehicle = CreateVehicle(model, x , y - 300, z, h - 90.0)
+		print("Player location: "..x..", "..y..", "..z)
+	end
+
+	if(boost) then AttachVehicleNitro(vehicle, true) end
+	
+	if(data.color ~= nil) then
+		data.color = "0x"..data.color
+        SetVehicleColor(vehicle, data.color)
+    else
+        data.color = 'none'
+	end
+
+	SetVehicleLicensePlate(vehicle, "ADMIN")
+	SetVehicleHealth(vehicle, data.healt)
+	SetVehiclePropertyValue(vehicle, "ALive", true, true)
+	
+	
+	AddAdminLog(playerId, "spawn car id : ".. model.." | color: ".. data.color .. " | boost : ".. strBool(boost))
+
 
     CloseAdminDialog(playerId)
 end

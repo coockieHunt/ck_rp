@@ -53,8 +53,42 @@ end
 
 function module:Onexecute(playerId, data)
 
-    if(data['ammount'] <= 1000000) then
-        admin_cash(playerId, data['target'], data['ammount'], data['type'], data['action'])
+    if(tonumber(data['ammount']) <= 1000000) then
+        local target = data['target']
+
+        local p = getplayer(target)
+
+        local new_val = 0
+        ammount = tonumber(data['ammount'])
+    
+        if data['type'] == "cash" then 
+            local old_cash = p["cash"]
+            local new_cash
+    
+    
+            if data['action'] == "give" then
+                new_val = old_cash + ammount
+            else
+                new_val = old_cash - ammount
+            end
+        else
+            local old_cash_account = p["cash_account"]
+            local new_cash_account 
+    
+            if data['action'] == "give" then
+                new_val = old_cash_account + ammount
+            else
+                new_val = old_cash_account - ammount
+            end
+        end
+    
+        if new_val < 0 then new_val = 0 end
+    
+        AddAdminLog(playerId, GetPlayerName(playerId).." ".. data['action'] .." | ammount: ".. ammount .. "  ".. data['type'])
+    
+        p[data['type']] = math.floor(new_val)
+    
+        SaveAccountPlayer(target, "cash")
 
         CloseAdminDialog(playerId)
     end

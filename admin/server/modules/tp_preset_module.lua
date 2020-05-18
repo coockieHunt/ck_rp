@@ -35,7 +35,10 @@ function module:Onexecute(playerId, data)
     local target = data['target']
     local preset_id = data['preset_id']
 
-    get_admin_tp_preset_pos(playerid, target, preset_id)
+    local pos = tonumber(target)
+	if(isnil(pos)) then pos = target end
+	local list =  GetPosById(pos)
+	admin_tp_to_pos(target, list['x'], list['y'], list['z'])
 
     CloseAdminDialog(playerId)
 end

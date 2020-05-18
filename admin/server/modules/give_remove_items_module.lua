@@ -45,13 +45,28 @@ end
 function module:Onexecute(playerId, data)
     local target = data['target']
     local quantity = data['quantity']
-    local items_id = data['item_id']
+    local item_id = data['item_id']
     local action = data['action']
 
     if action == "give" then
-        admin_addItem(playerId, target, items_id, quantity)
+        local add = AddPlayerItem(target, item_id, quantity)
+
+        if add then
+            AddAdminLog(playerId, "add item "..GetPlayerName(target).." id : " .. item_id.. " quantity :" .. quantity)
+            SendAlert(target, "warning", "Admin", "An administrator give you <strong>" .. quantity .. " " .. item_id.."</strong>")
+        else
+            SendAlert(playerId, "error", "Admin", 
+            GetPlayerName(target).." error admin invetory")
+        end
     else
-        admin_removeItem(playerId, target, items_id, quantity)
+        local del = RemovePlayerItem(target, item_id, quantity)
+	
+        if del then
+            AddAdminLog(playerId, "remove item "..GetPlayerName(target).." id : " .. item_id.. " quantity :" .. quantity)
+            SendAlert(target, "warning", "Admin", "An administrator remove you <strong>" .. quantity .. " " .. item_id.."</strong>")
+        else
+            SendAlert(playerId, "error", "Admin", " error admin invetory")
+        end
     end
 
     CloseAdminDialog(playerId)
