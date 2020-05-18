@@ -1,7 +1,22 @@
 --[[
+   SQL
+]]
+_Mariadb = { 
+    host = "127.0.0.1", 
+    user = "root", 
+    password = "root", 
+    database = "onset"
+};
+
+--[[
+   LANGUAGE
+]]
+_Language = "english"
+
+--[[
    ACCOUNT
 ]]
-_Spawn_location = "bank"
+_Spawn_location = "bank" -- refer to config_list.lua (_PosPresetList)
 
 _New_account = {
     weight_character = 30,

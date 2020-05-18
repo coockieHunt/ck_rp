@@ -1,5 +1,4 @@
--- language
-_Language = "english"
+
 
 -- Package
 _Pacakge = {
@@ -64,13 +63,6 @@ _Log_file = {
 };
     
 -- SQL
-_Mariadb = { 
-    host = "127.0.0.1", 
-    user = "root", 
-    password = "root", 
-    database = "onset"
-};
-  
 _RequestSql = {
     IfplayerAccountExist = "SELECT id FROM accounts WHERE steam_id = '?' LIMIT 1;",
     CheckIfBanAccount = "SELECT * FROM ban WHERE steam_id = '?' AND active = 1 LIMIT 1;",
@@ -86,20 +78,6 @@ _RequestSql = {
     CreateNewAccountCar = "SET @ACCOUNT_ID = (SELECT id FROM accounts WHERE steam_id = '?');INSERT INTO account_vehicle (account_id, car_id, plate, color) VALUES (@ACCOUNT_ID, '?', '?', '?');",
     GetAccountCar = "SELECT * FROM account_vehicle WHERE account_id = ?;",
     IfCarExistLicensePlate = "SELECT * FROM account_vehicle WHERE plate = '?';",
-};
-
--- default config
-_Default_item = {
-    hand_pos = {
-        drop = {x = 8, y = -3, z = -8,  rx = 0.0,  ry = 0, rz = 0},
-        use = {x = 0, y = 0, z = 0,  rx = 0.0,  ry = 0, rz = 0}
-    },
-
-    type = {
-        color = "#000000",
-        icon = 'info',
-        consume_time = 2000
-    }
 };
 
 -- register
