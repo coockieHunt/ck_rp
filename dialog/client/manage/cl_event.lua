@@ -1,7 +1,8 @@
 -- SURVIVAL
 function CallDropItem(id, quantity)
     CloseDialog('inventory')    
-    CallRemoteEvent("CallPlayerDropItem", id, CallPlayerDropItem)
+    
+    CallRemoteEvent("CallPlayerDropItem", id, quantity)
 end
 AddEvent("CallDropItem", CallDropItem)
 
