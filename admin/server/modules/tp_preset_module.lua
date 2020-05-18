@@ -35,8 +35,8 @@ function module:Onexecute(playerId, data)
     local target = data['target']
     local preset_id = data['preset_id']
 
-    local pos = tonumber(target)
-	if(isnil(pos)) then pos = target end
+    local pos = tonumber(preset_id)
+	if(isnil(pos)) then pos = preset_id end
 	local list =  GetPosById(pos)
 	admin_tp_to_pos(target, list['x'], list['y'], list['z'])
 
