@@ -1,7 +1,9 @@
 ![main logo](https://i.ibb.co/8zHdNXk/Sans-titre-3.png)
 
-# disclaimer
-This code is only in its preamble, a public installation and not recommended
+# /!\ DICLAMER /!\
+This code is only in its preamble, a public installation and not recommended.
+
+If there is a problem after a pacakge update. reset the data bass.
 # onset ck role play
 ## athor
 - *coockie-hunt* - Main dev
@@ -22,9 +24,7 @@ This code is only in its preamble, a public installation and not recommended
 - EC001 : server failed to retrieve the user's steam ID.
 - EC002 : server failed to retrieve user data on Connection.
 - EC003 : server failed to create user profile.
-- EC004 : server failed to configure value items nill.
-- EC005 : server failed to configure value items not like.
-- EC006 : a player does not have a valid gender (clothing)
+- EC004 : a player has a problem with inventory weight management.
 
 ***installation guide***
 1. Create an onset server (doc: https://dev.playonset.com/wiki/DedicatedServer)
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `account_vehicle` (
 		"ck_rp"
 	],
 ```
-6. Edit sql account *_Mariadb* *"yourserveronset\packages\ck_rp\config\config_systeme.lua"*
+6. Edit sql account *_Mariadb* *"yourserveronset\packages\ck_rp\config\config_general.lua"*
 ```lua
 _Mariadb = { 
     host = "127.0.0.1", --sql server
