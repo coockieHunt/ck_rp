@@ -84,10 +84,10 @@ function SetDropItemList(DropedList)
         local id = v["id"]
         local player = v["player"]
         local pos = v["pos"]
-        local model_name = v["model_name"]
+        local name = v["name"]
         local quantity = tostring(v["quantity"])
 
-        local str = string.format("BuildPDropedItemListSelect('%q - %q - %q - %q',  %q)", id, GetPlayerName(player), model_name, pos, id)
+        local str = string.format("BuildPDropedItemListSelect('%q - %q - %q - %q',  %q)", id, GetPlayerName(player), name, pos, id)
 
         ExecuteWebJS(web_ui, str)
     end

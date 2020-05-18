@@ -75,38 +75,42 @@ end
 function RefrechInventoryUi(playerId)
     local DialogId = dialog:GetId()
 
-    local MaxWeight = GetInventoryMaxWeight(playerId)
-    local CurWeight = CalculateInvWeight(playerId)
-
+    -- setup ui
     ExecWebJs(playerId, DialogId, "clearInventory();") 
-    ExecWebJs(playerId, DialogId, "SetWeightLift('"..CurWeight.."', '"..MaxWeight.."');")
     ExecWebJs(playerId, DialogId, "HideSidePanel()")
 
-    local decode_inventory = GetInventory(playerId)
- 
-    for key, value in pairs(decode_inventory) do
-       local id = value.id
-       
-       local object = GetItems(id)
-       local type = GetItemTypeInfo(id)
+    -- get player
+    local p = getplayer(playerId)
 
-       local cmd = string.format(
-            "AddItem(%q, %q, %q, %q, %q, %q, %q, %q, %q, %q, %q);",
-            value.id,
-            object.name, 
-            value.quantity,
-            object.thumbnail,
-            object.type,
-            object.thirst,
-            object.food,
-            object.health,
-            object.descrip,
-            type.color,
-            type.icon
-        )
+    -- get inventory var
+    local inventory_json = p.inventory
 
-        ExecWebJs(playerId, DialogId, cmd)
+    -- inventory set item
+    local decode = DecodeInventory(inventory_json)
+    for var, quantity in pairs(decode) do
+        local item_info = getItemInfo(var)
+
+        if item_info ~= false then
+            local thumb_dir = "../../files_client/web/src/img/" .. item_info.thumbnail
+            local exec_add_item = string.format(
+                'AddItem("%s", "%s", "%s", "%s", "%s", "%s")', 
+                item_info.var,
+                item_info.name, 
+                quantity, 
+                thumb_dir, 
+                item_info.color, 
+                item_info.description
+            )
+            
+            ExecWebJs(playerId, DialogId, exec_add_item)
+        end
     end
+
+    -- inventory set wheight cur/max
+    local max_weight = p.MaxWeight
+    local cur_weight = p.CurWeight
+    local exec_set_weight =  string.format('SetWeightLift("%s", "%s")', cur_weight, max_weight)
+    ExecWebJs(playerId, DialogId, exec_set_weight)
 end
 
 function RefrechCashInventoryUi(playerId)
