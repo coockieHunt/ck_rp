@@ -1,6 +1,6 @@
 function GetNearestPickUp(MaxDist)
     local x, y, z = GetPlayerLocation()
-    local pickup
+    local pickup = false
 
     for _,v in pairs(GetStreamedPickups()) do
         local px, py, pz = GetPickupLocation(v)
@@ -16,11 +16,7 @@ function GetNearestPickUp(MaxDist)
 
             break;
         end
-
     end
 
-    if( pickup ~= nil) then
-        return pickup
-    end
-    return false
+    return pickup
 end
