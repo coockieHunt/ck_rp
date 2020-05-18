@@ -16,12 +16,16 @@ end
 
 import("utils/system.lua")
 import("utils/json.lua")
+import("config/config_general.lua")
 
-print("-- LOAD CONFIGURATION FILLE --" )
+if _Console_debug.config_file then print("-- LOAD CONFIGURATION FILLE --" ) end
 for _, ConfigFile in ipairs(GetFilesFolder("packages/ck_rp/config")) do
 	if(string_start_by(ConfigFile, "config_")) then
-		print("-- loadead config file : " .. ConfigFile)
-		import("config/" .. ConfigFile)
+		if ConfigFile ~= "config_general.lua" then
+			if _Console_debug.config_file then print("-- loadead config file : " .. ConfigFile) end
+			
+			import("config/" .. ConfigFile)
+		end
 	else
 		print("/!\\ config name not valid [config_<name>]  : " .. ConfigFile)
 	end
@@ -44,7 +48,7 @@ function AddPackageLog(package, type, bool)
 		ServerExit("error loading server file")
 	end
 
-	print("-- " .. text)
+	if _Console_debug.package then print("-- " .. text) end
 	
     file = io.open(_Pacakge.log_file, "a")
 	file:write(log_file_text, "\n")
@@ -54,13 +58,12 @@ end
 
 
 
-if(_Pacakge.display_console) then print("-- LOAD SERVER PACKAGE --" ) end
 function packagesImport(packageName)
 	if(_Import_packag == nil) then
 		local package = false
 		local folder = "packages/ck_rp/"..packageName
 		if(FolderExist(folder)) then
-			if(_Pacakge.display_console) then AddPackageLog(packageName, "package", true) end
+			AddPackageLog(packageName, "package", true)
 			local filesPacakge = GetFilesFolder(folder)
 			if(has_value(filesPacakge, _Pacakge.server_folder)) then
 				filesPacakgeServer = GetFilesFolder(folder.."/".._Pacakge.server_folder)
@@ -77,12 +80,13 @@ function packagesImport(packageName)
 				end
 			end
 		else
-			if(_Pacakge.display_console) then AddPackageLog(packageName, "package", false) end
+			AddPackageLog(packageName, "package", false)
 		end
 	end
 end
 
 function OnPackageStart()
+	if _Console_debug.package then print("-- LOAD SERVER PACKAGE --") end	
 	for i, v in ipairs (_Import_package) do
 		packagesImport(v)
 	end

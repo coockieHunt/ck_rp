@@ -14,6 +14,14 @@ _Mariadb = {
 _Language = "english"
 
 --[[
+   Console
+]]
+_Console_debug = {
+    package = true,
+    config_file = false
+};
+
+--[[
    ACCOUNT
 ]]
 _Spawn_location = "bank" -- refer to config_list.lua (_PosPresetList)

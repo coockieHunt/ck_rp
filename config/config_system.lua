@@ -1,9 +1,6 @@
-
-
 -- Package
 _Pacakge = {
     server_folder = "server",
-    display_console = true,
     log_file = "log_pacakge.txt",
 };
 
