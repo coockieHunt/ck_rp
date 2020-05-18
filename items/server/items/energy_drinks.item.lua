@@ -23,4 +23,7 @@ end
 function item:OnPlayerDeath(playerId, instigator)
 end
 
+function item:OnPlayerSpawn(playerId)
+end
+
 AddItem(item)

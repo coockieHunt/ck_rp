@@ -20,7 +20,9 @@ function item:OnDrop(playerId, quantity)
 end
 
 function item:OnPlayerDeath(playerId, instigator)
-  print('death')
+end
+
+function item:OnPlayerSpawn(playerId)
 end
 
 AddItem(item)

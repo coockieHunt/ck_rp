@@ -13,7 +13,20 @@ function CallPlayerUse(playerId, item_id)
 end
 AddRemoteEvent('CallPlayerUse', CallPlayerUse)
 
-function OnPlayerDeath(playerId, instigator)
+
+function CallOnPlayerSpawnItem(playerId)
+    local p = getplayer(playerId)
+    local inventory = p.inventory
+
+    for item,d in pairs(DecodeInventory(inventory)) do
+        local item_object = _itemsList[item]
+
+        item_object:OnPlayerSpawn(playerId)
+    end
+end
+
+
+function CallOnPlayerDeath(playerId, instigator)
     local p = getplayer(playerId)
     local inventory = p.inventory
 
@@ -23,4 +36,6 @@ function OnPlayerDeath(playerId, instigator)
         item_object:OnPlayerDeath(playerId, instigator)
     end
 end
-AddEvent("OnPlayerDeath", OnPlayerDeath)
+AddEvent("OnPlayerDeath", CallOnPlayerDeath)
+
+
