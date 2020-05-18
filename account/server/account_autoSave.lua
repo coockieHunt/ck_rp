@@ -9,7 +9,7 @@ function OnPackageStart()
                 end
             end
             
-            if(countSaved > 0) then print("> Automatic backup account: "..countSaved.." backup") end
+            if countSaved > 0 and auto_backup then print("> Automatic backup account: "..countSaved.." backup") end
         end
     end, _Account_timer.save_account_time)
 end

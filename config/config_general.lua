@@ -18,7 +18,8 @@ _Language = "english"
 ]]
 _Console_debug = {
     package = true,
-    config_file = false
+    config_file = false,
+    auto_backup = true
 };
 
 --[[
