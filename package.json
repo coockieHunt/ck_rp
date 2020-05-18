@@ -39,11 +39,9 @@
 		"car/client/fix/cl_fixDrift.lua",
 		
 		"survival/client/cl_setupSurvival.lua",
-		
-		"items/client/cl_gather.lua",
-		"items/client/cl_security.lua",
-		"items/client/cl_item_func.lua",
 
+		"inventory/client/action/cl_gather.lua",
+		
 		"data/client/cl_setData.lua",
 		"data/client/cl_getData.lua"
 	],
