@@ -27,7 +27,6 @@ end)
 AddRemoteEvent("GetItemsList", function(player)
 	local ListTable = { }
     local arg = 0
-    print(tablelength(_itemsList))
     for id ,info in pairs(_itemsList) do
 
         arg = arg + 1
