@@ -35,6 +35,8 @@ function AddPlayerItem(target, var, quantity)
             if new_weight[1] then
                 SaveInventory(target, EncodeInventory(old_inventory))
                 SaveHeightInventory(target, new_weight[2])
+                item_info:OnCreate(target, new_quantity)
+
                 return {true, new_quantity}
             else
                 SendAlert(
@@ -77,7 +79,7 @@ function RemovePlayerItem(target, var, quantity)
 
         if not isnil(inventory_decode[ItemVar]) then
             local old_quantity = inventory_decode[ItemVar]
-            new_quantity = inventory_decode[ItemVar] - quantity
+            new_quantity = inventory_decode[ItemVar] - tonumber(quantity)
 
             if new_quantity <= 0 then
                 if new_quantity == 0 then

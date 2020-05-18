@@ -12,6 +12,10 @@ local item = {
   EVENT
 --]=====]
 
+function item:OnCreate(playerId, quantity)
+  print("create " .. item.var)
+end
+
 function item:OnUse(playerId, quantity)
   print('use ' .. item.var)
 end

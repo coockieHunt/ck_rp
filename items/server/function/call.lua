@@ -1,8 +1,6 @@
 function CallPlayerDropItem(playerId, item_id, quantity)
     local item_object = _itemsList[item_id]
-
     item_object:OnDrop(playerId, quantity)
-
 end
 AddRemoteEvent('CallPlayerDropItem', CallPlayerDropItem)
 
