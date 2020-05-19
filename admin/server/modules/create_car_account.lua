@@ -32,7 +32,8 @@ function module:OnOpen(playerId)
 end
 
 function module:Onexecute(playerId, data)
-    RequestCreateCarAccount(data.target, data.car_id, data.color)
+    local p = getplayer(data.target)
+    RequestCreateCarAccount(p.id, data.car_id, data.color)
 end
 
 AddAdminModule(module)
