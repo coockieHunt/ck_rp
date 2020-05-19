@@ -29,7 +29,7 @@ function module:OnBuild()
         ['place_holder'] = 'Amount max 100'
     })
 
-    AddForm('select', 'action', 'action', {
+    AddForm('select', 'action', 'type', {
         ['default_option'] = 'food',
         ['options'] = {
             ['food'] = "food",
@@ -44,28 +44,19 @@ end
 function module:Onexecute(playerId, data)
     local amount = tonumber(data['amount'])
     local target = data['target']
-    local action = data['action']
+    local type = data['type']
 
     if type == "food" then
         AddAdminLog(playerId, GetPlayerName(playerId).." set food ".. GetPlayerName(target) .." | " .. amount)
-        local p = getplayer(target)
     
-        if amount < 0 then amount = 0 end
-        if amount > 100 then amount = 100 end
-    
-        p:setFood(amount)
+        SetAccountFood(target, amount)
         
         RefrechSurvivalIventoryUi(target)
         RefrechWarningSurvivalUi(target)
     else
         AddAdminLog(playerId, GetPlayerName(playerId).." set thirst ".. GetPlayerName(target) .." | " .. amount)
 
-        local p = getplayer(target)
-    
-        if amount < 0 then amount = 0 end
-        if amount > 100 then amount = 100 end
-    
-        p:setThirst(amount)
+        SetAccountThirst(target, amount)
         
         RefrechSurvivalIventoryUi(target)
         RefrechWarningSurvivalUi(target)

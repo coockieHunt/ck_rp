@@ -38,7 +38,7 @@
 
 		"car/client/fix/cl_fixDrift.lua",
 		
-		"survival/client/cl_setupSurvival.lua",
+		"survival/client/decreases/cl_ClockSurvival.lua",
 
 		"inventory/client/action/cl_gather.lua",
 		
