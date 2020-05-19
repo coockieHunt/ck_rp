@@ -1,4 +1,3 @@
-local currentDayTime = _Day_cycle.start_at
 local refrech = _Day_cycle.refrech_time
 
 AddEvent("OnPackageStart",function()
@@ -14,7 +13,7 @@ AddEvent("OnPackageStart",function()
 
         if(currentDayTime > 24) then currentDayTime = 0 end
 
-        SyncClientTime(time)
+        SyncClientEnvi()
     end, refrech, vehicle)
 end)
 
@@ -23,14 +22,6 @@ function OnPlayerJoin(player)
 end
 AddEvent("OnPlayerJoin", OnPlayerJoin)
 
-function SyncClientTime(time)
-    local count_player = tablelength(GetAllPlayers())
-    if count_player > 0 then
-        for _, player in pairs(GetAllPlayers()) do
-            CallRemoteEvent(player, "setTimeClient", currentDayTime)
-        end
-    end
-end
 
 function GetDayOrNigth(time)
     time = math.floor(time)
@@ -40,10 +31,6 @@ function GetDayOrNigth(time)
     return current
 end
 
-function setCurrentDayTime(time)
-    currentDayTime = time
-    SyncClientTime(time)
-end
 
 function getCurrentDayTime()
     return currentDayTime

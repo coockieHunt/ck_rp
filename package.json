@@ -12,7 +12,7 @@
 
 		"account/client/cl_account_autoAlert.lua",
 
-		"environment/client/cl_days_clycle.lua",
+		"environment/client/cl_function.lua",
 		
 		"dialog/client/manage/cl_build.lua",
 		"dialog/client/manage/cl_manage.lua",

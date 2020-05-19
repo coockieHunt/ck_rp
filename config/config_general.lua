@@ -139,6 +139,9 @@ _Day_cycle = {
     start_at = 10,
     step_by_refrech = 0.1,
     refrech_time = 60000/4,
+
+    stars_brightness = 1.0,
+
     multiply = {
         day = 0,
         night = 2
