@@ -48,7 +48,7 @@ function AddPlayerItem(target, var, quantity)
                 return {false, new_weight[2]}
             end
         else
-            KickPlayer(target, "EC004 item weight not valide please contatct admin")
+            KickPlayer(target, "😨 An error occured while loading your inventory, weight not valid (004) 😨 (EC 004)")
             return false
         end
     else
