@@ -9,14 +9,29 @@ function GetNearestPickUp(MaxDist)
         if GetDistance3D < MaxDist then
             local type = GetPickupPropertyValue(v, "type")
 
-            pickup = {
-                ["type"] = type,
-                ["id"] = v
-            }
-
-            break;
+            return { ["type"] = type, ["id"] = v}
         end
     end
 
-    return pickup
+    return false
+end
+
+function GetNearestVehicles(MaxDist)
+    local x, y, z = GetPlayerLocation()
+    local car = {}
+    local rslt = false
+
+    for _,v in pairs(GetStreamedVehicles()) do
+        local px, py, pz = GetVehicleLocation(v)
+        local GetDistance3D = GetDistance3D(x, y, z, px, py, pz)
+        
+        if GetDistance3D < MaxDist then
+            rslt = true
+            car[v] = GetDistance3D
+        end
+    end
+
+    if rslt then return car end
+
+    return false
 end
