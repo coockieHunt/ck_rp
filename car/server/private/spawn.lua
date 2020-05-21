@@ -19,8 +19,8 @@ function ResultGetAccountCar(targetId)
         SetVehicleHealth(car, result['damage'])
         SetVehicleLicensePlate(car, result['plate'])
         SetVehicleColor(car, "0x"..result['color'])
-        SetVehiclePropertyValue(vehicle, "ALive", true, true)
-        
+
+        setupVehicule(car, true, result['account_id'])
         return true
     end
 end

@@ -119,6 +119,14 @@ _Survival = {
 }
 
 --[[
+   vehicle
+]]
+_Lock_unlock = {
+    distance = 1000, -- in milimetre
+    distance_sound = 2000, -- in milimetre
+}
+
+--[[
    CHAT
 ]]
 _Chat_account = {

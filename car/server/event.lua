@@ -1,5 +1,6 @@
 AddEvent("OnVehicleDamage", function(vehicle, healthDamage, damageIndex, damageAmount)
     local healt_car = GetVehicleHealth(vehicle)
+
     local ALive = GetVehiclePropertyValue(vehicle, "ALive")
 
     if healt_car <= 0 and ALive == true then
