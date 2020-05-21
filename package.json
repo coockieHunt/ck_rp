@@ -39,8 +39,6 @@
 		"car/client/fix/cl_fixDrift.lua",
 		"car/client/private/cl_lock.lua",
 		"car/client/private/cl_enter.lua",
-		"car/client/private/cl_unlock_anim.lua",
-		"car/client/private/cl_alarm.lua",
 		
 		"survival/client/cl_ClockSurvival.lua",
 
