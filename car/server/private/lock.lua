@@ -18,12 +18,12 @@ function lock_unlock_vehicle(playerId)
                 if locked then
                     PlayVehicleSequance(playerId, selected_car)
                     SetVehiclePropertyValue(selected_car, 'locked', false, true)
-                    SendAlert(playerId, 'ok', 'vehicle', 'car unlock')
+                    SendAlert(playerId, 'warning', _('vehicle') , _('car_unlock', GetVehicleModelName(selected_car)))
                     
                 else
                     PlayVehicleSequance(playerId, selected_car)
                     SetVehiclePropertyValue(selected_car, 'locked', true, true)
-                    SendAlert(playerId, 'ok', 'vehicle', 'car lock')
+                    SendAlert(playerId, 'ok', _('vehicle') , _('car_lock', GetVehicleModelName(selected_car)))
                 end
     
             end

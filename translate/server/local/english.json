@@ -7,5 +7,8 @@
     "item_height_to_heavy" : "not enough space to retrieve the item : + {1}",
     "item_var_not_valid" : "item id : {1} not valid please contact admin.",
     "item_not_exist_player_inventory" : "you do not have {1} in your inventory",
-    "item_to_hight_remove" : "you only had {1} {2} and {3} requested"
+    "item_to_hight_remove" : "you only had {1} {2} and {3} requested",
+    "car_lock" : "your {1} was locked",
+    "car_unlock" : "your {1} was unlocked",
+    "vehicle" : "vehicle"
 }
