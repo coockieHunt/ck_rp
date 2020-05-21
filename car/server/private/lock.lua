@@ -6,8 +6,9 @@ function lock_unlock_vehicle(playerId)
 
     if car_nearest ~= false then
         local selected_car = getVehicleCloset(car_nearest, max_dist)
-        
-        if selected_car ~= false and IsValidVehicle(selected_car) then
+        local Alive = GetVehiclePropertyValue(selected_car, 'ALive')
+
+        if selected_car ~= false and IsValidVehicle(selected_car) and Alive then
             local owner = json_decode(GetVehiclePropertyValue(selected_car, 'owner'))
             local p = getplayer(playerId)
     
