@@ -40,10 +40,13 @@
 		"car/client/private/cl_lock.lua",
 		"car/client/private/cl_enter.lua",
 		"car/client/private/cl_unlock_anim.lua",
+		"car/client/private/cl_alarm.lua",
 		
 		"survival/client/cl_ClockSurvival.lua",
 
 		"inventory/client/action/cl_gather.lua",
+		
+		"sound/client/cl_sound_manager.lua",
 		
 		"data/client/cl_setData.lua",
 		"data/client/cl_getData.lua"
@@ -88,6 +91,7 @@
 
 
 		"files_client/sound/car_lock.mp3",
+		"files_client/sound/car_alarm.mp3",
 
 		"dialog/files/ui_inventory.html", 
 		"dialog/files/ui_admin.html",
