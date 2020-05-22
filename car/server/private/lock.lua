@@ -16,16 +16,19 @@ function lock_unlock_vehicle(playerId)
                 local locked = GetVehiclePropertyValue(selected_car, 'locked')
     
                 if locked then
-                    PlayVehicleSequance(playerId, selected_car)
+                    PlayVehicleLockSquance(playerId, selected_car)
                     SetVehiclePropertyValue(selected_car, 'locked', false, true)
                     SendAlert(playerId, 'warning', _('vehicle') , _('car_unlock', GetVehicleModelName(selected_car)))
                     
                 else
-                    PlayVehicleSequance(playerId, selected_car)
+                    PlayVehicleLockSquance(playerId, selected_car)
                     SetVehiclePropertyValue(selected_car, 'locked', true, true)
                     SendAlert(playerId, 'ok', _('vehicle') , _('car_lock', GetVehicleModelName(selected_car)))
                 end
-    
+
+                if GetVehiclePropertyValue(selected_car, 'alarm') then
+                    StopAlarm(selected_car)
+                end
             end
         end
     else
@@ -34,10 +37,10 @@ function lock_unlock_vehicle(playerId)
 end
 AddRemoteEvent('lock_unlock_vehicle', lock_unlock_vehicle)
 
-function PlayVehicleSequance(playerId, vehicle_id)
+function PlayVehicleLockSquance(playerId, vehicle_id)
     SetVehicleLightEnabled(vehicle_id, true)
     local x, y, z = GetVehicleLocation(vehicle_id)
-    NewSoun3d('car_open', 'files_client/sound/car_lock.mp3', x, y, z,  _Lock_unlock.distance_sound)
+    NewSoun3d('car_open', 'files_client/sound/car_lock.mp3', x, y, z,  _Lock_unlock.distance_sound, false)
     Delay(400, function()
         SetVehicleLightEnabled(vehicle_id, false)
 	end)

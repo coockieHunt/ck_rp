@@ -4,6 +4,7 @@ AddEvent("OnPlayerStartEnterVehicle", function(vehicleId, seatId)
     if locked then
         return false
     else
+        CallRemoteEvent('OnEnterVehicle',vehicleId, seatId)
         return true
     end
 end)
