@@ -1,16 +1,16 @@
 function GetNearestVehicles(playerId, MaxDist)
-    local x, y, z = GetPlayerLocation(playerId)
     local car = {}
     local rslt = false
 
-
     for _,v in pairs(GetStreamedVehiclesForPlayer(playerId)) do
+        local x, y, z = GetPlayerLocation(playerId)
         local px, py, pz = GetVehicleLocation(v)
+
         local GetDistance3D = GetDistance3D(x, y, z, px, py, pz)
         
         if GetDistance3D < MaxDist then
             rslt = true
-            car[v] = GetDistance3D
+            table.insert(car, {['dist'] = GetDistance3D, ['id'] = v}) 
         end
     end
 

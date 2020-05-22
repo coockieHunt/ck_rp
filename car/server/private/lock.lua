@@ -48,14 +48,14 @@ end
 
 
 function getVehicleCloset(vehicle_list)
-    local car_distance = vehicle_list[1]
-    local selected_car = 1
+    local car_distance = vehicle_list[1].dist
+    local selected_car = vehicle_list[1].id
 
-    if(tablelength(vehicle_list)) > 1 then
-        for id, dist in pairs(vehicle_list) do
-            if dist < car_distance then
-                car_distance = dist
-                selected_car = id
+    if(tablelength(vehicle_list)) >= 1 then
+        for _, data in pairs(vehicle_list) do
+            if data.dist < car_distance then
+                car_distance = data.dist 
+                selected_car = data.id
             end
         end
     end
