@@ -14,3 +14,12 @@ function GetPosByVar(var)
     return false
 end
 
+function GetNameVehicleByVar(var)
+    for _, v in ipairs(_CarsList) do
+        if v.alias == var then
+         return v.name
+        end
+     end
+ 
+     return false
+end

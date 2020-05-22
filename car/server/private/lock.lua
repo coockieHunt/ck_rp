@@ -14,16 +14,18 @@ function lock_unlock_vehicle(playerId)
     
             if has_value(owner, p.id) then
                 local locked = GetVehiclePropertyValue(selected_car, 'locked')
+                local name =  GetNameVehicleByVar(GetVehicleModelName(selected_car))
     
+
                 if locked then
                     PlayVehicleLockSquance(playerId, selected_car)
                     SetVehiclePropertyValue(selected_car, 'locked', false, true)
-                    SendAlert(playerId, 'warning', _('vehicle') , _('car_unlock', GetVehicleModelName(selected_car)))
+                    SendAlert(playerId, 'warning', _('vehicle') , _('car_unlock', name))
                     
                 else
                     PlayVehicleLockSquance(playerId, selected_car)
                     SetVehiclePropertyValue(selected_car, 'locked', true, true)
-                    SendAlert(playerId, 'ok', _('vehicle') , _('car_lock', GetVehicleModelName(selected_car)))
+                    SendAlert(playerId, 'ok', _('vehicle') , _('car_lock', name))
                 end
 
                 if GetVehiclePropertyValue(selected_car, 'alarm') then

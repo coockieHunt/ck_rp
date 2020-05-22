@@ -3,157 +3,157 @@ _CarsList = {
         id = 1,
         type = 'car',
         name = 'Sedan',
-        alias = { 'Sedan_01' }
+        alias = 'Sedan_01'
     },
     [2] = {
         id = 2,
         type = 'car',
         name = 'Sedan taxi',
-        alias = { 'Sedan_01_Taxi' }
+        alias = 'Sedan_01_Taxi'
     },
     [3] = {
         id = 3,
         type = 'car',
         name = 'Sedan police',
-        alias = { 'Sedan_01_Police' }
+        alias = 'Sedan_01_Police'
     },
     [4] = {
         id = 4,
         type = 'car',
         name = 'Luxe',
-        alias = { 'Sedan_02' }
+        alias = 'Sedan_02'
     },
     [5] = {
         id = 5,
         type = 'car',
         name = 'Regal',
-        alias = { 'Sedan_03' }
+        alias = 'Sedan_03'
     },
     [6] = {
         id = 6,
         type = 'car',
         name = 'Nascar',
-        alias = { 'Nascar_01' }
+        alias = 'Nascar_01'
     },
     [7] = {
         id = 7,
         type = 'car',
         name = 'Raptor',
-        alias = { 'Truck_01' }
+        alias = 'Truck_01'
     },
     [8] = {
         id = 8,
         type = 'car',
         name = 'Ambulance',
-        alias = { 'Ambulance_01' }
+        alias = 'Ambulance_01'
     },
     [9] = {
         id = 9,
         type = 'truck',
         name = 'Garbage',
-        alias = { '	Garbage_Truck_01' }
+        alias = 'Garbage_Truck_01'
     },
     [10] = {
         id = 11,
         type = 'car',
         name = 'Pinnacle',
-        alias = { 'Coupe_01' }
+        alias = 'Coupe_01'
     },
     [11] = {
         id = 12,
         type = 'car',
         name = 'Sultan',
-        alias = { 'Rally_01' }
+        alias = 'Rally_01'
     },
     [12] = {
         id = 13,
         type = 'car',
         name = 'SWAT (Black)',
-        alias = { 'Heavy_01' }
+        alias = 'Heavy_01'
     },
     [13] = {
         id = 14,
         type = 'car',
         name = 'SWAT (Camo)',
-        alias = { 'Heavy_02' }
+        alias = 'Heavy_02'
     },
     [14] = {
         id = 15,
         type = 'car',
         name = 'SWAT (Medic)',
-        alias = { 'Heavy_03' }
+        alias = 'Heavy_03'
     },
     [15] = {
         id = 16,
         type = 'car',
         name = 'SWAT (Sand)',
-        alias = { 'Heavy_04' }
+        alias = 'Heavy_04'
     },
     [16] = {
         id = 17,
         type = 'truck',
         name = 'Barracks (Green)',
-        alias = { 'Cargo_Truck_01' }
+        alias = 'Cargo_Truck_01'
     },
     [17] = {
         id = 18,
         type = 'truck',
         name = 'Barracks (Camo)',
-        alias = { 'Cargo_Truck_02' }
+        alias = 'Cargo_Truck_02'
     },
     [18] = {
         id = 19,
         type = 'car',
         name = 'Sedan mono color',
-        alias = { 'Sedan_OneColor' }
+        alias = 'Sedan_OneColor'
     },
     [19] = {
         id = 21,
         type = 'car',
         name = 'Humvee (Sand)',
-        alias = { 'Military_01' }
+        alias = 'Military_01'
     },
     [20] = {
         id = 22,
         type = 'truck',
         name = 'Cargo Light (Olive)',
-        alias = { 'Light_Cargo_01' }
+        alias = 'Light_Cargo_01'
     },
     [21] = {
         id = 23,
         type = 'truck',
         name = 'Cargo Light (Camo)',
-        alias = { 'Light_Cargo_02' }
+        alias = 'Light_Cargo_02'
     },
     [22] = {
         id = 24,
         type = 'truck',
         name = 'Securicar (Red)',
-        alias = { 'ArmoredTruck_01' }
+        alias = 'ArmoredTruck_01'
     },
     [23] = {
         id = 25,
         type = 'car',
         name = 'Dacia',
-        alias = { 'Sedan_Classic' }
+        alias = 'Sedan_Classic'
     },
     [23] = {
         id = 10,
         type = 'air',
         name = 'Maverick (Blue)',
-        alias = { 'Helicopter_01' }
+        alias = 'Helicopter_01'
     },
     [24] = {
         id = 20,
         type = 'air',
         name = 'Maverick One color',
-        alias = { 'Helicopter_OneColor' }
+        alias = 'Helicopter_OneColor'
     },
     [25] = {
         id = 26,
         type = 'air',
         name = 'Maverick army',
-        alias = { 'Helicopter_03' }
+        alias = 'Helicopter_03'
     }
 }
 
