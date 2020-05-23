@@ -1,3 +1,15 @@
+-- color
+
+function tohex(num)
+  local charset = {"0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"}
+  local tmp = {}
+  repeat
+      table.insert(tmp,1,charset[num%16+1])
+      num = math.floor(num/16)
+  until num==0
+  return table.concat(tmp)
+end
+
 -- date
 function GetSystemTime()
     return os.time(os.date("!*t"))
