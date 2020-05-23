@@ -25,7 +25,7 @@ _Console_debug = {
 --[[
    ACCOUNT
 ]]
-_Spawn_location = "police_station" -- refer to config_list.lua (_PosPresetList)
+_Spawn_location = "small_diner" -- refer to config_list.lua (_PosPresetList)
 
 _New_account = {
     weight_character = 30,
