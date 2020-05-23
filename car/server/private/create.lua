@@ -21,7 +21,8 @@ function SaveNewCarAccount(new_car)
         new_car.target,
         new_car.id_car,
         new_car.plate,
-        new_car.color
+        new_car.color,
+        0
     )
 
     mariadb_query(db, query)

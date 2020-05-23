@@ -50,3 +50,9 @@ function OnPlayerQuit(player)
     end
 end
 AddEvent("OnPlayerQuit", OnPlayerQuit)
+
+
+function OnPackageStop()
+    SetAllOnTheRoad(false)
+end
+AddEvent("OnPackageStop", OnPackageStop)

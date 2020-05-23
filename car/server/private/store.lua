@@ -7,10 +7,14 @@ function store_car(playerId, id)
             tohex(GetVehicleColor(id)), 
             GetVehiclePropertyValue(id, 'db_id')
         )
-    
+
         mariadb_async_query(db, query)
 
+        SetOnTheRoad(GetVehiclePropertyValue(id, 'db_id'), false)
+
+
         DestroyVehicle(id)
+
     end
 end
 AddCommand("store", store_car)
