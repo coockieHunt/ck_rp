@@ -33,6 +33,7 @@ function ExplodeCar(vehicle)
 
     local x,y,z = GetVehicleLocation(vehicle)
     SetVehiclePropertyValue(vehicle, "ALive", false, true)
+    SetVehiclePropertyValue(vehicle, "locked", false, true)
     SetVehicleLinearVelocity(vehicle, 250.0, 0.0, 0.0, true)
     CreateExplosion(10, x,y,z, true, 1500.0, 600.0)
 end
