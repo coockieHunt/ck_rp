@@ -1227,7 +1227,7 @@ function OnPlayWeaponHitEffects(PlayerId, Weapon, HitType, HitId, StartLocation,
 	local HitComponent = HitResult:GetComponent()
 	if HitComponent:IsValid() and HitComponent:IsSimulatingPhysics() then
 	
-		local MassMultiplier = HitComponent:GetMass() * -100.0
+		local MassMultiplier = HitComponent:GetMass() * -10.0
 		local Impulse = HitResult.Normal * FVector(MassMultiplier, MassMultiplier, MassMultiplier)
 		HitComponent:AddImpulseAtLocation(Impulse, HitResult.Location)
 		

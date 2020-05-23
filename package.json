@@ -36,7 +36,6 @@
 		"init/client/cl_init.lua",
 		"init/client/config/cl_weapons.lua",
 
-		"car/client/fix/cl_fixDrift.lua",
 		"car/client/private/cl_lock.lua",
 		"car/client/private/cl_enter.lua",
 		

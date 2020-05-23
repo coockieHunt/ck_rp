@@ -154,7 +154,67 @@ _CarsList = {
         type = 'air',
         name = 'Maverick army',
         alias = 'Helicopter_03'
-    }
+    },
+    [26] = {
+        id = 27,
+        type = 'truck',
+        name = 'pick up',
+        alias = 'Truck_02'
+    },
+    [27] = {
+        id = 28,
+        type = 'truck',
+        name = 'truck case',
+        alias = 'Lorry_01'
+    },
+    [28] = {
+        id = 29,
+        type = 'car',
+        name = 'sadan extend',
+        alias = 'Sedan_06'
+    },
+    [29] = {
+        id = 30,
+        type = 'air',
+        name = 'helicopter carrier',
+        alias = 'Helicopter_04'
+    },
+    [30] = {
+        id = 31,
+        type = 'air',
+        name = 'helicopter rescue',
+        alias = 'Helicopter_04_Rescue'
+    },
+    [31] = {
+        id = 32,
+        type = 'car',
+        name = 'lawn mower',
+        alias = 'LawnMower_01'
+    },
+    [32] = {
+        id = 33,
+        type = 'boad',
+        name = 'boad',
+        alias = 'MotorBoat_01'
+    },
+    [33] = {
+        id = 34,
+        type = 'boad',
+        name = 'boad army',
+        alias = 'MotorBoat_01_Camo'
+    },
+    [34] = {
+        id = 35,
+        type = 'car',
+        name = 'suv',
+        alias = 'SUV_01'
+    },
+    [35] = {
+        id = 36,
+        type = 'car',
+        name = 'suv cop',
+        alias = 'SUV_01_Police'
+    },
 }
 
 _Preset_clothing = {

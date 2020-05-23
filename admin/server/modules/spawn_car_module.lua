@@ -37,40 +37,45 @@ function module:OnBuild()
             ['checked'] = true
         }
     )
-    AddForm('checkbox', "Auto mount", "AutoMount",
+    AddForm('checkbox', "Auto mount", "autoMount",
         {
             ['checked'] = true
         }
     )
+    AddForm('checkbox', "back fire", "backfire",
+    {
+        ['checked'] = true
+    }
+)
 end
 
 function module:OnOpen(playerId)
 end
 
 function module:Onexecute(playerId, data)
-    local AutoMount = false
+    local autoMount = false
     local boost = false
-    if(data.AutoMount == 'on') then AutoMount = true end
+    local backfire = false
+    if(data.autoMount == 'on') then autoMount = true end
     if(data.boost == 'on') then boost = true end
+    if(data.backfire == 'on') then backfire = true end
     local model = tonumber(data.car_id)
 
     local vehicle
 
-	if (model < 1 or model > 26) then return AddPlayerChat(playerId, "Vehicle model "..model.." does not exist.") end
+	if (model < 1 or model > 36) then return AddPlayerChat(playerId, "Vehicle model "..model.." does not exist.") end
 
 	local x, y, z = GetPlayerLocation(playerId)
 	local h = GetPlayerHeading(playerId)
 
 	if (vehicle == false) then return AddPlayerChat(playerId, "Failed to spawn your vehicle") end
-	if(AutoMount)then
+	if(autoMount)then
 		vehicle = CreateVehicle(model, x, y, z, h)
 		SetPlayerInVehicle(playerId, vehicle)
 	else
 		vehicle = CreateVehicle(model, x , y - 300, z, h - 90.0)
 		print("Player location: "..x..", "..y..", "..z)
 	end
-
-	if(boost) then AttachVehicleNitro(vehicle, true) end
 	
 	if(data.color ~= nil) then
 		data.color = "0x"..data.color
@@ -79,6 +84,8 @@ function module:Onexecute(playerId, data)
         data.color = 'none'
 	end
 
+    AttachVehicleNitro(vehicle, boost)
+	EnableVehicleBackfire(vehicle, backfire)
 	SetVehicleLicensePlate(vehicle, "ADMIN")
 	SetVehicleHealth(vehicle, data.healt)
 
