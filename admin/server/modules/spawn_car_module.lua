@@ -89,7 +89,12 @@ function module:Onexecute(playerId, data)
 	SetVehicleLicensePlate(vehicle, "ADMIN")
 	SetVehicleHealth(vehicle, data.healt)
 
-    setupVehicule(vehicle, false, '[]', 0)
+    local upgrade = {
+        boost = boost,
+        backfire = backfire
+    }
+
+    setupVehicule(vehicle, false, '[]', json_encode, 0)
 	
 	AddAdminLog(playerId, "spawn car id : ".. model.." | color: ".. data.color .. " | boost : ".. strBool(boost))
 

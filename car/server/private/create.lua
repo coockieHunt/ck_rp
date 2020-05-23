@@ -1,8 +1,9 @@
-function RequestCreateCarAccount(targetId, car_id, color)
+function RequestCreateCarAccount(targetId, car_id, color, upgrade)
     local new_car = {
         target = targetId,
         id_car = car_id,
-        color = color
+        color = color,
+        upgrade = upgrade
     }
     
     CreateNewAccountCar(new_car)
@@ -22,6 +23,7 @@ function SaveNewCarAccount(new_car)
         new_car.id_car,
         new_car.plate,
         new_car.color,
+        json_encode(new_car.upgrade),
         0
     )
 

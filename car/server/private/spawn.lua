@@ -17,11 +17,16 @@ function ResultGetAccountCar(targetId)
         if tonumber(result['otr']) == 0 then
             local x,y,z = GetPlayerLocation(targetId)
             local car = CreateVehicle(result['car_id'], x , y - 300, z, 90.0)
+            local upgrade = json_decode(result['upgrade'])
+
             SetVehicleHealth(car, result['damage'])
             SetVehicleLicensePlate(car, result['plate'])
             SetVehicleColor(car, "0x"..result['color'])
+            AttachVehicleNitro(car, upgrade['boost'])
+            EnableVehicleBackfire(car, upgrade['backfire'])
+
             SetOnTheRoad(result['id'], true)
-            setupVehicule(car, true, result['account_id'], result['id'])
+            setupVehicule(car, true, result['account_id'], result['upgrade'], result['id'])
             return true
         else
             return false
