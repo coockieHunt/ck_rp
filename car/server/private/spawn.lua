@@ -24,7 +24,7 @@ function ResultGetAccountCar(targetId)
             setupVehicule(car, true, result['account_id'], result['id'])
             return true
         else
-            print('already on the road')
+            return false
         end
     end
 end
