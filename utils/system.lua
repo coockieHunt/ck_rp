@@ -133,6 +133,14 @@ function toboolean(str)
   end
 end
 
+function IntToBool(int)
+  if tonumber(int) == 1 then
+    return true
+  else
+    return false
+  end
+end
+
 -- string
 function string_start_by(String,Start)
   return string.sub(String,1,string.len(Start))==Start

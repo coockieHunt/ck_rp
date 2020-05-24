@@ -5,13 +5,13 @@ function store_car(playerId, id)
             GetVehicleHealth(id), 
             GetVehicleLicensePlate(id), 
             tohex(GetVehicleColor(id)), 
+            GetVehiclePropertyValue(id, 'upgrade'), 
             GetVehiclePropertyValue(id, 'db_id')
         )
 
         mariadb_async_query(db, query)
 
         SetOnTheRoad(GetVehiclePropertyValue(id, 'db_id'), false)
-
 
         DestroyVehicle(id)
 
