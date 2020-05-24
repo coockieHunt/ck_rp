@@ -1,7 +1,7 @@
 local module = {
     name = "spawn account",
     id = "spawn_car_account",
-    select = "car",
+    select = "car_account",
     level = 1
 }
 

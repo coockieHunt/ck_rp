@@ -1,7 +1,7 @@
 local module = {
     name = "spawn",
     id = "spawn_car",
-    select = "car",
+    select = "car_admin",
     level = 1
 }
 
@@ -53,12 +53,12 @@ function module:OnOpen(playerId)
 end
 
 function module:Onexecute(playerId, data)
-    local autoMount = false
-    local boost = false
-    local backfire = false
-    if(data.autoMount == 'on') then autoMount = true end
-    if(data.boost == 'on') then boost = true end
-    if(data.backfire == 'on') then backfire = true end
+    local autoMount = 0
+    local boost = 0
+    local backfire = 0
+    if(data.autoMount == 'on') then autoMount = 1 end
+    if(data.boost == 'on') then boost = 1 end
+    if(data.backfire == 'on') then backfire = 1 end
     local model = tonumber(data.car_id)
 
     local vehicle
@@ -83,9 +83,7 @@ function module:Onexecute(playerId, data)
     else
         data.color = 'none'
 	end
-
-    AttachVehicleNitro(vehicle, boost)
-	EnableVehicleBackfire(vehicle, backfire)
+    
 	SetVehicleLicensePlate(vehicle, "ADMIN")
 	SetVehicleHealth(vehicle, data.healt)
 
@@ -94,8 +92,11 @@ function module:Onexecute(playerId, data)
         backfire = backfire
     }
 
-    setupVehicule(vehicle, false, '[]', json_encode, 0)
-	
+    upgrade = json_encode(upgrade)
+
+    setupVehicule(vehicle, false, '[]', upgrade, 0)
+    ApplyUpgrade(vehicle, upgrade)
+
 	AddAdminLog(playerId, "spawn car id : ".. model.." | color: ".. data.color .. " | boost : ".. strBool(boost))
 
     CloseAdminDialog(playerId)

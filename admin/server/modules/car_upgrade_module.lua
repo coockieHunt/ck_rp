@@ -1,7 +1,7 @@
 local module = {
-    name = "create account",
-    id = "create_car_account",
-    select = "car_account",
+    name = "upgrade",
+    id = "car_upgrade",
+    select = "car_admin",
     level = 1
 }
 
@@ -24,17 +24,17 @@ end
 -- func
 function module:OnBuild()
     AddForm('player', "target", "target", {})
-    AddForm('vehicles', "vehicles", "car_id", {})
-    AddForm('color', "color", "color", {})
+
+    AddForm('spacer', 'upgrade', '', {})
 
     AddForm('checkbox', "boost", "boost",  
         {
-            ['checked'] = true
+            ['checked'] = false
         }
     )
     AddForm('checkbox', "back fire", "backfire",
         {
-            ['checked'] = true
+            ['checked'] = false
         }
     )
 end
@@ -43,20 +43,20 @@ function module:OnOpen(playerId)
 end
 
 function module:Onexecute(playerId, data)
-    local p = getplayer(data.target)
-
     local boost = 0
     local backfire = 0
 
     if(data.boost == 'on') then boost = 1 end
     if(data.backfire == 'on') then backfire = 1 end
 
-    local upgrade = {
-        boost = boost,
-        backfire = backfire
-    }
+    local pv = GetPlayerVehicle(data.target)
 
-    RequestCreateCarAccount(p.id, data.car_id, data.color, upgrade)
+    if pv ~= 0 then
+        SetUpgradeVehicleNitro(pv, data.boost)
+        SetUpgradeVehicleBackFire(pv, data.backfire)
+    else
+        print('empty')
+    end
 end
 
 AddAdminModule(module)

@@ -2,7 +2,8 @@ _Dialog_admin = {
     key = 'F5',
 
     module_select = {
-        {id = 'car', name = 'car'},
+        {id = 'car_account', name = 'Car account'},
+        {id = 'car_admin', name = 'Car admin'},
         {id = 'teleport', name = 'Teleport'},
         {id = 'survival', name = 'Surivival'},
         {id = 'inventory', name = 'Inventory'},
