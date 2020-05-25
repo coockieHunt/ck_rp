@@ -16,6 +16,7 @@ function BuildSelectOnOpen(ui)
     GetPlayerList()
     GetPlayerCacheList()
     GetDropItemList()
+    GetCarWorldList()
 end
 
 -- car list
@@ -93,6 +94,22 @@ function SetDropItemList(DropedList)
     end
 end
 AddRemoteEvent("SetDropItemList", SetDropItemList)
+
+-- car list
+function GetCarWorldList(ui)
+    CallRemoteEvent('GetCarWorldList', ui)
+end
+
+function SetCarWorldList(WorldCarList)
+    ExecuteWebJS(web_ui, 'ClearCarListSelect()')
+
+    for _,v in pairs(WorldCarList) do
+        local str = string.format("BuildPCarListSelect('%q - owner: %q, upgrade : %q, locked : %q, alarm : %q, a live : %q', %q)", v.model, v.owner, v.upgrade, v.locked, v.ALive, v.alarm, v.id)
+        
+        ExecuteWebJS(web_ui, str)
+    end
+end
+AddRemoteEvent("SetCarWorldList", SetCarWorldList)
 
 -- Player list
 function GetPlayerList(ui)

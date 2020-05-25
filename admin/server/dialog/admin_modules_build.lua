@@ -44,7 +44,7 @@ function BuildForm(playerId, section_id)
             CallRemoteEvent(playerId, "BuildSpacer", section_id, name, data)
         end
 
-        if type == "player" or type == "vehicles" or type == "weapons" or type == "preset_pos" or type == "items" or type == "player_cache" or type == "droped_items" then
+        if type == "player" or type == "vehicles" or type == "weapons" or type == "preset_pos" or type == "items" or type == "player_cache" or type == "droped_items" or type == "car_world_list" then
             CallRemoteEvent(playerId, "BuildGameSelect", section_id, type, id, data, name)
         end
 

@@ -27,6 +27,7 @@ function NavClickEvent(){
         if(id != undefined){
             HideAllSection()
             ShowSection(id)
+            CallEvent("CallOpenModules", id);
         }
     });
 }
@@ -353,6 +354,10 @@ function AddGameSelect(section, select, id, custom, name){
             class_form = "IDList"
         break
 
+        case "car_world_list":
+            class_form = "CarList"
+        break
+
         default:
             return false
         break;
@@ -490,6 +495,19 @@ function BuildPDropedItemListSelect(text, value){
         let count = $(".IDList option[value='" + value + "']").length
         if(count == 0){
             $('.IDList').append(new Option(text, value))
+        }
+    }
+}
+
+function ClearCarListSelect(){
+    $('.CarList').empty()
+}
+
+function BuildPCarListSelect(text, value){
+    if ( $( ".CarList" ).length ) {
+        let count = $(".CarList option[value='" + value + "']").length
+        if(count == 0){
+            $('.CarList').append(new Option(text, value))
         }
     }
 }

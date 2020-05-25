@@ -73,6 +73,38 @@ AddRemoteEvent("GetDropItemList", function(player)
     CallRemoteEvent(player, "SetDropItemList", ListTable)
 end)
 
+AddRemoteEvent("GetCarWorldList", function(player)
+    local ListTable = { }
+    local arg = 0
+
+    for _, id in pairs(GetAllVehicles()) do
+        arg = arg + 1
+
+        local car_id = id
+
+        local owner = GetVehiclePropertyValue(id, "owner")
+        local upgrade = GetVehiclePropertyValue(id, "upgrade")
+        local locked = GetVehiclePropertyValue(id, "locked")
+        local ALive = GetVehiclePropertyValue(id, "ALive")
+        local alarm = GetVehiclePropertyValue(id, "alarm")
+        local model = GetVehicleModelName(id)
+
+        table.insert(ListTable, {
+                ['id'] = car_id,
+                ["model"] = model,
+                ["owner"] = owner,
+                ["upgrade"] = upgrade,
+                ["locked"] = locked, 
+                ["ALive"] = ALive,
+                ["alarm"] = alarm
+            }
+        )
+        
+    end
+    
+    CallRemoteEvent(player, "SetCarWorldList", ListTable)
+end)
+
 
 AddRemoteEvent("GetPlayerInfo", function(player, playerid)
     admin_GetPlayerInfo(player, player, playerid)
