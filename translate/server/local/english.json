@@ -11,5 +11,7 @@
     "car_lock" : "your {1} was locked",
     "car_unlock" : "your {1} was unlocked",
     "vehicle" : "vehicle",
-    "is_not_in_a_vehicle" : "player {1} is not in a vehicle"
+    "is_not_in_a_vehicle" : "player {1} is not in a vehicle",
+    "stored" : "store",
+    "car_no_owner" : "no owner car"
 }

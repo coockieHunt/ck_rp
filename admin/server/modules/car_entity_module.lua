@@ -56,9 +56,9 @@ function module:Onexecute(playerId, data)
         local store = store_car(car_selected)
 
         if store then
-            print(stored)
+            SendAlert(playerId, 'admin', 'server', _("stored"))
         else
-            print('no owner')
+            SendAlert(playerId, 'admin', 'server', _("car_no_owner"))
         end
     end
 
