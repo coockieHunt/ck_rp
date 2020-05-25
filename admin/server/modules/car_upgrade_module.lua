@@ -27,6 +27,8 @@ function module:OnBuild()
 
     AddForm('spacer', 'upgrade', '', {})
 
+    AddForm('color', "color", "color", {})
+
     AddForm('checkbox', "boost", "boost",  
         {
             ['checked'] = false
@@ -52,11 +54,19 @@ function module:Onexecute(playerId, data)
     local pv = GetPlayerVehicle(data.target)
 
     if pv ~= 0 then
+        if(data.color ~= nil) then
+            SetVehicleColor(pv, "0x"..data.color)
+        end
+
         SetUpgradeVehicleNitro(pv, data.boost)
         SetUpgradeVehicleBackFire(pv, data.backfire)
+
+        SendAlert(playerId, 'ok', 'server', "set new upgrade")
     else
-        print('empty')
+        SendAlert(playerId, 'error', 'server', _('is_not_in_a_vehicle', GetPlayerName(data.target)))
     end
+
+    CloseAdminDialog(playerId)
 end
 
 AddAdminModule(module)
