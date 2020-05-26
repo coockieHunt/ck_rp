@@ -27,10 +27,17 @@ function module:OnBuild()
         ["default_select"] = 5
     })
     AddForm('color', "color", "color", {})
-    AddForm('text', "healt", "healt", {
+    
+    AddForm('text', "healt <0 - 5000>", "healt", {
         ['default_value'] = "5000",
         ['place_holder'] = 'max 5000',
     })
+
+    AddForm('text', "fuel <0-100>", "fuel", {
+        ['default_value'] = "100",
+        ['place_holder'] = 'max 100',
+    })
+
     AddForm('spacer', "option", "",  {})
     AddForm('checkbox', "boost", "boost",  
         {
@@ -85,7 +92,8 @@ function module:Onexecute(playerId, data)
 	end
     
 	SetVehicleLicensePlate(vehicle, "ADMIN")
-	SetVehicleHealth(vehicle, data.healt)
+    SetVehicleHealth(vehicle, data.healt)
+    SetFuel(vehicle, tonumber(data.fuel))
 
     local upgrade = {
         boost = boost,

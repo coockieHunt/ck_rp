@@ -29,6 +29,17 @@ function module:OnBuild()
 
     AddForm('color', "color", "color", {})
 
+    AddForm('text', "healt <0 - 5000>", "healt", {
+        ['default_value'] = "5000",
+        ['place_holder'] = 'max 5000',
+    })
+
+    AddForm('text', "fuel <0-100>", "fuel", {
+        ['default_value'] = "100",
+        ['place_holder'] = 'max 100',
+    })
+
+
     AddForm('checkbox', "boost", "boost",  
         {
             ['checked'] = false
@@ -60,6 +71,8 @@ function module:Onexecute(playerId, data)
 
         SetUpgradeVehicleNitro(pv, data.boost)
         SetUpgradeVehicleBackFire(pv, data.backfire)
+        SetVehicleHealth(pv, data.healt)
+        SetFuel(pv, tonumber(data.fuel))
 
         SendAlert(playerId, 'ok', 'server', "set new upgrade")
     else
