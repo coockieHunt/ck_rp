@@ -1,29 +1,63 @@
-local sound = {}
+local sound_object = {}
 
-function NewSoun3d(var, files, x, y, z, distance, renew)
-    local count_player = tablelength(GetAllPlayers())
-    if count_player > 0 then
-        for _, player in pairs(GetAllPlayers()) do
-            sound[var] = {var, files, x, y, z, distance, renew}
-            CallRemoteEvent(player,"NewSoun3dSync", var, files, x, y, z, distance, renew)
-        end
-    end
+function NewSoun3d(var, file, x, y, z, radius, volume, loop)
+	loop = loop or false
+	volume = volume or 1.0
+
+	local object = CreateObject(1, x, y, z)
+
+	SetObjectPropertyValue(object, "type", "SoundStream", true)
+
+	SetObjectPropertyValue(object, "var", var, true)
+	SetObjectPropertyValue(object, "file", file, true)
+	SetObjectPropertyValue(object, "radius", radius, true)
+	SetObjectPropertyValue(object, "volume", volume, true)
+	SetObjectPropertyValue(object, "loop", loop, true)
+	SetObjectStreamDistance(object, radius)
+
+	sound_object[object] = var
 end
 
-function DeleteSoun3d(var)
-    local count_player = tablelength(GetAllPlayers())
-    if count_player > 0 then
-        for _, player in pairs(GetAllPlayers()) do
-            sound[var] = nil
-            CallRemoteEvent(player,"DeleteSoun3dSync", var)
-        end
-    end
+function DestroySound3d(var)
+	for k,v in pairs(sound_object) do
+		if v == var then
+			DestroyObject(k)
+			sound_object[k] = nil
+			for _, v in pairs(GetAllPlayers()) do
+				CallRemoteEvent(v, 'DestroySound3d', k)
+				
+			end
+		end
+    end 
 end
 
-function OnPlayerSpawn(playerid)
-    for id, data in pairs(sound) do
-        NewSoun3d(data[1], data[2], data[3], data[4], data[5], data[6], data[7])
-    end
-end
-AddEvent("OnPlayerSpawn", OnPlayerSpawn)
+function SoundClientFinished(playerId, object)
+	local type = GetObjectPropertyValue(object, "type")
+	if type == "SoundStream" then
+		local var = GetObjectPropertyValue(object, "var")
+		if GetObjectPropertyValue(object, "loop") then
+			local x,y,z = GetObjectLocation(object)
+			local file = GetObjectPropertyValue(object, "file")
+			local radius = GetObjectPropertyValue(object, "radius")
+			local volume = GetObjectPropertyValue(object, "volume")
+			local loop = GetObjectPropertyValue(object, "loop")
+			local var = GetObjectPropertyValue(object, "var")
 
+			local new_object = CreateObject(1, x, y, z)
+
+			SetObjectPropertyValue(new_object, "type", "SoundStream", true)
+
+			SetObjectPropertyValue(new_object, "var", var, true)
+			SetObjectPropertyValue(new_object, "file", file, true)
+			SetObjectPropertyValue(new_object, "radius", radius, true)
+			SetObjectPropertyValue(new_object, "volume", volume, true)
+			SetObjectPropertyValue(new_object, "loop", loop, true)
+
+			sound_object[new_object] = var
+		end
+
+		DestroyObject(object)
+		sound_object[object] = nil
+	end
+end
+AddRemoteEvent("SoundClientFinished", SoundClientFinished)
