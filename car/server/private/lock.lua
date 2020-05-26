@@ -46,7 +46,7 @@ end
 function PlayVehicleLockSquance(vehicle_id)
     SetVehicleLightEnabled(vehicle_id, true)
     local x, y, z = GetVehicleLocation(vehicle_id)
-    NewSoun3d('car_open', 'files_client/sound/car_lock.mp3', x, y, z,  _Lock_unlock.distance_sound, false)
+    NewSoun3d('car_open'..vehicle_id, 'files_client/sound/car_lock.mp3', x, y, z,  _Lock_unlock.distance_sound, 1.0, false)
     Delay(400, function()
         SetVehicleLightEnabled(vehicle_id, false)
 	end)

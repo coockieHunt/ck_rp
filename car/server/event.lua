@@ -57,3 +57,23 @@ function OnPackageStop()
     SetAllOnTheRoad(false)
 end
 AddEvent("OnPackageStop", OnPackageStop)
+
+AddEvent("OnPlayerEnterVehicle", function(player, vehicle, seat)
+	if seat == 1 then
+        local fuel = GetVehiclePropertyValue(vehicle, "fuel")
+        
+        if tonumber(fuel) > 0 then 
+            StartVehicleEngine(vehicle)
+        else
+            local x,y,z = GetVehicleLocation(vehicle)
+            NewSoun3d('car_engine_break'..vehicle, 'files_client/sound/car_engine_break.mp3', x, y, z,  _Lock_unlock.distance_sound, 1.0, false)
+        end
+	end
+end)
+
+AddEvent("OnPlayerLeaveVehicle", function(player, vehicle, seat)
+	if seat == 1 then
+        StopVehicleEngine(vehicle)
+        DestroySound3d('car_engine_break'..vehicle)
+	end
+end)

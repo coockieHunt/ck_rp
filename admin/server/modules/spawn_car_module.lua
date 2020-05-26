@@ -94,7 +94,7 @@ function module:Onexecute(playerId, data)
 
     upgrade = json_encode(upgrade)
 
-    setupVehicule(vehicle, false, '[]', upgrade, 0)
+    setupVehicule(vehicle, false, '[]', upgrade, 100, 0)
     ApplyUpgrade(vehicle, upgrade)
 
 	AddAdminLog(playerId, "spawn car id : ".. model.." | color: ".. data.color .. " | boost : ".. strBool(boost))

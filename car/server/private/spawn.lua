@@ -25,7 +25,7 @@ function ResultGetAccountCar(targetId)
             ApplyUpgrade(car, result['upgrade'])
 
             SetOnTheRoad(result['id'], true)
-            setupVehicule(car, true, result['account_id'], result['upgrade'], result['id'])
+            setupVehicule(car, true, result['account_id'], result['upgrade'], result['fuel'], result['id'])
             return true
         else
             return false
