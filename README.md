@@ -13,7 +13,8 @@ If there is a problem after a pacakge update. reset the data bass.
 - youtube : https://www.youtube.com/playlist?list=PLHzBb4XCRN45K_v5DZhlpCENPL-BITdX8
 ### special thank
 - dictateurfou - https://github.com/dictateurfou/importer
-- vugi99 - https://github.com/vugi99/onset-drift
+- vugi99 - https://github.com/vugi99/onset-drift (
+depreciate)
 - FinnCoding - https://github.com/FinnCoding/OnsetRagdoll
 
 ### guide
