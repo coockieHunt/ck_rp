@@ -33,6 +33,7 @@ function module:OnBuild()
             ['alarm'] = "stop alarm",
             ['lock_unlock'] = "lock unlock",
             ['repair'] = "repair",
+            ['refuel'] = "refuel",
             ['destroy'] = "destroy"
         }
     })
@@ -45,6 +46,11 @@ end
 function module:Onexecute(playerId, data)
     local car_selected = data['world_car']
     local action = data['action']
+
+    if action == "refuel" then
+        local fuel_tank = GetFuelTankById(car_selected)
+        SetFuel(car_selected, tonumber(fuel_tank))
+    end
 
     if action == "alarm" then
         if GetVehiclePropertyValue(car_selected, "alarm") then
