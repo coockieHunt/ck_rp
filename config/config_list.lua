@@ -1,220 +1,43 @@
 _CarsList = {
-    [1] = {
-        id = 1,
-        type = 'car',
-        name = 'Sedan',
-        alias = 'Sedan_01'
-    },
-    [2] = {
-        id = 2,
-        type = 'car',
-        name = 'Sedan taxi',
-        alias = 'Sedan_01_Taxi'
-    },
-    [3] = {
-        id = 3,
-        type = 'car',
-        name = 'Sedan police',
-        alias = 'Sedan_01_Police'
-    },
-    [4] = {
-        id = 4,
-        type = 'car',
-        name = 'Luxe',
-        alias = 'Sedan_02'
-    },
-    [5] = {
-        id = 5,
-        type = 'car',
-        name = 'Regal',
-        alias = 'Sedan_03'
-    },
-    [6] = {
-        id = 6,
-        type = 'car',
-        name = 'Nascar',
-        alias = 'Nascar_01'
-    },
-    [7] = {
-        id = 7,
-        type = 'car',
-        name = 'Raptor',
-        alias = 'Truck_01'
-    },
-    [8] = {
-        id = 8,
-        type = 'car',
-        name = 'Ambulance',
-        alias = 'Ambulance_01'
-    },
-    [9] = {
-        id = 9,
-        type = 'truck',
-        name = 'Garbage',
-        alias = 'Garbage_Truck_01'
-    },
-    [10] = {
-        id = 11,
-        type = 'car',
-        name = 'Pinnacle',
-        alias = 'Coupe_01'
-    },
-    [11] = {
-        id = 12,
-        type = 'car',
-        name = 'Sultan',
-        alias = 'Rally_01'
-    },
-    [12] = {
-        id = 13,
-        type = 'car',
-        name = 'SWAT (Black)',
-        alias = 'Heavy_01'
-    },
-    [13] = {
-        id = 14,
-        type = 'car',
-        name = 'SWAT (Camo)',
-        alias = 'Heavy_02'
-    },
-    [14] = {
-        id = 15,
-        type = 'car',
-        name = 'SWAT (Medic)',
-        alias = 'Heavy_03'
-    },
-    [15] = {
-        id = 16,
-        type = 'car',
-        name = 'SWAT (Sand)',
-        alias = 'Heavy_04'
-    },
-    [16] = {
-        id = 17,
-        type = 'truck',
-        name = 'Barracks (Green)',
-        alias = 'Cargo_Truck_01'
-    },
-    [17] = {
-        id = 18,
-        type = 'truck',
-        name = 'Barracks (Camo)',
-        alias = 'Cargo_Truck_02'
-    },
-    [18] = {
-        id = 19,
-        type = 'car',
-        name = 'Sedan mono color',
-        alias = 'Sedan_OneColor'
-    },
-    [19] = {
-        id = 21,
-        type = 'car',
-        name = 'Humvee (Sand)',
-        alias = 'Military_01'
-    },
-    [20] = {
-        id = 22,
-        type = 'truck',
-        name = 'Cargo Light (Olive)',
-        alias = 'Light_Cargo_01'
-    },
-    [21] = {
-        id = 23,
-        type = 'truck',
-        name = 'Cargo Light (Camo)',
-        alias = 'Light_Cargo_02'
-    },
-    [22] = {
-        id = 24,
-        type = 'truck',
-        name = 'Securicar (Red)',
-        alias = 'ArmoredTruck_01'
-    },
-    [23] = {
-        id = 25,
-        type = 'car',
-        name = 'Dacia',
-        alias = 'Sedan_Classic'
-    },
-    [23] = {
-        id = 10,
-        type = 'air',
-        name = 'Maverick (Blue)',
-        alias = 'Helicopter_01'
-    },
-    [24] = {
-        id = 20,
-        type = 'air',
-        name = 'Maverick One color',
-        alias = 'Helicopter_OneColor'
-    },
-    [25] = {
-        id = 26,
-        type = 'air',
-        name = 'Maverick army',
-        alias = 'Helicopter_03'
-    },
-    [26] = {
-        id = 27,
-        type = 'truck',
-        name = 'pick up',
-        alias = 'Truck_02'
-    },
-    [27] = {
-        id = 28,
-        type = 'truck',
-        name = 'truck case',
-        alias = 'Lorry_01'
-    },
-    [28] = {
-        id = 29,
-        type = 'car',
-        name = 'sadan extend',
-        alias = 'Sedan_06'
-    },
-    [29] = {
-        id = 30,
-        type = 'air',
-        name = 'helicopter carrier',
-        alias = 'Helicopter_04'
-    },
-    [30] = {
-        id = 31,
-        type = 'air',
-        name = 'helicopter rescue',
-        alias = 'Helicopter_04_Rescue'
-    },
-    [31] = {
-        id = 32,
-        type = 'car',
-        name = 'lawn mower',
-        alias = 'LawnMower_01'
-    },
-    [32] = {
-        id = 33,
-        type = 'boad',
-        name = 'boad',
-        alias = 'MotorBoat_01'
-    },
-    [33] = {
-        id = 34,
-        type = 'boad',
-        name = 'boad army',
-        alias = 'MotorBoat_01_Camo'
-    },
-    [34] = {
-        id = 35,
-        type = 'car',
-        name = 'suv',
-        alias = 'SUV_01'
-    },
-    [35] = {
-        id = 36,
-        type = 'car',
-        name = 'suv cop',
-        alias = 'SUV_01_Police'
-    },
+    {id = 1, type = 'car', name = 'Sedan', alias = 'Sedan_01', fuel_tank = 120},
+    {id = 2, type = 'car', name = 'Sedan taxi', alias = 'Sedan_01_Taxi', fuel_tank = 100},
+    {id = 3, type = 'car', name = 'Sedan police', alias = 'Sedan_01_Police', fuel_tank = 100},
+    {id = 4, type = 'car', name = 'Luxe', alias = 'Sedan_02', fuel_tank = 100},
+    {id = 5, type = 'car', name = 'Regal', alias = 'Sedan_03', fuel_tank = 100},
+    {id = 6, type = 'car', name = 'Nascar', alias = 'Nascar_01', fuel_tank = 100},
+    {id = 7, type = 'car', name = 'Raptor', alias = 'Truck_01', fuel_tank = 100},
+    {id = 8, type = 'car', name = 'Ambulance', alias = 'Ambulance_01', fuel_tank = 100},
+    {id = 11, type = 'car', name = 'Pinnacle', alias = 'Coupe_01', fuel_tank = 100},
+    {id = 12, type = 'car', name = 'Sultan', alias = 'Rally_01', fuel_tank = 100},
+    {id = 13, type = 'car', name = 'SWAT (Black)', alias = 'Heavy_01', fuel_tank = 100},
+    {id = 14, type = 'car', name = 'SWAT (Camo)', alias = 'Heavy_02', fuel_tank = 100},
+    {id = 15, type = 'car', name = 'SWAT (Medic)', alias = 'Heavy_03', fuel_tank = 100},
+    {id = 16, type = 'car', name = 'SWAT (Sand)', alias = 'Heavy_04', fuel_tank = 100},
+    {id = 19, type = 'car', name = 'Sedan mono color', alias = 'Sedan_OneColor', fuel_tank = 100},
+    {id = 21, type = 'car', name = 'Humvee (Sand)', alias = 'Military_01', fuel_tank = 100},
+    {id = 25, type = 'car', name = 'Dacia', alias = 'Sedan_Classic', fuel_tank = 100},
+    {id = 26, type = 'air', name = 'Maverick army', alias = 'Helicopter_03', fuel_tank = 100},
+    {id = 29, type = 'car', name = 'sadan extend', alias = 'Sedan_06', fuel_tank = 100},
+    {id = 32, type = 'car', name = 'lawn mower', alias = 'LawnMower_01', fuel_tank = 100},
+    {id = 35, type = 'car',name = 'suv', alias = 'SUV_01', fuel_tank = 100},
+    {id = 36, type = 'car', name = 'suv cop', alias = 'SUV_01_Police', fuel_tank = 100},
+
+    {id = 33, type = 'boad', name = 'boad', alias = 'MotorBoat_01', fuel_tank = 100},
+    {id = 34, type = 'boad', name = 'boad army', alias = 'MotorBoat_01_Camo', fuel_tank = 100},
+
+    {id = 20, type = 'air', name = 'Maverick One color', alias = 'Helicopter_OneColor', fuel_tank = 100},
+    {id = 10, type = 'air', name = 'Maverick (Blue)', alias = 'Helicopter_01', fuel_tank = 100},
+    {id = 30, type = 'air', name = 'helicopter carrier', alias = 'Helicopter_04', fuel_tank = 100},
+    {id = 31, type = 'air', name = 'helicopter rescue', alias = 'Helicopter_04_Rescue', fuel_tank = 100},
+
+    {id = 9, type = 'truck', name = 'Garbage', alias = 'Garbage_Truck_01', fuel_tank = 100},
+    {id = 17, type = 'truck', name = 'Barracks (Green)', alias = 'Cargo_Truck_01', fuel_tank = 100},
+    {id = 18, type = 'truck', name = 'Barracks (Camo)', alias = 'Cargo_Truck_02', fuel_tank = 100},
+    {id = 22, type = 'truck', name = 'Cargo Light (Olive)', alias = 'Light_Cargo_01', fuel_tank = 100},
+    {id = 23, type = 'truck', name = 'Cargo Light (Camo)', alias = 'Light_Cargo_02', fuel_tank = 100},
+    {id = 24, type = 'truck', name = 'Securicar (Red)', alias = 'ArmoredTruck_01', fuel_tank = 100},
+    {id = 27, type = 'truck', name = 'pick up', alias = 'Truck_02', fuel_tank = 100},
+    {id = 28, type = 'truck', name = 'truck case', alias = 'Lorry_01', fuel_tank = 100},
 }
 
 _Preset_clothing = {
