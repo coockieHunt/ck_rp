@@ -6,6 +6,7 @@ function store_car(car_id)
                 GetVehicleHealth(car_id), 
                 GetVehicleLicensePlate(car_id), 
                 tohex(GetVehicleColor(car_id)), 
+                GetVehiclePropertyValue(car_id, 'fuel'), 
                 GetVehiclePropertyValue(car_id, 'upgrade'), 
                 GetVehiclePropertyValue(car_id, 'db_id')
             )

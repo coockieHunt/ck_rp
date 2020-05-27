@@ -77,7 +77,7 @@ _RequestSql = {
     GetAllAccountCar = "SELECT * FROM account_vehicle WHERE account_id LIKE '?';",
     GetAccountCar = "SELECT * FROM account_vehicle WHERE account_id LIKE '?' AND id = '?';",
     IfCarExistLicensePlate = "SELECT * FROM account_vehicle WHERE plate = '?';",
-    StoreCar = "UPDATE account_vehicle SET account_id='?', damage='?', plate ='?',color ='?', upgrade='?' WHERE  id= ?;",
+    StoreCar = "UPDATE account_vehicle SET account_id='?', damage='?', plate ='?',color ='?', fuel='?', upgrade='?' WHERE  id= ?;",
     SetOnTheRoad = "UPDATE account_vehicle SET otr='?' WHERE id='?';",
     SetAllOnTheRoad = "UPDATE account_vehicle SET otr='?';"
 };
