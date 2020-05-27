@@ -25,6 +25,13 @@ _Import_package = {
     "cop"
 };
 
+-- VEHICLE
+_Vehicle = {
+    velocity_cap = 500,
+    velocity_decreases_fuel_add = 1,
+    normal_decreases_fuel = 1,
+}
+
 -- ANIMATION
 _Drop_animation = {
     animation_id = "PICKUP_LOWER",
