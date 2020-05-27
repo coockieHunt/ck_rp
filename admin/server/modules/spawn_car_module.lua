@@ -33,11 +33,6 @@ function module:OnBuild()
         ['place_holder'] = 'max 5000',
     })
 
-    AddForm('text', "fuel <0-100>", "fuel", {
-        ['default_value'] = "100",
-        ['place_holder'] = 'max 100',
-    })
-
     AddForm('spacer', "option", "",  {})
     AddForm('checkbox', "boost", "boost",  
         {
@@ -67,6 +62,7 @@ function module:Onexecute(playerId, data)
     if(data.boost == 'on') then boost = 1 end
     if(data.backfire == 'on') then backfire = 1 end
     local model = tonumber(data.car_id)
+    local fuel_tank = GetFuelTankById(data.car_id)
 
     local vehicle
 
@@ -93,7 +89,7 @@ function module:Onexecute(playerId, data)
     
 	SetVehicleLicensePlate(vehicle, "ADMIN")
     SetVehicleHealth(vehicle, data.healt)
-    SetFuel(vehicle, tonumber(data.fuel))
+    SetFuel(vehicle, tonumber(fuel_tank))
 
     local upgrade = {
         boost = boost,
@@ -102,7 +98,7 @@ function module:Onexecute(playerId, data)
 
     upgrade = json_encode(upgrade)
 
-    setupVehicule(vehicle, false, '[]', upgrade, 100, 0)
+    setupVehicule(vehicle, false, '[]', upgrade, fuel_tank, 0)
     ApplyUpgrade(vehicle, upgrade)
 
 	AddAdminLog(playerId, "spawn car id : ".. model.." | color: ".. data.color .. " | boost : ".. strBool(boost))
