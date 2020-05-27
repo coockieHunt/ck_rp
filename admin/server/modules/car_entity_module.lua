@@ -48,7 +48,7 @@ function module:Onexecute(playerId, data)
     local action = data['action']
 
     if action == "refuel" then
-        local fuel_tank = GetFuelTankById(car_selected)
+        local fuel_tank = GetFuelTankById(GetVehicleModel(car_selected))
         SetFuel(car_selected, tonumber(fuel_tank))
     end
 
