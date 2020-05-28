@@ -3,6 +3,7 @@ AddEvent("OnGameTick", function(DeltaSeconds)
     local vehicleId = GetPlayerVehicle(playerId)
 
     if vehicleId ~= 0 then
-        CallRemoteEvent("RefreshVehicleUi")
+        local speed = math.tointeger(math.floor(GetVehicleForwardSpeed(vehicleId)))
+        CallRemoteEvent("RefreshVehicleUi", speed)
     end
 end)

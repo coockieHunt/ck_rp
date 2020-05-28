@@ -30,7 +30,6 @@ function dialog:onCreate(playerId, DialogId)
 end
 
 function dialog:onOpen(playerId, DialogId)
-    RefreshVehicleUi(playerId)
 end
 
 function dialog:OnClose(playerId, DialogId)
@@ -39,7 +38,7 @@ end
 function dialog:OnLoadComplete(playerId, DialogId)
 end
 
-function RefreshVehicleUi(playerId)
+function RefreshVehicleUi(playerId, current_speed)
     local vehicleId = GetPlayerVehicle(playerId)
 
     if vehicleId ~= 0 then
@@ -54,7 +53,7 @@ function RefreshVehicleUi(playerId)
 
         ExecWebJs(playerId, DialogId, "SetFuel('"..fuel_tank.."', '"..current_fuel.."')")
         ExecWebJs(playerId, DialogId, "SetDamage('5000', '"..current_dammage.."')")
-        ExecWebJs(playerId, DialogId, "SetSpeed('wip')")
+        ExecWebJs(playerId, DialogId, "SetSpeed('"..current_speed.."')")
         ExecWebJs(playerId, DialogId, "SetLight("..tostring(current_light)..")")
     end
 end
