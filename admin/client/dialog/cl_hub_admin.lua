@@ -12,6 +12,7 @@ function OpenUIAdmin()
 
         CloseDialog("warning")
         CloseDialog("alert")
+        if GetPlayerVehicle(GetPlayerId()) ~= 0 then CloseDialog("vehicle") end
     end
 end
 
@@ -21,6 +22,7 @@ function CloseUIAdmin()
 
     OpenDialog("warning")
     OpenDialog("alert")
+    if GetPlayerVehicle(GetPlayerId()) ~= 0  then OpenDialog("vehicle") end
 
     SetWebVisibility(admin_ui, WEB_HIDDEN)
 end

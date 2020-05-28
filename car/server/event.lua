@@ -59,7 +59,8 @@ end
 AddEvent("OnPackageStop", OnPackageStop)
 
 AddEvent("OnPlayerEnterVehicle", function(player, vehicle, seat)
-	if seat == 1 then
+    if seat == 1 then
+        OpenDialogClient(player, "vehicle")
         local fuel = GetVehiclePropertyValue(vehicle, "fuel")
         
         if tonumber(fuel) > 0 then 
@@ -72,7 +73,8 @@ AddEvent("OnPlayerEnterVehicle", function(player, vehicle, seat)
 end)
 
 AddEvent("OnPlayerLeaveVehicle", function(player, vehicle, seat)
-	if seat == 1 then
+    if seat == 1 then
+        CloseDialogClient(player, 'vehicle')    
         StopVehicleEngine(vehicle)
         DestroySound3d('car_engine_break'..vehicle)
 	end

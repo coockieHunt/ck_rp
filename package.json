@@ -38,6 +38,7 @@
 
 		"car/client/private/cl_lock.lua",
 		"car/client/private/cl_enter.lua",
+		"car/client/fuel/cl_clock.lua",
 		
 		"survival/client/cl_ClockSurvival.lua",
 
@@ -73,6 +74,7 @@
 		"files_client/web/css/window/info.css",
 		"files_client/web/css/form/form.css",
 		"files_client/web/css/window/alert.css",
+		"files_client/web/css/window/vehicle.css",
 	
 		"files_client/web/script/game/eu.js",
 		"files_client/web/script/main.js",
@@ -86,6 +88,7 @@
 		"files_client/web/script/window/new_character.js",
 		"files_client/web/script/window/info.js",
 		"files_client/web/script/window/alert.js",
+		"files_client/web/script/window/vehicle.js",
 
 
 		"files_client/sound/car_lock.mp3",
@@ -95,6 +98,7 @@
 		"dialog/files/ui_admin.html",
 		"dialog/files/ui_new_character.html",
 		"dialog/files/ui_alert.html",
-		"dialog/files/ui_info.html"
+		"dialog/files/ui_info.html",
+		"dialog/files/ui_vehicle.html"
 	]
 }
