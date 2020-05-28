@@ -1,12 +1,96 @@
-#data{
+#indecator_light{
+    position: absolute;
+    display: flex;
+    justify-content:center;
+
+
     position: absolute;
     bottom: 10%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%);
+}
+
+svg{
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+}
+
+.svg_off{
+    color: rgba(100, 100, 100, 05);
+}
+
+.svg_warning{
+    color: #eb941a;
+    filter: url(#red-glow);
+}
+
+.svg_danger{
+    color: #a10000;
+    filter: url(#red-glow);
+}
+
+.svg_ok{
+    color: #00a108;
+    filter: url(#red-glow);
+}
+
+#gauge{
+    width: 70%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+#gauge > .right{
+    position: absolute;
+    bottom: 1%;
+    right: 2%;
+    transform: translate(-50%);
+    height: auto;
+    width: auto;
+}
+
+#gauge > .left > #fuel{
+    position: absolute;
+    transform: translate(-50%);
+    width: 300px;
+
+    bottom: 0;
+    left : 0;
+}
+  
+
+#gauge > .left{
+    position: absolute;
+    bottom: 1%;
+    left: 30%;
+    transform: translate(-50%);
+    height: auto;
+    width: auto;
+}
+
+#gauge > .left > #speed{
+    position: absolute;
+    transform: translate(-50%);
+    width: 300px;
+
+    bottom: 0;
+    left : 0;
+}
+
+#gauge > .left > #rpm{
+    margin-bottom: 7px;
+    position: absolute;
+    width: 200px;
+    transform: translate(-50%);
+    bottom: 15%;
+    left : 0;
 }
 
 #data > span{
-    color: green;
     font-size: 1.5em;
     margin-left: 30px;
 }

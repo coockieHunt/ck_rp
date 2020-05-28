@@ -30,6 +30,14 @@ function dialog:onCreate(playerId, DialogId)
 end
 
 function dialog:onOpen(playerId, DialogId)
+    local vehicleId = GetPlayerVehicle(playerId)
+
+    if vehicleId ~= 0 then
+        local fuel_tank =  GetFuelTankById(GetVehicleModel(vehicleId))
+        local current_fuel = GetFuel(vehicleId)
+        print("setup_fuel('"..fuel_tank.."', '"..current_fuel.."')")
+        ExecWebJs(playerId, DialogId, "setup_fuel('"..fuel_tank.."', '"..current_fuel.."')")
+    end
 end
 
 function dialog:OnClose(playerId, DialogId)
@@ -38,7 +46,7 @@ end
 function dialog:OnLoadComplete(playerId, DialogId)
 end
 
-function RefreshVehicleUi(playerId, current_speed)
+function RefreshVehicleUi(playerId, current_speed, curent_rpm)
     local vehicleId = GetPlayerVehicle(playerId)
 
     if vehicleId ~= 0 then
@@ -55,6 +63,7 @@ function RefreshVehicleUi(playerId, current_speed)
         ExecWebJs(playerId, DialogId, "SetDamage('5000', '"..current_dammage.."')")
         ExecWebJs(playerId, DialogId, "SetSpeed('"..current_speed.."')")
         ExecWebJs(playerId, DialogId, "SetLight("..tostring(current_light)..")")
+        ExecWebJs(playerId, DialogId, "SetRpm("..curent_rpm..")")
     end
 end
 AddRemoteEvent("RefreshVehicleUi", RefreshVehicleUi)

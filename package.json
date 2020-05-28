@@ -81,6 +81,7 @@
 		"files_client/web/script/libs/jquery.js",
 		"files_client/web/script/libs/jquery-ui.js",
 		"files_client/web/script/libs/spectrum.js",
+		"files_client/web/script/libs/gauge.min.js",
 		"files_client/web/script/form/drop-down.js",
 		"files_client/web/script/window/admin.js",
 		"files_client/web/script/window/warning_survival.js",

@@ -1,33 +1,173 @@
 
 var dom_select = {
-    "fuel_max" : "#data > #fuel > .max",
-    "fuel_current" : "#data > #fuel > .current",
+    "speed_gauge" : "speed",
+    "rpm_gauge" : "rpm",
+    "fuel_gauge" : "fuel",
+    "light_icon" : "#indecator_light > #light",
+    "dammage_icon" : "#indecator_light > #damage",
+    "fuel_icon" : "#indecator_light > #fuel",
+}
 
-    "dammage_max" : "#data > #damage > .max",
-    "dammage_current" : "#data > #damage > .current",
 
-    "speed_current" : "#data > #speed > .current",
-    "light" : "#data > #light"
+//speed
+
+var opts_speed = {
+    angle: 0, // The span of the gauge arc
+    lineWidth: 0.04, // The line thickness
+    radiusScale: 0.9, // Relative radius
+    pointer: {
+      length: 0.5, // // Relative to gauge radius
+      strokeWidth: 0.035, // The thickness
+      color: '#FFFFFF' // Fill color
+    },
+    staticLabels: {
+        font: "15px sans-serif",  // Specifies font
+        labels: [0, 50, 100, 150, 200, 250, 300],  // Print labels at these values
+        color: "#FFFFFF",  // Optional: Label text color
+        fractionDigits: 0  // Optional: Numerical precision. 0=round off.
+    },
+    staticZones: [
+        {strokeStyle: "#F03E3E", min: 0, max: 100}, // Red from 100 to 130
+        {strokeStyle: "#FFDD00", min: 100, max: 200}, // Yellow
+        {strokeStyle: "#30B32D", min: 200, max: 300}, // Green
+     ],
+    limitMax: true,     // If false, max value increases automatically if value > maxValue
+    limitMin: true,     // If true, the min value of the gauge will be fixed
+    colorStart: '#186F03',   // Colors
+    colorStop: '#186F03',    // just experiment with them
+    strokeColor: '#E0E0E0',  // to see which ones work best for you
+    generateGradient: true,
+    highDpiSupport: true,     // High resolution support
+    
+};
+
+var target = document.getElementById(dom_select.speed_gauge);  // your canvas element
+var gauge_speed = new Gauge(target).setOptions(opts_speed); // create sexy gauge!
+gauge_speed.maxValue = 300; // set max gauge value
+gauge_speed.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+gauge_speed.animationSpeed = 32; // set animation speed (32 is default value)
+gauge_speed.set(250); // set actual value
+
+//rpn
+
+var opts_rpm = {
+    angle: 0, // The span of the gauge arc
+    lineWidth: 0.04, // The line thickness
+    radiusScale: 0.9, // Relative radius
+    pointer: {
+      length: 0.4, // // Relative to gauge radius
+      strokeWidth: 0.035, // The thickness
+      color: '#cccccc' // Fill color
+    },
+
+    staticZones: [
+        {strokeStyle: "#F03E3E", min: 0, max: 5000}, // Red from 100 to 130
+        {strokeStyle: "#FFDD00", min: 5000, max: 10000}, // Yellow
+        {strokeStyle: "#30B32D", min: 10000, max: 15000}, // Green
+     ],
+    limitMax: true,     // If false, max value increases automatically if value > maxValue
+    limitMin: true,     // If true, the min value of the gauge will be fixed
+    colorStart: '#186F03',   // Colors
+    colorStop: '#186F03',    // just experiment with them
+    strokeColor: '#E0E0E0',  // to see which ones work best for you
+    generateGradient: true,
+    highDpiSupport: true,     // High resolution support
+    
+};
+
+var target = document.getElementById(dom_select.rpm_gauge);  // your canvas element
+var gauge_rpm = new Gauge(target).setOptions(opts_rpm); // create sexy gauge!
+gauge_rpm.maxValue = 15000; // set max gauge value
+gauge_rpm.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+gauge_rpm.animationSpeed = 32; // set animation speed (32 is default value)
+gauge_rpm.set(5000); // set actual value
+
+
+//rpn
+
+var opts_fuel = {
+    angle: 0, // The span of the gauge arc
+    lineWidth: 0.04, // The line thickness
+    radiusScale: 0.9, // Relative radius
+    pointer: {
+      length: 0.4, // // Relative to gauge radius
+      strokeWidth: 0.035, // The thickness
+      color: '#FFFFFF' // Fill color
+    },
+
+    limitMax: true,     // If false, max value increases automatically if value > maxValue
+    limitMin: true,     // If true, the min value of the gauge will be fixed
+    colorStart: '#186F03',   // Colors
+    colorStop: '#186F03',    // just experiment with them
+    strokeColor: '#E0E0E0',  // to see which ones work best for you
+    generateGradient: true,
+    highDpiSupport: true,     // High resolution support
+    
+};
+
+var target = document.getElementById(dom_select.fuel_gauge);  // your canvas element
+var gauge_fuel = new Gauge(target).setOptions(opts_fuel); // create sexy gauge!
+gauge_fuel.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+gauge_fuel.animationSpeed = 32; // set animation speed (32 is default value)
+
+function setup_fuel(max, current){
+    gauge_fuel.maxValue = max; // set max gauge value
+    gauge_fuel.set(current); // set actual value
 }
 
 function SetFuel(max, current){
-    $(dom_select.fuel_max).text(max);
-    $(dom_select.fuel_current).text(current);
+    let max_war = max * 0.50
+    let max_dang = max * 0.25
+
+    $(dom_select.fuel_icon).removeClass();
+
+    if(current >= max_war){
+        $(dom_select.fuel_icon).addClass( "svg_ok" );
+    }
+
+    if(current <= max_war  &&  current > max_dang){
+        $(dom_select.fuel_icon).addClass( "svg_warning" );
+    }
+
+    if(current <= max_war  &&  current < max_dang){
+        $(dom_select.fuel_icon).addClass( "svg_danger" );
+    }
 }
 
 function SetDamage(max, current){
-    $(dom_select.dammage_max).text(max);
-    $(dom_select.dammage_current).text(current);
-}
+    let max_war = max * 0.50
+    let max_dang = max * 0.25
 
-function SetSpeed(current){
-    $(dom_select.speed_current).text(current);
+    $(dom_select.dammage_icon).removeClass();
+
+    if(current >= max_war){
+        $(dom_select.dammage_icon).addClass( "svg_ok" );
+    }
+
+    if(current <= max_war  &&  current > max_dang){
+        $(dom_select.dammage_icon).addClass( "svg_warning" );
+    }
+
+    if(current <= max_war  &&  current < max_dang){
+        $(dom_select.dammage_icon).addClass( "svg_danger" );
+    }
 }
 
 function SetLight(bool){
+    $(dom_select.light_icon).removeClass();
+
     if(bool){
-        $(light).css('color', 'green');
+        $(dom_select.light_icon).addClass( "svg_ok" );
     }else{
-        $(light).css('color', 'red');
+        $(dom_select.light_icon).addClass( "svg_warning" );
     }
 }
+
+function SetSpeed(current){
+    gauge_speed.set(current);
+}
+
+function SetRpm(current){
+    gauge_rpm.set(current);
+}
+
