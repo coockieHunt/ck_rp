@@ -67,7 +67,7 @@ AddEvent("OnPlayerEnterVehicle", function(player, vehicle, seat)
             StartVehicleEngine(vehicle)
         else
             local x,y,z = GetVehicleLocation(vehicle)
-            NewSoun3d('car_engine_break'..vehicle, 'files_client/sound/car_engine_break.mp3', x, y, z,  _Lock_unlock.distance_sound, 1.0, false)
+            NewSoun3d('car_engine_break'..vehicle, 'files_client/sound/car_engine_break.mp3', x, y, z,  _Car.engine_beak.distance_sound, _Car.engine_beak.volume, false)
         end
 	end
 end)

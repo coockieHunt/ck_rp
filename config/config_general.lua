@@ -121,10 +121,24 @@ _Survival = {
 --[[
    vehicle
 ]]
-_Lock_unlock = {
-    distance = 1000, -- in milimetre
-    distance_sound = 2000, -- in milimetre
+_Car = {
+    alarm = {
+        distance_sound = 2000, -- in milimetre
+        volume = 1.0 -- where 1 is 100% volume and 2 is the 200% volume.
+    },
+
+    lock_unlock = {
+        distance_nearest = 1000, -- in milimetre
+        distance_sound = 2000, -- in milimetre
+        volume = 1.0 -- where 1 is 100% volume and 2 is the 200% volume.
+    },
+
+    engine_beak = {
+        distance_sound = 1000,-- in milimetre
+        volume = 1.5-- where 1 is 100% volume and 2 is the 200% volume.
+    }
 }
+
 
 --[[
    CHAT
