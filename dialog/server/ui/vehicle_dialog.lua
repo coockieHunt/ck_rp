@@ -35,7 +35,6 @@ function dialog:onOpen(playerId, DialogId)
     if vehicleId ~= 0 then
         local fuel_tank =  GetFuelTankById(GetVehicleModel(vehicleId))
         local current_fuel = GetFuel(vehicleId)
-        print("setup_fuel('"..fuel_tank.."', '"..current_fuel.."')")
         ExecWebJs(playerId, DialogId, "setup_fuel('"..fuel_tank.."', '"..current_fuel.."')")
     end
 end

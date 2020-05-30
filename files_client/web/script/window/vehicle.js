@@ -3,9 +3,9 @@ var dom_select = {
     "speed_gauge" : "speed",
     "rpm_gauge" : "rpm",
     "fuel_gauge" : "fuel",
-    "light_icon" : "#indecator_light > #light",
-    "dammage_icon" : "#indecator_light > #damage",
-    "fuel_icon" : "#indecator_light > #fuel",
+    "light_icon" : "#gauge > #indecator_light > #light",
+    "dammage_icon" :"#gauge > #indecator_light > #damage",
+    "fuel_icon" : "#gauge > #indecator_light > #fuel",
 }
 
 
@@ -85,39 +85,61 @@ gauge_rpm.set(5000); // set actual value
 
 //rpn
 
-var opts_fuel = {
-    angle: 0, // The span of the gauge arc
-    lineWidth: 0.04, // The line thickness
-    radiusScale: 0.9, // Relative radius
-    pointer: {
-      length: 0.4, // // Relative to gauge radius
-      strokeWidth: 0.035, // The thickness
-      color: '#FFFFFF' // Fill color
-    },
+var gauge_fuel
 
-    limitMax: true,     // If false, max value increases automatically if value > maxValue
-    limitMin: true,     // If true, the min value of the gauge will be fixed
-    colorStart: '#186F03',   // Colors
-    colorStop: '#186F03',    // just experiment with them
-    strokeColor: '#E0E0E0',  // to see which ones work best for you
-    generateGradient: true,
-    highDpiSupport: true,     // High resolution support
+function setup_fuel(max){
+    let fuel_hight = parseInt(max * 0.75)
+    let fuel_med = parseInt(max * 0.50)
+    let fuel_low = parseInt(max * 0.25)
+
+    console.log(parseInt(max), fuel_hight, fuel_med, fuel_low)
+
+    let opts_fuel = {
+        angle: 0, // The span of the gauge arc
+        lineWidth: 0.04, // The line thickness
+        radiusScale: 0.9, // Relative radius
+        pointer: {
+          length: 0.4, // // Relative to gauge radius
+          strokeWidth: 0.035, // The thickness
+          color: '#cccccc' // Fill color
+        },
+
+        staticLabels: {
+            font: "15px sans-serif",  // Specifies font
+            labels: [parseInt(max), fuel_hight, fuel_med,fuel_low, 0],  // Print labels at these values
+            color: "#FFFFFF",  // Optional: Label text color
+            fractionDigits: 0  // Optional: Numerical precision. 0=round off.
+        },
     
-};
-
-var target = document.getElementById(dom_select.fuel_gauge);  // your canvas element
-var gauge_fuel = new Gauge(target).setOptions(opts_fuel); // create sexy gauge!
-gauge_fuel.setMinValue(0);  // Prefer setter over gauge.minValue = 0
-gauge_fuel.animationSpeed = 32; // set animation speed (32 is default value)
-
-function setup_fuel(max, current){
-    gauge_fuel.maxValue = max; // set max gauge value
-    gauge_fuel.set(current); // set actual value
+        staticZones: [
+            {strokeStyle: "#30B32D", min: 0, max: fuel_low}, // Green
+            {strokeStyle: "#FFDD00", min: fuel_low, max: fuel_hight}, // Yellow
+            {strokeStyle: "#F03E3E", min: fuel_hight, max: parseInt(max)}, // Green
+        ],
+        limitMax: true,     // If false, max value increases automatically if value > maxValue
+        limitMin: true,     // If true, the min value of the gauge will be fixed
+        colorStart: '#186F03',   // Colors
+        colorStop: '#186F03',    // just experiment with them
+        strokeColor: '#E0E0E0',  // to see which ones work best for you
+        generateGradient: true,
+        highDpiSupport: true,     // High resolution support
+        
+    };
+    
+    let target = document.getElementById(dom_select.fuel_gauge);  // your canvas element
+    gauge_fuel = new Gauge(target).setOptions(opts_fuel); // create sexy gauge!
+    gauge_fuel.maxValue = parseInt(max); // set max gauge value
+    gauge_fuel.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+    gauge_fuel.animationSpeed = 32; // set animation speed (32 is default value)
+    gauge_fuel.set(1);
 }
 
 function SetFuel(max, current){
     let max_war = max * 0.50
     let max_dang = max * 0.25
+
+    gauge_fuel.set(current);
+    gauge_fuel.maxValue = max;
 
     $(dom_select.fuel_icon).removeClass();
 
@@ -157,9 +179,9 @@ function SetLight(bool){
     $(dom_select.light_icon).removeClass();
 
     if(bool){
-        $(dom_select.light_icon).addClass( "svg_ok" );
-    }else{
         $(dom_select.light_icon).addClass( "svg_warning" );
+    }else{
+        $(dom_select.light_icon).addClass( "svg_off" );
     }
 }
 

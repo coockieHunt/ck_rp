@@ -1,42 +1,42 @@
-#indecator_light{
-    position: absolute;
+#gauge > #indecator_light{
     display: flex;
-    justify-content:center;
+    justify-content: space-between;
 
+
+    width: 15%;
 
     position: absolute;
-    bottom: 10%;
     left: 50%;
+    bottom: 13%;
     transform: translate(-50%);
 }
 
 svg{
-    margin-right: 15px;
     width: 20px;
     height: 20px;
 }
 
-.svg_off{
+#gauge > * > .svg_off{
     color: rgba(100, 100, 100, 05);
 }
 
-.svg_warning{
+#gauge > * > .svg_warning{
     color: #eb941a;
     filter: url(#red-glow);
 }
 
-.svg_danger{
+#gauge > * > .svg_danger{
     color: #a10000;
     filter: url(#red-glow);
 }
 
-.svg_ok{
+#gauge > * > .svg_ok{
     color: #00a108;
     filter: url(#red-glow);
 }
 
 #gauge{
-    width: 70%;
+    width: 40%;
     height: 100%;
     position: absolute;
     bottom: 0;
@@ -44,53 +44,50 @@ svg{
     transform: translate(-50%);
 }
 
-#gauge > .right{
-    position: absolute;
-    bottom: 1%;
-    right: 2%;
-    transform: translate(-50%);
-    height: auto;
-    width: auto;
+#gauge > * > span{
+    color: white;
 }
-
-#gauge > .left > #fuel{
-    position: absolute;
-    transform: translate(-50%);
-    width: 300px;
-
-    bottom: 0;
-    left : 0;
-}
-  
 
 #gauge > .left{
     position: absolute;
     bottom: 1%;
-    left: 30%;
-    transform: translate(-50%);
-    height: auto;
-    width: auto;
+
+    height: 150px;
+    width: 220px;
 }
 
 #gauge > .left > #speed{
     position: absolute;
+    bottom: 0;
+    left: 50%;
     transform: translate(-50%);
     width: 300px;
-
-    bottom: 0;
-    left : 0;
 }
 
 #gauge > .left > #rpm{
-    margin-bottom: 7px;
     position: absolute;
-    width: 200px;
+    bottom: 0;
+
+    left: 50%;
     transform: translate(-50%);
-    bottom: 15%;
-    left : 0;
+
+    width: 200px;
+    margin-bottom: 7px;
+
 }
 
-#data > span{
-    font-size: 1.5em;
-    margin-left: 30px;
+#gauge > .right{
+    position: absolute;
+    bottom: 1%;
+    right: 0;
+    height: 150px;
+    width: 220px;
+}
+
+#gauge > .right > #fuel{
+    position: absolute;
+
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
 }
