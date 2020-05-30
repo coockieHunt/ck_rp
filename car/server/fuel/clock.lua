@@ -14,7 +14,6 @@ AddEvent("OnPackageStart", function()
                 end
                 new_fuel = fuel - decreases_fuel
                 SetFuel(vehicle, fuel - decreases_fuel)
-                print('id : ' .. vehicle .. ' | fuel : ' .. fuel .. ' | velocity : ' .. velocity .. ' | decreases fuel : ' .. decreases_fuel)
             end
 
             if new_fuel <= 0 then
