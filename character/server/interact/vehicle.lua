@@ -1,0 +1,24 @@
+function flip_vehicle_nearest(vehicle)
+    local v_heading = GetVehicleHeading(vehicle)
+    local x, y, z = GetVehicleLocation(vehicle)
+    
+    SetVehicleRotation(vehicle, 0, 0, 0)
+    SetVehicleLocation(vehicle,x, y , z + 200)
+    SetVehicleHeading(vehicle, v_heading)
+end
+
+
+function flip_vehicle(playerId, vehicle)
+    local car_nearest = GetNearestVehicles(
+        playerId, 
+        1000
+    )
+
+    if car_nearest ~= false then
+        local closet_vehicle = getVehicleCloset(car_nearest)
+
+        flip_vehicle_nearest(closet_vehicle)
+    end
+
+end
+AddCommand('fc', flip_vehicle)
