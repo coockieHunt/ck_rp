@@ -34,6 +34,7 @@ function module:OnBuild()
             ['lock_unlock'] = "lock unlock",
             ['repair'] = "repair",
             ['refuel'] = "refuel",
+            ['upturn'] = "upturn",
             ['destroy'] = "destroy"
         }
     })
@@ -50,6 +51,10 @@ function module:Onexecute(playerId, data)
     if action == "refuel" then
         local fuel_tank = GetFuelTankById(GetVehicleModel(car_selected))
         SetFuel(car_selected, tonumber(fuel_tank))
+    end
+
+    if action == "upturn" then
+        upturn_vehicle_nearest(car_selected)
     end
 
     if action == "alarm" then
