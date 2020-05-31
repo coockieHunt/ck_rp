@@ -21,4 +21,7 @@ function upturn_vehicle(playerId, vehicle)
     end
 
 end
-AddCommand('fc', flip_upturn)
+AddCommand('fc', upturn_vehicle)
+
+
+
