@@ -6,30 +6,21 @@ function OpenUIAdmin()
     if admin_ui ~= nil then
         ShowMouse(true)
         FreezePlayerInput(true)
-
         SetWebVisibility(admin_ui, WEB_VISIBLE)
         BuildSelectOnStart(admin_ui)
 
-        CloseDialog("warning")
-        CloseDialog("alert")
-        if GetPlayerVehicle(GetPlayerId()) ~= 0 then CloseDialog("vehicle") end
     end
 end
 
 function CloseUIAdmin()
     ShowMouse(false)
     FreezePlayerInput(false)
-
-    OpenDialog("warning")
-    OpenDialog("alert")
-    if GetPlayerVehicle(GetPlayerId()) ~= 0  then OpenDialog("vehicle") end
-
     SetWebVisibility(admin_ui, WEB_HIDDEN)
 end
 
 -- package manager
 function OnPackageStart()
-    admin_ui = CreateWebUI(0, 0, 0, 0, 1, 60)
+    admin_ui = CreateWebUI(0, 0, 0, 0, 999999, 60)
     LoadWebFile(admin_ui,'http://asset/' .. GetPackageName() .. '/dialog/files/ui_admin.html')
     SetWebAlignment(admin_ui, 0.0, 0.0)
     SetWebAnchors(admin_ui, 0.0, 0.0, 1.0, 1.0)

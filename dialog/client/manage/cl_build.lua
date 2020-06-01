@@ -1,8 +1,8 @@
 __dialogList = {}
 
-function BuildClientDialog(id, key, dysplay_on_spawn, type, view)
+function BuildClientDialog(id, key, dysplay_on_spawn, type, view, zOrder, frameRate)
     if __dialogList[id] == nil then
-        local new_ui = createDialog(view, dysplay_on_spawn)
+        local new_ui = createDialog(view, dysplay_on_spawn, zOrder, frameRate)
         CallRemoteEvent("OnCreateDialog", id)
         __dialogList[id] = {['key'] = key, ['type'] = type, ['DysplayOnSpawn'] = dysplay_on_spawn, ['view'] = view, ['ui'] = new_ui}
     end
@@ -14,11 +14,9 @@ function OnKeyPress(key)
         if data.type == "press" then
             if data.key == key then
                 if GetWebVisibility(tonumber(data.ui)) == WEB_HIDDEN then
-                    SetWebVisibility(data.ui , WEB_VISIBLE)
-                    CallRemoteEvent("OnOpenDialog", id)
+                    CallRemoteEvent("OnOpenDialog", id, data.ui)
                 else
-                    SetWebVisibility(data.ui , WEB_HIDDEN)
-                    CallRemoteEvent("OnCloseDialog", id)
+                    CallRemoteEvent("OnCloseDialog", id, data.ui)
                 end
             end
         end
@@ -26,8 +24,7 @@ function OnKeyPress(key)
         if data.type == "release" then
             if data.key == key then
                 if GetWebVisibility(tonumber(data.ui)) == WEB_HIDDEN then
-                    SetWebVisibility(data.ui , WEB_VISIBLE)
-                    CallRemoteEvent("OnOpenDialog", id)
+                    CallRemoteEvent("OnOpenDialog", id, data.ui)
                 end
             end
         end
@@ -40,8 +37,7 @@ function OnKeyRelease(key)
         if data.type == "release" then
             if data.key == key then
                 if GetWebVisibility(tonumber(data.ui)) == WEB_VISIBLE then
-                    SetWebVisibility(data.ui , WEB_HIDDEN)
-                    CallRemoteEvent("OnCloseDialog", id)
+                    CallRemoteEvent("OnCloseDialog", id, data.ui)
                 end
             end
         end
@@ -49,9 +45,17 @@ function OnKeyRelease(key)
 end
 AddEvent("OnKeyRelease", OnKeyRelease)
 
+function SetClientVisibility(ui_id, bool)
+    if bool then
+        SetWebVisibility(ui_id , WEB_VISIBLE)
+    else
+        SetWebVisibility(ui_id , WEB_HIDDEN)
+    end
+end
+AddRemoteEvent("SetClientVisibility", SetClientVisibility)
+
+
 function OnWebLoadComplete(webid)
-    local playerId = GetPlayerId()
-    
     for id, data in pairs(__dialogList) do
         if (data.ui == webid) then
             Delay(500, function()
@@ -63,8 +67,8 @@ end
 AddEvent("OnWebLoadComplete", OnWebLoadComplete)
 
 
-function createDialog(view, dysplay_on_spawn)
-    local ui = CreateWebUI(0,0,0,0,1,16)
+function createDialog(view, dysplay_on_spawn, zOrder, frameRate)
+    local ui = CreateWebUI(0, 0, 0, 0, zOrder, frameRate)
     SetWebAlignment(ui , 0,0)
     SetWebAnchors(ui , 0,0,1,1)
     SetWebURL(ui , 'http://asset/' .. GetPackageName() .. '/dialog/files/'..view)

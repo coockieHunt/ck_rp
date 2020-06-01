@@ -39,7 +39,6 @@ function CallRotate(dir)
 end
 AddEvent("CallRotate", CallRotate)
 
-
 function CallSetCam(pos)
     CallRemoteEvent("SetCam", pos)
 end

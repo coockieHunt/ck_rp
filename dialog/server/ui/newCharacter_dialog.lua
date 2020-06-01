@@ -1,30 +1,12 @@
 local dialog = {
     id = "newCharacter",
-    key = "nil",
-    type = "press",
+    key = false,
+    type = false,
     dysplay_on_spawn = false,
-    view = "ui_new_character.html"
+    view = "ui_new_character.html",
+    z_order = 2,
+    frame_rate = 60
 }
-
-function dialog:GetId()
-    return dialog.id
-end
-
-function dialog:GetKey()
-    return dialog.key
-end
-
-function dialog:GetDysplayOnSpawn()
-    return dialog.dysplay_on_spawn
-end
-
-function dialog:GetView()
-    return dialog.view
-end
-
-function dialog:GetType()
-    return dialog.type
-end
 
 function dialog:onCreate(playerId, DialogId)
 
@@ -57,18 +39,18 @@ AddDialog(dialog)
 
 -- func
 function ChangeGender(PlayerId, gender)
-    ExecWebJs(PlayerId, dialog:GetId(), "clearPartSelect()")
+    ExecWebJs(PlayerId, dialog.id, "clearPartSelect()")
 
     for i, v in pairs(_Character_creation.clothing[gender]) do
         local part = i
         for _, v in ipairs(v) do
             local name = GetNameByVar(gender, part, v)
-            ExecWebJs(PlayerId, dialog:GetId(), "setPartSelection('"..part.."','"..name.."','"..v.."')")
+            ExecWebJs(PlayerId, dialog.id, "setPartSelection('"..part.."','"..name.."','"..v.."')")
         end
     end
 
     for i, v in ipairs(_Character_creation.form.color) do
-        ExecWebJs(PlayerId, dialog:GetId(), "setColorSelection('"..v.."')")
+        ExecWebJs(PlayerId, dialog.id, "setColorSelection('"..v.."')")
     end
 
     local character_creation = _Character_creation.clothing
@@ -80,8 +62,6 @@ function ChangeGender(PlayerId, gender)
     end 
 
     SetPlayerClothing(PlayerId)
-
-
 end
 AddRemoteEvent("ChangeGender", ChangeGender)
 

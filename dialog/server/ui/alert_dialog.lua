@@ -1,30 +1,12 @@
 local dialog = {
     id = "alert",
-    key = "nil",
-    type = "press",
+    key = false,
+    type = false,
     dysplay_on_spawn = true,
-    view = "ui_alert.html"
+    view = "ui_alert.html",
+    z_order = 1,
+    frame_rate = 60
 }
-
-function dialog:GetId()
-    return dialog.id
-end
-
-function dialog:GetKey()
-    return dialog.key
-end
-
-function dialog:GetDysplayOnSpawn()
-    return dialog.dysplay_on_spawn
-end
-
-function dialog:GetView()
-    return dialog.view
-end
-
-function dialog:GetType()
-    return dialog.type
-end
 
 function dialog:onCreate(playerId, DialogId)
 end
@@ -44,12 +26,12 @@ AddDialog(dialog)
 function SendAlert(playerId, type, title, content)
     local data = getplayer(playerId)
     data:setAlertCount(data:getAlertCount() + 1)
-    ExecWebJs(playerId, dialog:GetId(), "sendAlert( "..data:getAlertCount()..", '"..type.."',  '"..title.."', '"..content.."');")
+    ExecWebJs(playerId, dialog.id, "sendAlert( "..data:getAlertCount()..", '"..type.."',  '"..title.."', '"..content.."');")
 end
 AddRemoteEvent("SendAlert", SendAlert)
 
 
 function CeateProgressBar(playerId, time, color)
     if color == nil then color = "#43515e" end
-    ExecWebJs(playerId, dialog:GetId(), "CreateProgressBar( "..time..", '"..color.."');")
+    ExecWebJs(playerId, dialog.id, "CreateProgressBar( "..time..", '"..color.."');")
 end

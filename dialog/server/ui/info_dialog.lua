@@ -3,28 +3,10 @@ local dialog = {
     key = "I",
     type = "release",
     dysplay_on_spawn = false,
-    view = "ui_info.html"
+    view = "ui_info.html",
+    z_order = 1,
+    frame_rate = 60
 }
-
-function dialog:GetId()
-    return dialog.id
-end
-
-function dialog:GetKey()
-    return dialog.key
-end
-
-function dialog:GetDysplayOnSpawn()
-    return dialog.dysplay_on_spawn
-end
-
-function dialog:GetView()
-    return dialog.view
-end
-
-function dialog:GetType()
-    return dialog.type
-end
 
 function dialog:onCreate(playerId, DialogId)
 end

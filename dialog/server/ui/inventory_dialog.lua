@@ -3,28 +3,10 @@ local dialog = {
     key = "Tab",
     type = "press",
     dysplay_on_spawn = false,
-    view = "ui_inventory.html"
+    view = "ui_inventory.html",
+    z_order = 2,
+    frame_rate = 60
 }
-
-function dialog:GetId()
-    return dialog.id
-end
-
-function dialog:GetKey()
-    return dialog.key
-end
-
-function dialog:GetDysplayOnSpawn()
-    return dialog.dysplay_on_spawn
-end
-
-function dialog:GetView()
-    return dialog.view
-end
-
-function dialog:GetType()
-    return dialog.type
-end
 
 function dialog:onCreate(playerId, DialogId)
 end
@@ -56,7 +38,7 @@ AddDialog(dialog)
 
 -- func
 function RefrechSurvivalIventoryUi(playerId)
-    local DialogId = dialog:GetId()
+    local DialogId = dialog.id
     local PlayerData = getplayer(playerId)
 
     local data = {
@@ -73,7 +55,7 @@ function RefrechSurvivalIventoryUi(playerId)
 end
 
 function RefrechInventoryUi(playerId)
-    local DialogId = dialog:GetId()
+    local DialogId = dialog.id
 
     -- setup ui
     ExecWebJs(playerId, DialogId, "clearInventory();") 
@@ -114,7 +96,7 @@ function RefrechInventoryUi(playerId)
 end
 
 function RefrechCashInventoryUi(playerId)
-    local DialogId = dialog:GetId()
+    local DialogId = dialog.id
 
     local data = getplayer(playerId)
 

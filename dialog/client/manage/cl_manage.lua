@@ -1,39 +1,34 @@
 function CloseDialog(webid)
-    for id, data in pairs(__dialogList) do
-        if id == webid then
-            SetWebVisibility(data.ui , WEB_HIDDEN)
-            CallRemoteEvent("OnCloseDialog", id)
-        end
+    local dialog = __dialogList[webid]
+
+    if GetWebVisibility(dialog.ui) ~= WEB_HIDDEN then
+        SetWebVisibility(dialog.ui , WEB_HIDDEN)
+        CallRemoteEvent("OnCloseDialog", dialog.ui, dialog)
     end
 end
 AddRemoteEvent("CloseDialog", CloseDialog)
 
 function OpenDialog(webid)
-    for id, data in pairs(__dialogList) do
-        if id == webid then
-            SetWebVisibility(data.ui , WEB_VISIBLE)
-            CallRemoteEvent("OnOpenDialog", id)
-        end
+    local dialog = __dialogList[webid]
+
+    if GetWebVisibility(dialog.ui) ~= WEB_VISIBLE then
+        CallRemoteEvent("OnCloseDialog", dialog.ui, dialog)
     end
 end
 AddRemoteEvent("OpenDialog", OpenDialog)
 
 function DestroyWebUI(webid)
-    for id, data in pairs(__dialogList) do
-        if id == webid then
-            SetWebVisibility(data.ui , WEB_HIDDEN)
-            DestroyWebUI(data.ui)
-        end
-    end
+    local dialog = __dialogList[webid]
+
+    SetWebVisibility(dialog.ui , WEB_HIDDEN)
+    DestroyWebUI(dialog.ui)
 end
 AddRemoteEvent("DestroyWebUI", DestroyWebUI)
 
 function ExecWebJs(webid, cmd)
-    for id, data in pairs(__dialogList) do
-        if id == webid then
-            ExecuteWebJS(data.ui, cmd)
-        end
-    end
+    local dialog = __dialogList[webid]
+
+    ExecuteWebJS(dialog.ui, cmd)
 end
 AddRemoteEvent("ExecWebJs", ExecWebJs)
 
@@ -54,4 +49,3 @@ function FreezePlayerInput(bool)
     SetIgnoreMoveInput(bool)
 end
 AddRemoteEvent("FreezePlayerInput", FreezePlayerInput)
-

@@ -1,30 +1,12 @@
 local dialog = {
     id = "warning",
-    key = nil,
-    type = "press",
+    key = false,
+    type = false,
     dysplay_on_spawn = true,
-    view = "ui_warning_survival.html"
+    view = "ui_warning_survival.html",
+    z_order = 2,
+    frame_rate = 60
 }
-
-function dialog:GetId()
-    return dialog.id
-end
-
-function dialog:GetKey()
-    return dialog.key
-end
-
-function dialog:GetDysplayOnSpawn()
-    return dialog.dysplay_on_spawn
-end
-
-function dialog:GetView()
-    return dialog.view
-end
-
-function dialog:GetType()
-    return dialog.type
-end
 
 function dialog:onCreate(playerId, DialogId)
 end
@@ -34,8 +16,6 @@ function dialog:onOpen(playerId, DialogId)
 end
 
 function dialog:OnClose(playerId, DialogId)
-    -- print("close : " .. dialog:GetId())
-    
 end
 
 function dialog:OnLoadComplete(playerId, DialogId)
@@ -50,7 +30,7 @@ AddEvent("OnPlayerDamage", OnPlayerDamage)
 
 function RefrechWarningSurvivalUi(playerId)
     local p = getplayer(playerId)
-    local DialogId = dialog:GetId()
+    local DialogId = dialog.id
 
 
     local health = p:getHealth()
@@ -81,6 +61,8 @@ function RefrechWarningSurvivalUi(playerId)
  end
 
 function ShowIconSaveClient(playerId)
+    local DialogId = dialog.id
+
     ExecWebJs(playerId, DialogId, "ShowSave()")
 end
 
