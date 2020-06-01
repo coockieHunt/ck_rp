@@ -1,30 +1,12 @@
 local dialog = {
     id = "vehicle",
-    key = "nil",
-    type = "press",
+    key = false,
+    type = false,
     dysplay_on_spawn = false,
-    view = "ui_vehicle.html"
+    view = "ui_vehicle.html",
+    z_order = 2,
+    frame_rate = 60
 }
-
-function dialog:GetId()
-    return dialog.id
-end
-
-function dialog:GetKey()
-    return dialog.key
-end
-
-function dialog:GetDysplayOnSpawn()
-    return dialog.dysplay_on_spawn
-end
-
-function dialog:GetView()
-    return dialog.view
-end
-
-function dialog:GetType()
-    return dialog.type
-end
 
 function dialog:onCreate(playerId, DialogId)
 end
@@ -49,7 +31,7 @@ function RefreshVehicleUi(playerId, current_speed, curent_rpm)
     local vehicleId = GetPlayerVehicle(playerId)
 
     if vehicleId ~= 0 then
-        local DialogId = dialog:GetId()
+        local DialogId = dialog.id
 
         local fuel_tank =  GetFuelTankById(GetVehicleModel(vehicleId))
         local current_fuel = GetFuel(vehicleId)
