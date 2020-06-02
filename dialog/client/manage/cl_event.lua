@@ -43,3 +43,9 @@ function CallSetCam(pos)
     CallRemoteEvent("SetCam", pos)
 end
 AddEvent("CallSetCam", CallSetCam)
+
+-- INTERACT
+function CallInteractExec(interact, target, type)
+    CallRemoteEvent('ExecInteractAction', type, target, interact)
+end
+AddEvent("CallInteractExec", CallInteractExec)

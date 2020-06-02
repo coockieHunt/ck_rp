@@ -1,14 +1,25 @@
+var target_type = "none"
+var target_id = 0
 
-var dom_select = {
-    "main_radial" : "#radial_nav",
+function ClearAction(){
+	$('.action_nav > ul').empty()
 }
 
-const mySettings = {
-	textColor: 'red', //define the color of the text on the buttons
-	buttons: [
-		{'text': 'sdq', 'action': ()=>{ history.go(-1) } }, //create a button that goes back on history
-		{'text': 'qsd', 'action': ()=>{ history.go(1) } }, //create a button tha goes forward on history
-	]
-};
+function AddAction(name, action){
+	let action_count = $('.action_nav > ul > li').length + 1
+	$(".action_nav > ul").append("<li id="+action+"><span class='shortcut'>"+action_count+"</span>"+name+"</li>");
 
-const radial = new RadialMenu(mySettings);
+	$( ".action_nav > ul > li" ).click(function() {
+		let action = $(this).attr('id')
+
+		CallEvent("CallInteractExec", action, target_id, target_type);
+	  });
+}
+
+function SetActionType(type){
+	target_type = type
+}
+
+function SetActionTarget(id){
+	target_id = id
+}

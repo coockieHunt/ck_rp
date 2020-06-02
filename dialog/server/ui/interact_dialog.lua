@@ -1,6 +1,6 @@
 local dialog = {
     id = "vehicle_interact",
-    key = "B",
+    key = "I",
     type = "release",
     dysplay_on_spawn = false,
     view = "ui_interact.html",
@@ -12,6 +12,8 @@ function dialog:onCreate(playerId, DialogId)
 end
 
 function dialog:onOpen(playerId, DialogId)
+    ClearAction(playerId)
+    
     local car_nearest = GetNearestVehicles(
         playerId, 
         250
@@ -20,7 +22,12 @@ function dialog:onOpen(playerId, DialogId)
     if car_nearest ~= false then
         local closet_vehicle = getVehicleCloset(car_nearest)
         AddPlayerChat(playerId, "interact car")
-        
+        ShowMouse(playerId, true)
+
+        SetupInteract(playerId, closet_vehicle, 'vehicle')
+
+        AddAction(playerId, 'upturn', "upturn")
+
         return true
     else
         return false
@@ -28,10 +35,33 @@ function dialog:onOpen(playerId, DialogId)
 end
 
 function dialog:OnClose(playerId, DialogId)
+    ShowMouse(playerId, false)
 end
 
 function dialog:OnLoadComplete(playerId, DialogId)
 end
+
+function SetupInteract(playerId, target_id, target_type)
+    ExecWebJs(playerId, dialog.id, "SetActionTarget('"..target_id.."');")
+    ExecWebJs(playerId, dialog.id, "SetActionType('"..target_type.."');")
+end
+
+function ClearAction(playerId)
+    ExecWebJs(playerId, dialog.id,  "ClearAction();")
+end
+
+function AddAction(playerId, name, action)
+    ExecWebJs(playerId, dialog.id,  "AddAction('"..name.."', '"..action.."');")
+end
+
+function ExecInteractAction(playerId, type, target, action)
+    if type == 'vehicle' then
+        if action == "upturn" then
+            upturn_vehicle_nearest(target)
+        end
+    end
+end 
+AddRemoteEvent("ExecInteractAction", ExecInteractAction)
 
 
 AddDialog(dialog)
