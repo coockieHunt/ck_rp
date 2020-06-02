@@ -27,9 +27,9 @@ var opts_speed = {
         fractionDigits: 0  // Optional: Numerical precision. 0=round off.
     },
     staticZones: [
-        {strokeStyle: "#F03E3E", min: 0, max: 100}, // Red from 100 to 130
+        {strokeStyle: "#30B32D", min: 0, max: 100}, // Red from 100 to 130
         {strokeStyle: "#FFDD00", min: 100, max: 200}, // Yellow
-        {strokeStyle: "#30B32D", min: 200, max: 300}, // Green
+        {strokeStyle: "#F03E3E", min: 200, max: 300}, // Green
      ],
     limitMax: true,     // If false, max value increases automatically if value > maxValue
     limitMin: true,     // If true, the min value of the gauge will be fixed
@@ -61,9 +61,9 @@ var opts_rpm = {
     },
 
     staticZones: [
-        {strokeStyle: "#F03E3E", min: 0, max: 5000}, // Red from 100 to 130
+        {strokeStyle: "#30B32D", min: 0, max: 5000}, // Red from 100 to 130
         {strokeStyle: "#FFDD00", min: 5000, max: 10000}, // Yellow
-        {strokeStyle: "#30B32D", min: 10000, max: 15000}, // Green
+        {strokeStyle: "#F03E3E", min: 10000, max: 15000}, // Green
      ],
     limitMax: true,     // If false, max value increases automatically if value > maxValue
     limitMin: true,     // If true, the min value of the gauge will be fixed
@@ -112,9 +112,9 @@ function setup_fuel(max){
         },
     
         staticZones: [
-            {strokeStyle: "#30B32D", min: 0, max: fuel_low}, // Green
+            {strokeStyle: "#F03E3E", min: 0, max: fuel_low}, // Green
             {strokeStyle: "#FFDD00", min: fuel_low, max: fuel_hight}, // Yellow
-            {strokeStyle: "#F03E3E", min: fuel_hight, max: parseInt(max)}, // Green
+            {strokeStyle: "#30B32D", min: fuel_hight, max: parseInt(max)}, // Green
         ],
         limitMax: true,     // If false, max value increases automatically if value > maxValue
         limitMin: true,     // If true, the min value of the gauge will be fixed
