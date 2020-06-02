@@ -15,8 +15,6 @@ function dialog:onOpen(playerId, DialogId)
     ShowMouse(playerId, true)
     FreezePlayerInput(playerId, true)
 
-    CloseDialogClient(playerId, "warning")
-    CloseDialogClient(playerId, "alert")
 
     RefrechInventoryUi(playerId)
     RefrechSurvivalIventoryUi(playerId)
@@ -26,9 +24,6 @@ end
 function dialog:OnClose(playerId, DialogId)
     ShowMouse(playerId, false)
     FreezePlayerInput(playerId, false)
-
-    OpenDialogClient(playerId, "warning")
-    OpenDialogClient(playerId, "alert")
 end
 
 function dialog:OnLoadComplete(playerId, DialogId)

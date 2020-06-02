@@ -1,7 +1,7 @@
 local dialog = {
     id = "newCharacter",
     key = false,
-    type = false,
+    type = 'permanent',
     dysplay_on_spawn = false,
     view = "ui_new_character.html",
     z_order = 2,

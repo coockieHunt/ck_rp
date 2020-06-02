@@ -2,8 +2,7 @@ function CloseDialog(webid)
     local dialog = __dialogList[webid]
 
     if GetWebVisibility(dialog.ui) ~= WEB_HIDDEN then
-        SetWebVisibility(dialog.ui , WEB_HIDDEN)
-        CallRemoteEvent("OnCloseDialog", dialog.ui, dialog)
+        CallRemoteEvent("OnCloseDialog", webid, dialog.ui)
     end
 end
 AddRemoteEvent("CloseDialog", CloseDialog)
@@ -12,7 +11,7 @@ function OpenDialog(webid)
     local dialog = __dialogList[webid]
 
     if GetWebVisibility(dialog.ui) ~= WEB_VISIBLE then
-        CallRemoteEvent("OnCloseDialog", dialog.ui, dialog)
+        CallRemoteEvent("OnOpenDialog", webid, dialog.ui)
     end
 end
 AddRemoteEvent("OpenDialog", OpenDialog)
@@ -49,3 +48,23 @@ function FreezePlayerInput(bool)
     SetIgnoreMoveInput(bool)
 end
 AddRemoteEvent("FreezePlayerInput", FreezePlayerInput)
+
+AddEvent("OnShowMainMenu", function ()
+    for _, v in pairs(GetAllWebUI()) do
+        for id, data in pairs(__dialogList) do
+            if (data.ui == v) then
+                if data.type ~= "permanent" then
+                    SetClientVisibility(v, false)
+                end
+            end
+        end
+    end
+
+    ShowMouse(true)
+    FreezePlayerInput(true)
+end)
+
+AddEvent("OnHideMainMenu", function ()
+    ShowMouse(false)
+    FreezePlayerInput(false)
+end)

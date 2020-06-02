@@ -1,9 +1,9 @@
 local dialog = {
     id = "vehicle_interact",
     key = "B",
-    type = "press",
+    type = "release",
     dysplay_on_spawn = false,
-    view = "ui_vehicle_interact.html",
+    view = "ui_interact.html",
     z_order = 2,
     frame_rate = 60
 }
@@ -19,7 +19,8 @@ function dialog:onOpen(playerId, DialogId)
 
     if car_nearest ~= false then
         local closet_vehicle = getVehicleCloset(car_nearest)
-
+        AddPlayerChat(playerId, "interact car")
+        
         return true
     else
         return false

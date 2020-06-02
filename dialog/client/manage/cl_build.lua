@@ -72,8 +72,7 @@ function createDialog(view, dysplay_on_spawn, zOrder, frameRate)
     SetWebAlignment(ui , 0,0)
     SetWebAnchors(ui , 0,0,1,1)
     SetWebURL(ui , 'http://asset/' .. GetPackageName() .. '/dialog/files/'..view)
-
-    if dysplay_on_spawn then SetWebVisibility(ui , WEB_VISIBLE) else SetWebVisibility(ui , WEB_HIDDEN) end
+    SetClientVisibility(ui, dysplay_on_spawn)
 
     return ui
 end

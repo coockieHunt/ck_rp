@@ -83,3 +83,53 @@ strong{
     color: white;
     padding-bottom: 15px;
 }
+
+*{
+    color: white;
+}
+
+.icon{
+    width: 20px; 
+    height: 20px;
+}
+
+.bottom_bar {
+    position: absolute;
+    bottom: 15px;
+    right: 0px;
+    width: 100%;
+} 
+
+.warning_icon_right{
+    width: auto;
+    float: right;
+}
+
+.warning_icon_left{
+    width: auto;
+    float: left;
+}
+
+.warning_icon_left > svg{
+    float: right;
+    height: 30px;
+    width: 30px;
+    margin-left: 15px;
+}
+
+.warning_icon_right > svg{
+    float: right;
+    height: 30px;
+    width: 30px;
+    margin-right: 15px;
+}
+
+.blink {
+    animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+    50% {
+        opacity: 0.0;
+    }
+}
+

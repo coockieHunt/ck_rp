@@ -1,9 +1,9 @@
 local dialog = {
-    id = "warning",
+    id = "background_game",
     key = false,
-    type = false,
+    type = "permanent",
     dysplay_on_spawn = true,
-    view = "ui_warning_survival.html",
+    view = "ui_background_game.html",
     z_order = 2,
     frame_rate = 60
 }
@@ -12,7 +12,7 @@ function dialog:onCreate(playerId, DialogId)
 end
 
 function dialog:onOpen(playerId, DialogId)
-    RefrechWarningSurvivalUi(playerId)
+
 end
 
 function dialog:OnClose(playerId, DialogId)
@@ -20,9 +20,24 @@ end
 
 function dialog:OnLoadComplete(playerId, DialogId)
     RefrechWarningSurvivalUi(playerId)
+
+    ExecWebJs(playerId, DialogId, "HideSave()")
 end
 
--- Function dialog
+
+-- func
+function SendAlert(playerId, type, title, content)
+    local data = getplayer(playerId)
+    data:setAlertCount(data:getAlertCount() + 1)
+    ExecWebJs(playerId, dialog.id, "sendAlert( "..data:getAlertCount()..", '"..type.."',  '"..title.."', '"..content.."');")
+end
+AddRemoteEvent("SendAlert", SendAlert)
+
+function CeateProgressBar(playerId, time, color)
+    if color == nil then color = "#43515e" end
+    ExecWebJs(playerId, dialog.id, "CreateProgressBar( "..time..", '"..color.."');")
+end
+
 function OnPlayerDamage(playerId)
     RefrechWarningSurvivalUi(playerId)
 end
@@ -42,6 +57,7 @@ function RefrechWarningSurvivalUi(playerId)
     ExecWebJs(playerId, DialogId, "blink('heart', false, 0)")
     ExecWebJs(playerId, DialogId, "blink('food', false, 0)")
     ExecWebJs(playerId, DialogId, "blink('thirst', false, 0)")
+
 
     if(tonumber(math.floor(health)) < 50) then
         ExecWebJs(playerId, DialogId, "blink('heart', true, "..health..")")

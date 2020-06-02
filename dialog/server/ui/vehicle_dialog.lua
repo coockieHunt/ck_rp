@@ -1,7 +1,7 @@
 local dialog = {
     id = "vehicle",
     key = false,
-    type = false,
+    type = "permanent",
     dysplay_on_spawn = false,
     view = "ui_vehicle.html",
     z_order = 2,

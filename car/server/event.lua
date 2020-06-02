@@ -61,8 +61,7 @@ AddEvent("OnPackageStop", OnPackageStop)
 AddEvent("OnPlayerEnterVehicle", function(player, vehicle, seat)
     if seat == 1 then
         OpenDialogClient(player, "vehicle")
-        local fuel = GetVehiclePropertyValue(vehicle, "fuel")
-        
+        local fuel = GetFuel(vehicle)
         if tonumber(fuel) > 0 then 
             StartVehicleEngine(vehicle)
         else

@@ -13,16 +13,15 @@ AddEvent("OnPackageStart", function()
                     decreases_fuel = decreases_fuel + _Vehicle.velocity_decreases_fuel_add
                 end
                 new_fuel = fuel - decreases_fuel
+
+                if new_fuel <= 0 then
+                    SetFuel(vehicle, 0)
+                    StopVehicleEngine(vehicle) 
+                end
+
                 SetFuel(vehicle, fuel - decreases_fuel)
             end
-
-            if new_fuel <= 0 then
-                SetFuel(vehicle, 0)
-                StopVehicleEngine(vehicle) 
-            end
         end
-
-
     end, 20000)
 end)
 
