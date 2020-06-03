@@ -12,14 +12,22 @@ function dialog:onCreate(playerId, DialogId)
 end
 
 function dialog:onOpen(playerId, DialogId)
+    -- setup 
+    local move_mode = GetPlayerMovementMode(playerId)
+    if move_mode ~= 0 then 
+        AddPlayerChat(playerId, "movement mod not valid")
+        return false 
+    end 
     ClearAction(playerId)
-    
+
+    -- get info
     local car_nearest = GetNearestVehicles(
         playerId, 
         250
     )
 
-    if car_nearest ~= false then
+    -- build dialog interact
+    if car_nearest ~= false then -- car
         local closet_vehicle = getVehicleCloset(car_nearest)
         AddPlayerChat(playerId, "interact car")
         ShowMouse(playerId, true)
@@ -29,9 +37,10 @@ function dialog:onOpen(playerId, DialogId)
         AddAction(playerId, 'upturn', "upturn")
 
         return true
-    else
-        return false
     end
+
+    AddPlayerChat(playerId, "no interact entity")
+    return false
 end
 
 function dialog:OnClose(playerId, DialogId)
