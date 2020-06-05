@@ -5,7 +5,7 @@ _Dialog_admin = {
         {id = 'car_account', name = 'Car account'},
         {id = 'car_admin', name = 'Car admin'},
         {id = 'teleport', name = 'Teleport'},
-        {id = 'survival', name = 'Surivival'},
+        {id = 'survival', name = 'Survival'},
         {id = 'inventory', name = 'Inventory'},
         {id = 'account', name = 'Account'},
         {id = 'environment', name = 'Environment'},
