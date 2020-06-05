@@ -19,6 +19,7 @@ function item:OnDestroy(playerId, quantity)
 end
 
 function item:OnUse(playerId, quantity)
+  print(playerId, quantity)
 end
 
 function item:OnDrop(playerId, quantity)

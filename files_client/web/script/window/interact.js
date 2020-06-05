@@ -8,12 +8,6 @@ function ClearAction(){
 function AddAction(name, action){
 	let action_count = $('.action_nav > ul > li').length + 1
 	$(".action_nav > ul").append("<li id="+action+"><span class='shortcut'>"+action_count+"</span>"+name+"</li>");
-
-	$( ".action_nav > ul > li" ).click(function() {
-		let action = $(this).attr('id')
-
-		CallEvent("CallInteractExec", action, target_id, target_type);
-	  });
 }
 
 function SetActionType(type){
@@ -23,3 +17,11 @@ function SetActionType(type){
 function SetActionTarget(id){
 	target_id = id
 }
+
+$(function() {
+	$(".action_nav > ul").delegate('li','click',function() {
+		let action = $(this).attr('id')
+
+		CallEvent("CallInteractExec", action, target_id, target_type);
+	});
+});

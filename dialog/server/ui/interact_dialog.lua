@@ -75,14 +75,18 @@ function ExecInteractAction(playerId, type, target, action)
         if action == "upturn" then
             upturn_vehicle_nearest(target)
         end
+
         if action == "refuel" then
             local cur_fuel = GetFuel(target)
             SetFuel(target, cur_fuel + 20)
             RemovePlayerItem(playerId, "fuel_can", 1)
+            UseItem(playerId, "fuel_can", 1)
         end
+
         if action == "light" then
             SetVehicleLightEnabled(target, not GetVehicleLightState(target))
         end
+
         if action == "repair" then
             SetVehicleHealth(target, GetVehicleHealth(target) + 200)
             RemovePlayerItem(playerId, "repair_kit", 1)

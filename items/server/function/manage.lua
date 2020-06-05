@@ -5,3 +5,9 @@ function getItemInfo(var)
 
     return false
 end
+
+function UseItem(playerId, item_var, quantity)
+    local item = getItemInfo(item_var)
+
+    item:OnUse(playerId, item_var, quantity)
+end
