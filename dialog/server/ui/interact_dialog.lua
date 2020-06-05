@@ -36,6 +36,10 @@ function dialog:onOpen(playerId, DialogId)
             AddAction(playerId, _("refuel_car"), "refuel")
         end
 
+        if IfInventorContainsItem(DecodeInventory(p.inventory), "repair_kit", 1) then
+            AddAction(playerId, _("repair_car_rk"), "repair")
+        end
+
         AddAction(playerId, _("flip_car"), "upturn")
         AddAction(playerId, _("light_car"), "light")
 
@@ -78,6 +82,10 @@ function ExecInteractAction(playerId, type, target, action)
         end
         if action == "light" then
             SetVehicleLightEnabled(target, not GetVehicleLightState(target))
+        end
+        if action == "repair" then
+            SetVehicleHealth(target, GetVehicleHealth(target) + 200)
+            RemovePlayerItem(playerId, "repair_kit", 1)
         end
     end
 end 
