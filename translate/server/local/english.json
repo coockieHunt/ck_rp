@@ -13,5 +13,8 @@
     "vehicle" : "vehicle",
     "is_not_in_a_vehicle" : "player {1} is not in a vehicle",
     "stored" : "store",
-    "car_no_owner" : "no owner car"
+    "car_no_owner" : "no owner car",
+    "refuel_car" : "refuel (can)",
+    "flip_car" : "flip vehicle",
+    "light_car" : "on/off light"
 }

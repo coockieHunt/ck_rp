@@ -33,10 +33,11 @@ function dialog:onOpen(playerId, DialogId)
         local p = getplayer(playerId)
 
         if IfInventorContainsItem(DecodeInventory(p.inventory), "fuel_can", 1) then
-            AddAction(playerId, 'refuel', "refuel can")
+            AddAction(playerId, _("refuel_car"), "refuel")
         end
 
-        AddAction(playerId, 'upturn', "upturn")
+        AddAction(playerId, _("flip_car"), "upturn")
+        AddAction(playerId, _("light_car"), "light")
 
         return true
     end
@@ -74,6 +75,9 @@ function ExecInteractAction(playerId, type, target, action)
             local cur_fuel = GetFuel(target)
             SetFuel(target, cur_fuel + 20)
             RemovePlayerItem(playerId, "fuel_can", 1)
+        end
+        if action == "light" then
+            SetVehicleLightEnabled(target, not GetVehicleLightState(target))
         end
     end
 end 
