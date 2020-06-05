@@ -1,6 +1,6 @@
 local module = {
-    name = "time",
-    id = "change_time",
+    name = "fog density",
+    id = "change_fog",
     select = "environment",
     level = 1
 }
@@ -23,8 +23,8 @@ end
 
 -- func
 function module:OnBuild()
-    AddForm('text', 'time', 'time', {
-        ['place_holder'] = "0 - 12"
+    AddForm('text', 'density', 'density', {
+        ['place_holder'] = "0 - 4"
     })
 end
 
@@ -32,15 +32,15 @@ function module:OnOpen(playerId)
 end
 
 function module:Onexecute(playerId, data)
-    local time = data['time']
-    local time = tonumber(time)
-    if time > 24 or time < 0 then
-        AddPlayerChat(playerId, "error time <0 - 24>")
+    local density = data['density']
+    local density = tonumber(density)
+    if density < 0 or density > 4 then
+        AddPlayerChat(playerId, "error density <0 - 4>")
         return false
     end
 
-    AddAdminLog(playerId, "admin " .. GetPlayerName(playerId) .. " change time : " .. tostring(time))
-    setCurrentDayTime(time)
+    AddAdminLog(playerId, "admin " .. GetPlayerName(playerId) .. " change fog density : " .. tostring(density))
+    setFogDensity(density)
 
     CloseAdminDialog(playerId)
 end

@@ -8,3 +8,9 @@ function setStarsBrightClient(brightness)
     SetStarsBrightness(brightness)
 end
 AddRemoteEvent("setStarsBrightClient", setStarsBrightClient)
+
+
+function setFogDensityClient(FogDensity)
+    SetFogDensity(FogDensity)
+end
+AddRemoteEvent("setFogDensityClient", setFogDensityClient)
