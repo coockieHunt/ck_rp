@@ -30,6 +30,12 @@ function dialog:onOpen(playerId, DialogId)
 
         SetupInteract(playerId, closet_vehicle, 'vehicle')
 
+        local p = getplayer(playerId)
+
+        if IfInventorContainsItem(DecodeInventory(p.inventory), "fuel_can", 1) then
+            AddAction(playerId, 'refuel', "refuel can")
+        end
+
         AddAction(playerId, 'upturn', "upturn")
 
         return true
@@ -63,6 +69,11 @@ function ExecInteractAction(playerId, type, target, action)
     if type == 'vehicle' then
         if action == "upturn" then
             upturn_vehicle_nearest(target)
+        end
+        if action == "refuel" then
+            local cur_fuel = GetFuel(target)
+            SetFuel(target, cur_fuel + 20)
+            RemovePlayerItem(playerId, "fuel_can", 1)
         end
     end
 end 
