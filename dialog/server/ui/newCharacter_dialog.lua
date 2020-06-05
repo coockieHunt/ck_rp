@@ -41,25 +41,53 @@ AddDialog(dialog)
 function ChangeGender(PlayerId, gender)
     ExecWebJs(PlayerId, dialog.id, "clearPartSelect()")
 
-    for i, v in pairs(_Character_creation.clothing[gender]) do
-        local part = i
-        for _, v in ipairs(v) do
-            local name = GetNameByVar(gender, part, v)
-            ExecWebJs(PlayerId, dialog.id, "setPartSelection('"..part.."','"..name.."','"..v.."')")
+    local clothing = {}
+
+    for part, data in pairs(_Character_creation.clothing[gender]) do
+        local list = {}
+
+
+        if gender == 'men' then list = _Clothing_men end
+        if gender == 'women' then list = _Clothing_women end
+
+        if type(data) == 'boolean' and data == true then
+            local first_element = list[part][1]['var']
+
+            clothing[part] = first_element
+
+            for _, v in ipairs(list[part]) do
+                local var = v['var']
+                local name = v['name']
+    
+                ExecWebJs(PlayerId, dialog.id, "setPartSelection('"..part.."','"..name.."','"..var.."')")
+            end
         end
+
+        if type(data) == 'table' and data ~= true then
+            local first_element = data[1]
+
+            clothing[part] = first_element
+
+            for _, var in ipairs(data) do
+                local name = GetNameByVar(gender, part, var)
+    
+                ExecWebJs(PlayerId, dialog.id, "setPartSelection('"..part.."','"..name.."','"..var.."')")
+            end
+        end
+
     end
 
     for i, v in ipairs(_Character_creation.form.color) do
         ExecWebJs(PlayerId, dialog.id, "setColorSelection('"..v.."')")
     end
 
-    local character_creation = _Character_creation.clothing
+    for NewPart, NewId in pairs(clothing) do
+        local var =  getIdByVar(gender, NewPart, NewId)
+        ChangeClothingPlayer(PlayerId, PlayerId, NewPart, var)
+    end
 
     ChangeClothingPlayer(PlayerId, PlayerId, "gender", gender)
 
-    for k, v in pairs(character_creation[gender]) do
-        ChangeClothingPlayer(PlayerId, PlayerId, k, getIdByVar(gender, k, v[1]))
-    end 
 
     SetPlayerClothing(PlayerId)
 end

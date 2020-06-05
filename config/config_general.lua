@@ -48,11 +48,7 @@ _Character_creation = {
 
     clothing = {
         men = {
-            body = {
-                "body_normal_1",
-                "body_normal_2",
-                "body_normal_3"
-            },
+            body = true,
 
             hair = {
                 "business",
@@ -80,11 +76,7 @@ _Character_creation = {
         },
 
         women = {
-            body = {
-                "Female01",
-                "Female02",
-                "Female03"
-            },
+            body = true,
 
             hair = {
                 "Hair01",
