@@ -14,10 +14,7 @@ end
 function dialog:onOpen(playerId, DialogId)
     -- setup 
     local move_mode = GetPlayerMovementMode(playerId)
-    if move_mode ~= 0 then 
-        AddPlayerChat(playerId, "movement mod not valid")
-        return false 
-    end 
+    if move_mode ~= 0 then return false end 
     ClearAction(playerId)
 
     -- get info
@@ -29,7 +26,6 @@ function dialog:onOpen(playerId, DialogId)
     -- build dialog interact
     if car_nearest ~= false then -- car
         local closet_vehicle = getVehicleCloset(car_nearest)
-        AddPlayerChat(playerId, "interact car")
         ShowMouse(playerId, true)
 
         SetupInteract(playerId, closet_vehicle, 'vehicle')
