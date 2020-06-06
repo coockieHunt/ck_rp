@@ -49,3 +49,9 @@ function CallInteractExec(interact, target, type)
     CallRemoteEvent('ExecInteractAction', type, target, interact)
 end
 AddEvent("CallInteractExec", CallInteractExec)
+
+-- INVENTORY
+function CallCloseSurvival()
+    CloseDialog('inventory')
+end
+AddEvent("CallCloseSurvival", CallCloseSurvival)
