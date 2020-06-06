@@ -59,14 +59,10 @@ function sendAlert(id, type, title, content){
     }, 3000);
 }
 
-function CreateProgressBar(time, color){
-    if(color == undefined) {
-        color = "#ab3842";
-    }
-
+function CreateProgressBar(time){
     let progress_div = "<div class='progress'></div>"
     let progress_container_div = "<div class='progress-container'></div>"
-    let progress_element_div = "<div class='progressbar-element' style='background-color: " + color +"'></div>"
+    let progress_element_div = "<div class='progressbar-element' </div>"
 
     $('#progress_content').append(progress_div);  
     $('.progress').append(progress_container_div);  
