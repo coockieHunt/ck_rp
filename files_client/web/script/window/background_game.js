@@ -2,7 +2,6 @@ var progress_bar_fps = 1000;
 
 $(function() {
     HideSave()
-    CreateProgressBar("1500")
 });
 
 
