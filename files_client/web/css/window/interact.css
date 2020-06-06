@@ -16,7 +16,7 @@ svg{
 .action_nav > #close{
     --height: 50px;
     
-    background-color: var(--red-dark);
+    background-color: var(--red-dark); 
 
 
     color: white;

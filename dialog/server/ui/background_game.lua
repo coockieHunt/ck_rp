@@ -33,9 +33,8 @@ function SendAlert(playerId, type, title, content)
 end
 AddRemoteEvent("SendAlert", SendAlert)
 
-function CeateProgressBar(playerId, time, color)
-    if color == nil then color = "#43515e" end
-    ExecWebJs(playerId, dialog.id, "CreateProgressBar( "..time..", '"..color.."');")
+function CeateProgressBar(playerId, time)
+    ExecWebJs(playerId, dialog.id, "CreateProgressBar( "..time..");")
 end
 
 function OnPlayerDamage(playerId)

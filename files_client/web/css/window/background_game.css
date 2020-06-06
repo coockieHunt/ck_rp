@@ -82,7 +82,9 @@ strong{
 
 .progress-container{
     height: 15px;
-    background-color:var(--red-dark);
+    background-color:var(--red-dark) !important;
+    border: 0px solid #000;
+
 
     -webkit-background-clip: padding-box;
     -moz-background-clip: padding;
