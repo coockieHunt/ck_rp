@@ -61,7 +61,7 @@ function sendAlert(id, type, title, content){
 
 function CreateProgressBar(time, color){
     if(color == undefined) {
-        color = "#43515e";
+        color = "#ab3842";
     }
 
     let progress_div = "<div class='progress'></div>"
