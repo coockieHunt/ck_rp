@@ -222,7 +222,7 @@ _WeaponsList = {
         alias = { 'SMG01' }
     },
     [9] = {
-        name = 'UZI',
+        name = 'MAC-10',
         alias = { 'SMG02' }
     },
     [10] = {
@@ -230,7 +230,7 @@ _WeaponsList = {
         alias = { 'SMG03' }
     },
     [11] = {
-        name = 'M16A4',
+        name = 'M4',
         alias = { 'Rifle01' }
     },
     [12] = {
@@ -254,7 +254,7 @@ _WeaponsList = {
         alias = { 'Rifle05' }
     },
     [17] = {
-        name = 'M4A1',
+        name = 'G3',
         alias = { 'Rifle06' }
     },
     [18] = {
