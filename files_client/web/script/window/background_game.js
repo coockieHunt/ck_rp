@@ -1,3 +1,5 @@
+var progress_bar_fps = 1000;
+
 $(function() {
     HideSave()
 });
@@ -77,7 +79,7 @@ function CreateProgressBar(time, color){
         let wbar = Math.round((time_loop * 100) / time)
 
         $('.progress-container').css("width", wbar + "%");
-    }, time/50, time);
+    }, time/progress_bar_fps, time);
 
     setTimeout(function(){ clearInterval(int); $(".progress").remove() }, time);
 }
