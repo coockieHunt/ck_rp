@@ -1,3 +1,14 @@
+*{
+    color: white;
+}
+
+
+strong{
+    color: black;
+}
+
+
+/* ALERT */
 #alert_content{
     margin-right: 2px;
     width: 20%; 
@@ -18,10 +29,6 @@
     box-shadow: -5px 0px 15px 10px rgba(0, 0, 0, 0.048);
     border-radius: 5px;
     margin-top: 15px;
-}
-
-strong{
-    color: black;
 }
 
 .alert > .header{
@@ -61,19 +68,46 @@ strong{
     font-size: 0.8em;
 }
 
+/* PROGRESS BAR */
 .progress{
-    width: 100%;
-    position: absolute;
     margin: 0;
-    transform: perspective(1px) translateY(-50%);
-    box-shadow: -5px 0px 15px 10px rgba(0, 0, 0, 0.048);
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:var(--gray-light);
+
+    width: 50%; 
 }
 
 .progress-container{
-    background-color: rgba(0, 0, 0, 0.685);
-    border: 0px;
+    height: 15px;
+    background-color:var(--red-dark);
+
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
 }
 
+.progressbar-element{
+    position:absolute;
+    line-height:inherit
+
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background:var(--red-dark)
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background:var(--red-light)
+}
+
+/* SERVER VERSION */
 #server_v{
     font-size:large; 
     position: absolute; 
@@ -84,10 +118,8 @@ strong{
     padding-bottom: 15px;
 }
 
-*{
-    color: white;
-}
 
+/* Bottom bar */
 .icon{
     width: 20px; 
     height: 20px;
@@ -124,12 +156,6 @@ strong{
     margin-right: 15px;
 }
 
-.blink {
-    animation: blinker 1s linear infinite;
-}
-@keyframes blinker {
-    50% {
-        opacity: 0.0;
-    }
-}
+
+
 
