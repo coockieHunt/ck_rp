@@ -29,7 +29,7 @@
 		"character/client/clothing/cl_stream.lua",
 		"character/client/clothing/cl_create_character.lua",
 		"character/client/nearest/cl_nearest.lua",
-		"character/client/nearest/cl_linetrtace.lua",
+		"character/client/nearest/cl_hit_type.lua",
 
 		"clothing/client/cl_skeletalMesh.lua",
 		

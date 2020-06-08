@@ -37,6 +37,7 @@ function module:OnBuild()
             ['inventory'] = "inventory",
             ['clothing'] = "clothing",
             ['steamId'] = "steamId",
+            ['hit_type'] = "hit_type",
         }
     })
 end

@@ -150,6 +150,7 @@ function createPlayerAccount(player, name, data)
             ["coolDown_interact"] =  {},
             ["active"] =  true,
             ["backup_status"] =  true,
+            ["hit_type"] =  0,
         })
 
     table.insert(playerData, p)       
