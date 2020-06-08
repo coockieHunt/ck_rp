@@ -55,10 +55,10 @@ function module:OnOpen(playerId)
 end
 
 function module:Onexecute(playerId, data)
-    local autoMount = 0
+    local autoMount = false
     local boost = 0
     local backfire = 0
-    if(data.autoMount == 'on') then autoMount = 1 end
+    if(data.autoMount == 'on') then autoMount = true end
     if(data.boost == 'on') then boost = 1 end
     if(data.backfire == 'on') then backfire = 1 end
     local model = tonumber(data.car_id)
@@ -71,11 +71,12 @@ function module:Onexecute(playerId, data)
 	local x, y, z = GetPlayerLocation(playerId)
 	local h = GetPlayerHeading(playerId)
 
-	if (vehicle == false) then return AddPlayerChat(playerId, "Failed to spawn your vehicle") end
-	if(autoMount)then
+    if (vehicle == false) then return AddPlayerChat(playerId, "Failed to spawn your vehicle") end
+    
+    if(autoMount)then
 		vehicle = CreateVehicle(model, x, y, z, h)
 		SetPlayerInVehicle(playerId, vehicle)
-	else
+    else
 		vehicle = CreateVehicle(model, x , y - 300, z, h - 90.0)
 		print("Player location: "..x..", "..y..", "..z)
 	end
