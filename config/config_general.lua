@@ -128,6 +128,10 @@ _Car = {
     engine_beak = {
         distance_sound = 1000,-- in milimetre
         volume = 1.5-- where 1 is 100% volume and 2 is the 200% volume.
+    },
+
+    interact = {
+        distance = 250
     }
 }
 

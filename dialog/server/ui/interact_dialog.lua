@@ -20,7 +20,7 @@ function dialog:onOpen(playerId, DialogId)
     -- get info
     local car_nearest = GetNearestVehicles(
         playerId, 
-        250
+        _Car.interact.distance
     )
 
     -- build dialog interact
