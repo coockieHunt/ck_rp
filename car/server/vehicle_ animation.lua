@@ -6,3 +6,17 @@ function PlayVehicleLockSequence(vehicle_id)
         SetVehicleLightEnabled(vehicle_id, false)
 	end)
 end
+
+function PlayVehicleAlarmSequance(vehicle)
+    if GetVehiclePropertyValue(vehicle, "alarm") then
+
+        Delay(1000, function()
+            SetVehicleLightEnabled(vehicle, true)
+        end)
+        
+        Delay(2000, function()
+            SetVehicleLightEnabled(vehicle, false)
+            PlayVehicleAlarmSequance(vehicle)
+        end)
+    end
+end
