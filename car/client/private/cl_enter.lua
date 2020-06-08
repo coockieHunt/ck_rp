@@ -3,9 +3,10 @@ AddEvent("OnPlayerStartEnterVehicle", function(vehicleId, seatId)
     local ALive = GetVehiclePropertyValue(vehicleId, 'ALive')
 
     if locked or ALive == false then
+        CallRemoteEvent('OnEnterVehicle',vehicleId, seatId, false)
         return false
     else
-        CallRemoteEvent('OnEnterVehicle',vehicleId, seatId)
+        CallRemoteEvent('OnEnterVehicle',vehicleId, seatId, true)
         return true
     end
 end)

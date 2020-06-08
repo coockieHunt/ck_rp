@@ -94,6 +94,7 @@
 		"files_client/sound/car_lock.mp3",
 		"files_client/sound/car_alarm.mp3",
 		"files_client/sound/car_engine_break.mp3",
+		"files_client/sound/car_locked.mp3",
 		"dialog/files/ui_inventory.html", 
 		"dialog/files/ui_admin.html",
 		"dialog/files/ui_new_character.html",

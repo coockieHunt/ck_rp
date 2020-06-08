@@ -125,6 +125,11 @@ _Car = {
         volume = 1.0 -- where 1 is 100% volume and 2 is the 200% volume.
     },
 
+    locked = {
+        distance_sound = 1000, -- in milimetre
+        volume = 0.5 -- where 1 is 100% volume and 2 is the 200% volume.
+    },
+
     engine_beak = {
         distance_sound = 1000,-- in milimetre
         volume = 1.5-- where 1 is 100% volume and 2 is the 200% volume.
