@@ -25,7 +25,7 @@ function dialog:onOpen(playerId, DialogId)
 
     -- build dialog interact
     if car_nearest ~= false then -- car
-        local closet_vehicle = getVehicleCloset(car_nearest)
+        local closet_vehicle = GetClosetVehicle(car_nearest)
 
         if GetVehicleDriver(closet_vehicle) == playerId then return false end
 

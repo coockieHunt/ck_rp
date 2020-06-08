@@ -15,7 +15,7 @@ function upturn_vehicle(playerId, vehicle)
     )
 
     if car_nearest ~= false then
-        local closet_vehicle = getVehicleCloset(car_nearest)
+        local closet_vehicle = GetClosetVehicle(car_nearest)
 
         upturn_vehicle_nearest(closet_vehicle)
     end

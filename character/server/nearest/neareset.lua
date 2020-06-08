@@ -1,3 +1,4 @@
+-- VEHICLES
 function GetNearestVehicles(playerId, MaxDist)
     local car = {}
     local rslt = false
@@ -17,4 +18,24 @@ function GetNearestVehicles(playerId, MaxDist)
     if rslt then return car end
 
     return false
+end
+
+function GetClosetVehicle(vehicle_list)
+    local car_distance = vehicle_list[1].dist
+    local selected_car = vehicle_list[1].id
+
+    if(tablelength(vehicle_list)) >= 1 then
+        for _, data in pairs(vehicle_list) do
+            if data.dist < car_distance then
+                car_distance = data.dist 
+                selected_car = data.id
+            end
+        end
+    end
+
+    if selected_car > 0 then
+        return selected_car
+    else
+        return false
+    end
 end
