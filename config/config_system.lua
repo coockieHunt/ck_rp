@@ -98,3 +98,14 @@ _Registe_SkeletalMesh_player = {
     pants = "Clothing4",
     shoes = "Clothing5"
 }
+
+_Registe_HitType = {
+    1 = "HIT_AIR",
+    2 = "HIT_PLAYER",
+    3 = "HIT_VEHICLE",
+    4 = "HIT_NPC",
+    5 = "HIT_OBJECT",
+    6 = "HIT_LANDSCAPE",
+    7 = "HIT_WATER",
+    8 = "HIT_DOOR",
+}
