@@ -1,5 +1,4 @@
 -- color
-
 function tohex(num)
   local charset = {"0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"}
   local tmp = {}
@@ -10,6 +9,14 @@ function tohex(num)
   return table.concat(tmp)
 end
 
+-- int 
+function round(num, numDecimalPlaces)
+  if numDecimalPlaces and numDecimalPlaces>0 then
+    local mult = 10^numDecimalPlaces
+    return math.floor(num * mult + 0.5) / mult
+  end
+  return math.floor(num + 0.5)
+end
 -- date
 function GetSystemTime()
     return os.time(os.date("!*t"))
