@@ -75,7 +75,7 @@ AddItem(item)
 - *OnDestroy* : To call when the item is distroyed.
     - *playerId* : id of the player.
     - *quantity* : the number of player’s items.
-- *OnUse* : To call when the item is used.
+- *OnUse* : To call when the item is used. (if this function return false, an alert and send to the players for their information that the object cannot be used)
     - *playerId* : id of the player.
     - *quantity* : the number of player’s items.
 - *OnDrop* : To call when the item is put on the floor.
