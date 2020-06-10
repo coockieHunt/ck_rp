@@ -7,7 +7,7 @@ function getItemInfo(var)
 end
 
 function UseItem(playerId, item_var, quantity)
-    local item = getItemInfo(item_var)
+    local use = CallPlayerUse(playerId, item_id)
 
-    item:OnUse(playerId, item_var, quantity)
+    return use
 end

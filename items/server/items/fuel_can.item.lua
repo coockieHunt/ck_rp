@@ -18,18 +18,23 @@ end
 function item:OnDestroy(playerId, quantity)
 end
 
-function item:OnUse(playerId, quantity, args)
-	local car_nearest = GetNearestVehicles(
-		playerId, 
-		_Car.interact.distance
-	)
 
-	if car_nearest ~= false then
-		local closet_vehicle = GetClosetVehicle(car_nearest)
-		local cur_fuel = GetFuel(closet_vehicle)
-		SetFuel(closet_vehicle, cur_fuel + 20)
+function item:OnUse(playerId, quantity, args)
+	local hit_type = GetHitTypeClient(playerId)
+	if hit_type == false then return false end
+
+	if hit_type.type == "HIT_VEHICLE" then 
+		CeateProgressBar(playerId, 1500)
+
+		local vehicleId = hit_type.id
+		local cur_fuel = GetFuel(vehicleId)
+		SetFuel(vehicleId, cur_fuel + 20)
 		RemovePlayerItem(playerId, item.var, 1)
+
+		return true
 	end
+
+	return false
 end
 
 function item:OnDrop(playerId, quantity)
