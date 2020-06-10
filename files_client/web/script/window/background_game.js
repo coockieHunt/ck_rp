@@ -2,18 +2,6 @@ var progress_bar_fps = 1000;
 
 $(function() {
     HideSave()
-    sendAlert(1, "warning", "test", '<span class="svg" data-svg="thirst"></span><span style="color:red">%q</span>')
-    sendAlert(2, "warning", "test", '<span class="svg" data-svg="thirst"></span><span style="color:red">%q</span>')
-    sendAlert(3, "warning", "test", '<span class="svg" data-svg="thirst"></span><span style="color:red">%q</span>')
-    sendAlert(4, "warning", "test", '<span class="svg" data-svg="thirst"></span><span style="color:red">%q</span>')
-    sendAlert(5, "warning", "test", '<span class="svg" data-svg="thirst"></span><span style="color:red">%q</span>')
-    sendAlert(6, "warning", "test", '<span class="svg" data-svg="thirst"></span><span style="color:red">%q</span>')
-    sendAlert(7, "warning", "test", '<span class="svg" data-svg="thirst"></span><span style="color:red">%q</span>')
-    sendAlert(8, "warning", "test", '<span class="svg" data-svg="thirst"></span><span style="color:red">%q</span>')
-    sendAlert(9, "warning", "test", '<span class="svg" data-svg="thirst"></span><span style="color:red">%q</span>')
-    sendAlert(10, "warning", "test", '<span class="svg" data-svg="thirst"></span><span style="color:red">%q</span>')
-    sendAlert(11, "warning", "test", '<span class="svg" data-svg="thirst"></span><span style="color:red">%q</span>')
-
 });
 
 
