@@ -14,7 +14,11 @@ end
 function dialog:onOpen(playerId, DialogId)
     -- get hit
     local hit_type = GetHitTypeClient(playerId)
-    if hit_type == false then return false end
+    if hit_type == false then
+        SendAlert(playerId, 'info', 'interact', _("no_valid_interaction"))
+
+        return false     
+    end
 
     -- setup 
     local move_mode = GetPlayerMovementMode(playerId)
@@ -23,11 +27,14 @@ function dialog:onOpen(playerId, DialogId)
 
     -- build dialog interact
     if hit_type.type == "HIT_VEHICLE" then -- car
+        FreezePlayerInput(playerId, true)
+        ShowMouse(playerId, true)
+
+
         local closet_vehicle = hit_type.id
 
         if GetVehicleDriver(closet_vehicle) == playerId then return false end
 
-        ShowMouse(playerId, true)
         SetupInteract(playerId, closet_vehicle, 'vehicle')
 
         local p = getplayer(playerId)
@@ -48,11 +55,10 @@ function dialog:onOpen(playerId, DialogId)
 
     AddPlayerChat(playerId, "no interact entity")
     return false
-
-    
 end
 
 function dialog:OnClose(playerId, DialogId)
+    FreezePlayerInput(playerId, false)
     ShowMouse(playerId, false)
 end
 
@@ -61,7 +67,6 @@ end
 
 -- function
 function AddAction(playerId, name, action, time, cool_down)
-    AddRegisterActionTime(playerId, name, action, time, cool_down)
     ExecWebJs(playerId, dialog.id,  "AddAction('"..name.."', '"..action.."');")
 end
 

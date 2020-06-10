@@ -18,5 +18,6 @@
     "flip_car" : "flip vehicle",
     "light_car" : "on/off light",
     "repair_car_rk" : "repair (repaire kit)",
-    "remaing_time_action" : "remaing time for this action : </br> {1} second"
+    "remaing_time_action" : "remaing time for this action : </br> {1} second",
+    "no_valid_interaction" : "no valid interaction"
 }
