@@ -5,6 +5,7 @@ local item = {
 	model = 507,
 	weight = 1,
 	thumbnail= "fuel_can.png",
+    cooldown = {time_use = 10000, time_cooldown = 10000},
 	color = "#ffdb4d"
 }
 
@@ -24,7 +25,6 @@ function item:OnUse(playerId, quantity, args)
 	if hit_type == false then return false end
 
 	if hit_type.type == "HIT_VEHICLE" then 
-		CeateProgressBar(playerId, 1500)
 
 		local vehicleId = hit_type.id
 		local cur_fuel = GetFuel(vehicleId)

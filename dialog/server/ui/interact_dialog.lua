@@ -1,5 +1,5 @@
 local dialog = {
-    id = "vehicle_interact",
+    id = "interact",
     key = "I",
     type = "release",
     dysplay_on_spawn = false,
@@ -27,7 +27,6 @@ function dialog:onOpen(playerId, DialogId)
 
     -- build dialog interact
     if hit_type.type == "HIT_VEHICLE" then -- car
-        FreezePlayerInput(playerId, true)
         ShowMouse(playerId, true)
 
 
@@ -58,7 +57,6 @@ function dialog:onOpen(playerId, DialogId)
 end
 
 function dialog:OnClose(playerId, DialogId)
-    FreezePlayerInput(playerId, false)
     ShowMouse(playerId, false)
 end
 

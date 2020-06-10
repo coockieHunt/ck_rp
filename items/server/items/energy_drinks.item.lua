@@ -5,6 +5,7 @@ local item = {
     model = 1296,
     weight = 1,
     thumbnail= "energi_drink.png",
+    cooldown = {time_use = 100, time_cooldown = 100},
     color = "#ffdb4d"
 }
 
@@ -19,6 +20,7 @@ function item:OnDestroy(playerId, quantity)
 end
 
 function item:OnUse(playerId, quantity)
+  return true
 end
 
 function item:OnDrop(playerId, quantity)

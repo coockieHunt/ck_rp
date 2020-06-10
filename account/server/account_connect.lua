@@ -147,7 +147,7 @@ function createPlayerAccount(player, name, data)
             ["clothing"] =  data['clothing'],
             ["clothing_color"] =  data['clothing_color'],
             ["alert_count"] =  0,
-            ["coolDown_interact"] =  {},
+            ["coolDown_item"] =  {},
             ["active"] =  true,
             ["backup_status"] =  true,
             ["hit_type"] =  {type = 0, id = 0} 
