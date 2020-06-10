@@ -57,9 +57,9 @@ AddItem(item)
 ``` 
 
 3.  To configure the item by means of table item [line 1->9]  </br><span style="color:orange">/!\ attention to the coma /!\ :
-    - *name* : name dispayed for the players
+    - *name* : name displayed for the players
     - *var* : items’ variable (To use in the package).
-    - *description* : the description dispayed in the players’ inventory.
+    - *description* : the description displayed in the players’ inventory.
     - *model* : id of the model 3d (Refere to [*wiki*](https://dev.playonset.com/wiki/Objects) or [*advenced list*](https://onsetfreeroam.com/objectsearch/))
     - *weight* : the weigh of the item in the inventory.
     - *cooldown* : time_use = time to use the object, time_cooldown = time between each use. (if this parameter is equal to false, it will have no usage time and colldown.)
