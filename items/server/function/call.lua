@@ -5,6 +5,7 @@ end
 AddRemoteEvent('CallPlayerDropItem', CallPlayerDropItem)
 
 function CallPlayerUse(playerId, item_id)
+    print(item_id)
     local item_object = _itemsList[item_id]
 
     local use = item_object:OnUse(playerId, quantity)

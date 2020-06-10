@@ -7,7 +7,7 @@ function getItemInfo(var)
 end
 
 function UseItem(playerId, item_var, quantity)
-    local use = CallPlayerUse(playerId, item_id)
+    local use = CallPlayerUse(playerId, item_var)
 
     return use
 end
