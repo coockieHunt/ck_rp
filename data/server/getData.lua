@@ -44,3 +44,6 @@ function GetFuelTankById(id)
      return false
 end
 
+function GetHitTypeVar(id)
+    return _Registe_HitType[tostring(id)]
+end
