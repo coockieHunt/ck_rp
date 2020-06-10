@@ -12,20 +12,18 @@ function dialog:onCreate(playerId, DialogId)
 end
 
 function dialog:onOpen(playerId, DialogId)
+    -- get hit
+    local hit_type = GetHitTypeClient(playerId)
+    if hit_type == false then return false end
+
     -- setup 
     local move_mode = GetPlayerMovementMode(playerId)
     if move_mode ~= 0 then return false end 
     ClearAction(playerId)
 
-    -- get info
-    local car_nearest = GetNearestVehicles(
-        playerId, 
-        _Car.interact.distance
-    )
-
     -- build dialog interact
-    if car_nearest ~= false then -- car
-        local closet_vehicle = GetClosetVehicle(car_nearest)
+    if hit_type.type == "HIT_VEHICLE" then -- car
+        local closet_vehicle = hit_type.id
 
         if GetVehicleDriver(closet_vehicle) == playerId then return false end
 
@@ -50,6 +48,8 @@ function dialog:onOpen(playerId, DialogId)
 
     AddPlayerChat(playerId, "no interact entity")
     return false
+
+    
 end
 
 function dialog:OnClose(playerId, DialogId)
