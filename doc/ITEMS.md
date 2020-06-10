@@ -13,7 +13,7 @@
 WIP
 
 ### __Add Items__
- <span style="color:orange">/!\ attention to the coma /!\</span>
+ <span style="color:orange">/!\ attention to the coma /!\
 1. To create a new file in the folder [*'./items/server/items/'*](https://github.com/coockieHunt/ck_rp/tree/master/items/server/items), name it (<NEW_ITEM_ID>_items.lua).
 2. To copy the content inside.
 ```lua
@@ -56,7 +56,7 @@ end
 AddItem(item)
 ``` 
 
-3.  To configure the item by means of table item [line 1->9]  </br><span style="color:orange">/!\ attention to the coma /!\</span> :
+3.  To configure the item by means of table item [line 1->9]  </br><span style="color:orange">/!\ attention to the coma /!\ :
     - *name* : name dispayed for the players
     - *var* : items’ variable (To use in the package).
     - *description* : the description dispayed in the players’ inventory.
