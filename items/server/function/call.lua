@@ -5,12 +5,11 @@ end
 AddRemoteEvent('CallPlayerDropItem', CallPlayerDropItem)
 
 function CallPlayerUse(playerId, item_id)
-    print(item_id)
     local item_object = _itemsList[item_id]
 
     local use = item_object:OnUse(playerId, quantity)
-    
     if isnil(use) then use = false end
+
     if not use then
         SendAlert(playerId, 'warning', 'item', _("not_use_item", item_object.name))
     end
