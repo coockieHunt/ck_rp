@@ -1,4 +1,4 @@
-var progress_bar_fps = 1000;
+var progress_bar_fps = 10000;
 
 $(function() {
     HideSave()
@@ -59,25 +59,47 @@ function sendAlert(id, type, title, content){
     }, 3000);
 }
 
-function CreateProgressBar(time){
+
+var maxTime;
+var start;
+var timeoutVal;
+
+function CreateProgressBar(title, time){
     let progress_div = "<div class='progress'></div>"
     let progress_container_div = "<div class='progress-container'></div>"
     let progress_element_div = "<div class='progressbar-element' </div>"
 
     $('#progress_content').append(progress_div);  
     $('.progress').append(progress_container_div);  
+    $('#progress_content').append('<p class="progressbar_title">'+title+'</p>');  
+
     $('.progress-container').append(progress_element_div);  
 
-    var start = new Date().getTime();
-    let int = setInterval(function() {
-        var now = new Date().getTime();
-        let time_loop = now - start
-        let wbar = Math.round((time_loop * 100) / time)
+    maxTime = time;
+    start = new Date();
+    timeoutVal = Math.floor(maxTime/100);
 
-        $('.progress-container').css("width", wbar + "%");
-    }, time/progress_bar_fps, time);
+    update_progressBar()
+}
 
-    setTimeout(function(){ clearInterval(int); $(".progress").remove() }, time);
+
+function update_progressBar(){
+    var now = new Date();
+    var timeDiff = now.getTime() - start.getTime();
+    var perc = Math.round((timeDiff/maxTime)*100);
+
+    if (perc <= 100) {
+        $('.progress-container').css("width", perc + "%");
+        setTimeout(update_progressBar, timeoutVal);
+    }
+
+    if (perc >= 100) {
+        DeleteProgressBar()
+    }
+}
+
+function DeleteProgressBar(){
+    $('#progress_content').empty();
 }
 
 function ShowSave(){
