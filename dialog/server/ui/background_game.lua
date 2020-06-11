@@ -34,8 +34,6 @@ end
 AddRemoteEvent("SendAlert", SendAlert)
 
 function CeateProgressBar(playerId, title,  time)
-    AddPlayerChat(playerId, "CreateProgressBar('"..title.."', "..time..");")
-    
     ExecWebJs(playerId, dialog.id, "CreateProgressBar('"..title.."', "..time..");")
 end
 
