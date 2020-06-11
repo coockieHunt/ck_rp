@@ -28,6 +28,7 @@ end
 -- func
 function SendAlert(playerId, type, title, content)
     local data = getplayer(playerId)
+    if data:getAlertCount() => 99 then data:setAlertCount(0) end
     data:setAlertCount(data:getAlertCount() + 1)
     ExecWebJs(playerId, dialog.id, "sendAlert( "..data:getAlertCount()..", '"..type.."',  '"..title.."', '"..content.."');")
 end
