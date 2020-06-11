@@ -40,8 +40,8 @@ function item:OnDestroy(playerId, quantity)
 end
 
 function item:OnUse(playerId, quantity)
-    return true
     print("item use")
+    return true
 end
 
 function item:OnUsed(playerId, quantity, args)
