@@ -80,7 +80,7 @@ _RequestSql = {
     SaveAccountSurvival = "UPDATE accounts SET health= ?, armor=?, food='?', thirst='?' WHERE steam_id = ? LIMIT 1;",
     SaveAccountCash = "UPDATE accounts SET cash= ?, cash_account=?, WHERE steam_id = ? LIMIT 1;",
     SaveAccountInventory = "UPDATE accounts SET max_weight='?', cur_weight='?', inventory='?' WHERE steam_id = ? LIMIT 1;",
-    CreateNewAccountCar = "INSERT INTO account_vehicle (account_id, car_id, plate, color, upgrade, otr) VALUES ('?', '?', '?', '?', '?', '?');",
+    CreateNewAccountCar = "INSERT INTO account_vehicle (account_id, car_id, plate, color, fuel, upgrade, otr) VALUES ('?', '?', '?', '?', '?', '?', '?');",
     GetAllAccountCar = "SELECT * FROM account_vehicle WHERE account_id LIKE '?';",
     GetAccountCar = "SELECT * FROM account_vehicle WHERE account_id LIKE '?' AND id = '?';",
     IfCarExistLicensePlate = "SELECT * FROM account_vehicle WHERE plate = '?';",

@@ -56,7 +56,9 @@ function module:Onexecute(playerId, data)
         backfire = backfire
     }
 
-    RequestCreateCarAccount(p.id, data.car_id, data.color, upgrade)
+    fuel = GetFuelTankById(data.car_id)
+
+    RequestCreateCarAccount(p.id, data.car_id, data.color, fuel, upgrade)
 end
 
 AddAdminModule(module)
