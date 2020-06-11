@@ -20,21 +20,22 @@ function item:OnDestroy(playerId, quantity)
 end
 
 
-function item:OnUse(playerId, quantity, args)
+function item:OnUse(playerId, quantity)
 	local hit_type = GetHitTypeClient(playerId)
 	if hit_type == false then return false end
 
 	if hit_type.type == "HIT_VEHICLE" then 
-
-		local vehicleId = hit_type.id
-		local cur_fuel = GetFuel(vehicleId)
-		SetFuel(vehicleId, cur_fuel + 20)
-		RemovePlayerItem(playerId, item.var, 1)
-
-		return true
+		return hit_type.id
 	end
 
 	return false
+end
+
+function item:OnUsed(playerId, quantity, args)
+	local vehicleId = args
+	local cur_fuel = GetFuel(vehicleId)
+	SetFuel(vehicleId, cur_fuel + 20)
+	RemovePlayerItem(playerId, item.var, 1)
 end
 
 function item:OnDrop(playerId, quantity)

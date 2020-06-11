@@ -23,6 +23,9 @@ function item:OnUse(playerId, quantity)
   return true
 end
 
+function item:OnUsed(playerId, quantity, args)
+end
+
 function item:OnDrop(playerId, quantity)
   drop_item(playerId, item.var, quantity)
 end

@@ -18,7 +18,8 @@
     "flip_car" : "flip vehicle",
     "light_car" : "on/off light",
     "repair_car_rk" : "repair (repaire kit)",
-    "remaing_time_action" : "remaing time for this action : </br> {1} second",
+    "remaing_time_action" : "remaing time for use {1} : </br> {2} second",
     "no_valid_interaction" : "no valid interaction",
-    "not_use_item" : "unable to use object {1} currently"
+    "not_use_item" : "unable to use object {1} currently",
+    "action_canceled" : "action canceled"
 }
