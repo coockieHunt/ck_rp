@@ -13,8 +13,7 @@ function ExecInteractAction(playerId, type, target, action)
         end
 
         if action == "repair" then
-            SetVehicleHealth(target, GetVehicleHealth(target) + 200)
-            RemovePlayerItem(playerId, "repair_kit", 1)
+            UseItem(playerId, "repair_kit", 1)
         end
     end
 end 

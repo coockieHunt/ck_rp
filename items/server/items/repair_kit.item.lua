@@ -5,7 +5,7 @@ local item = {
     model = 551,
     weight = 1,
     thumbnail= "key.png",
-    cooldown = {time_use = 100, time_cooldown = 100},
+    cooldown = {time_use = 5000, time_cooldown = 5000},
     color = "#ffdb4d"
 }
 
@@ -20,10 +20,19 @@ function item:OnDestroy(playerId, quantity)
 end
 
 function item:OnUse(playerId, quantity)
-  return true
+  local hit_type = GetHitTypeClient(playerId)
+	if hit_type == false then return false end
+
+	if hit_type.type == "HIT_VEHICLE" then 
+		return hit_type.id
+	end
+
+	return false
 end
 
 function item:OnUsed(playerId, quantity, args)
+  local new = GetVehicleHealth(args) + 2000
+  SetVehicleHealth(args, new)
 end
 
 function item:OnDrop(playerId, quantity)
