@@ -41,6 +41,11 @@ end
 
 function item:OnUse(playerId, quantity)
     return true
+    print("item use")
+end
+
+function item:OnUsed(playerId, quantity, args)
+    print("item used")
 end
 
 function item:OnDrop(playerId, quantity)
@@ -75,9 +80,13 @@ AddItem(item)
 - *OnDestroy* : To call when the item is distroyed.
     - *playerId* : id of the player.
     - *quantity* : the number of player’s items.
-- *OnUse* : To call when the item is used. (if this function return false, an alert and send to the players for their information that the object cannot be used)
+- *OnUse* : call when the item is used. (if this function returns false, an alert and sends to the players for their information that the object cannot be used, if it returns a varialbe this will be recoverable in the OnUsed function)
     - *playerId* : id of the player.
     - *quantity* : the number of player’s items.
+- *OnUsed* : call when object is finished are cool down (args is the return from OnUse)
+    - *playerId* : id of the player.
+    - *quantity* : the number of player’s items.
+    - *args* : return OnUse.
 - *OnDrop* : To call when the item is put on the floor.
     - *playerId* : id of the player.
     - *quantity* : the number of player’s items.
