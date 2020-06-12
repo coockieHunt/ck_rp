@@ -9,6 +9,11 @@ _Mariadb = {
 };
 
 --[[
+   DEBUG
+]]
+_DEBUG = true;
+
+--[[
    LANGUAGE
 ]]
 _Language = "english"
