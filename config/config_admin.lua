@@ -9,6 +9,7 @@ _Dialog_admin = {
         {id = 'inventory', name = 'Inventory'},
         {id = 'account', name = 'Account'},
         {id = 'environment', name = 'Environment'},
-        {id = 'entity', name = 'Entity'}
+        {id = 'entity', name = 'Entity'},
+        {id = 'tool', name = 'tool'},
     }
 };
