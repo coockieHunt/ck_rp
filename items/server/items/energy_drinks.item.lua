@@ -24,6 +24,7 @@ function item:OnUse(playerId, quantity)
 end
 
 function item:OnUsed(playerId, quantity, args)
+  AddPlayerChat(playerId, "use :" .. item.name)
 end
 
 function item:OnDrop(playerId, quantity)

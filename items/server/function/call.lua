@@ -17,10 +17,14 @@ function CallPlayerUse(playerId, item_id)
     if isnil(p.coolDown_item[item_id]) then
         use = item_object:OnUse(playerId, quantity)
         if use ~= false then
-            if not item_object.cooldown then return false end
+            if not item_object.cooldown then 
+                item_object:OnUsed(playerId, quantity, use)
+                return true
+            end
 
             local coolDown = item_object.cooldown.time_cooldown
             local TimeUse = item_object.cooldown.time_use
+
     
             CeateProgressBar(playerId, "use : (" .. item_info.name .. ')', TimeUse)
     
