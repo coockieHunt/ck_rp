@@ -97,6 +97,8 @@ AddItem(item)
     - *playerId* : id of the player.
     - *quantity* : the number of player’s items.
 
+![item_process](https://github.com/coockieHunt/onset-ck-rp/blob/master/doc/src/img/item_processDiagram.jpg) 
+
 ### __Add Thumbnail__
 1.	To create a picture with the format PNG of size 1600x1600 pixels.
 2. 	To put the file in the computer file ('./files_client/web/src_img/').
