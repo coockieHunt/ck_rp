@@ -97,6 +97,7 @@ AddItem(item)
     - *playerId* : id of the player.
     - *quantity* : the number of player’s items.
 
+## __process__
 ![item_process](https://github.com/coockieHunt/onset-ck-rp/blob/master/doc/src/img/item_processDiagram.jpg) 
 
 ### __Add Thumbnail__
