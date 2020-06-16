@@ -1,22 +1,27 @@
-(function(obj)
-{
-    ue.game = {};
-    ue.game.callevent = function(name, ...args)
+if(typeof eu === 'undefined'){
+    console.log('%c game interface not loaded ', 'color:red');
+}else{
+    console.log('%c game interface loaded ', 'color:green');
+    (function(obj)
     {
-        if (typeof name != "string") {
-            return;
-        }
-
-        if (args.length == 0) {
-            obj.callevent(name, "")
-        }
-        else {
-            let params = []
-            for (let i = 0; i < args.length; i++) {
-                params[i] = args[i];
+        ue.game = {};
+        ue.game.callevent = function(name, ...args)
+        {
+            if (typeof name != "string") {
+                return;
             }
-            obj.callevent(name, JSON.stringify(params));
-        }
-    };
-})(ue.game);
-CallEvent = ue.game.callevent;
+    
+            if (args.length == 0) {
+                obj.callevent(name, "")
+            }
+            else {
+                let params = []
+                for (let i = 0; i < args.length; i++) {
+                    params[i] = args[i];
+                }
+                obj.callevent(name, JSON.stringify(params));
+            }
+        };
+    })(ue.game);
+    CallEvent = ue.game.callevent;
+}
