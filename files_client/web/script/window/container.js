@@ -5,14 +5,6 @@ var dom_select = {
     "inventory_player_title" : "#container > #inventory_frame > .header > .title",
 }
 
-$(function() {
-    AddItem("banana", "banana", "5", "../../files_client/web/src/img/banana.png", "#ffdb4d", "items description", "player")
-    AddItem("energy_drinks", "energy drinks", "5", "../../files_client/web/src/img/energi_drink.png", "#ffdb4d", "items description", "player")
-
-
-    AddItem("energy_drinks", "energy drinks", "1", "../../files_client/web/src/img/energi_drink.png", "#ffdb4d", "items description", "container")
-});
-
 var list_item = [];
 
 function ClearInventory() {
