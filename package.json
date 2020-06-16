@@ -75,6 +75,7 @@
 		"files_client/web/css/window/background_game.css",
 		"files_client/web/css/window/vehicle.css",
 		"files_client/web/css/window/interact.css",
+		"files_client/web/css/window/container.css",
 	
 		"files_client/web/script/game/eu.js",
 		"files_client/web/script/main.js",
@@ -89,6 +90,7 @@
 		"files_client/web/script/window/background_game.js",
 		"files_client/web/script/window/vehicle.js",
 		"files_client/web/script/window/interact.js",
+		"files_client/web/script/window/container.js",
 
 
 		"files_client/sound/car_lock.mp3",
@@ -100,6 +102,7 @@
 		"dialog/files/ui_new_character.html",
 		"dialog/files/ui_background_game.html",
 		"dialog/files/ui_interact.html",
-		"dialog/files/ui_vehicle.html"
+		"dialog/files/ui_vehicle.html",
+		"dialog/files/ui_container.html"
 	]
 }

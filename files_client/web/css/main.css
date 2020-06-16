@@ -129,3 +129,69 @@ background:var(--red-dark)
 ::-webkit-scrollbar-thumb:hover {
 background:var(--red-light)
 }
+
+.object{
+  background-color: var(--gray-mid);
+  border-bottom: 1px solid var(--spacer);
+
+  width: 100%;
+  height: 15%;
+
+  display: flex;
+  
+}
+
+.object > .thumb > img{
+  height: 70%;
+}
+
+.object > .info{
+  position: relative;
+  width: 100%;
+  background: rgb(84,99,110);
+  box-shadow: inset 2px -2px 41px -3px rgba(0,0,0,0.36);
+}
+
+ .object > .info > span{
+  position: absolute;
+
+  font-size: 0.8em;
+  font-weight: lighter;
+}
+
+.object > .info > .type > svg{
+  width: 12px;
+  height: 12px;
+  float: right;
+  padding: 7px;
+}
+
+.object > .info > .name{
+  top: 5px;
+  left: 5px;
+
+  font-size: 0.9em;
+}
+
+.object > .info > .quantity{
+  bottom: 5px;
+  left: 5px;
+}
+
+.object > .thumb{
+  width: 20%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-right: 1px solid var(--spacer);
+  background-color: var(--gray-med);
+  box-shadow: inset 2px -2px 41px -3px rgba(0,0,0,0.36);
+}
+
+.ItemsActive > .info{
+  background-color: #394550;
+}
+

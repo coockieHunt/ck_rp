@@ -50,15 +50,20 @@ end
 AddRemoteEvent("FreezePlayerInput", FreezePlayerInput)
 
 AddEvent("OnShowMainMenu", function ()
-    for _, v in pairs(GetAllWebUI()) do
-        for id, data in pairs(__dialogList) do
-            if (data.ui == v) then
-                if data.type ~= "permanent" then
-                    SetClientVisibility(v, false)
-                end
-            end
-        end
-    end
+    -- for _, v in pairs(GetAllWebUI()) do
+    --     for id, data in pairs(__dialogList) do
+    --         if (data.ui == v) then
+    --             if data.type ~= "permanent" then
+    --                 if GetWebVisibility(data.ui) == WEB_VISIBLE then
+    --                     AddPlayerChat(id)
+    --                     SetClientVisibility(v, false)
+    --                     CallRemoteEvent("OnCloseDialog", id, data.ui)
+
+    --                 end
+    --             end
+    --         end
+    --     end
+    -- end
 
     ShowMouse(true)
     FreezePlayerInput(true)
