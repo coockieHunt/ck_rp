@@ -68,7 +68,6 @@ AddRemoteEvent("ErrorClient", ErrorClient)
 function RotateCharacter(player, dir)
     local curentPh = GetPlayerHeading(player)
 
-
     local newPh = 0
 
     local step = _Character_creation.form.rotate_step
