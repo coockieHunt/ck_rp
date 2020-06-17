@@ -1,7 +1,4 @@
-if(typeof eu === 'undefined'){
-    console.log('%c game interface not loaded ', 'color:red');
-}else{
-    console.log('%c game interface loaded ', 'color:green');
+try {
     (function(obj)
     {
         ue.game = {};
@@ -24,4 +21,8 @@ if(typeof eu === 'undefined'){
         };
     })(ue.game);
     CallEvent = ue.game.callevent;
+} catch (e) {
+    console.log('%c game interface not loaded ', 'color:red');
+    console.log('%c background debug loader ', 'color:orange');
+    document.body.style.backgroundColor = "rgb(43, 40, 41)";
 }
