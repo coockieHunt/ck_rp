@@ -4,35 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ck_container</title>
-    <link rel="stylesheet" type="text/css" href="../../files_client/web/css/window/container.css">
     <link rel="stylesheet" type="text/css" href="../../files_client/web/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../files_client/web/css/window/container.css">
     <style>
     </style>
 
 </head>
 <body>
-    <div id="container">
-        <div id="container_frame" class="inventory">
-            <div class="header"><span class="title"></span></div>
-            <div class="content">
-                <!-- item container here -->
+   <div id="window">
+        <div id="top_bar">
+            <img src="../../files_client/web/src/img/close.png" class="survival" id="close">
+        </div>
+        <div id="content">
+            <div id="inventory_player" class="invenotry">
+                <div id="content_inventory">
+                    <div class="title">s</div>
+                    
+                </div>
             </div>
-            <div class="footer">footer</div>
-        </div>
-    
-        <div id="options_frame">
-            <span id="move_all">all</span>
-            <span id="move_unique">1</span>
-        </div>
-    
-        <div id="inventory_frame" class="inventory">
-            <div class="header"><span class="title"></span></div>
-            <div class="content">
-                <!-- item player here -->
+            <div id="inventory_option">
+                <div id="move_interface">
+                    <div id="count_move">
+                        <span id="remove">-</span>
+                        <span id="quantity">5</span>
+                        <span id="add">+</span>
+                    </div>
+                    <div id="move_option">
+                        <span id="move_quantity">Move</span>
+                        <span id="move_all">All</span>
+                    </div>
+                </div>
+                <div id="item_descri">
+                    <div id="descri_title">item_name</div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error esse deserunt architecto sapiente dolorum, voluptatibus vitae reiciendis aspernatur ipsam nemo qui autem quis, repudiandae minus perspiciatis impedit nesciunt suscipit aliquid.</p>
+                </div>
             </div>
-            <div class="footer">footer</div>
+            <div id="inventory_container" class="invenotry">
+                <div id="content_inventory">
+                    <div class="title">s</div>
+                 </div>
+            </div>
         </div>
-    </div>
+   </div>
 </body>
     <script type="text/javascript" src="../../files_client/web/script/libs/jquery.js"></script>
     <script type="text/javascript" src="../../files_client/web/script/main.js"></script>

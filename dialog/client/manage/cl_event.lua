@@ -55,3 +55,11 @@ function CallCloseSurvival()
     CloseDialog('inventory')
 end
 AddEvent("CallCloseSurvival", CallCloseSurvival)
+
+-- CONTAINER
+function CallContainerMove(side, item_id, quantity, container_id)
+    CallRemoteEvent('MoveItemContainer', side, item_id, quantity, container_id )
+    
+end
+AddEvent("CallContainerMove", CallContainerMove)
+

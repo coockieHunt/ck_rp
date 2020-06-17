@@ -42,7 +42,6 @@ html, body {height: 100%;  user-select: none;}
   background-color: var( --gray-dark);
   height: 70%;
   width: 75%;
-  border-radius: 5px;
   user-select: none;
   position: relative;
 }

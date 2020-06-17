@@ -62,6 +62,7 @@ function SetupContainer(playerId, id_container)
 
     ExecWebJs(playerId, dialog.id, " SetContainerTitle('"..cur_cont.name.."')")
     ExecWebJs(playerId, dialog.id, " SetPlayerTitle('"..GetPlayerName(playerId).."')")
+    ExecWebJs(playerId, dialog.id, " SetContainerId('"..id_container.."')")
 
     local decode = DecodeInventory(cur_cont.items)
 
