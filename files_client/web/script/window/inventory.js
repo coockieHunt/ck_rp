@@ -246,3 +246,50 @@ $("#side_bottom_window > div > div.info > div.desc > .use").click(function() {
         CallEvent("CallUseItem", selected_item);
     }
 });
+
+function ToggleStats(bool){
+    if(bool){
+        $("#stats").show()
+        $('#stats').css("width", "40%")
+        $('#inventory').css("width", "60%")
+        $('#window').css("width","45%")
+    }else{
+        $("#stats").hide()
+        $('#inventory').css("width", "100%")
+        $('#window').css("width","30%")
+    }
+}
+
+function SetWindowsPosition(postion){
+
+    switch (postion) {
+        case "center":
+            $('#window').removeAttr('style');
+            $('#window').css("position", "absolute")
+            $('#window').css("top", "45%")
+            $('#window').css("left", "50%")
+            $('#window').css("transform", "translate(-50%, -50%)")
+
+            break;
+        case "left":
+            $('#window').removeAttr('style');
+
+            $('#window').css("position", "absolute")
+            $('#window').css("top", "45%")
+            $('#window').css("left", "0")
+            $('#window').css("transform", "translate(0, -50%)")
+            break;
+
+        case "right":
+            $('#window').removeAttr('style');
+
+            $('#window').css("position", "absolute")
+            $('#window').css("top", "45%")
+            $('#window').css("right", "0")
+            $('#window').css("transform", "translateX(0 -50%)")
+            break;
+    
+        default:
+            break;
+    }
+}

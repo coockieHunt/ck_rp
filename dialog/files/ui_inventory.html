@@ -6,6 +6,8 @@
         <link rel="stylesheet" type="text/css" href="../../files_client/web/css/window/inventory.css">
         <link rel="stylesheet" type="text/css" href="../../files_client/web/css/form/form.css">
         <title>ck_inventory</title>
+        <style>
+        </style>
     </head>
     
     <body >
@@ -14,14 +16,8 @@
                 <img src="../../files_client/web/src/img/close.png" class="survival" id="close">
             </div>
             <div id="content">
-                <div id="outfit">
-                    <h1>outfit</h1>
-                    <div class="content">
-                        <img src="../../files_client/web/src/img/silhouette.png" class="icon">
-                    </div>
-                </div>    
                 <div id="inventory">
-                    <h1>inventory</h1>
+                    <div class="title">inventory</div>
                     <div class="content">
                         <div class="header">
                             <span class= "max_weight">max weight : 1/10</span>
@@ -39,7 +35,8 @@
                     </div>
                 </div> 
                 <div id="stats">
-                    <h1>Statistics</h1>
+                    <div class="title">stats</div>
+
                     <div class="content">
                         <div class="progress-inline" id="health">
                             <span class="svg" data-svg="heart"></span>
@@ -92,7 +89,6 @@
                    
                 </div>
             </div>
-
             <div id="side_bottom_window">
                 <div class="content">
                     <div class="action">
@@ -138,10 +134,13 @@
                     </div>
                 </div>
             </div>
+
+           
         </div>
     </body>
 
     <script type="text/javascript" src="../../files_client/web/script/libs/jquery.js"></script>
+    <script type="text/javascript" src="../../files_client/web/script/libs/jquery-ui.js"></script>
     <script type="text/javascript" src="../../files_client/web/script/game/eu.js"></script>
     <script type="text/javascript" src="../../files_client/web/script/window/inventory.js"></script>
     <script type="text/javascript" src="../../files_client/web/script/main.js"></script>
