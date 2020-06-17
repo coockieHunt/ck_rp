@@ -67,3 +67,20 @@ function RemoveItemInContainer(id_container, item_id, quantity)
 
     Container_master_list[id_container].items = json_encode(old_container)
 end
+
+function MoveItemContainer(playerId, side, item_id, quantity, container_id)
+    print(playerId, side, item_id, quantity, container_id)
+
+    if side == "player" then
+        print("move " .. item_id .. " * " .. quantity .." to container ".. container_id )
+        RemovePlayerItem(playerId, item_id, quantity)
+        AddItemInContainer(container_id, item_id, quantity)
+    end
+
+    if side == "container" then
+        print("move " .. item_id .. " * " .. quantity .." to player ".. container_id )
+        AddPlayerItem(playerId, item_id, quantity)
+        RemoveItemInContainer(container_id, item_id, quantity)
+    end
+end
+AddRemoteEvent("MoveItemContainer", MoveItemContainer)
