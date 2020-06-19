@@ -1,12 +1,12 @@
 local item = {
     name = "energy drinks",
     var = "energy_drinks",
-    description = "items description",
+    description = "An energy drink is a type of drink containing stimulant compounds, usually caffeine, which is marketed as providing mental and physical stimulation (marketed as 'energy', but distinct from food energy). ",
     model = 1296,
     weight = 1,
     thumbnail= "energi_drink.png",
-    cooldown = {time_use = 100, time_cooldown = 100},
-    color = "#ffdb4d"
+    cooldown = {time_use = 500, time_cooldown = 500},
+    color = "#3217C8"
 }
 
 --[=====[ 

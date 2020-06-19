@@ -1,7 +1,7 @@
 local item = {
     name = "banana",
     var = "banana",
-    description = "items description",
+    description = "A banana is an elongated, edible fruit – botanically a berry[1][2] – produced by several kinds of large herbaceous flowering plants in the genus Musa.[3] In some countries, bananas used for cooking may be called 'plantains', distinguishing them from dessert bananas.",
     model = 1621,
     weight = 1,
     thumbnail= "banana.png",
