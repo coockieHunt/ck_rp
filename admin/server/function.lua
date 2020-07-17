@@ -7,3 +7,10 @@ function AdminLevel(playerid, level)
 		return true
 	end
 end
+
+function OpenAdminMenu(playerId)
+	if(AdminLevel(playerId, 1)) then
+		CallRemoteEvent(playerId, 'OpenAdminMenuClient')
+	end
+end
+AddRemoteEvent('OpenAdminMenu', OpenAdminMenu)

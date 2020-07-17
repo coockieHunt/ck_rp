@@ -18,6 +18,12 @@ function CloseUIAdmin()
     SetWebVisibility(admin_ui, WEB_HIDDEN)
 end
 
+function OpenAdminMenuClient()
+    OpenUIAdmin()
+    BuildSelectOnOpen(admin_ui)
+end
+AddRemoteEvent("OpenAdminMenuClient", OpenAdminMenuClient)
+
 -- package manager
 function OnPackageStart()
     admin_ui = CreateWebUI(0, 0, 0, 0, 999999, 60)
@@ -33,8 +39,7 @@ AddEvent("OnPackageStart", OnPackageStart)
 AddEvent("OnKeyPress", function(key)
     if key == "F5" and admin_ui_builded == true  then
         if GetWebVisibility(admin_ui) == WEB_HIDDEN then
-            OpenUIAdmin()
-            BuildSelectOnOpen(admin_ui)
+            CallRemoteEvent('OpenAdminMenu')
         else
             CloseUIAdmin()
         end
