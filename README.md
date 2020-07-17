@@ -113,6 +113,7 @@ _Mariadb = {
 8. Enjoy
 
 ***config guide***
+- next doc wip : https://jonathan-gleyze.gitbook.io/ck-rp/
 - items : [here](https://github.com/coockieHunt/onset-ck-rp/blob/master/doc/ITEMS.md) 
 - function : [here](https://github.com/coockieHunt/onset-ck-rp/blob/master/doc/FUNC.md) 
 - admin : [here](https://github.com/coockieHunt/onset-ck-rp/blob/master/doc/ADMIN.md) 
