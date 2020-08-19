@@ -21,6 +21,9 @@ _CarsList = {
     {id = 32, type = 'car', name = 'lawn mower', alias = 'LawnMower_01', fuel_tank = 100},
     {id = 35, type = 'car',name = 'suv', alias = 'SUV_01', fuel_tank = 100},
     {id = 36, type = 'car', name = 'suv cop', alias = 'SUV_01_Police', fuel_tank = 100},
+    {id = 37, type = 'car', name = 'sport car', alias = 'SportsCar_01', fuel_tank = 100},
+    {id = 38, type = 'car', name = 'Golf car', alias = 'GolfCart_01', fuel_tank = 100},
+    {id = 40, type = 'car', name = 'Muscle Car', alias = 'MuscleCar_01', fuel_tank = 100},
 
     {id = 33, type = 'boad', name = 'boad', alias = 'MotorBoat_01', fuel_tank = 100},
     {id = 34, type = 'boad', name = 'boad army', alias = 'MotorBoat_01_Camo', fuel_tank = 100},
@@ -38,6 +41,7 @@ _CarsList = {
     {id = 24, type = 'truck', name = 'Securicar (Red)', alias = 'ArmoredTruck_01', fuel_tank = 100},
     {id = 27, type = 'truck', name = 'pick up', alias = 'Truck_02', fuel_tank = 100},
     {id = 28, type = 'truck', name = 'truck case', alias = 'Lorry_01', fuel_tank = 100},
+    {id = 39, type = 'truck', name = 'Tow Truck', alias = 'CargoTruck_03', fuel_tank = 100},
 }
 
 _Preset_clothing = {

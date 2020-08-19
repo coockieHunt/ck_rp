@@ -66,8 +66,6 @@ function module:Onexecute(playerId, data)
 
     local vehicle
 
-	if (model < 1 or model > 36) then return AddPlayerChat(playerId, "Vehicle model "..model.." does not exist.") end
-
 	local x, y, z = GetPlayerLocation(playerId)
 	local h = GetPlayerHeading(playerId)
 
