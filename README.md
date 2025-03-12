@@ -2,6 +2,9 @@
 
 
 THIS IS OUTDATED/UNMAINTAINED
+## Abandoned and Unmaintained
+This project is no longer actively maintained or updated. The game `Onset` is no longer receiving updates, and as a result, this repository will remain public but without further development.
+
 
 # /!\ DICLAMER /!\
 This code is only in its preamble, a public installation and not recommended.
